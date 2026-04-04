@@ -37,16 +37,17 @@ async function register(req, res) {
 
     const userId = authData.user.id;
 
-    // Create profile row
+    // Create profile row (use upsert to handle cases where a trigger might have already created a skeleton profile)
     const { error: profileError } = await supabaseAdmin
       .from('profiles')
-      .insert({
+      .upsert({
         id: userId,
         role,
         username,
         display_name: display_name || username,
         email,
         phone: phone || null,
+        updated_at: new Date(),
       });
 
     if (profileError) {
@@ -89,8 +90,8 @@ async function register(req, res) {
       },
     });
   } catch (err) {
-    console.error('Register error:', err);
-    return serverError(res);
+    console.error('CRITICAL Registration failure:', err);
+    return error(res, err.message || 'Internal server error during registration', 500, 'REGISTRATION_CRASH');
   }
 }
 
@@ -286,4 +287,35 @@ async function logout(req, res) {
   }
 }
 
-module.exports = { register, login, getMe, updateMe, forgotPassword, resetPassword, logout };
+/**
+ * GET /api/auth/authorize/:provider
+ * Get the Supabase OAuth URL to redirect the frontend
+ */
+async function authorizeSocial(req, res) {
+  try {
+    const { provider } = req.params;
+    const validProviders = ['google', 'apple', 'facebook'];
+    
+    if (!validProviders.includes(provider)) {
+      return error(res, 'Invalid provider', 400);
+    }
+
+    const { data, error: oauthError } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: `${env.frontendUrl}/auth/callback`,
+      },
+    });
+
+    if (oauthError) {
+      return error(res, oauthError.message, 400);
+    }
+
+    return success(res, { url: data.url });
+  } catch (err) {
+    console.error('authorizeSocial error:', err);
+    return serverError(res);
+  }
+}
+
+module.exports = { register, login, getMe, updateMe, forgotPassword, resetPassword, logout, authorizeSocial };
