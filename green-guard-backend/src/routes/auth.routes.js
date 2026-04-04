@@ -17,6 +17,7 @@ router.post('/register', authLimiter, registerValidator, validate, auth.register
 router.post('/login', authLimiter, loginValidator, validate, auth.login);
 router.post('/forgot-password', authLimiter, forgotPasswordValidator, validate, auth.forgotPassword);
 router.post('/reset-password', authLimiter, resetPasswordValidator, validate, auth.resetPassword);
+router.get('/authorize/:provider', authLimiter, auth.authorizeSocial);
 
 // Protected routes
 router.get('/me', authMiddleware, auth.getMe);
