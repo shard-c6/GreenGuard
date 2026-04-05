@@ -107,14 +107,24 @@ export default function PlantDetailPage() {
           )}
 
           {/* Adopt CTA */}
-          {plant.adoption_status === 'available' && user?.role === 'adopter' && (
-            <Link href={`/plants/${plant.id}/adopt`} className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-              🌱 Apply to Adopt This Plant
-            </Link>
+          {plant.adoption_status === 'available' ? (
+            user?.role === 'adopter' ? (
+              <Link href={`/plants/${plant.id}/adopt`} className="btn btn-primary btn-lg" style={{ width: '100%' }}>
+                🌱 Apply to Adopt This Plant
+              </Link>
+            ) : (
+              <div style={{ background: 'var(--muted)', borderRadius: 'var(--radius)', padding: '1rem', textAlign: 'center', color: 'var(--muted-foreground)', fontSize: '0.875rem' }}>
+                Only registered adopters can apply to adopt plants.
+              </div>
+            )
+          ) : (
+            <div style={{ background: 'var(--muted)', borderRadius: 'var(--radius)', padding: '1rem', textAlign: 'center', fontWeight: 600, color: 'var(--muted-foreground)' }}>
+              {plant.adoption_status === 'pending' ? '⏳ Adoption Pending' : '✅ This plant has been adopted'}
+            </div>
           )}
 
           {plant.adoption_status === 'adopted' && plant.adopted_by === user?.id && (
-            <Link href="/dashboard/reports/new" className="btn btn-primary" style={{ width: '100%' }}>
+            <Link href="/dashboard/reports/new" className="btn btn-primary" style={{ width: '100%', marginTop: '1rem' }}>
               📊 Submit Growth Report
             </Link>
           )}
