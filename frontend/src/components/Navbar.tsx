@@ -96,7 +96,7 @@ export default function Navbar() {
             <NavLink href="/plants">Plants</NavLink>
             <NavLink href="/map">Map</NavLink>
             <NavLink href="/feed">Feed</NavLink>
-            <NavLink href="/ai-identifier">AI Identify</NavLink>
+            <NavLink href="/identify">AI Identify</NavLink>
             <NavLink href={getDashboardLink()}>Dashboard</NavLink>
           </div>
         )}
@@ -195,7 +195,7 @@ export default function Navbar() {
           <NavLink href="/plants">Plants</NavLink>
           <NavLink href="/map">Map</NavLink>
           <NavLink href="/feed">Feed</NavLink>
-          <NavLink href="/ai-identifier">AI Identify</NavLink>
+          <NavLink href="/identify">AI Identify</NavLink>
           <NavLink href={getDashboardLink()}>Dashboard</NavLink>
           <NavLink href="/notifications">Notifications {unreadCount > 0 && `(${unreadCount})`}</NavLink>
         </div>

@@ -60,8 +60,23 @@ export default function MapPage() {
 
   const parseLngLat = (location: string | null): [number, number] | null => {
     if (!location) return null;
+    
+    // WKT Format: POINT(lon lat)
     const match = location.match(/POINT\(([^ ]+) ([^ ]+)\)/);
     if (match) return [parseFloat(match[2]), parseFloat(match[1])]; // [lat, lng]
+
+    // PostGIS EWKB Hex Format (Little-endian, SRID 4326, Point)
+    if (location.startsWith('0101000020E6100000') && location.length >= 50) {
+      const parseHexFloat = (h: string) => {
+        const bytes = new Uint8Array(8);
+        for (let i = 0; i < 8; i++) bytes[i] = parseInt(h.substr(i * 2, 2), 16);
+        return new DataView(bytes.buffer).getFloat64(0, true);
+      };
+      const lng = parseHexFloat(location.slice(18, 34));
+      const lat = parseHexFloat(location.slice(34, 50));
+      return [lat, lng];
+    }
+    
     return null;
   };
 
@@ -83,13 +98,19 @@ export default function MapPage() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {plants.map(plant => {
+        {plants.map((plant, idx) => {
           const coords = parseLngLat(plant.location);
           if (!coords) return null;
+
+          // Add a tiny stable jitter based on index so markers at the same spot are slightly offset and visible
+          const stableJitterLat = (Math.sin(idx) * 0.0001);
+          const stableJitterLng = (Math.cos(idx) * 0.0001);
+          const jitteredCoords: [number, number] = [coords[0] + stableJitterLat, coords[1] + stableJitterLng];
+
           return (
             <Marker
               key={plant.id}
-              position={coords}
+              position={jitteredCoords}
               icon={iconsRef.current[plant.adoption_status] as L.DivIcon}
             >
               <Popup>
@@ -97,7 +118,7 @@ export default function MapPage() {
                   <strong>{plant.plant_name}</strong>
                   {plant.species && <p style={{ margin: '0.25rem 0', fontSize: '0.8rem', fontStyle: 'italic' }}>{plant.species}</p>}
                   <p style={{ margin: '0.25rem 0', fontSize: '0.75rem', color: '#64748b' }}>
-                    Status: {plant.adoption_status}
+                    Status: <span style={{ textTransform: 'capitalize', fontWeight: 600 }}>{plant.adoption_status}</span>
                   </p>
                   <a href={`/plants/${plant.id}`} style={{ fontSize: '0.8rem', color: '#16a34a', fontWeight: 600 }}>
                     View Details →
