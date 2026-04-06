@@ -19,8 +19,22 @@ export default function LoginPage() {
     setError('');
     setLoading(true);
     try {
-      await login(email, password);
-      router.push('/plants');
+      const user = await login(email, password);
+      
+      // Role-based redirection
+      if (user.role === 'admin') {
+        router.push('/dashboard/admin');
+      } else if (user.role === 'ngo') {
+        if (!user.ngo_profile) {
+          router.push('/ngo/onboarding');
+        } else if (user.ngo_profile.status === 'approved') {
+          router.push('/dashboard/ngo');
+        } else {
+          router.push('/ngo/onboarding/status');
+        }
+      } else {
+        router.push('/plants');
+      }
     } catch (err: unknown) {
       const msg = (err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Login failed. Please try again.';
       setError(msg);
