@@ -27,16 +27,25 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
-      await register({
+      const user = await register({
         email: form.email,
         password: form.password,
         username: form.username,
         display_name: form.display_name,
         role: form.role,
       });
-      // NGOs need onboarding after registration
-      if (form.role === 'ngo') {
-        router.push('/ngo/onboarding');
+
+      // Role-based redirection
+      if (user.role === 'admin') {
+        router.push('/dashboard/admin');
+      } else if (user.role === 'ngo') {
+        if (!user.ngo_profile) {
+          router.push('/ngo/onboarding');
+        } else if (user.ngo_profile.status === 'approved') {
+          router.push('/dashboard/ngo');
+        } else {
+          router.push('/ngo/onboarding/status');
+        }
       } else {
         router.push('/plants');
       }

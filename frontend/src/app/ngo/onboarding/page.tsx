@@ -18,7 +18,7 @@ export default function NgoOnboardingPage() {
     setLoading(true);
     try {
       await ngoApi.submitOnboarding(form);
-      router.push('/dashboard/ngo');
+      router.push('/ngo/onboarding/status');
     } catch (err: unknown) {
       setError((err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Onboarding failed');
     } finally {

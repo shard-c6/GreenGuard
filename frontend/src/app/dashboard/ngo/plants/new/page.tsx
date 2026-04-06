@@ -14,7 +14,44 @@ export default function NewPlantPage() {
   });
   const [files, setFiles] = useState<File[]>([]);
   const [loading, setLoading] = useState(false);
+  const [geoLoading, setGeoLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const handleGetCurrentLocation = () => {
+    if (!navigator.geolocation) {
+      return setError('Geolocation is not supported by your browser');
+    }
+
+    setGeoLoading(true);
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const { latitude, longitude } = pos.coords;
+        setForm(prev => ({
+          ...prev,
+          latitude: latitude.toString(),
+          longitude: longitude.toString(),
+        }));
+
+        // Try to get address via reverse geocoding
+        try {
+          const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+          const data = await res.json();
+          if (data.display_name) {
+            setForm(prev => ({ ...prev, address: data.display_name }));
+          }
+        } catch (err) {
+          console.error('Reverse geocoding failed:', err);
+        } finally {
+          setGeoLoading(false);
+        }
+      },
+      (err) => {
+        setError(`Failed to get location: ${err.message}`);
+        setGeoLoading(false);
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -78,16 +115,35 @@ export default function NewPlantPage() {
             onChange={e => setForm({ ...form, description: e.target.value })} rows={3}
             placeholder="Describe the plant, its history, and why it's special..." />
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-          <div className="form-group">
-            <label className="form-label">Latitude</label>
-            <input type="number" step="any" className="form-input" value={form.latitude}
-              onChange={e => setForm({ ...form, latitude: e.target.value })} placeholder="e.g. 19.0760" />
-          </div>
-          <div className="form-group">
-            <label className="form-label">Longitude</label>
-            <input type="number" step="any" className="form-input" value={form.longitude}
-              onChange={e => setForm({ ...form, longitude: e.target.value })} placeholder="e.g. 72.8777" />
+        <div className="form-group">
+          <label className="form-label" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            Location Coordinates
+            <button
+              type="button"
+              onClick={handleGetCurrentLocation}
+              className="btn btn-ghost btn-xs"
+              style={{ color: 'var(--gg-green)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+              disabled={geoLoading}
+            >
+              {geoLoading ? (
+                <span className="spinner" style={{ width: 12, height: 12 }} />
+              ) : (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              )}
+              {geoLoading ? 'Getting location...' : 'Use My Current Location'}
+            </button>
+          </label>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+            <div className="form-group mb-0">
+              <label className="form-label" style={{ fontSize: '0.75rem', color: 'var(--muted-foreground)' }}>Latitude *</label>
+              <input type="number" step="any" className="form-input" value={form.latitude}
+                onChange={e => setForm({ ...form, latitude: e.target.value })} placeholder="e.g. 19.0760" required />
+            </div>
+            <div className="form-group mb-0">
+              <label className="form-label" style={{ fontSize: '0.75rem', color: 'var(--muted-foreground)' }}>Longitude *</label>
+              <input type="number" step="any" className="form-input" value={form.longitude}
+                onChange={e => setForm({ ...form, longitude: e.target.value })} placeholder="e.g. 72.8777" required />
+            </div>
           </div>
         </div>
 

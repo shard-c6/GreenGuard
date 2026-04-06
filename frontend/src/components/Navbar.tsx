@@ -91,13 +91,38 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        {isAuthenticated && (
+        {isAuthenticated && user && (
           <div className="navbar-links">
-            <NavLink href="/plants">Plants</NavLink>
-            <NavLink href="/map">Map</NavLink>
-            <NavLink href="/feed">Feed</NavLink>
-            <NavLink href="/identify">AI Identify</NavLink>
-            <NavLink href={getDashboardLink()}>Dashboard</NavLink>
+            {user.role === 'adopter' && (
+              <>
+                <NavLink href="/plants">Browse Plants</NavLink>
+                <NavLink href="/map">Plant Map</NavLink>
+                <NavLink href="/identify">AI Identify</NavLink>
+                <NavLink href="/dashboard/adoptions">My Adoptions</NavLink>
+              </>
+            )}
+
+            {user.role === 'ngo' && (
+              <>
+                {user.ngo_profile?.status === 'approved' ? (
+                  <>
+                    <NavLink href="/dashboard/ngo">Dashboard</NavLink>
+                    <NavLink href="/dashboard/ngo/plants">My Plants</NavLink>
+                    <NavLink href="/dashboard/ngo/applications">Applications</NavLink>
+                  </>
+                ) : (
+                  <NavLink href="/ngo/onboarding/status">Approval Status</NavLink>
+                )}
+              </>
+            )}
+
+            {user.role === 'admin' && (
+              <>
+                <NavLink href="/dashboard/admin">Admin Panel</NavLink>
+                <NavLink href="/map">Global Map</NavLink>
+                <NavLink href="/feed">Community Feed</NavLink>
+              </>
+            )}
           </div>
         )}
 
@@ -190,13 +215,38 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {mobileOpen && isAuthenticated && (
+      {mobileOpen && isAuthenticated && user && (
         <div className="navbar-mobile">
-          <NavLink href="/plants">Plants</NavLink>
-          <NavLink href="/map">Map</NavLink>
-          <NavLink href="/feed">Feed</NavLink>
-          <NavLink href="/identify">AI Identify</NavLink>
-          <NavLink href={getDashboardLink()}>Dashboard</NavLink>
+          {user.role === 'adopter' && (
+            <>
+              <NavLink href="/plants">Browse Plants</NavLink>
+              <NavLink href="/map">Plant Map</NavLink>
+              <NavLink href="/identify">AI Identify</NavLink>
+              <NavLink href="/dashboard/adoptions">My Adoptions</NavLink>
+            </>
+          )}
+
+          {user.role === 'ngo' && (
+            <>
+              {user.ngo_profile?.status === 'approved' ? (
+                <>
+                  <NavLink href="/dashboard/ngo">Dashboard</NavLink>
+                  <NavLink href="/dashboard/ngo/plants">My Plants</NavLink>
+                  <NavLink href="/dashboard/ngo/applications">Applications</NavLink>
+                </>
+              ) : (
+                <NavLink href="/ngo/onboarding/status">Approval Status</NavLink>
+              )}
+            </>
+          )}
+
+          {user.role === 'admin' && (
+            <>
+              <NavLink href="/dashboard/admin">Admin Panel</NavLink>
+              <NavLink href="/map">Global Map</NavLink>
+              <NavLink href="/feed">Community Feed</NavLink>
+            </>
+          )}
           <NavLink href="/notifications">Notifications {unreadCount > 0 && `(${unreadCount})`}</NavLink>
         </div>
       )}

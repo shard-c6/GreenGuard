@@ -8,8 +8,8 @@ interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  register: (data: { email: string; password: string; username: string; display_name: string; role: UserRole }) => Promise<void>;
+  login: (email: string, password: string) => Promise<User>;
+  register: (data: { email: string; password: string; username: string; display_name: string; role: UserRole }) => Promise<User>;
   logout: () => Promise<void>;
   updateUser: (data: { display_name?: string; bio?: string; phone?: string; address?: string }) => Promise<void>;
 }
@@ -38,19 +38,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const login = useCallback(async (email: string, password: string) => {
+  const login = useCallback(async (email: string, password: string): Promise<User> => {
     const res = await authApi.login({ email, password });
-    const { user: authUser, session } = res.data.data;
+    const { session } = res.data.data;
 
     localStorage.setItem('gg_token', session.access_token);
     localStorage.setItem('gg_refresh_token', session.refresh_token);
 
     // Fetch full profile
     const profileRes = await authApi.getMe();
-    setUser(profileRes.data.data);
+    const fullUser = profileRes.data.data;
+    setUser(fullUser);
+    return fullUser;
   }, []);
 
-  const register = useCallback(async (data: { email: string; password: string; username: string; display_name: string; role: UserRole }) => {
+  const register = useCallback(async (data: { email: string; password: string; username: string; display_name: string; role: UserRole }): Promise<User> => {
     const res = await authApi.register(data);
     const responseData = res.data.data;
 
@@ -59,8 +61,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem('gg_refresh_token', responseData.session.refresh_token);
 
       const profileRes = await authApi.getMe();
-      setUser(profileRes.data.data);
+      const fullUser = profileRes.data.data;
+      setUser(fullUser);
+      return fullUser;
     }
+    throw new Error('Registration succeeded but no session was returned');
   }, []);
 
   const logout = useCallback(async () => {
