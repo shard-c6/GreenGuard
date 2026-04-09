@@ -6,7 +6,7 @@ const { success, created, error, notFound, serverError } = require('../utils/res
  */
 async function submitOnboarding(req, res) {
   try {
-    const { org_name, registration_number, website, mission, address, onboarding_answers } = req.body;
+    const { org_name, registration_number, website, mission, address, onboarding_answers, darpan_id } = req.body;
 
     const { data, error: dbError } = await supabaseAdmin
       .from('ngo_profiles')
@@ -17,6 +17,8 @@ async function submitOnboarding(req, res) {
         mission: mission || null,
         address: address || null,
         onboarding_answers: onboarding_answers || null,
+        darpan_id: darpan_id || null,
+        status: 'pending', // Reset to pending if re-submitting or first time
       })
       .eq('id', req.user.id)
       .select()

@@ -176,22 +176,37 @@ async function unbanUser(req, res) {
 }
 
 /**
- * GET /api/admin/stats — platform-wide stats
+ * GET /api/admin/dashboard — platform-wide stats for admin dashboard
  */
 async function platformStats(req, res) {
   try {
-    const [users, ngos, plants, adoptions] = await Promise.all([
+    const [
+      adopters,
+      ngos,
+      plants,
+      adoptions,
+      posts,
+      reports,
+      users
+    ] = await Promise.all([
       supabaseAdmin.from('profiles').select('id', { count: 'exact', head: true }).eq('role', 'adopter'),
       supabaseAdmin.from('ngo_profiles').select('id', { count: 'exact', head: true }).eq('status', 'approved'),
       supabaseAdmin.from('plants').select('id', { count: 'exact', head: true }),
       supabaseAdmin.from('adoptions').select('id', { count: 'exact', head: true }).eq('status', 'approved'),
+      supabaseAdmin.from('posts').select('id', { count: 'exact', head: true }),
+      supabaseAdmin.from('growth_reports').select('id', { count: 'exact', head: true }),
+      supabaseAdmin.from('profiles').select('id', { count: 'exact', head: true }),
     ]);
 
     return success(res, {
-      total_adopters: users.count || 0,
+      total_adopters: adopters.count || 0,
       total_approved_ngos: ngos.count || 0,
       total_plants: plants.count || 0,
       total_adoptions: adoptions.count || 0,
+      total_posts: posts.count || 0,
+      total_reports: reports.count || 0,
+      total_users: users.count || 0,
+      total_ngos: ngos.count || 0, // Legacy support for different keys
     });
   } catch (err) {
     console.error('platformStats error:', err);

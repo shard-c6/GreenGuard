@@ -87,6 +87,7 @@ export interface NgoProfile {
   website: string | null;
   mission: string | null;
   address: string | null;
+  darpan_id: string | null;
   onboarding_answers: Record<string, string> | null;
   status: NgoStatus;
   approved_by: string | null;
@@ -191,6 +192,8 @@ export interface Post {
   likes_count: number;
   bookmarks_count: number;
   comments_count: number;
+  location: string | null;
+  address: string | null;
   created_at: string;
   is_liked?: boolean;
   is_bookmarked?: boolean;
