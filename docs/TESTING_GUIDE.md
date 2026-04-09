@@ -17,12 +17,16 @@ Testing is split into three main layers:
 
 ### A. The Adopter Journey
 *   **Registration/Login**:
-    - [ ] Sign up with valid email/password as 'Plant Adopter'.
-    - [ ] Login with the newly created account.
-    - [ ] Verify profile data (username, display name) load correctly in the Navbar.
-*   **Plant Exploration**:
-    - [ ] Browse the plant gallery (`/plants`).
-    - [ ] Apply filters (Status, Category) and check if the list updates.
+    - [ ] Sign up as 'Plant Adopter'.
+    - [ ] Login and verify profile details in the Navbar.
+*   **NGO Onboarding (Enhanced)**:
+    - [ ] Register as an 'NGO'.
+    - [ ] Complete the **Premium Onboarding Form**:
+        - [ ] Provide **Darpan ID** (Govt. Unique ID).
+        - [ ] Submit the detailed **Impact Questionnaire**.
+    - [ ] Verify you are redirected to the **Onboarding Status** page.
+    - [ ] Verify you cannot access NGO features until an Admin approves your account.
+ck if the list updates.
     - [ ] View a single plant's detail page (`/plants/[id]`).
 *   **Adoption Flow**:
     - [ ] Click 'Adopt' on an available plant.
@@ -51,12 +55,15 @@ Testing is split into three main layers:
     - [ ] Verify species identification and health analysis results.
 
 ### C. The Admin Journey
-*   **NGO Approval**:
-    - [ ] Review pending NGOs and Approve/Reject them.
-    - [ ] Verify status updates on the platform.
-*   **Portal Health**:
-    - [ ] Check 'Platform Stats' for total plants, users, and adoptions.
-    - [ ] Search for a user in 'User Management' and verify 'Ban/Unban' functionality.
+*   **NGO Verification Portal**:
+    - [ ] Go to the **Verification Tab** in the Admin Dashboard.
+    - [ ] Review pending NGO applications.
+    - [ ] Open the **Verification Modal**:
+        - [ ] Inspect Darpan ID and Questionnaire answers.
+    - [ ] Approve/Reject the NGO and verify their status updates.
+*   **Platform Dashboard**:
+    - [ ] Verify the **Admin Dashboard** displays accurate stats for:
+        - [ ] Total Users, Plants, Adoptions, Posts, and Reports.
 
 ---
 
@@ -70,6 +77,7 @@ Testing is split into three main layers:
 | **File Upload** | Upload non-image files (e.g., .exe) | Validation error: "Please upload image files only" |
 | **AI ID** | Upload image of a non-plant (e.g., a car) | Handle gracefully: "No plant identified" |
 | **Feed** | NGO posts with empty content | Form validation should block submit |
+| **Map** | Tag a post with location | Verify tree-icon appears on Map |
 
 ---
 
@@ -97,11 +105,14 @@ If you want to automate these tests, we recommend:
 
 ---
 
-## 6. QA Checklist Template
-
-When releasing new changes, please fill this out:
-- [ ] Backend server running? (`npm run dev`)
-- [ ] Frontend server running? (`npm run dev`)
-- [ ] Supabase connected and migrations applied?
-- [ ] Mobile view layout verified?
-- [ ] All forms have loading states/success messages?
+## 7. Dummy Data (Seeding)
+To quickly populate the project for testing, use the included seeder:
+```bash
+# From the backend directory
+node scripts/seed.js
+```
+This will create:
+- **Admin**: `admin@greenguard.com` / `@rrm$2026`
+- **Approved NGO**: `greenearth@ngo.org` / `Password123!`
+- **Sample Adopter**: `rishabh@test.com` / `Password123!`
+- 15+ Plants, 5 Adoptions, and 10 Social Posts.

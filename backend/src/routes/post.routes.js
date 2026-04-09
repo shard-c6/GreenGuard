@@ -9,6 +9,7 @@ const upload = require('../middleware/upload');
 router.use(authMiddleware);
 
 // Feed & bookmarks (must come before /:id)
+router.get('/map', post.mapPlantations);
 router.get('/bookmarks', post.myBookmarks);
 router.get('/', post.getFeed);
 

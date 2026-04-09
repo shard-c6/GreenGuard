@@ -8,21 +8,31 @@ const { uploadMultipleToStorage } = require('../services/storage.service');
  */
 async function createPost(req, res) {
   try {
-    const { content, plant_id } = req.body;
+    const { content, plant_id, latitude, longitude, address, post_type } = req.body;
 
     let imageUrls = [];
     if (req.files && req.files.length > 0) {
       imageUrls = await uploadMultipleToStorage('post-images', req.files);
     }
 
+    const postData = {
+      author_id: req.user.id,
+      content: content || null,
+      image_urls: imageUrls,
+      plant_id: plant_id || null,
+      post_type: post_type || 'normal',
+    };
+
+    if (latitude && longitude) {
+      postData.latitude = parseFloat(latitude);
+      postData.longitude = parseFloat(longitude);
+      postData.address = address || null;
+      postData.location = `POINT(${longitude} ${latitude})`;
+    }
+
     const { data, error: dbError } = await supabaseAdmin
       .from('posts')
-      .insert({
-        author_id: req.user.id,
-        content: content || null,
-        image_urls: imageUrls,
-        plant_id: plant_id || null,
-      })
+      .insert(postData)
       .select()
       .single();
 
@@ -222,4 +232,23 @@ async function myBookmarks(req, res) {
   }
 }
 
-module.exports = { createPost, getFeed, getPost, deletePost, toggleLike, toggleBookmark, myBookmarks };
+/**
+ * GET /api/posts/map — get all plantation posts for map rendering
+ */
+async function mapPlantations(req, res) {
+  try {
+    const { data, error: dbError } = await supabaseAdmin
+      .from('posts')
+      .select('id, author_id, content, image_urls, location, latitude, longitude, address, post_type, profiles!inner(display_name, avatar_url)')
+      .eq('post_type', 'plantation');
+
+    if (dbError) return error(res, dbError.message, 400);
+
+    return success(res, data);
+  } catch (err) {
+    console.error('mapPlantations error:', err);
+    return serverError(res);
+  }
+}
+
+module.exports = { createPost, getFeed, getPost, deletePost, toggleLike, toggleBookmark, myBookmarks, mapPlantations };

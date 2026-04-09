@@ -2,20 +2,26 @@
 
 import { useEffect, useState } from 'react';
 import { adminApi } from '@/services/api';
-import type { AdminDashboard, User } from '@/types';
+import type { AdminDashboard, User, NgoProfile } from '@/types';
 import Badge from '@/components/ui/Badge';
 import Skeleton from '@/components/ui/Skeleton';
+import { AlertCircle, CheckCircle, XCircle, Eye, ShieldAlert, Users, TreePine, FileText, LayoutDashboard } from 'lucide-react';
 
 export default function AdminDashboardPage() {
   const [dashboard, setDashboard] = useState<AdminDashboard | null>(null);
   const [users, setUsers] = useState<User[]>([]);
+  const [pendingNgos, setPendingNgos] = useState<NgoProfile[]>([]);
   const [loading, setLoading] = useState(true);
-  const [tab, setTab] = useState<'overview' | 'users'>('overview');
+  const [tab, setTab] = useState<'overview' | 'users' | 'verification'>('overview');
+  const [selectedNgo, setSelectedNgo] = useState<NgoProfile | null>(null);
+  const [actionLoading, setActionLoading] = useState<string | null>(null);
 
   useEffect(() => {
+    setLoading(true);
     Promise.all([
       adminApi.getDashboard().then(r => setDashboard(r.data.data)),
       adminApi.getUsers().then(r => setUsers(r.data.data)),
+      adminApi.getNgos({ status: 'pending' }).then(r => setPendingNgos(r.data.data)),
     ]).finally(() => setLoading(false));
   }, []);
 
@@ -30,131 +36,352 @@ export default function AdminDashboardPage() {
     } catch { /* ignore */ }
   };
 
+  const handleApprove = async (ngoId: string) => {
+    setActionLoading(ngoId);
+    try {
+      await adminApi.approveNgo(ngoId);
+      setPendingNgos(prev => prev.filter(n => n.id !== ngoId));
+      setSelectedNgo(null);
+    } catch (err) {
+      alert('Failed to approve NGO');
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
+  const handleReject = async (ngoId: string) => {
+    const reason = prompt('Reason for rejection:');
+    if (!reason) return;
+    
+    setActionLoading(ngoId);
+    try {
+      await adminApi.rejectNgo(ngoId, reason);
+      setPendingNgos(prev => prev.filter(n => n.id !== ngoId));
+      setSelectedNgo(null);
+    } catch (err) {
+      alert('Failed to reject NGO');
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
   if (loading) {
     return (
-      <div className="page-container">
-        <h1 className="page-title">🛡️ Admin Dashboard</h1>
-        <p className="page-subtitle" style={{ marginBottom: '2rem' }}>Platform overview and user management</p>
-        <div className="tabs" style={{ marginBottom: '2rem' }}>
-          <Skeleton height={36} width="100%" />
-        </div>
-        <div className="grid-4" style={{ marginBottom: '2rem' }}>
+      <div className="page-container p-8">
+        <Skeleton height={40} width="300px" className="mb-4" />
+        <Skeleton height={20} width="500px" className="mb-10" />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="stat-card">
-              <Skeleton height={14} width="50%" className="mb-2" />
-              <Skeleton height={32} width="30%" />
-            </div>
+            <Skeleton key={i} height={120} className="rounded-3xl" />
           ))}
         </div>
-        <div className="grid-3">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="stat-card">
-              <Skeleton height={14} width="50%" className="mb-2" />
-              <Skeleton height={32} width="30%" />
-            </div>
-          ))}
-        </div>
+        <Skeleton height={400} className="rounded-3xl" />
       </div>
     );
   }
 
   return (
-    <div className="page-container">
-      <h1 className="page-title">🛡️ Admin Dashboard</h1>
-      <p className="page-subtitle" style={{ marginBottom: '2rem' }}>Platform overview and user management</p>
+    <div className="page-container max-w-7xl mx-auto p-4 md:p-8">
+      <header className="mb-10">
+        <div className="flex items-center gap-3 text-emerald-600 mb-2">
+          <ShieldAlert size={24} />
+          <span className="font-bold tracking-wider uppercase text-sm">Administrator Portal</span>
+        </div>
+        <h1 className="text-4xl font-black text-gray-900 mb-2">Platform Management</h1>
+        <p className="text-gray-500 text-lg">Monitor growth, verify organizations, and maintain community safety.</p>
+      </header>
 
       {/* Tabs */}
-      <div className="tabs" style={{ marginBottom: '2rem' }}>
-        <button className={`tab ${tab === 'overview' ? 'active' : ''}`} onClick={() => setTab('overview')}>Overview</button>
-        <button className={`tab ${tab === 'users' ? 'active' : ''}`} onClick={() => setTab('users')}>Users ({users.length})</button>
+      <div className="flex p-1 bg-gray-100 rounded-2xl w-fit mb-10">
+        {[
+          { id: 'overview', label: 'Overview', icon: LayoutDashboard },
+          { id: 'users', label: 'User Directory', icon: Users },
+          { id: 'verification', label: 'NGO Verification', icon: CheckCircle, count: pendingNgos.length },
+        ].map((t) => (
+          <button
+            key={t.id}
+            onClick={() => setTab(t.id as any)}
+            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all ${
+              tab === t.id ? 'bg-white text-emerald-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            <t.icon size={18} />
+            {t.label}
+            {t.count !== undefined && t.count > 0 && (
+              <span className="ml-1 px-2 py-0.5 bg-red-500 text-white text-xs rounded-full animate-bounce">
+                {t.count}
+              </span>
+            )}
+          </button>
+        ))}
       </div>
 
       {tab === 'overview' && dashboard && (
-        <div>
-          <div className="grid-4" style={{ marginBottom: '2rem' }}>
-            <div className="stat-card">
-              <p className="stat-card-label">Total Users</p>
-              <p className="stat-card-value">{dashboard.total_users || 0}</p>
-            </div>
-            <div className="stat-card">
-              <p className="stat-card-label">Total Plants</p>
-              <p className="stat-card-value">{dashboard.total_plants || 0}</p>
-            </div>
-            <div className="stat-card">
-              <p className="stat-card-label">Adoptions</p>
-              <p className="stat-card-value">{dashboard.total_adoptions || 0}</p>
-            </div>
-            <div className="stat-card">
-              <p className="stat-card-label">Posts</p>
-              <p className="stat-card-value">{dashboard.total_posts || 0}</p>
-            </div>
+        <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <StatCard icon={Users} label="Total Users" value={dashboard.total_users} color="blue" />
+            <StatCard icon={TreePine} label="Total Plants" value={dashboard.total_plants} color="emerald" />
+            <StatCard icon={CheckCircle} label="Adoptions" value={dashboard.total_adoptions} color="purple" />
+            <StatCard icon={FileText} label="Total Posts" value={dashboard.total_posts} color="orange" />
           </div>
 
-          <div className="grid-3">
-            <div className="stat-card">
-              <p className="stat-card-label">NGOs</p>
-              <p className="stat-card-value">{dashboard.total_ngos || 0}</p>
-            </div>
-            <div className="stat-card">
-              <p className="stat-card-label">Adopters</p>
-              <p className="stat-card-value">{dashboard.total_adopters || 0}</p>
-            </div>
-            <div className="stat-card">
-              <p className="stat-card-label">Growth Reports</p>
-              <p className="stat-card-value">{dashboard.total_reports || 0}</p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+             <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-bold mb-6 text-gray-900 border-b border-gray-50 pb-4">User Breakdown</h3>
+                <div className="space-y-4">
+                  <BreakdownRow label="Adopters" value={dashboard.total_adopters} total={dashboard.total_users} color="bg-blue-500" />
+                  <BreakdownRow label="Approved NGOs" value={dashboard.total_ngos} total={dashboard.total_users} color="bg-emerald-500" />
+                  <BreakdownRow label="Growth Reports" value={dashboard.total_reports} total={dashboard.total_plants} color="bg-orange-500" />
+                </div>
+             </div>
+             <div className="md:col-span-2 bg-emerald-600 rounded-[2rem] p-8 text-white flex flex-col justify-between relative overflow-hidden">
+                <TreePine size={120} className="absolute -bottom-10 -right-10 text-emerald-500/50" />
+                <div>
+                  <h3 className="text-2xl font-bold mb-2">Welcome Back, Admin</h3>
+                  <p className="text-emerald-100 max-w-md">There are currently {pendingNgos.length} NGO applications awaiting your review. Quick verification helps onboard new contributors faster.</p>
+                </div>
+                <button onClick={() => setTab('verification')} className="mt-8 px-6 py-3 bg-white text-emerald-600 font-bold rounded-xl w-fit hover:bg-emerald-50 transition-all">
+                  Go to Verification
+                </button>
+             </div>
           </div>
         </div>
       )}
 
       {tab === 'users' && (
-        <div className="table-container">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>User</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Status</th>
-                <th>Joined</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map(u => (
-                <tr key={u.id}>
-                  <td>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <div className="post-avatar" style={{ width: 32, height: 32, fontSize: '0.7rem' }}>
-                        <span>{(u.display_name || u.username)[0].toUpperCase()}</span>
-                      </div>
-                      <span style={{ fontWeight: 600 }}>{u.display_name || u.username}</span>
-                    </div>
-                  </td>
-                  <td style={{ fontSize: '0.8rem', color: 'var(--muted-foreground)' }}>{u.email}</td>
-                  <td><Badge status={u.role} /></td>
-                  <td>
-                    {u.is_banned ? (
-                      <Badge status="rejected" />
-                    ) : (
-                      <Badge status="approved" />
-                    )}
-                  </td>
-                  <td style={{ fontSize: '0.8rem', color: 'var(--muted-foreground)' }}>{new Date(u.created_at).toLocaleDateString()}</td>
-                  <td>
-                    <button
-                      className={`btn btn-sm ${u.is_banned ? 'btn-primary' : 'btn-danger'}`}
-                      onClick={() => handleToggleBan(u.id, !!u.is_banned)}
-                    >
-                      {u.is_banned ? 'Unban' : 'Ban'}
-                    </button>
-                  </td>
+        <div className="bg-white rounded-[2.5rem] border border-gray-100 shadow-xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-gray-50/50 border-b border-gray-100">
+                  <th className="px-8 py-5 text-sm font-bold text-gray-400 uppercase tracking-wider">User Profile</th>
+                  <th className="px-8 py-5 text-sm font-bold text-gray-400 uppercase tracking-wider">Role</th>
+                  <th className="px-8 py-5 text-sm font-bold text-gray-400 uppercase tracking-wider">Status</th>
+                  <th className="px-8 py-5 text-sm font-bold text-gray-400 uppercase tracking-wider">Joined</th>
+                  <th className="px-8 py-5 text-sm font-bold text-gray-400 uppercase tracking-wider text-right">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-gray-50">
+                {users.map(u => (
+                  <tr key={u.id} className="hover:bg-gray-50/50 transition-colors">
+                    <td className="px-8 py-6">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center font-black text-gray-500 text-lg border border-gray-200">
+                          {u.avatar_url ? (
+                            <img src={u.avatar_url} alt="" className="w-full h-full object-cover rounded-2xl" />
+                          ) : (u.display_name || u.username)[0].toUpperCase()}
+                        </div>
+                        <div>
+                          <p className="font-bold text-gray-900">{u.display_name || u.username}</p>
+                          <p className="text-sm text-gray-500">{u.email}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-8 py-6">
+                      <Badge status={u.role as any} />
+                    </td>
+                    <td className="px-8 py-6">
+                      {u.is_banned ? (
+                        <span className="flex items-center gap-2 text-red-600 font-bold text-sm">
+                          <XCircle size={16} /> Banned
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-2 text-emerald-600 font-bold text-sm">
+                          <CheckCircle size={16} /> Active
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-8 py-6 text-sm text-gray-500 font-medium whitespace-nowrap">
+                      {new Date(u.created_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </td>
+                    <td className="px-8 py-6 text-right">
+                      <button
+                        className={`px-4 py-2 rounded-xl font-bold text-sm transition-all ${
+                          u.is_banned ? 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100' : 'bg-red-50 text-red-600 hover:bg-red-100'
+                        }`}
+                        onClick={() => handleToggleBan(u.id, !!u.is_banned)}
+                      >
+                        {u.is_banned ? 'Unban User' : 'Ban User'}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
+
+      {tab === 'verification' && (
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+          {pendingNgos.length === 0 ? (
+            <div className="bg-white rounded-[2.5rem] border-2 border-dashed border-gray-200 p-20 text-center">
+              <div className="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                <CheckCircle size={40} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Queue is Empty</h3>
+              <p className="text-gray-500">All NGO applications have been processed. Great job!</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {pendingNgos.map(ngo => (
+                <div key={ngo.id} className="bg-white rounded-[2rem] border border-gray-100 shadow-lg p-8 hover:shadow-xl transition-all group relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                     <AlertCircle size={80} />
+                  </div>
+                  <h3 className="text-xl font-black text-gray-900 mb-1">{ngo.org_name}</h3>
+                  <p className="text-emerald-600 font-bold text-sm mb-6 flex items-center gap-1">
+                    <FileText size={14} /> Darpan ID: {ngo.darpan_id || 'N/A'}
+                  </p>
+                  
+                  <div className="space-y-4 mb-8">
+                    <div className="bg-gray-50 p-4 rounded-2xl">
+                       <p className="text-xs font-bold text-gray-400 uppercase mb-1">Mission Preview</p>
+                       <p className="text-sm text-gray-700 line-clamp-2 italic">"{ngo.mission || 'No mission statement provided'}"</p>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="flex-1">
+                         <p className="text-xs font-bold text-gray-400 uppercase">Registration</p>
+                         <p className="text-sm font-bold">{ngo.registration_number || 'N/A'}</p>
+                      </div>
+                      <div className="flex-1">
+                         <p className="text-xs font-bold text-gray-400 uppercase">Location</p>
+                         <p className="text-sm font-bold">{ngo.address || 'N/A'}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-3 pt-4 border-t border-gray-50">
+                    <button 
+                      onClick={() => setSelectedNgo(ngo)}
+                      className="flex-1 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl flex items-center justify-center gap-2 transition-all"
+                    >
+                      <Eye size={18} /> Review
+                    </button>
+                    <button 
+                      onClick={() => handleApprove(ngo.id as string)}
+                      disabled={actionLoading === ngo.id}
+                      className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-100"
+                    >
+                      {actionLoading === ngo.id ? <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : 'Approve'}
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Verification Modal */}
+      {selectedNgo && (
+        <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm animate-in fade-in duration-300">
+          <div className="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+            <header className="bg-gray-50 p-8 flex items-center justify-between border-b border-gray-100">
+               <div>
+                  <h2 className="text-2xl font-black text-gray-900">{selectedNgo.org_name}</h2>
+                  <p className="text-emerald-600 font-bold">Verification Dossier</p>
+               </div>
+               <button onClick={() => setSelectedNgo(null)} className="w-10 h-10 rounded-full hover:bg-white flex items-center justify-center transition-colors">
+                  <XCircle size={24} className="text-gray-400" />
+               </button>
+            </header>
+            
+            <div className="p-8 max-h-[70vh] overflow-y-auto custom-scrollbar">
+              <div className="grid grid-cols-2 gap-6 mb-8">
+                 <DetailItem label="Darpan ID" value={selectedNgo.darpan_id} />
+                 <DetailItem label="Registration #" value={selectedNgo.registration_number} />
+                 <DetailItem label="Website" value={selectedNgo.website} link />
+                 <DetailItem label="Base Address" value={selectedNgo.address} />
+              </div>
+
+              <div className="mb-8 p-6 bg-gray-50 rounded-[2rem] border border-gray-100">
+                 <h4 className="font-black text-xs uppercase tracking-widest text-gray-400 mb-3 flex items-center gap-2">
+                    <CheckCircle size={14} /> Questionnaire Responses
+                 </h4>
+                 <div className="space-y-6">
+                    {Object.entries(selectedNgo.onboarding_answers || {}).map(([key, val]) => (
+                      <div key={key}>
+                         <p className="text-sm font-bold text-gray-900 mb-1 capitalize">{key.replace(/_/g, ' ')}</p>
+                         <p className="text-sm text-gray-600 leading-relaxed bg-white p-4 rounded-xl border border-gray-100">
+                           {val}
+                         </p>
+                      </div>
+                    ))}
+                    {!selectedNgo.onboarding_answers && (
+                      <p className="text-sm text-gray-500 italic">No questionnaire data available.</p>
+                    )}
+                 </div>
+              </div>
+            </div>
+
+            <div className="p-8 bg-gray-50 border-t border-gray-100 flex gap-4">
+              <button 
+                onClick={() => handleReject(selectedNgo.id as string)}
+                className="flex-1 py-4 bg-white border-2 border-red-100 text-red-600 font-bold rounded-2xl hover:bg-red-50 transition-all flex items-center justify-center gap-2"
+              >
+                <XCircle size={20} /> Reject Application
+              </button>
+              <button 
+                onClick={() => handleApprove(selectedNgo.id as string)}
+                className="flex-[2] py-4 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-200 flex items-center justify-center gap-2"
+              >
+                <CheckCircle size={20} /> Approve NGO
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function StatCard({ icon: Icon, label, value, color }: { icon: any, label: string, value: number, color: string }) {
+  const colors: any = {
+    blue: 'bg-blue-50 text-blue-600 border-blue-100 shadow-blue-50',
+    emerald: 'bg-emerald-50 text-emerald-600 border-emerald-100 shadow-emerald-50',
+    purple: 'bg-purple-50 text-purple-600 border-purple-100 shadow-purple-50',
+    orange: 'bg-orange-50 text-orange-600 border-orange-100 shadow-orange-50',
+  };
+
+  return (
+    <div className={`p-8 rounded-[2rem] border shadow-sm ${colors[color]} transition-transform hover:scale-[1.02] duration-300`}>
+      <div className="flex items-center justify-between mb-4">
+        <Icon size={24} />
+      </div>
+      <p className="text-sm font-bold opacity-80 mb-1 uppercase tracking-wider">{label}</p>
+      <p className="text-3xl font-black tracking-tight">{value || 0}</p>
+    </div>
+  );
+}
+
+function BreakdownRow({ label, value, total, color }: { label: string, value: number, total: number, color: string }) {
+  const percentage = total > 0 ? (value / total) * 100 : 0;
+  return (
+    <div className="space-y-2">
+      <div className="flex justify-between text-sm font-bold">
+        <span className="text-gray-500">{label}</span>
+        <span className="text-gray-900">{value}</span>
+      </div>
+      <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+        <div 
+          className={`h-full ${color} transition-all duration-1000`} 
+          style={{ width: `${percentage}%` }} 
+        />
+      </div>
+    </div>
+  );
+}
+
+function DetailItem({ label, value, link }: { label: string, value: any, link?: boolean }) {
+  return (
+    <div>
+       <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{label}</p>
+       {link && value ? (
+         <a href={value} target="_blank" className="text-sm font-bold text-emerald-600 hover:underline break-all">{value}</a>
+       ) : (
+         <p className="text-sm font-bold text-gray-900">{value || 'N/A'}</p>
+       )}
     </div>
   );
 }

@@ -14,5 +14,6 @@ router.get('/users', admin.listUsers);
 router.patch('/users/:userId/ban', admin.banUser);
 router.patch('/users/:userId/unban', admin.unbanUser);
 router.get('/stats', admin.platformStats);
+router.get('/dashboard', admin.platformStats);
 
 module.exports = router;

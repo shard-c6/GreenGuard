@@ -152,6 +152,9 @@ export const feedApi = {
 
   deleteComment: (postId: string, commentId: string) =>
     api.delete<ApiResponse<{ message: string }>>(`/posts/${postId}/comments/${commentId}`),
+
+  getMapPlantations: () =>
+    api.get<ApiResponse<Post[]>>('/posts/map'),
 };
 
 // ─── Profiles / Users ────────────────────────────────────────
@@ -253,6 +256,7 @@ export const ngoApi = {
   submitOnboarding: (data: {
     org_name: string; registration_number?: string;
     website?: string; mission?: string; address?: string;
+    darpan_id?: string; onboarding_answers?: Record<string, string>;
   }) =>
     api.post<ApiResponse<NgoProfile>>('/ngo/onboarding', data),
 };
