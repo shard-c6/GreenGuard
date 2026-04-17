@@ -124,13 +124,15 @@ export default function LeafletMap({ plants, plantations }: LeafletMapProps) {
 
         {/* Plant Markers */}
         {plants.map((plant, idx) => {
-          const coords = parseLngLat(plant.location);
+          const lat = plant.latitude;
+          const lng = plant.longitude;
+          const coords = (lat && lng) ? [lat, lng] as [number, number] : parseLngLat(plant.location);
           if (!coords) return null;
 
           return (
             <Marker
               key={`plant-${plant.id}`}
-              position={[coords[0], coords[1]]}
+              position={coords}
               icon={iconsRef.current[plant.adoption_status] || iconsRef.current.available}
             >
               <Popup>
@@ -157,13 +159,15 @@ export default function LeafletMap({ plants, plantations }: LeafletMapProps) {
 
         {/* Plantation Update Markers */}
         {plantations.map((post) => {
-          const coords = parseLngLat(post.location);
+          const lat = post.latitude;
+          const lng = post.longitude;
+          const coords = (lat && lng) ? [lat, lng] as [number, number] : parseLngLat(post.location);
           if (!coords) return null;
 
           return (
             <Marker
               key={`post-${post.id}`}
-              position={[coords[0], coords[1]]}
+              position={coords}
               icon={iconsRef.current.plantation}
             >
               <Popup>

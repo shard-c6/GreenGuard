@@ -151,6 +151,8 @@ export interface MapPlant {
   plant_name: string;
   species: string | null;
   location: string | null;
+  latitude?: number;
+  longitude?: number;
   adoption_status: PlantStatus;
   adopted_by: string | null;
   image_urls: string[];
@@ -193,6 +195,8 @@ export interface Post {
   bookmarks_count: number;
   comments_count: number;
   location: string | null;
+  latitude?: number;
+  longitude?: number;
   address: string | null;
   created_at: string;
   is_liked?: boolean;

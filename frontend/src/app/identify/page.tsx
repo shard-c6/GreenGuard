@@ -6,11 +6,13 @@ import { useAuth } from '@/lib/auth';
 import { aiApi } from '@/services/api';
 
 interface AiResult {
-  plant_name?: string;
-  species?: string;
+  common_name?: string;
+  scientific_name?: string;
   confidence?: number;
-  description?: string;
-  care_tips?: string[];
+  fact?: string;
+  uses?: string;
+  co2?: string;
+  oxygen?: string;
   [key: string]: unknown;
 }
 
@@ -46,7 +48,7 @@ export default function AIIdentifyPage() {
       const fd = new FormData();
       fd.append('image', image);
       const res = await aiApi.identifyPlant(fd);
-      setResult(res.data.data as unknown as AiResult);
+      setResult((res.data.data.identification ?? null) as AiResult | null);
     } catch (err: unknown) {
       setError((err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Identification failed');
     } finally {
@@ -114,26 +116,23 @@ export default function AIIdentifyPage() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
                 <span style={{ fontSize: '1.5rem' }}>🌿</span>
                 <div>
-                  <h2 style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0 }}>{result.plant_name}</h2>
-                  <p style={{ fontSize: '0.8rem', fontStyle: 'italic', color: 'var(--muted-foreground)', margin: 0 }}>{result.species}</p>
+                  <h2 style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0 }}>{result.common_name ?? 'Unknown plant'}</h2>
+                  <p style={{ fontSize: '0.8rem', fontStyle: 'italic', color: 'var(--muted-foreground)', margin: 0 }}>{result.scientific_name ?? 'Unknown species'}</p>
                 </div>
               </div>
               <div style={{ marginBottom: '1rem' }}>
                 <p style={{ fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.25rem' }}>Confidence</p>
                 <div style={{ background: 'var(--muted)', borderRadius: 100, height: 8, overflow: 'hidden' }}>
-                <div style={{ width: `${(result.confidence ?? 0) * 100}%`, height: '100%', background: 'var(--gg-green)', borderRadius: 100 }} />
+                <div style={{ width: `${Math.max(0, Math.min(100, result.confidence ?? 0))}%`, height: '100%', background: 'var(--gg-green)', borderRadius: 100 }} />
                 </div>
-                <p style={{ fontSize: '0.7rem', color: 'var(--muted-foreground)', marginTop: '0.25rem' }}>{((result.confidence ?? 0) * 100).toFixed(0)}%</p>
+                <p style={{ fontSize: '0.7rem', color: 'var(--muted-foreground)', marginTop: '0.25rem' }}>{Math.max(0, Math.min(100, result.confidence ?? 0)).toFixed(0)}%</p>
               </div>
-              {result.description && <p style={{ fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '1rem' }}>{result.description}</p>}
-              {(result.care_tips?.length ?? 0) > 0 && (
-                <div>
-                  <h3 style={{ fontSize: '0.875rem', fontWeight: 700, marginBottom: '0.5rem' }}>💡 Care Tips</h3>
-                  <ul style={{ paddingLeft: '1.25rem', fontSize: '0.8rem', lineHeight: 1.7 }}>
-                    {result.care_tips!.map((tip: string, i: number) => <li key={i}>{tip}</li>)}
-                  </ul>
-                </div>
-              )}
+              {result.fact && <p style={{ fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '1rem' }}>{result.fact}</p>}
+              <div style={{ display: 'grid', gap: '0.5rem', fontSize: '0.8rem' }}>
+                <p style={{ margin: 0 }}><strong>CO2 impact:</strong> {result.co2 ?? 'N/A'}</p>
+                <p style={{ margin: 0 }}><strong>Oxygen impact:</strong> {result.oxygen ?? 'N/A'}</p>
+                <p style={{ margin: 0 }}><strong>Uses:</strong> {result.uses ?? 'N/A'}</p>
+              </div>
             </div>
           ) : (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 220, color: 'var(--muted-foreground)', fontSize: '0.875rem', textAlign: 'center' }}>
