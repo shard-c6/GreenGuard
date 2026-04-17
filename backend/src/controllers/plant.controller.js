@@ -30,7 +30,9 @@ async function createPlant(req, res) {
         species: species || null,
         description: description || null,
         image_urls: imageUrls,
-        location: `POINT(${longitude} ${latitude})`,
+        latitude: latitude ? parseFloat(latitude) : null,
+        longitude: longitude ? parseFloat(longitude) : null,
+        location: latitude && longitude ? `POINT(${longitude} ${latitude})` : null,
         address: address || null,
         planted_date: planted_date || new Date().toISOString().split('T')[0],
         care_info: parsedCareInfo || null,
@@ -202,7 +204,7 @@ async function mapPlants(req, res) {
   try {
     const { data, error: dbError } = await supabaseAdmin
       .from('plants')
-      .select('id, plant_name, species, location, adoption_status, adopted_by, image_urls, ngo_id, profiles!plants_ngo_id_fkey(display_name)');
+      .select('id, plant_name, species, location, latitude, longitude, adoption_status, adopted_by, image_urls, ngo_id, profiles!plants_ngo_id_fkey(display_name)');
 
     if (dbError) return error(res, dbError.message, 400);
 

@@ -1,9 +1,34 @@
 const env = require('../config/env');
+const { supabaseAdmin } = require('../config/supabase');
+const { uploadToStorage } = require('../services/storage.service');
 const { success, error, serverError } = require('../utils/response');
 
+const AI_SCAN_BUCKET = 'flora-scans';
+
+async function ensureAiScanBucket() {
+  const { data: buckets, error: bucketsError } = await supabaseAdmin.storage.listBuckets();
+  if (bucketsError) {
+    throw new Error(`Failed to inspect storage buckets: ${bucketsError.message}`);
+  }
+
+  if (buckets.some((bucket) => bucket.id === AI_SCAN_BUCKET)) {
+    return;
+  }
+
+  const { error: createError } = await supabaseAdmin.storage.createBucket(AI_SCAN_BUCKET, {
+    public: true,
+    fileSizeLimit: env.maxFileSizeMb * 1024 * 1024,
+    allowedMimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],
+  });
+
+  if (createError) {
+    throw new Error(`Failed to create ${AI_SCAN_BUCKET} bucket: ${createError.message}`);
+  }
+}
+
 /**
- * POST /api/ai/identify — forward plant image to n8n webhook for AI identification
- * Accepts multipart/form-data with a single image field 'image'
+ * POST /api/ai/identify — upload an image to storage and forward the public URL
+ * (or a text query) to the shared n8n plant-detect workflow.
  */
 async function identifyPlant(req, res) {
   try {
@@ -11,18 +36,45 @@ async function identifyPlant(req, res) {
       return error(res, 'AI identification service is not configured yet', 503, 'SERVICE_UNAVAILABLE');
     }
 
-    if (!req.file) {
-      return error(res, 'Image file is required', 400);
-    }
+    const type = req.body?.type === 'text' ? 'text' : 'image';
+    let payload;
 
-    // Forward image to n8n webhook as form-data
-    const formData = new FormData();
-    const blob = new Blob([req.file.buffer], { type: req.file.mimetype });
-    formData.append('image', blob, req.file.originalname);
+    if (type === 'image') {
+      if (!req.file) {
+        return error(res, 'Image file is required', 400);
+      }
+
+      await ensureAiScanBucket();
+
+      const imageUrl = await uploadToStorage(
+        AI_SCAN_BUCKET,
+        req.file.buffer,
+        req.file.originalname,
+        req.file.mimetype,
+      );
+
+      payload = {
+        type: 'image',
+        input: imageUrl,
+      };
+    } else {
+      const input = typeof req.body?.input === 'string' ? req.body.input.trim() : '';
+      if (input.length < 2) {
+        return error(res, 'Plant name is required', 400);
+      }
+
+      payload = {
+        type: 'text',
+        input,
+      };
+    }
 
     const response = await fetch(env.n8nWebhookUrl, {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) {

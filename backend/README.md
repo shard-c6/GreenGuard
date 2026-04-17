@@ -425,7 +425,7 @@ All endpoints return consistent JSON:
 | Database | Supabase (PostgreSQL 15 + PostGIS) |
 | Auth | Supabase Auth (email/password, JWT) |
 | File Storage | Supabase Storage |
-| AI Workflow | PlantNet + Gemini via n8n webhook |
+| AI Workflow | PlantNet + Groq via n8n webhook |
 | Rate Limiting | express-rate-limit |
 | Validation | express-validator |
 | Security | helmet, cors, RLS policies |
