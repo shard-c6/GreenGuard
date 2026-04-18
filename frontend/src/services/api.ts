@@ -2,7 +2,7 @@ import axios from 'axios';
 import type {
   ApiResponse, LoginResponse, RegisterResponse, AuthUser,
   Plant, NearbyPlant, MapPlant, Adoption, Post, Comment,
-  GrowthReport, Notification, PlatformStats, AdminDashboard, NgoDashboard,
+  GrowthReport, Notification, PlatformStats, AdminDashboard, UserReport, NgoDashboard,
   NgoStatsResponse, NgoProfile, User, AiIdentifyResponse, AiStatusResponse
 } from '@/types';
 
@@ -239,6 +239,12 @@ export const adminApi = {
 
   unbanUser: (userId: string) =>
     api.patch<ApiResponse<{ user_id: string; is_banned: boolean }>>(`/admin/users/${userId}/unban`),
+
+  getReports: (params?: { status?: string; page?: number; limit?: number }) =>
+    api.get<ApiResponse<UserReport[]>>('/admin/reports', { params }),
+
+  resolveReport: (reportId: string, status: 'resolved' | 'dismissed', admin_notes?: string) =>
+    api.patch<ApiResponse<UserReport>>(`/admin/reports/${reportId}/resolve`, { status, admin_notes }),
 };
 
 // ─── NGO Dashboard ───────────────────────────────────────────
