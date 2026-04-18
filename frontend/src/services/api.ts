@@ -197,6 +197,11 @@ export const reportsApi = {
     api.get<ApiResponse<GrowthReport[]>>(`/reports/plant/${plantId}`),
 };
 
+export const userReportsApi = {
+  createReport: (data: { reported_user_id: string; reason: string; description?: string }) =>
+    api.post<ApiResponse<UserReport>>('/reports/user', data),
+};
+
 // ─── Notifications ───────────────────────────────────────────
 
 export const notificationsApi = {

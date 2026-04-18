@@ -10,6 +10,7 @@ export type PlantStatus = 'available' | 'pending' | 'adopted';
 export type PlantHealth = 'healthy' | 'needs_attention' | 'critical' | 'dead';
 export type AdoptionStatus = 'pending' | 'approved' | 'rejected';
 export type NgoStatus = 'pending' | 'approved' | 'rejected' | 'suspended';
+export type ReportReason = 'spam' | 'harassment' | 'fake_ngo' | 'misinformation' | 'inappropriate_content' | 'other';
 
 // ─── Response Wrappers ──────────────────────────────────────
 
