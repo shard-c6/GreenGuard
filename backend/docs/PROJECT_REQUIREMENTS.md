@@ -341,7 +341,7 @@ PATCH /api/notifications/:id/read
 |---------|---------|
 | **Identify** | Upload a plant photo → AI returns species, care info, geographic occurrence |
 | **Status** | Check if AI service is configured |
-| **Integration** | Via n8n webhook → PlantNet + Gemini |
+| **Integration** | Via n8n webhook → PlantNet + Groq |
 
 **Frontend Page Needed:**
 - Plant identifier page (upload image → show results)
