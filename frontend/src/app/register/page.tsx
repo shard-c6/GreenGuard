@@ -77,8 +77,8 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="auth-page min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
-      <AtmosphericBackground />
+    <div className="auth-page">
+      <AtmosphericBackground active={true} />
       
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
