@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
 import Navbar from "@/components/Navbar";
+import ImmersiveBackground from "@/components/ui/ImmersiveBackground";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,8 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
         <AuthProvider>
+          <ImmersiveBackground />
           <Navbar />
-          <main className="main-content">{children}</main>
+          <main className="main-content relative z-10">{children}</main>
         </AuthProvider>
       </body>
     </html>
