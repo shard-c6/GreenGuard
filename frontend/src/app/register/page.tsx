@@ -86,8 +86,7 @@ export default function RegisterPage() {
         className="auth-card max-w-[540px] w-full"
       >
         <div className="auth-logo">
-          <span className="logo-icon">🌿</span>
-          <span>Green Guard</span>
+          <img src="/logo.png" alt="Green Guard" className="logo-icon" style={{ height: '64px', width: 'auto' }} />
         </div>
         
         <h1 className="auth-title">
