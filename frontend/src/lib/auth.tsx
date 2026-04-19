@@ -9,7 +9,10 @@ interface AuthContextType {
   isAuthenticated: boolean;
   loading: boolean;
   login: (email: string, password: string) => Promise<User>;
-  register: (data: { email: string; password: string; username: string; display_name: string; role: UserRole }) => Promise<User>;
+  register: (data: { 
+    email: string; password: string; username: string; display_name: string; role: UserRole;
+    darpan_id?: string; onboarding_answers?: Record<string, string>;
+  }) => Promise<User>;
   logout: () => Promise<void>;
   updateUser: (data: { display_name?: string; bio?: string; phone?: string; address?: string }) => Promise<void>;
 }
@@ -52,7 +55,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return fullUser;
   }, []);
 
-  const register = useCallback(async (data: { email: string; password: string; username: string; display_name: string; role: UserRole }): Promise<User> => {
+  const register = useCallback(async (data: { 
+    email: string; password: string; username: string; display_name: string; role: UserRole;
+    darpan_id?: string; onboarding_answers?: Record<string, string>;
+  }): Promise<User> => {
     const res = await authApi.register(data);
     const responseData = res.data.data;
 

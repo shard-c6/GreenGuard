@@ -644,16 +644,23 @@ html {
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 50%, #fafbfc 100%);
+  background: #020617; /* Dark start to match landing */
+  position: relative;
+  overflow: hidden;
 }
 
 .auth-card {
   width: 100%;
   max-width: 440px;
-  background: var(--card);
-  border-radius: var(--radius-2xl);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-  padding: 2.5rem;
+  background: rgba(6, 78, 59, 0.4); /* Glassmorphic emerald */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  padding: 3rem;
+  position: relative;
+  z-index: 10;
 }
 
 .auth-logo {
@@ -671,16 +678,18 @@ html {
 
 .auth-title {
   text-align: center;
-  font-size: 1.375rem;
-  font-weight: 700;
-  margin: 0 0 0.375rem;
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .auth-subtitle {
   text-align: center;
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
-  margin: 0 0 1.75rem;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 2rem;
 }
 
 .auth-error {
@@ -694,18 +703,48 @@ html {
 
 .auth-footer {
   text-align: center;
-  margin-top: 1.5rem;
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .auth-footer a {
-  color: var(--gg-green);
-  font-weight: 600;
+  color: #34d399;
+  font-weight: 700;
   text-decoration: none;
 }
 
-.auth-footer a:hover { text-decoration: underline; }
+.auth-footer a:hover { 
+  text-decoration: underline;
+  color: #6ee7b7;
+}
+
+/* Scoped Auth Form Styles */
+.auth-card .form-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.auth-card .form-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+}
+
+.auth-card .form-input:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #34d399;
+  box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2);
+}
+
+.auth-logo {
+  color: #ffffff !important;
+}
 
 /* ════════════════════════════════════════════════════════════
    EMPTY STATE
