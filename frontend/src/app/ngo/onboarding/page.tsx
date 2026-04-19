@@ -1,9 +1,11 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { ngoApi } from '@/services/api';
 import { ChevronRight, ChevronLeft, CheckCircle2, Building2, ClipboardList, ShieldCheck } from 'lucide-react';
+import AtmosphericBackground from '@/components/landing/AtmosphericBackground';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const QUESTIONS = [
   { id: 'mission_statement', label: 'Primary mission statement *', placeholder: 'What is the core purpose of your organization?', type: 'textarea' },
@@ -64,14 +66,16 @@ export default function NgoOnboardingPage() {
     <div className="flex items-center justify-center mb-10 gap-4">
       {[1, 2, 3].map((s) => (
         <div key={s} className="flex items-center">
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-            step >= s ? 'bg-emerald-600 text-white scale-110 shadow-lg' : 'bg-gray-200 text-gray-500'
+          <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 border-2 ${
+            step >= s 
+              ? 'bg-emerald-500 border-emerald-400 text-emerald-950 scale-110 shadow-[0_0_20px_rgba(52,211,153,0.4)]' 
+              : 'bg-emerald-950/40 border-emerald-800 text-emerald-500'
           }`}>
-            {step > s ? <CheckCircle2 size={20} /> : s}
+            {step > s ? <CheckCircle2 size={24} /> : <span className="font-black text-lg">{s}</span>}
           </div>
           {s < 3 && (
-            <div className={`w-12 h-1 mx-2 rounded ${
-              step > s ? 'bg-emerald-600' : 'bg-gray-200'
+            <div className={`w-12 h-1 mx-2 rounded-full ${
+              step > s ? 'bg-emerald-500 shadow-[0_0_10px_rgba(52,211,153,0.3)]' : 'bg-emerald-900/40'
             }`} />
           )}
         </div>
@@ -80,20 +84,26 @@ export default function NgoOnboardingPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-12 px-4">
-      <div className="w-full max-w-2xl bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-emerald-50">
-        <header className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl mb-4">
-            {step === 1 && <Building2 size={32} />}
-            {step === 2 && <ClipboardList size={32} />}
-            {step === 3 && <ShieldCheck size={32} />}
+    <div className="auth-page py-12 px-4 min-h-screen flex items-center justify-center relative overflow-hidden">
+      <AtmosphericBackground />
+      
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="auth-card max-w-3xl w-full"
+      >
+        <header className="text-center mb-10">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-emerald-500/10 text-emerald-400 rounded-3xl mb-6 border border-emerald-500/20 shadow-inner">
+            {step === 1 && <Building2 size={40} />}
+            {step === 2 && <ClipboardList size={40} />}
+            {step === 3 && <ShieldCheck size={40} />}
           </div>
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="auth-title">
             {step === 1 && "Organization Details"}
             {step === 2 && "NGO Questionnaire"}
             {step === 3 && "Verification & Submission"}
           </h1>
-          <p className="text-gray-500 mt-2">
+          <p className="auth-subtitle">
             {step === 1 && "Start by providing your basic organization information"}
             {step === 2 && "Tell us more about your experience and impact"}
             {step === 3 && "Review and submit your application for review"}
@@ -103,123 +113,158 @@ export default function NgoOnboardingPage() {
         {renderStepIndicator()}
 
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-600 rounded-xl flex items-center gap-3">
-             <span className="text-xl">⚠️</span>
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            className="mb-8 p-5 bg-red-500/10 border border-red-500/20 text-red-200 rounded-2xl flex items-center gap-4 text-sm font-medium"
+          >
+             <span className="text-2xl">⚠️</span>
              {error}
-          </div>
+          </motion.div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {step === 1 && (
-            <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="grid md:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit} className="space-y-8">
+          <AnimatePresence mode="wait">
+            {step === 1 && (
+              <motion.div 
+                key="step1"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="space-y-6"
+              >
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="form-group">
+                    <label className="form-label">Org Name *</label>
+                    <input type="text" className="form-input" 
+                      value={form.org_name} onChange={e => setForm({...form, org_name: e.target.value})} placeholder="Green Earth Foundation" required />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Registration # *</label>
+                    <input type="text" className="form-input" 
+                      value={form.registration_number} onChange={e => setForm({...form, registration_number: e.target.value})} placeholder="REG-123456" required />
+                  </div>
+                </div>
+
                 <div className="form-group">
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Org Name *</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 outline-none transition-all" 
-                    value={form.org_name} onChange={e => setForm({...form, org_name: e.target.value})} placeholder="Green Earth Foundation" required />
+                  <label className="form-label">NGO Darpan ID *</label>
+                  <input type="text" className="form-input" 
+                    value={form.darpan_id} onChange={e => setForm({...form, darpan_id: e.target.value})} placeholder="KA/2024/0123456" required />
+                  <p className="text-xs text-emerald-100/40 mt-2 italic">Your Darpan ID is required for identity verification by the admin.</p>
                 </div>
+
                 <div className="form-group">
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Registration # *</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 outline-none transition-all" 
-                    value={form.registration_number} onChange={e => setForm({...form, registration_number: e.target.value})} placeholder="REG-123456" required />
+                  <label className="form-label">Website URL</label>
+                  <input type="url" className="form-input" 
+                    value={form.website} onChange={e => setForm({...form, website: e.target.value})} placeholder="https://green-earth.org" />
                 </div>
-              </div>
 
-              <div className="form-group">
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Darpan ID (NGO Darpan) *</label>
-                <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 outline-none transition-all" 
-                  value={form.darpan_id} onChange={e => setForm({...form, darpan_id: e.target.value})} placeholder="KA/2024/0123456" required />
-              </div>
-
-              <div className="form-group">
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Website URL</label>
-                <input type="url" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 outline-none transition-all" 
-                  value={form.website} onChange={e => setForm({...form, website: e.target.value})} placeholder="https://green-earth.org" />
-              </div>
-
-              <div className="form-group">
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Main Address / City *</label>
-                <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 outline-none transition-all" 
-                  value={form.address} onChange={e => setForm({...form, address: e.target.value})} placeholder="Mumbai, Maharashtra" required />
-              </div>
-            </div>
-          )}
-
-          {step === 2 && (
-            <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              {QUESTIONS.map((q) => (
-                <div key={q.id} className="form-group">
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">{q.label}</label>
-                  {q.type === 'textarea' ? (
-                    <textarea 
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
-                      rows={3}
-                      value={answers[q.id]}
-                      onChange={e => setAnswers({...answers, [q.id]: e.target.value})}
-                      placeholder={q.placeholder}
-                      required
-                    />
-                  ) : (
-                    <input 
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
-                      value={answers[q.id]}
-                      onChange={e => setAnswers({...answers, [q.id]: e.target.value})}
-                      placeholder={q.placeholder}
-                      required
-                    />
-                  )}
+                <div className="form-group">
+                  <label className="form-label">Main Address / City *</label>
+                  <input type="text" className="form-input" 
+                    value={form.address} onChange={e => setForm({...form, address: e.target.value})} placeholder="Mumbai, Maharashtra" required />
                 </div>
-              ))}
-            </div>
-          )}
+              </motion.div>
+            )}
 
-          {step === 3 && (
-            <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="p-6 bg-emerald-50 rounded-2xl border border-emerald-100">
-                <h3 className="font-bold text-emerald-900 mb-2">Final Step</h3>
-                <p className="text-emerald-700 text-sm leading-relaxed">
-                  By submitting this form, you certify that all information provided is accurate and that your NGO complies with environmental standards.
-                  Our team will review your Darpan ID and questionnaire responses. 
-                  <br/><br/>
-                  <strong>Approval turnaround:</strong> Usually within 4-6 business hours.
-                </p>
-              </div>
+            {step === 2 && (
+              <motion.div 
+                key="step2"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="space-y-6"
+              >
+                {QUESTIONS.map((q) => (
+                  <div key={q.id} className="form-group">
+                    <label className="form-label">{q.label}</label>
+                    {q.type === 'textarea' ? (
+                      <textarea 
+                        className="form-input min-h-[120px] resize-none"
+                        rows={4}
+                        value={answers[q.id]}
+                        onChange={e => setAnswers({...answers, [q.id]: e.target.value})}
+                        placeholder={q.placeholder}
+                        required
+                      />
+                    ) : (
+                      <input 
+                        type="text"
+                        className="form-input"
+                        value={answers[q.id]}
+                        onChange={e => setAnswers({...answers, [q.id]: e.target.value})}
+                        placeholder={q.placeholder}
+                        required
+                      />
+                    )}
+                  </div>
+                ))}
+              </motion.div>
+            )}
 
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm py-2 border-b border-gray-100">
-                  <span className="text-gray-500">Organization</span>
-                  <span className="font-semibold text-gray-900">{form.org_name}</span>
+            {step === 3 && (
+              <motion.div 
+                key="step3"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="space-y-8"
+              >
+                <div className="p-8 bg-emerald-400/10 rounded-[32px] border border-emerald-400/20 shadow-inner">
+                  <h3 className="font-black text-emerald-400 text-xl mb-3">Final Verification</h3>
+                  <p className="text-emerald-100/80 text-sm leading-relaxed">
+                    By submitting this application, you certify that all information provided is accurate and that your NGO complies with national environmental standards.
+                    Our administrative team will review your <strong>Darpan ID</strong> and questionnaire responses to verify your authenticity.
+                    <br/><br/>
+                    <span className="flex items-center gap-2 text-emerald-300 font-bold">
+                      <CheckCircle2 size={16} /> Fast Approval: Usually within 24 hours.
+                    </span>
+                  </p>
                 </div>
-                <div className="flex justify-between text-sm py-2 border-b border-gray-100">
-                  <span className="text-gray-500">Darpan ID</span>
-                  <span className="font-semibold text-gray-900">{form.darpan_id}</span>
-                </div>
-              </div>
-            </div>
-          )}
 
-          <div className="flex items-center justify-between pt-6 border-t border-gray-100 gap-4">
+                <div className="space-y-4 p-2">
+                  <div className="flex justify-between items-center py-4 border-b border-white/5">
+                    <span className="text-emerald-100/50 font-bold uppercase tracking-wider text-xs">Organization</span>
+                    <span className="font-black text-white text-lg">{form.org_name}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-4 border-b border-white/5">
+                    <span className="text-emerald-100/50 font-bold uppercase tracking-wider text-xs">Darpan ID</span>
+                    <span className="font-mono bg-white/5 px-3 py-1 rounded-lg text-emerald-400 border border-emerald-400/20">{form.darpan_id}</span>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <div className="flex items-center justify-between pt-10 border-t border-white/5 gap-6">
             {step > 1 && (
-              <button type="button" onClick={prevStep} className="flex-1 px-6 py-4 border-2 border-gray-100 text-gray-600 rounded-2xl font-bold hover:bg-gray-50 hover:border-gray-200 transition-all flex items-center justify-center gap-2">
+              <button 
+                type="button" 
+                onClick={prevStep} 
+                className="flex-1 px-8 py-5 border-2 border-white/10 text-white rounded-2xl font-black hover:bg-white/5 transition-all flex items-center justify-center gap-2"
+              >
                 <ChevronLeft size={20} /> Back
               </button>
             )}
-            <button type="submit" disabled={loading} className={`flex-[2] py-4 rounded-2xl font-bold text-white transition-all shadow-lg flex items-center justify-center gap-2 ${
-              loading ? 'bg-gray-400' : 'bg-emerald-600 hover:bg-emerald-700 hover:shadow-emerald-200'
-            }`}>
+            <button 
+              type="submit" 
+              disabled={loading} 
+              className={`flex-[2] py-5 rounded-2xl font-black text-emerald-950 transition-all shadow-2xl flex items-center justify-center gap-3 ${
+                loading ? 'bg-emerald-800 opacity-50' : 'bg-emerald-400 hover:bg-emerald-300 hover:scale-[1.02] shadow-emerald-400/20'
+              }`}
+            >
               {loading ? (
-                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="w-6 h-6 border-3 border-emerald-950/30 border-t-emerald-950 rounded-full animate-spin" />
               ) : (
                 <>
-                  {step === 3 ? "Complete Application" : "Continue"}
+                  <span className="text-lg">{step === 3 ? "Complete Application" : "Continue"}</span>
                   <ChevronRight size={20} />
                 </>
               )}
             </button>
           </div>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 }
