@@ -153,7 +153,12 @@ html {
   text-decoration: none;
 }
 
-.logo-icon { font-size: 1.5rem; }
+.logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
 .logo-text { letter-spacing: -0.02em; }
 
 .navbar-links {
@@ -687,7 +692,11 @@ html {
   color: var(--foreground);
 }
 
-.auth-logo .logo-icon { font-size: 2rem; }
+.logo-img-auth {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+}
 
 .auth-title {
   text-align: center;

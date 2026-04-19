@@ -29,7 +29,9 @@ export default function ForgotPasswordPage() {
     <div className="auth-page">
       <AtmosphericBackground active={true} />
       <div className="auth-card">
-        <div className="auth-logo"><span className="logo-icon">🌿</span><span>Green Guard</span></div>
+        <div className="auth-logo">
+          <img src="/logo.png" alt="GreenGuard" className="logo-img-auth" />
+        </div>
         <h1 className="auth-title">Reset Password</h1>
         <p className="auth-subtitle">We&apos;ll send you a link to reset your password</p>
         {error && <div className="auth-error">{error}</div>}
