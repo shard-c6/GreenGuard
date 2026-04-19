@@ -4,6 +4,7 @@ import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { authApi } from '@/services/api';
+import AtmosphericBackground from '@/components/landing/AtmosphericBackground';
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function ResetPasswordPage() {
 
   return (
     <div className="auth-page">
+      <AtmosphericBackground active={true} />
       <div className="auth-card">
         <div className="auth-logo"><span className="logo-icon">🌿</span><span>Green Guard</span></div>
         <h1 className="auth-title">Set New Password</h1>

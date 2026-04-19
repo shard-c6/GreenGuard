@@ -1,13 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #059669;
+  border-radius: 10px;
+  border: 2px solid #020617;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -621,16 +644,36 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 50%, #fafbfc 100%);
+  background: #020617 !important; /* Fallback deep dark */
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; /* Ensures children with negative z-index stay above background */
 }
 
 .auth-card {
   width: 100%;
-  max-width: 440px;
-  background: var(--card);
-  border-radius: var(--radius-2xl);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-  padding: 2.5rem;
+  max-width: 480px;
+  background: rgba(2, 44, 34, 0.8); /* Slightly more transparent emerald-950 */
+  backdrop-filter: blur(40px) saturate(150%);
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  border-radius: 60px; /* Matching landing story boxes */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+  padding: 3.5rem;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.auth-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(/leaf-skeleton.png);
+  background-size: 300px;
+  opacity: 0.1; /* Increased for better visibility on dark bg */
+  pointer-events: none;
+  z-index: -1;
 }
 
 .auth-logo {
@@ -648,16 +691,18 @@
 
 .auth-title {
   text-align: center;
-  font-size: 1.375rem;
-  font-weight: 700;
-  margin: 0 0 0.375rem;
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .auth-subtitle {
   text-align: center;
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
-  margin: 0 0 1.75rem;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 2rem;
 }
 
 .auth-error {
@@ -671,18 +716,48 @@
 
 .auth-footer {
   text-align: center;
-  margin-top: 1.5rem;
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .auth-footer a {
-  color: var(--gg-green);
-  font-weight: 600;
+  color: #34d399;
+  font-weight: 700;
   text-decoration: none;
 }
 
-.auth-footer a:hover { text-decoration: underline; }
+.auth-footer a:hover { 
+  text-decoration: underline;
+  color: #6ee7b7;
+}
+
+/* Scoped Auth Form Styles */
+.auth-card .form-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.auth-card .form-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+}
+
+.auth-card .form-input:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #34d399;
+  box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2);
+}
+
+.auth-logo {
+  color: #ffffff !important;
+}
 
 /* ════════════════════════════════════════════════════════════
    EMPTY STATE
@@ -1112,24 +1187,52 @@
 }
 
 .role-option {
-  padding: 1rem;
-  border: 2px solid var(--border);
-  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
   cursor: pointer;
   text-align: center;
-  transition: all 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.role-option:hover { border-color: var(--gg-green); }
+.role-option:hover { 
+  border-color: rgba(52, 211, 153, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+}
 
 .role-option.selected {
-  border-color: var(--gg-green);
-  background: var(--accent);
+  border-color: #34d399;
+  background: #ffffff;
+  color: #064e3b;
+  box-shadow: 0 0 25px rgba(52, 211, 153, 0.3);
 }
 
-.role-option-icon { font-size: 1.5rem; margin-bottom: 0.375rem; }
-.role-option-title { font-weight: 600; font-size: 0.875rem; }
-.role-option-desc { font-size: 0.7rem; color: var(--muted-foreground); margin-top: 0.25rem; }
+.role-option-icon { 
+  font-size: 1.75rem; 
+  margin-bottom: 0.5rem; 
+}
+
+.role-option-title { 
+  font-weight: 800; 
+  font-size: 0.925rem; 
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.role-option-desc { 
+  font-size: 0.75rem; 
+  opacity: 0.8;
+  margin-top: 0.375rem; 
+  line-height: 1.4;
+}
+
+.role-option.selected .role-option-desc {
+  color: #065f46;
+  opacity: 0.9;
+}
 
 /* ════════════════════════════════════════════════════════════
    TABLE (admin pages)

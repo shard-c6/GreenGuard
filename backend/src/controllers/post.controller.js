@@ -63,7 +63,7 @@ async function getFeed(req, res) {
     // Fetch posts sorted: followed NGOs first, then by recency
     let query = supabaseAdmin
       .from('posts')
-      .select('*, profiles!inner(username, display_name, avatar_url, role)', { count: 'exact' })
+      .select('*, profiles!posts_author_id_fkey(username, display_name, avatar_url, role)', { count: 'exact' })
       .order('created_at', { ascending: false })
       .range(offset, offset + limit - 1);
 
@@ -110,7 +110,7 @@ async function getPost(req, res) {
   try {
     const { data, error: dbError } = await supabaseAdmin
       .from('posts')
-      .select('*, profiles!inner(username, display_name, avatar_url)')
+      .select('*, profiles!posts_author_id_fkey(username, display_name, avatar_url)')
       .eq('id', req.params.id)
       .single();
 
@@ -218,7 +218,7 @@ async function myBookmarks(req, res) {
   try {
     const { data, error: dbError } = await supabaseAdmin
       .from('bookmarks')
-      .select('post_id, posts!inner(*, profiles!inner(username, display_name, avatar_url))')
+      .select('post_id, posts!inner(*, profiles!posts_author_id_fkey(username, display_name, avatar_url))')
       .eq('user_id', req.user.id)
       .order('created_at', { ascending: false });
 
@@ -239,7 +239,7 @@ async function mapPlantations(req, res) {
   try {
     const { data, error: dbError } = await supabaseAdmin
       .from('posts')
-      .select('id, author_id, content, image_urls, location, latitude, longitude, address, post_type, profiles!inner(display_name, avatar_url)')
+      .select('id, author_id, content, image_urls, location, latitude, longitude, address, post_type, profiles!posts_author_id_fkey(display_name, avatar_url)')
       .eq('post_type', 'plantation');
 
     if (dbError) return error(res, dbError.message, 400);

@@ -40,6 +40,27 @@ const MapController = () => {
       >
         <MapPin size={24} className="group-hover:scale-110 transition-transform" />
       </button>
+
+      {/* Map Legend */}
+      <div className="p-4 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl shadow-emerald-900/10 border border-emerald-50 flex flex-col gap-3 min-w-[140px]">
+        <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Map Legend</p>
+        <div className="flex items-center gap-3">
+          <div className="w-3 h-3 rounded-full bg-[#10b981] border border-white shadow-sm" />
+          <span className="text-xs font-bold text-gray-700">Available</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="w-3 h-3 rounded-full bg-[#f59e0b] border border-white shadow-sm" />
+          <span className="text-xs font-bold text-gray-700">Pending</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="w-3 h-3 rounded-full bg-[#3b82f6] border border-white shadow-sm" />
+          <span className="text-xs font-bold text-gray-700">Adopted</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="w-3 h-3 rounded-[4px] bg-[#4f46e5] border border-white shadow-sm" />
+          <span className="text-xs font-bold text-gray-700">Plantation</span>
+        </div>
+      </div>
     </div>
   );
 };
@@ -124,13 +145,15 @@ export default function LeafletMap({ plants, plantations }: LeafletMapProps) {
 
         {/* Plant Markers */}
         {plants.map((plant, idx) => {
-          const coords = parseLngLat(plant.location);
+          const lat = plant.latitude;
+          const lng = plant.longitude;
+          const coords = (lat && lng) ? [lat, lng] as [number, number] : parseLngLat(plant.location);
           if (!coords) return null;
 
           return (
             <Marker
               key={`plant-${plant.id}`}
-              position={[coords[0], coords[1]]}
+              position={coords}
               icon={iconsRef.current[plant.adoption_status] || iconsRef.current.available}
             >
               <Popup>
@@ -139,7 +162,16 @@ export default function LeafletMap({ plants, plantations }: LeafletMapProps) {
                     <img src={plant.image_urls[0]} alt="" className="w-full h-32 object-cover" />
                   )}
                   <div className="p-4">
-                    <p className="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-1">Adoptable Plant</p>
+                    <div className="flex justify-between items-start mb-1">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-emerald-600">Adoptable Plant</p>
+                      <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded-full border ${
+                        plant.adoption_status === 'available' ? 'bg-emerald-50 text-emerald-600 border-emerald-200' :
+                        plant.adoption_status === 'pending' ? 'bg-amber-50 text-amber-600 border-amber-200' :
+                        'bg-blue-50 text-blue-600 border-blue-200'
+                      }`}>
+                        {plant.adoption_status}
+                      </span>
+                    </div>
                     <h4 className="text-lg font-black text-gray-900 leading-tight mb-1">{plant.plant_name}</h4>
                     <div className="flex items-center gap-1 text-xs text-gray-500 mb-4">
                        <MapPin size={12} />
@@ -157,13 +189,15 @@ export default function LeafletMap({ plants, plantations }: LeafletMapProps) {
 
         {/* Plantation Update Markers */}
         {plantations.map((post) => {
-          const coords = parseLngLat(post.location);
+          const lat = post.latitude;
+          const lng = post.longitude;
+          const coords = (lat && lng) ? [lat, lng] as [number, number] : parseLngLat(post.location);
           if (!coords) return null;
 
           return (
             <Marker
               key={`post-${post.id}`}
-              position={[coords[0], coords[1]]}
+              position={coords}
               icon={iconsRef.current.plantation}
             >
               <Popup>
