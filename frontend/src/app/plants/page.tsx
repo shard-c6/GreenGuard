@@ -49,11 +49,6 @@ export default function PlantsPage() {
 
   return (
     <div className="page-container max-w-7xl mx-auto p-6 md:p-12 relative">
-      {/* Background Glows */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-50 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-50/50 rounded-full blur-[120px]" />
-      </div>
 
       <div className="relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12">

@@ -96,6 +96,7 @@ export default function Navbar() {
                 <NavLink href="/plants">Browse Plants</NavLink>
                 <NavLink href="/map">Plant Map</NavLink>
                 <NavLink href="/identify">AI Identify</NavLink>
+                <NavLink href="/flora-genius-consultant">AI Expert</NavLink>
                 <NavLink href="/dashboard/adoptions">My Adoptions</NavLink>
               </>
             )}
@@ -220,6 +221,7 @@ export default function Navbar() {
               <NavLink href="/plants">Browse Plants</NavLink>
               <NavLink href="/map">Plant Map</NavLink>
               <NavLink href="/identify">AI Identify</NavLink>
+              <NavLink href="/flora-genius-consultant">AI Expert</NavLink>
               <NavLink href="/dashboard/adoptions">My Adoptions</NavLink>
             </>
           )}

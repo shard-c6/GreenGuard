@@ -61,11 +61,6 @@ export default function NgoDashboardPage() {
 
   return (
     <div className="page-container max-w-6xl mx-auto p-6 md:p-12 relative">
-      {/* Background Glows */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] bg-emerald-100/40 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[45%] h-[45%] bg-blue-100/30 rounded-full blur-[120px]" />
-      </div>
 
       <header className="mb-12 relative z-10">
         <motion.h1 
