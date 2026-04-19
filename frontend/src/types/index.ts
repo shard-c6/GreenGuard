@@ -10,6 +10,7 @@ export type PlantStatus = 'available' | 'pending' | 'adopted';
 export type PlantHealth = 'healthy' | 'needs_attention' | 'critical' | 'dead';
 export type AdoptionStatus = 'pending' | 'approved' | 'rejected';
 export type NgoStatus = 'pending' | 'approved' | 'rejected' | 'suspended';
+export type ReportReason = 'spam' | 'harassment' | 'fake_ngo' | 'misinformation' | 'inappropriate_content' | 'other';
 
 // ─── Response Wrappers ──────────────────────────────────────
 
@@ -151,6 +152,8 @@ export interface MapPlant {
   plant_name: string;
   species: string | null;
   location: string | null;
+  latitude?: number;
+  longitude?: number;
   adoption_status: PlantStatus;
   adopted_by: string | null;
   image_urls: string[];
@@ -193,6 +196,8 @@ export interface Post {
   bookmarks_count: number;
   comments_count: number;
   location: string | null;
+  latitude?: number;
+  longitude?: number;
   address: string | null;
   created_at: string;
   is_liked?: boolean;
@@ -257,8 +262,24 @@ export interface AdminDashboard {
   total_adoptions: number;
   total_posts: number;
   total_ngos: number;
+  total_pending_ngos: number;
   total_adopters: number;
   total_reports: number;
+  total_pending_reports: number;
+}
+
+export interface UserReport {
+  id: string;
+  reporter_id: string;
+  reported_user_id: string;
+  reason: string;
+  description: string | null;
+  status: 'pending' | 'resolved' | 'dismissed';
+  admin_notes: string | null;
+  created_at: string;
+  // Joined
+  reporter?: ProfileSummary;
+  reported_user?: ProfileSummary & { is_banned?: boolean };
 }
 
 // ─── NGO Dashboard ──────────────────────────────────────────

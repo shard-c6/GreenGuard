@@ -102,12 +102,20 @@ CREATE TABLE IF NOT EXISTS posts (
   content TEXT,
   image_urls TEXT[] DEFAULT '{}',
   plant_id UUID REFERENCES plants(id),
+  post_type TEXT DEFAULT 'normal',
   likes_count INT DEFAULT 0,
   bookmarks_count INT DEFAULT 0,
+  comments_count INT DEFAULT 0,
+  latitude DOUBLE PRECISION,
+  longitude DOUBLE PRECISION,
+  location GEOGRAPHY(Point, 4326),
+  address TEXT,
   created_at TIMESTAMPTZ DEFAULT now()
 );
 
 CREATE INDEX IF NOT EXISTS idx_posts_author_id ON posts (author_id);
+CREATE INDEX IF NOT EXISTS idx_posts_location ON posts USING GIST (location);
+CREATE INDEX IF NOT EXISTS idx_posts_post_type ON posts (post_type);
 
 -- ─── LIKES ──────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS likes (

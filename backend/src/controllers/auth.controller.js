@@ -59,12 +59,15 @@ async function register(req, res) {
 
     // If NGO, create a pending ngo_profiles entry
     if (role === 'ngo') {
+      const { darpan_id, onboarding_answers, org_name } = req.body;
       await supabaseAdmin
         .from('ngo_profiles')
         .insert({
           id: userId,
-          org_name: display_name || username,
+          org_name: org_name || display_name || username,
           status: 'pending',
+          darpan_id: darpan_id || null,
+          onboarding_answers: onboarding_answers || null,
         });
     }
 
