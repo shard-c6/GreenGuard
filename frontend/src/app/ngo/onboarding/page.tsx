@@ -84,8 +84,8 @@ export default function NgoOnboardingPage() {
   );
 
   return (
-    <div className="auth-page py-12 px-4 min-h-screen flex items-center justify-center relative overflow-hidden">
-      <AtmosphericBackground />
+    <div className="auth-page py-12 px-4">
+      <AtmosphericBackground active={true} />
       
       <motion.div 
         initial={{ opacity: 0, y: 20 }}

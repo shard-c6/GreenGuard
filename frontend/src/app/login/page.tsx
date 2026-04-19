@@ -46,7 +46,7 @@ export default function LoginPage() {
 
   return (
     <div className="auth-page">
-      <AtmosphericBackground />
+      <AtmosphericBackground active={true} />
       <div className="auth-card">
         <div className="auth-logo">
           <span className="logo-icon">🌿</span>

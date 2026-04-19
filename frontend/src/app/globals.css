@@ -644,23 +644,36 @@ html {
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: #020617; /* Dark start to match landing */
+  background: #020617 !important; /* Fallback deep dark */
   position: relative;
   overflow: hidden;
+  isolation: isolate; /* Ensures children with negative z-index stay above background */
 }
 
 .auth-card {
   width: 100%;
-  max-width: 440px;
-  background: rgba(6, 78, 59, 0.4); /* Glassmorphic emerald */
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-radius: 40px;
+  max-width: 480px;
+  background: rgba(2, 44, 34, 0.8); /* Slightly more transparent emerald-950 */
+  backdrop-filter: blur(40px) saturate(150%);
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  border-radius: 60px; /* Matching landing story boxes */
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-  padding: 3rem;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+  padding: 3.5rem;
   position: relative;
   z-index: 10;
+  overflow: hidden;
+}
+
+.auth-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(/leaf-skeleton.png);
+  background-size: 300px;
+  opacity: 0.1; /* Increased for better visibility on dark bg */
+  pointer-events: none;
+  z-index: -1;
 }
 
 .auth-logo {
@@ -1174,24 +1187,52 @@ html {
 }
 
 .role-option {
-  padding: 1rem;
-  border: 2px solid var(--border);
-  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
   cursor: pointer;
   text-align: center;
-  transition: all 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.role-option:hover { border-color: var(--gg-green); }
+.role-option:hover { 
+  border-color: rgba(52, 211, 153, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+}
 
 .role-option.selected {
-  border-color: var(--gg-green);
-  background: var(--accent);
+  border-color: #34d399;
+  background: #ffffff;
+  color: #064e3b;
+  box-shadow: 0 0 25px rgba(52, 211, 153, 0.3);
 }
 
-.role-option-icon { font-size: 1.5rem; margin-bottom: 0.375rem; }
-.role-option-title { font-weight: 600; font-size: 0.875rem; }
-.role-option-desc { font-size: 0.7rem; color: var(--muted-foreground); margin-top: 0.25rem; }
+.role-option-icon { 
+  font-size: 1.75rem; 
+  margin-bottom: 0.5rem; 
+}
+
+.role-option-title { 
+  font-weight: 800; 
+  font-size: 0.925rem; 
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.role-option-desc { 
+  font-size: 0.75rem; 
+  opacity: 0.8;
+  margin-top: 0.375rem; 
+  line-height: 1.4;
+}
+
+.role-option.selected .role-option-desc {
+  color: #065f46;
+  opacity: 0.9;
+}
 
 /* ════════════════════════════════════════════════════════════
    TABLE (admin pages)

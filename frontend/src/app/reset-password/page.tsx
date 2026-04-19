@@ -30,7 +30,7 @@ export default function ResetPasswordPage() {
 
   return (
     <div className="auth-page">
-      <AtmosphericBackground />
+      <AtmosphericBackground active={true} />
       <div className="auth-card">
         <div className="auth-logo"><span className="logo-icon">🌿</span><span>Green Guard</span></div>
         <h1 className="auth-title">Set New Password</h1>
