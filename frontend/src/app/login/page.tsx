@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/lib/auth';
 import SocialButtons from '@/components/auth/SocialButtons';
+import AtmosphericBackground from '@/components/landing/AtmosphericBackground';
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -45,6 +46,7 @@ export default function LoginPage() {
 
   return (
     <div className="auth-page">
+      <AtmosphericBackground active={true} />
       <div className="auth-card">
         <div className="auth-logo">
           <span className="logo-icon">🌿</span>

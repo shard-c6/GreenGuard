@@ -3,6 +3,7 @@
 import { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import { authApi } from '@/services/api';
+import AtmosphericBackground from '@/components/landing/AtmosphericBackground';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
@@ -26,6 +27,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="auth-page">
+      <AtmosphericBackground active={true} />
       <div className="auth-card">
         <div className="auth-logo"><span className="logo-icon">🌿</span><span>Green Guard</span></div>
         <h1 className="auth-title">Reset Password</h1>
@@ -34,8 +36,8 @@ export default function ForgotPasswordPage() {
         {sent ? (
           <div style={{ textAlign: 'center' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📧</div>
-            <p style={{ fontWeight: 600, marginBottom: '0.5rem' }}>Check your inbox</p>
-            <p style={{ fontSize: '0.875rem', color: 'var(--muted-foreground)' }}>
+            <p style={{ fontWeight: 600, marginBottom: '0.5rem', color: '#ffffff' }}>Check your inbox</p>
+            <p style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.7)' }}>
               We&apos;ve sent a password reset link to <strong>{email}</strong>
             </p>
           </div>

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth';
 import { Clock, CheckCircle2, XCircle, Home, LayoutDashboard, Mail } from 'lucide-react';
+import AtmosphericBackground from '@/components/landing/AtmosphericBackground';
 
 export default function NgoStatusPage() {
   const { user, loading } = useAuth();
@@ -17,8 +18,8 @@ export default function NgoStatusPage() {
 
   if (loading || !user || user.role !== 'ngo') {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-10 h-10 border-4 border-emerald-100 border-t-emerald-600 rounded-full animate-spin" />
+      <div className="auth-page">
+        <div className="spinner" />
       </div>
     );
   }
@@ -26,10 +27,9 @@ export default function NgoStatusPage() {
   const status = user.ngo_profile?.status || 'pending';
 
   return (
-    <div className="min-h-[calc(100vh-64px)] bg-gray-50 flex items-center justify-center px-4">
-      <div className="w-full max-w-xl bg-white rounded-[2.5rem] shadow-2xl p-10 md:p-16 border border-emerald-50 text-center relative overflow-hidden">
-        {/* Subtle Background Pattern */}
-        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-emerald-400 via-teal-500 to-emerald-600" />
+    <div className="auth-page">
+      <AtmosphericBackground active={true} />
+      <div className="auth-card max-w-xl text-center">
         
         <div className="flex justify-center mb-8">
           <div className={`w-24 h-24 rounded-3xl flex items-center justify-center transform rotate-12 transition-transform hover:rotate-0 duration-500 ${
@@ -43,13 +43,13 @@ export default function NgoStatusPage() {
           </div>
         </div>
 
-        <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight">
+        <h1 className="auth-title">
           {status === 'pending' && 'Verification in Progress'}
           {status === 'approved' && 'Welcome Aboard!'}
           {status === 'rejected' && 'Application Update'}
         </h1>
 
-        <div className="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-100 italic text-gray-600 leading-relaxed">
+        <div className="bg-white/5 rounded-2xl p-6 mb-8 border border-white/5 italic text-white/70 leading-relaxed">
           {status === 'pending' && (
             <>
               "Quality is our priority. Our administrators are currently reviewing your Darpan ID and questionnaire responses to ensure the integrity of our green community."
@@ -68,7 +68,7 @@ export default function NgoStatusPage() {
         </div>
 
         {status === 'pending' && (
-          <p className="text-gray-500 mb-10 flex items-center justify-center gap-2">
+          <p className="text-white/40 mb-10 flex items-center justify-center gap-2">
             <Mail size={16} /> Estimated wait: <strong>4-6 business hours</strong>
           </p>
         )}
@@ -84,7 +84,7 @@ export default function NgoStatusPage() {
             </button>
           ) : (
             <button 
-              className="w-full sm:w-auto px-8 py-4 bg-white border-2 border-gray-100 text-gray-600 hover:bg-gray-50 hover:border-gray-200 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto px-8 py-4 bg-white/5 border-2 border-white/10 text-white hover:bg-white/10 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 group"
               onClick={() => router.push('/')}
             >
               <Home size={20} className="group-hover:-translate-y-1 transition-transform" />
