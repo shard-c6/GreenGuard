@@ -73,8 +73,7 @@ export default function Navbar() {
       <nav className="navbar">
         <div className="navbar-inner">
           <Link href="/" className="navbar-logo">
-            <span className="logo-icon">🌿</span>
-            <span className="logo-text">Green Guard</span>
+            <img src="/logo.png" alt="Green Guard Logo" className="logo-icon" style={{ height: '32px', width: 'auto' }} />
           </Link>
         </div>
       </nav>
@@ -86,8 +85,7 @@ export default function Navbar() {
       <div className="navbar-inner">
         {/* Logo */}
         <Link href="/" className="navbar-logo">
-          <span className="logo-icon">🌿</span>
-          <span className="logo-text">Green Guard</span>
+          <img src="/logo.png" alt="Green Guard Logo" className="logo-icon" style={{ height: '32px', width: 'auto' }} />
         </Link>
 
         {/* Desktop Nav */}
