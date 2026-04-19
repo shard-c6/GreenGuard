@@ -1,6 +1,6 @@
 # Green Guard — Frontend Overview & Integration Guide
 
-> **Stack**: Next.js 15 (App Router) · TypeScript · Axios · Tailwind CSS · Leaflet Maps
+> **Stack**: Next.js 16 (App Router) · React 19 · TypeScript · Axios · Tailwind CSS 4 · Framer Motion · Leaflet Maps
 > **Backend Base URL**: `http://localhost:5000/api` (configurable via `.env.local`)
 
 ---
@@ -50,8 +50,10 @@ src/
 │   ├── ai-identifier/      # AI plant identification tool
 │   └── ngo/onboarding/     # NGO registration form
 │
-├── components/             # Reusable UI components
 │   ├── Navbar.tsx
+│   ├── landing/            # Premium visual engine
+│   │   ├── AnimatedStory.tsx
+│   │   └── AtmosphericBackground.tsx
 │   └── ui/                 # Badge, Skeleton, EmptyState …
 │
 ├── hooks/                  # Custom React hooks
@@ -120,8 +122,9 @@ Pages that require login check `useAuth()` and redirect to `/login` if the user 
 
 ### Register
 1. User fills `{ email, password, username, display_name, role }` on `/register`.
-2. `authApi.register()` posts to `POST /api/auth/register`.
-3. On success, same token & user flow as login.
+2. **NGO Verification**: If role is 'ngo', a second step requires `darpan_id` and answers to specific impact questions.
+3. `authApi.register()` posts to `POST /api/auth/register` (including NGO data if applicable).
+4. On success, same token & user flow as login.
 
 ### Logout
 1. `authApi.logout()` calls `POST /api/auth/logout` (clears server session).
@@ -145,16 +148,16 @@ All backend calls live in **`src/services/api.ts`**. They are grouped into domai
 
 | Export | Domain | Key Methods |
 |--------|--------|-------------|
-| `authApi` | Authentication | `login`, `register`, `logout`, `updateProfile` |
-| `plantsApi` | Plants | `getPlants`, `getPlant`, `createPlant`, `getMapPlants` |
+| `authApi` | Authentication | `login`, `register`, `logout`, `updateMe`, `forgotPassword`, `getAuthorizeUrl` |
+| `plantsApi` | Plants | `getPlants`, `getPlant`, `createPlant`, `getMapPlants`, `getNearbyPlants` |
 | `adoptionsApi` | Adoptions | `apply`, `getMyAdoptions`, `approve`, `reject` |
 | `reportsApi` | Growth Reports | `getMyReports`, `createReport` |
-| `feedApi` | Social Feed | `getFeed`, `getPost`, `toggleLike`, `toggleBookmark`, `addComment` |
+| `feedApi` | Social Feed | `getFeed`, `getPost`, `toggleLike`, `toggleBookmark`, `addComment`, `getMapPlantations` |
 | `usersApi` | Profiles | `getUser`, `follow`, `unfollow`, `getFollowers`, `getFollowing` |
 | `notificationsApi` | Notifications | `getNotifications`, `markRead`, `markAllRead` |
-| `adminApi` | Admin | `getStats`, `getUsers`, `banUser`, `unbanUser`, `getNgos` |
-| `ngoApi` | NGO Dashboard | `getDashboard`, `getNgoStats`, `getApplications` |
-| `ngoOnboardingApi` | NGO Onboarding | `submit` |
+| `adminApi` | Admin | `getDashboard`, `getStats`, `getUsers`, `banUser`, `getNgos`, `approveNgo`, `resolveReport` |
+| `ngoApi` | NGO Dashboard | `getDashboard`, `getStats`, `getApplications`, `submitOnboarding` |
+| `userReportsApi` | Reporting | `createReport` |
 | `aiApi` | AI Plant ID | `identify`, `getStatus` |
 
 ### How to Add a New API Call
@@ -250,9 +253,9 @@ AdoptionStatus  = 'pending' | 'approved' | 'rejected' | 'cancelled'
 
 ## 7. Key Components
 
-| Component | Location | Purpose |
-|-----------|----------|---------|
 | `Navbar` | `components/Navbar.tsx` | Top navigation with role-aware links, notification badge |
+| `AtmosphericBackground` | `components/landing/AtmosphericBackground.tsx` | High-performance interactive background engine with dynamic gradients |
+| `AnimatedStory` | `components/landing/AnimatedStory.tsx` | Scroll-triggered immersive storytelling module for the landing page |
 | `Badge` | `components/ui/Badge.tsx` | Status chips for plants, adoptions, health |
 | `Skeleton` | `components/ui/Skeleton.tsx` | Loading placeholders |
 | `EmptyState` | `components/ui/EmptyState.tsx` | Empty list fallback with icon and message |
@@ -421,4 +424,25 @@ Role is set at registration and stored in the JWT payload. The backend validates
 
 ---
 
-*Last updated: March 2026 | Green Guard v2*
+---
+
+## 13. Premium UI & Visual Engine (April 2026 Update)
+
+GreenGuard v2.1 introduces a high-end visual design system focused on immersion and performance.
+
+### A. Atmospheric Engine
+The `AtmosphericBackground` component provides a deep-emerald, multi-layered background that reacts to the page state. 
+- **Active State**: Used in Auth pages to force a vibrant, high-contrast glow.
+- **Performance**: Optimized using CSS hardware acceleration (`will-change`) to maintain 60FPS during complex animations.
+
+### B. Glassmorphism 2.0
+A system-wide styling approach using deep background blurs (`backdrop-blur-xl`) and subtle border-refractions.
+- **Tokens**: Curated HSL color palettes defined in `globals.css`.
+- **Implementation**: Uses Tailwind 4's native support for advanced filter stacking.
+
+### C. Immersive Storytelling
+The landing page (`/`) uses the `AnimatedStory` component to guide users through the mission via scroll-based progression, leveraging `framer-motion`'s `useScroll` and `useTransform` hooks.
+
+---
+
+*Last updated: April 2026 | Green Guard v2.1 — Premium Edition*
