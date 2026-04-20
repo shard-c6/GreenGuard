@@ -61,10 +61,11 @@ export default function AnimatedStory() {
           className="absolute inset-0 flex flex-col items-center justify-center z-30 pointer-events-none"
         >
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-7xl md:text-9xl font-black tracking-tight text-white mb-6 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-              Green <span className="text-emerald-400">Guard</span>
-            </h1>
-            <p className="text-2xl md:text-3xl text-emerald-100/80 max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
+            <div className="flex justify-center flex-col items-center w-full mb-8 relative">
+              <div className="absolute inset-0 bg-emerald-950/80 blur-[120px] rounded-full scale-[2.5] -z-10 pointer-events-none" />
+              <img src="/logo.png" alt="Green Guard" className="h-[12rem] md:h-[18rem] lg:h-[24rem] w-auto drop-shadow-[0_0_40px_rgba(255,255,255,0.25)] hover:scale-105 transition-transform duration-500 relative z-10" />
+            </div>
+            <p className="text-2xl md:text-3xl text-emerald-50 max-w-2xl mx-auto mb-10 leading-relaxed font-semibold drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
               A premium ecosystem connecting visionary NGOs with a new generation of plant guardians.
             </p>
             <div className="flex gap-6 justify-center pointer-events-auto">
@@ -86,11 +87,11 @@ export default function AnimatedStory() {
             style={{ opacity: s1Opacity, y: s1Y }}
             className="absolute inset-0 flex flex-col items-center justify-center p-6"
           >
-            <div className="text-center max-w-4xl px-12 py-16 rounded-[60px] bg-emerald-950/80 backdrop-blur-xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <div className="text-center max-w-4xl px-12 py-16 rounded-[60px] bg-emerald-950/40 backdrop-blur-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
               <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.9]">
                 Every journey begins with <span className="text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]">a seed.</span>
               </h2>
-              <p className="text-white text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto opacity-90">
+              <p className="text-white text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto opacity-90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 In the heart of the urban concrete, a silent transformation is waiting to unfold. 
                 Our green spaces aren't just disappearing—they're waiting for you.
               </p>
@@ -102,11 +103,11 @@ export default function AnimatedStory() {
             style={{ opacity: s2Opacity, y: s2Y }}
             className="absolute inset-0 flex flex-col items-center justify-center p-6"
           >
-            <div className="text-center max-w-4xl px-12 py-16 rounded-[60px] bg-emerald-950/80 backdrop-blur-xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <div className="text-center max-w-4xl px-12 py-16 rounded-[60px] bg-emerald-950/40 backdrop-blur-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
               <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.9]">
                 Nurtured by <span className="text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]">community.</span>
               </h2>
-              <p className="text-white text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto opacity-90">
+              <p className="text-white text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto opacity-90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 GreenGuard bridges the gap between visionary NGOs and the next generation of guardians. 
                 Real impact, one adoption at a time.
               </p>
@@ -118,11 +119,11 @@ export default function AnimatedStory() {
             style={{ opacity: s3Opacity, y: s3Y, scale: s3Scale }}
             className="absolute inset-0 flex flex-col items-center justify-center p-6"
           >
-            <div className="text-center max-w-4xl px-12 py-16 rounded-[60px] bg-emerald-950/80 backdrop-blur-xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <div className="text-center max-w-4xl px-12 py-16 rounded-[60px] bg-emerald-950/40 backdrop-blur-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
               <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.9]">
                 A legacy that <span className="text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]">lives on.</span>
               </h2>
-              <p className="text-white text-xl md:text-2xl font-medium leading-relaxed mb-10 max-w-2xl mx-auto opacity-90">
+              <p className="text-white text-xl md:text-2xl font-medium leading-relaxed mb-10 max-w-2xl mx-auto opacity-90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 Join thousands of guardians who are restoring the world's canopy. 
                 Your plant is waiting for its journey to begin.
               </p>
@@ -155,7 +156,7 @@ export default function AnimatedStory() {
           style={{ opacity: scrollIndicatorOpacity }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
         >
-          <span className="text-emerald-400 text-sm font-black tracking-[0.2em] uppercase drop-shadow-sm">Scroll to Explore</span>
+          <span className="text-emerald-300 text-sm font-black tracking-[0.2em] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] bg-black/20 px-4 py-2 rounded-full backdrop-blur-sm border border-white/5">Scroll to Explore</span>
           <motion.div 
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}

@@ -1,4 +1,6 @@
 'use client';
+import { Sprout, Leaf } from "lucide-react";
+
 
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
@@ -86,7 +88,7 @@ export default function NewPlantPage() {
   return (
     <div className="page-container" style={{ maxWidth: '680px' }}>
       <button className="btn btn-ghost btn-sm" onClick={() => router.back()} style={{ marginBottom: '1rem' }}>← Back</button>
-      <h1 className="page-title">🌱 Add New Plant</h1>
+      <h1 className="page-title"><Sprout className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Add New Plant</h1>
       <p className="page-subtitle" style={{ marginBottom: '2rem' }}>List a plant available for adoption</p>
 
       {error && <div className="auth-error">{error}</div>}
@@ -147,7 +149,7 @@ export default function NewPlantPage() {
           </div>
         </div>
 
-        <h3 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.75rem', marginTop: '0.5rem' }}>🌿 Care Information</h3>
+        <h3 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.75rem', marginTop: '0.5rem' }}><Leaf className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Care Information</h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.75rem' }}>
           <div className="form-group">
             <label className="form-label">Watering</label>
@@ -169,7 +171,7 @@ export default function NewPlantPage() {
         <ImageUpload onFilesSelected={setFiles} maxFiles={5} label="Plant Photos" />
 
         <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%', marginTop: '1.5rem' }} disabled={loading}>
-          {loading ? 'Creating...' : '🌿 Add Plant'}
+          {loading ? 'Creating...' : '<Leaf className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Add Plant'}
         </button>
       </form>
     </div>

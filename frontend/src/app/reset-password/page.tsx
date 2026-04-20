@@ -32,7 +32,7 @@ export default function ResetPasswordPage() {
     <div className="auth-page">
       <AtmosphericBackground active={true} />
       <div className="auth-card">
-        <div className="auth-logo"><img src="/logo.png" alt="Green Guard" className="logo-icon" style={{ height: '64px', width: 'auto' }} /></div>
+        <div className="auth-logo"><img src="/logo.png" alt="Green Guard" className="logo-icon" style={{ height: '100px', width: 'auto' }} /></div>
         <h1 className="auth-title">Set New Password</h1>
         <p className="auth-subtitle">Enter your new password below</p>
         {error && <div className="auth-error">{error}</div>}
