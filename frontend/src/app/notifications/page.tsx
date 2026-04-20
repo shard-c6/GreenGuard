@@ -1,4 +1,6 @@
 'use client';
+import { Bell } from "lucide-react";
+
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/lib/auth';
@@ -46,7 +48,7 @@ export default function NotificationsPage() {
     return (
       <div className="page-container" style={{ maxWidth: '680px' }}>
         <div className="page-header">
-          <h1 className="page-title">🔔 Notifications</h1>
+          <h1 className="page-title"><Bell className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Notifications</h1>
         </div>
         <ListSkeleton rows={5} />
       </div>
@@ -57,7 +59,7 @@ export default function NotificationsPage() {
     <div className="page-container" style={{ maxWidth: '680px' }}>
       <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <h1 className="page-title">🔔 Notifications</h1>
+          <h1 className="page-title"><Bell className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Notifications</h1>
           <p className="page-subtitle">{notifications.filter(n => !n.is_read).length} unread</p>
         </div>
         {notifications.some(n => !n.is_read) && (

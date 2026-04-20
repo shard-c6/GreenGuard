@@ -1,4 +1,6 @@
 'use client';
+import { Sprout, Leaf } from "lucide-react";
+
 
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
@@ -20,7 +22,7 @@ export default function ImmersiveBackground() {
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         style={{ position: 'absolute', top: '10%', right: '10%', fontSize: '12rem', filter: 'blur(1px)' }}
       >
-        🌿
+        <Leaf className="inline-block w-5 h-5 mr-1 align-text-bottom" />
       </motion.div>
       <motion.div 
         animate={{ 
@@ -56,7 +58,7 @@ export default function ImmersiveBackground() {
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         style={{ position: 'absolute', bottom: '10%', right: '20%', fontSize: '9rem', filter: 'blur(1px)' }}
       >
-        🌱
+        <Sprout className="inline-block w-5 h-5 mr-1 align-text-bottom" />
       </motion.div>
       
       {/* Subtle Gradients */}

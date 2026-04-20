@@ -1,4 +1,6 @@
 'use client';
+import { MapPin, Sprout } from "lucide-react";
+
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
@@ -119,7 +121,7 @@ export default function PlantDetailPage() {
               <div className="bg-emerald-50/50 p-6 rounded-3xl border border-white">
                 <p className="text-[10px] font-black text-emerald-800/40 uppercase tracking-widest mb-1">Location</p>
                 <p className="text-emerald-950 font-black flex items-center gap-2">
-                  <span className="text-emerald-400">📍</span> {plant.address || 'Global Garden'}
+                  <span className="text-emerald-400"><MapPin className="inline-block w-5 h-5 mr-1 align-text-bottom" /></span> {plant.address || 'Global Garden'}
                 </p>
               </div>
               <div className="bg-blue-50/50 p-6 rounded-3xl border border-white">
@@ -167,7 +169,7 @@ export default function PlantDetailPage() {
               {plant.adoption_status === 'available' ? (
                 user?.role === 'adopter' ? (
                   <Link href={`/plants/${plant.id}/adopt`} className="block w-full text-center py-6 bg-emerald-600 text-white font-black text-xl rounded-3xl hover:bg-emerald-700 hover:scale-[1.02] active:scale-95 transition-all shadow-2xl shadow-emerald-200">
-                    🌱 Apply to Adopt
+                    <Sprout className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Apply to Adopt
                   </Link>
                 ) : (
                   <div className="p-6 bg-emerald-50 rounded-3xl text-center text-emerald-800/60 font-bold border border-emerald-100">
