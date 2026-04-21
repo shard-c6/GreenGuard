@@ -1,109 +1,80 @@
-# 🌱 GreenGuard — Premium Botanical Identification & Adoption Ecosystem
+# GreenGuard
 
-**GreenGuard** is a state-of-the-art environmental platform designed to bridge the gap between Non-Governmental Organizations (NGOs) and nature enthusiasts. The platform facilitates the adoption of trees and plants, provides real-time botanical intelligence through a RAG-based AI system, and fosters a community dedicated to reforestation and plant care.
+<div align="center">
 
----
+| RELEASE | **v2.2.3** | BOTANICAL DATA | **130+ SPECIES** | UI STYLES | **50+ COMPONENTS** | STACK | **NEXT.js 16** | LICENSE | **MIT** |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 
-## 🌍 Live Links
-- **Frontend (Web App)**: [https://greenguard.vercel.app](https://greenguard.vercel.app)
-- **Backend API**: [https://green-guard-api.up.railway.app](https://green-guard-api.up.railway.app)
+[![API](https://img.shields.io/badge/API-v2.2.3-emerald?style=flat-square&logo=node.js)](https://green-guard-api.up.railway.app)
+[![Vercel](https://img.shields.io/badge/Live_Demo-Vercel-black?style=flat-square&logo=vercel)](https://greenguard.vercel.app)
+[![Supabase](https://img.shields.io/badge/Database-Supabase-3ECF8E?style=flat-square&logo=supabase)](https://supabase.com)
+[![GitHub stars](https://img.shields.io/github/stars/RishabhHatlunkar/GreenGuard?style=flat-square&logo=github)](https://github.com/RishabhHatlunkar/GreenGuard/stargazers)
 
----
+**A premium botanical identification and adoption ecosystem powered by AI and RAG-based intelligence.**
 
-## 📖 What is GreenGuard?
+<img src="./docs/assets/banner.png" alt="GreenGuard Banner" width="100%" />
 
-Despite the global push for reforestation, urban populations often find it difficult to contribute meaningfully or track the progress of planted saplings. Conversely, NGOs struggle with post-plantation care and consistent funding/adoption for their projects. GreenGuard provides a triple-layered solution:
-
-1. **Direct Adoption Pipeline**: A seamless workflow for adopters to select, apply for, and manage plant adoptions from verified NGOs via interactive maps.
-2. **Botanical Intelligence (Flora Genius)**: A specialized AI microservice that uses Retrieval-Augmented Generation (RAG) to provide expert, grounded advice on 130+ Indian medicinal plants.
-3. **Community & Accountability**: An Instagram-style social feed combined with a growth reporting system ensures transparency and long-term care for every adopted plant.
+</div>
 
 ---
 
-## ✨ New Additions & Features
+## 📖 Overview
 
-- **🧠 Flora Genius Consultant (RAG AI)**: A standalone microservice utilizing Google Gemini for reasoning and embeddings, combined with Supabase `pgvector` for high-speed semantic retrieval. It provides instant plant identification and expert consultation grounded in verified botanical data.
-- **🎨 Premium Visual Engine**: Implementation of a high-end design system using Tailwind CSS 4, featuring **Glassmorphism 2.0** and immersive **Atmospheric Backgrounds** that react to page states.
-- **🗺️ Geospatial Discovery**: Integrated PostGIS to enable radius-based searches, allowing users to discover adoption opportunities in their immediate vicinity on a live interactive map.
-- **🛡️ Secure NGO Verification**: Multi-step onboarding with Darpan ID validation and an admin approval workflow to ensure authenticity.
-- **💬 Social Engine**: High-performance social wall for sharing plantation updates, care tips, and success stories with like, bookmark, and follow functionalities.
+GreenGuard is a state-of-the-art environmental platform designed to bridge the gap between Non-Governmental Organizations (NGOs) and nature enthusiasts. By combining high-fidelity UI/UX with advanced Retrieval-Augmented Generation (RAG), we transform environmental conservation into an immersive, social, and AI-enhanced journey.
+
+---
+
+## ✨ Key Features
+
+- **🧠 Flora Genius Consultant (RAG AI)**: Standalone microservice utilizing Google Gemini for reasoning and Supabase `pgvector` for grounded botanical advice.
+- **🎨 Premium Visual Engine**: Next.js 16 + Tailwind CSS 4 implementation featuring **Glassmorphism 2.0** and immersive **Atmospheric Backgrounds**.
+- **🗺️ Geospatial Discovery**: Integrated PostGIS to enable radius-based searches and live interactive plantation mapping.
+- **🛡️ NGO Verification**: Multi-step onboarding with Darpan ID validation and administrative impact questionnaires.
+- **📸 Growth Timeline**: Track plant health from sapling to tree with health metrics and community sharing.
 
 ---
 
 ## 🛠️ Technology Stack
 
-The project is architected as a cohesive multi-module system:
-
-### 1. 🖥️ Frontend Engine
-- **Framework**: Next.js 16 (App Router), React 19
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS 4 (Custom CSS Variables, Glassmorphism)
-- **Animations**: Framer Motion
-- **Mapping**: Leaflet, React-Leaflet
-- **Data Fetching**: Axios
-
-### 2. ⚙️ Core Backend
-- **Runtime**: Node.js, Express.js
-- **Database**: PostgreSQL with PostGIS (for spatial tracking) hosted on Supabase
-- **Security & Auth**: Supabase Auth (JWT-based RBAC for Admins, NGOs, and Adopters)
-- **Storage**: Supabase Storage for high-resolution images
-
-### 3. 🌿 Flora Genius Microservice (AI)
-- **LLM Engine**: Google Gemini (1.5 Flash)
-- **Vector Database**: Supabase `pgvector`
-- **Architecture**: Retrieval-Augmented Generation (RAG)
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | Next.js 16, React 19, Tailwind CSS 4, Framer Motion, Axios, Leaflet |
+| **Backend** | Node.js, Express.js, Supabase, PostGIS, JWT |
+| **AI/ML** | Google Gemini 1.5 Flash, Supabase `pgvector` (RAG) |
+| **DevOps** | Railway (API), Vercel (Frontend), Supabase (DB/Auth/Storage) |
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone the Repository
+### 1. Clone & Setup
 ```bash
 git clone https://github.com/RishabhHatlunkar/GreenGuard.git
 cd GreenGuard
 ```
 
-### 2. Configure Environment Variables
-Each module requires its own `.env` file based on the provided templates.
-- **Backend**: Needs `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `JWT_SECRET`, `DATABASE_URL`, and `FRONTEND_URL`.
-- **Frontend**: Needs `NEXT_PUBLIC_API_BASE_URL` (points to local or production API).
-- **Flora-Genius**: Needs API keys for Gemini and Supabase config.
+### 2. Environment Configuration
+Configure `.env` files in `backend/`, `frontend/`, and `flora-genius-consultant/` using the provided templates.
 
-### 3. Start Development Servers
-
-You will need to run the services in parallel:
-
-**Terminal 1: Backend**
+### 3. Run Services
 ```bash
-cd backend
-npm install
-npm run dev
-```
+# Terminal 1: Backend
+cd backend && npm run dev
 
-**Terminal 2: Frontend**
-```bash
-cd frontend
-npm install
-npm run dev
-```
+# Terminal 2: Frontend
+cd frontend && npm run dev
 
-**Terminal 3: Flora-Genius Consultant**
-```bash
-cd flora-genius-consultant
-npm install
-npm run dev
+# Terminal 3: AI Consultant
+cd flora-genius-consultant && npm run dev
 ```
 
 ---
 
-## 📄 Documentation Library
+## 📄 Documentation
 
-For a deeper dive into the architecture and API specs, please refer to the following documents:
-- [**Project Report**](./docs/PROJECT_REPORT.md) — Comprehensive overview of the ecosystem.
-- [**Frontend Overview**](./frontend/docs/FRONTEND_OVERVIEW.md) — Tech stack, integration guide, and component structure.
-- [**Project Requirements (PRD)**](./backend/docs/PROJECT_REQUIREMENTS.md) — API specifications, roles, and feature roadmap.
-- [**Technical Handover**](./docs/TECHNICAL_HANDOVER.md) — Architectural improvements and database schema extensions.
-- [**Testing Guide**](./docs/DEPLOYMENT_AND_TESTING.md) — Deployment, data seeding, and manual testing flows.
+- [**Project Report**](./docs/PROJECT_REPORT.md) — Full ecosystem walkthrough.
+- [**Technical Handover**](./docs/TECHNICAL_HANDOVER.md) — Architectural details and schema logic.
+- [**Deployment Guide**](./docs/DEPLOYMENT_AND_TESTING.md) — Production setup and seeding.
 
 ---
 
