@@ -1,59 +1,57 @@
-# 🌱 GreenGuard — Premium Plant Adoption Ecosystem
+# 🌱 GreenGuard — Premium Botanical Identification & Adoption Ecosystem
 
-**GreenGuard** is a high-end, community-driven digital platform designed to revolutionize urban afforestation. By bridging the gap between NGOs and passionate adopters, GreenGuard transforms environmental conservation into an immersive, social, and AI-enhanced journey.
-
----
-
-## 🌟 The Vision
-
-In an era of rapid urbanization, GreenGuard provides the digital infrastructure needed to nurture green spaces. Our platform doesn't just list plants; it tells their stories through dynamic backgrounds, interactive mapping, and community-driven progress tracking.
+**GreenGuard** is a state-of-the-art environmental platform designed to bridge the gap between Non-Governmental Organizations (NGOs) and nature enthusiasts. The platform facilitates the adoption of trees and plants, provides real-time botanical intelligence through a RAG-based AI system, and fosters a community dedicated to reforestation and plant care.
 
 ---
 
-## 🏛️ Ecosystem Architecture
+## 🌍 Live Links
+- **Frontend (Web App)**: [https://greenguard.vercel.app](https://greenguard.vercel.app)
+- **Backend API**: [https://green-guard-api.up.railway.app](https://green-guard-api.up.railway.app)
+
+---
+
+## 📖 What is GreenGuard?
+
+Despite the global push for reforestation, urban populations often find it difficult to contribute meaningfully or track the progress of planted saplings. Conversely, NGOs struggle with post-plantation care and consistent funding/adoption for their projects. GreenGuard provides a triple-layered solution:
+
+1. **Direct Adoption Pipeline**: A seamless workflow for adopters to select, apply for, and manage plant adoptions from verified NGOs via interactive maps.
+2. **Botanical Intelligence (Flora Genius)**: A specialized AI microservice that uses Retrieval-Augmented Generation (RAG) to provide expert, grounded advice on 130+ Indian medicinal plants.
+3. **Community & Accountability**: An Instagram-style social feed combined with a growth reporting system ensures transparency and long-term care for every adopted plant.
+
+---
+
+## ✨ New Additions & Features
+
+- **🧠 Flora Genius Consultant (RAG AI)**: A standalone microservice utilizing Google Gemini for reasoning and embeddings, combined with Supabase `pgvector` for high-speed semantic retrieval. It provides instant plant identification and expert consultation grounded in verified botanical data.
+- **🎨 Premium Visual Engine**: Implementation of a high-end design system using Tailwind CSS 4, featuring **Glassmorphism 2.0** and immersive **Atmospheric Backgrounds** that react to page states.
+- **🗺️ Geospatial Discovery**: Integrated PostGIS to enable radius-based searches, allowing users to discover adoption opportunities in their immediate vicinity on a live interactive map.
+- **🛡️ Secure NGO Verification**: Multi-step onboarding with Darpan ID validation and an admin approval workflow to ensure authenticity.
+- **💬 Social Engine**: High-performance social wall for sharing plantation updates, care tips, and success stories with like, bookmark, and follow functionalities.
+
+---
+
+## 🛠️ Technology Stack
 
 The project is architected as a cohesive multi-module system:
 
-### 1. 🖥️ [Frontend](./frontend) (The Experience)
-A state-of-the-art web application built for speed and immersion.
-- **Framework**: Next.js 16 (App Router) & React 19.
-- **Visual Engine**: Custom **Atmospheric Background** system and **Glassmorphism 2.0** styling.
-- **Storytelling**: Scroll-triggered narrative landing page using Framer Motion.
-- **Geospatial**: Leaflet-powered plant discovery map.
+### 1. 🖥️ Frontend Engine
+- **Framework**: Next.js 16 (App Router), React 19
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4 (Custom CSS Variables, Glassmorphism)
+- **Animations**: Framer Motion
+- **Mapping**: Leaflet, React-Leaflet
+- **Data Fetching**: Axios
 
-### 2. ⚙️ [Backend](./backend) (The Engine)
-A robust, secure REST API handling complex workflows and geospatial data.
-- **Runtime**: Node.js & Express.
-- **Database**: PostgreSQL with **PostGIS** for high-precision location tracking.
-- **Security**: JWT-based RBAC (Role-Based Access Control) for Admins, NGOs, and Adopters.
-- **Storage**: Integrated Supabase storage for high-resolution plant assets and growth reports.
+### 2. ⚙️ Core Backend
+- **Runtime**: Node.js, Express.js
+- **Database**: PostgreSQL with PostGIS (for spatial tracking) hosted on Supabase
+- **Security & Auth**: Supabase Auth (JWT-based RBAC for Admins, NGOs, and Adopters)
+- **Storage**: Supabase Storage for high-resolution images
 
-### 3. 🌿 [Flora-Genius](./flora-genius) (The Brain)
-An AI-specialized module focused on plant health and identification.
-- **AI ID**: Computer vision-based plant identification via n8n/Groq/PlantNet.
-- **Health Monitoring**: AI-assisted diagnosis for submitted growth reports.
-
----
-
-## ✨ Premium Features
-
-- **🛡️ Rigorous NGO Verification**: Multi-step onboarding with **Darpan ID** validation and impact questionnaires.
-- **🗺️ PostGIS Discovery**: Find plants available for adoption near your precise location with real-time distance calculations.
-- **📸 Growth Timeline**: Track your plant's journey from sapling to tree with health metrics and image history.
-- **💬 Social Feed**: An Instagram-style community portal for sharing updates, liking, and bookmarking milestones.
-- **🔔 Smart Notifications**: Real-time alerts for adoption approvals, application reviews, and community engagement.
-
----
-
-## 🛠️ Tech Stack
-
-| Layer | Technologies |
-|-------|--------------|
-| **Frontend** | Next.js 16, React 19, Tailwind CSS 4, Framer Motion, Axios |
-| **Backend** | Node.js, Express, Supabase, PostGIS |
-| **Mapping** | Leaflet, React-Leaflet, OpenStreetMap |
-| **AI/ML** | n8n Webhooks, Groq, PlantNet API |
-| **DevOps** | Railway (API), Vercel (Frontend), Supabase (DB/Auth/Storage) |
+### 3. 🌿 Flora Genius Microservice (AI)
+- **LLM Engine**: Google Gemini (1.5 Flash)
+- **Vector Database**: Supabase `pgvector`
+- **Architecture**: Retrieval-Augmented Generation (RAG)
 
 ---
 
@@ -66,34 +64,46 @@ cd GreenGuard
 ```
 
 ### 2. Configure Environment Variables
-Each module requires its own `.env` file based on the provided `.env.example` templates.
-- **Backend**: Needs `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `JWT_SECRET`, and `DATABASE_URL`.
-- **Frontend**: Needs `NEXT_PUBLIC_API_BASE_URL`.
+Each module requires its own `.env` file based on the provided templates.
+- **Backend**: Needs `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `JWT_SECRET`, `DATABASE_URL`, and `FRONTEND_URL`.
+- **Frontend**: Needs `NEXT_PUBLIC_API_BASE_URL` (points to local or production API).
+- **Flora-Genius**: Needs API keys for Gemini and Supabase config.
 
 ### 3. Start Development Servers
 
+You will need to run the services in parallel:
+
 **Terminal 1: Backend**
 ```bash
-cd backend && npm install && npm run dev
+cd backend
+npm install
+npm run dev
 ```
 
 **Terminal 2: Frontend**
 ```bash
-cd frontend && npm install && npm run dev
+cd frontend
+npm install
+npm run dev
 ```
 
-**Terminal 3: Flora-Genius**
+**Terminal 3: Flora-Genius Consultant**
 ```bash
-cd flora-genius && npm install && npm run dev
+cd flora-genius-consultant
+npm install
+npm run dev
 ```
 
 ---
 
 ## 📄 Documentation Library
 
-- [**Frontend Overview**](./frontend/docs/FRONTEND_OVERVIEW.md) — Tech stack and component guide.
-- [**Project Requirements (PRD)**](./backend/docs/PROJECT_REQUIREMENTS.md) — API specs and feature roadmap.
-- [**Testing Guide**](./docs/TESTING_GUIDE.md) — Quality assurance and manual testing flows.
+For a deeper dive into the architecture and API specs, please refer to the following documents:
+- [**Project Report**](./docs/PROJECT_REPORT.md) — Comprehensive overview of the ecosystem.
+- [**Frontend Overview**](./frontend/docs/FRONTEND_OVERVIEW.md) — Tech stack, integration guide, and component structure.
+- [**Project Requirements (PRD)**](./backend/docs/PROJECT_REQUIREMENTS.md) — API specifications, roles, and feature roadmap.
+- [**Technical Handover**](./docs/TECHNICAL_HANDOVER.md) — Architectural improvements and database schema extensions.
+- [**Testing Guide**](./docs/DEPLOYMENT_AND_TESTING.md) — Deployment, data seeding, and manual testing flows.
 
 ---
 
