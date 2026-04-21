@@ -1,4 +1,6 @@
 'use client';
+import { Sprout } from "lucide-react";
+
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
@@ -136,7 +138,7 @@ export default function ProfilePage() {
         )
       ) : (
         plants.length === 0 ? (
-          <EmptyState icon={<span>🌱</span>} title="No plants" />
+          <EmptyState icon={<span><Sprout className="inline-block w-5 h-5 mr-1 align-text-bottom" /></span>} title="No plants" />
         ) : (
           <div className="grid-cards">
             {plants.map(plant => (

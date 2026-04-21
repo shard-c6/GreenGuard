@@ -38,28 +38,28 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
   const bgColor = useTransform(
     smoothProgress,
     [0, 0.5, 1],
-    active ? ['#011e17', '#064e3b', '#011e17'] : ['#01040f', '#064e3b', '#011e17']
+    active ? ['#011e17', '#064e3b', '#011e17'] : ['#021812', '#053e2f', '#021812']
   );
 
   return (
-    <motion.div 
+    <motion.div
       style={{ backgroundColor: bgColor }}
       className="fixed inset-0 -z-10 overflow-hidden"
     >
       {/* Aesthetic Leaf Pattern Layer - Increased Visibility */}
-      <motion.div 
-        style={{ 
-          opacity: useTransform(smoothProgress, [0, 1], [0.4, 0.2]),
+      <motion.div
+        style={{
+          opacity: useTransform(smoothProgress, [0, 1], [0.15, 0.05]),
           scale: useTransform(smoothProgress, [0, 1], [1, 1.1]),
           backgroundImage: 'url(/leaf-pattern.png)',
           backgroundSize: '800px',
         }}
-        className="absolute inset-0 mix-blend-screen pointer-events-none bg-repeat opacity-20"
+        className="absolute inset-0 mix-blend-screen pointer-events-none bg-repeat opacity-10"
       />
 
       {/* Mesh Gradient Overlays - More vibrant */}
-      <div className="absolute inset-0 opacity-40 mix-blend-soft-light">
-        <motion.div 
+      <div className="absolute inset-0 opacity-20 mix-blend-soft-light">
+        <motion.div
           animate={{
             scale: [1, 1.3, 1],
             x: [0, 100, 0],
@@ -70,9 +70,9 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute -top-1/4 -left-1/4 w-full h-full bg-emerald-400 blur-[180px] rounded-full opacity-60"
+          className="absolute -top-1/4 -left-1/4 w-full h-full bg-emerald-950 blur-[180px] rounded-full opacity-40"
         />
-        <motion.div 
+        <motion.div
           animate={{
             scale: [1.3, 1, 1.3],
             x: [0, -100, 0],
@@ -83,7 +83,7 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute -bottom-1/4 -right-1/4 w-full h-full bg-teal-500 blur-[180px] rounded-full opacity-60"
+          className="absolute -bottom-1/4 -right-1/4 w-full h-full bg-teal-950 blur-[180px] rounded-full opacity-40"
         />
       </div>
 
@@ -91,7 +91,7 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
       {particles.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute rounded-full bg-emerald-300/30"
+          className="absolute rounded-full bg-emerald-800/30"
           style={{
             left: `${p.x}%`,
             top: `${p.y}%`,
@@ -114,12 +114,12 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
       ))}
 
       {/* Scroll-Reactive Light Beams - Enhanced for static pages */}
-      <motion.div 
-        style={{ 
+      <motion.div
+        style={{
           opacity: active ? 0.35 : useTransform(smoothProgress, [0, 0.5, 1], [0.2, 0.4, 0.2]),
           rotate: useTransform(smoothProgress, [0, 1], [35, 45])
         }}
-        className="absolute top-[-40%] left-[-10%] w-[150%] h-[120%] bg-gradient-to-b from-emerald-200/20 to-transparent pointer-events-none blur-3xl"
+        className="absolute top-[-40%] left-[-10%] w-[150%] h-[120%] bg-gradient-to-b from-emerald-900/40 to-transparent pointer-events-none blur-3xl"
       />
     </motion.div>
   );

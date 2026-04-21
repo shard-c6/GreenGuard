@@ -1,4 +1,6 @@
 'use client';
+import { Mail } from "lucide-react";
+
 
 import { useState, FormEvent } from 'react';
 import Link from 'next/link';
@@ -35,7 +37,7 @@ export default function ForgotPasswordPage() {
         {error && <div className="auth-error">{error}</div>}
         {sent ? (
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📧</div>
+            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}><Mail className="inline-block w-12 h-12 mb-4 mx-auto text-emerald-500" /></div>
             <p style={{ fontWeight: 600, marginBottom: '0.5rem', color: '#ffffff' }}>Check your inbox</p>
             <p style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.7)' }}>
               We&apos;ve sent a password reset link to <strong>{email}</strong>

@@ -1,4 +1,6 @@
 'use client';
+import { Sprout } from "lucide-react";
+
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -49,7 +51,7 @@ export default function MyPlantsPage() {
     return (
       <div className="page-container">
         <div className="page-header">
-          <h1 className="page-title">🌱 My Plants</h1>
+          <h1 className="page-title"><Sprout className="inline-block w-5 h-5 mr-1 align-text-bottom" /> My Plants</h1>
           <p className="page-subtitle">Managing your listed plants</p>
         </div>
         <div className="grid-3">
@@ -63,7 +65,7 @@ export default function MyPlantsPage() {
     <div className="page-container">
       <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div>
-          <h1 className="page-title">🌱 My Plants</h1>
+          <h1 className="page-title"><Sprout className="inline-block w-5 h-5 mr-1 align-text-bottom" /> My Plants</h1>
           <p className="page-subtitle">Manage your organization's listed plants</p>
         </div>
         <Link href="/dashboard/ngo/plants/new" className="btn btn-primary">
