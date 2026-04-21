@@ -8,7 +8,7 @@ import type { UserRole } from '@/types';
 import SocialButtons from '@/components/auth/SocialButtons';
 import AtmosphericBackground from '@/components/landing/AtmosphericBackground';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, ChevronLeft, CheckCircle2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Sprout, Globe, CheckCircle2 } from "lucide-react";
 
 const NGO_QUESTIONS = [
   { id: 'mission', label: 'Primary Mission *', placeholder: 'Core purpose of your NGO...', type: 'textarea' },
@@ -114,7 +114,7 @@ export default function RegisterPage() {
                     className={`role-option ${form.role === 'adopter' ? 'selected' : ''}`}
                     onClick={() => setForm({ ...form, role: 'adopter' })}
                   >
-                    <div className="role-option-icon">🌱</div>
+                    <div className="role-option-icon"><Sprout className="inline-block w-5 h-5 mr-1 align-text-bottom" /></div>
                     <div className="role-option-title">Plant Adopter</div>
                     <div className="role-option-desc">Adopt and care for plants</div>
                   </div>
@@ -122,7 +122,7 @@ export default function RegisterPage() {
                     className={`role-option ${form.role === 'ngo' ? 'selected' : ''}`}
                     onClick={() => setForm({ ...form, role: 'ngo' })}
                   >
-                    <div className="role-option-icon">🌍</div>
+                    <div className="role-option-icon"><Globe className="inline-block w-5 h-5 mr-1 align-text-bottom" /></div>
                     <div className="role-option-title">NGO</div>
                     <div className="role-option-desc">List plants for adoption</div>
                   </div>
