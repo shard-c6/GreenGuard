@@ -1,4 +1,6 @@
 'use client';
+import { Sprout, Leaf } from "lucide-react";
+
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -28,18 +30,13 @@ export default function MyAdoptionsPage() {
 
   return (
     <div className="page-container max-w-5xl mx-auto p-6 md:p-12 relative">
-      {/* Background Glows */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-emerald-50 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-50/50 rounded-full blur-[120px]" />
-      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="relative z-10 mb-12"
       >
-        <h1 className="text-4xl font-black text-emerald-950 mb-2">🌿 My Adoptions</h1>
+        <h1 className="text-4xl font-black text-emerald-950 mb-2"><Leaf className="inline-block w-8 h-8 mr-2 align-bottom text-emerald-600" /> My Adoptions</h1>
         <p className="text-emerald-800/60 text-lg font-medium">Track your plant adoption applications and growing family.</p>
       </motion.div>
 
@@ -50,7 +47,7 @@ export default function MyAdoptionsPage() {
           className="relative z-10"
         >
           <EmptyState
-            icon={<div className="text-6xl mb-4">🌱</div>}
+            icon={<div className="mb-4"><Sprout className="inline-block w-16 h-16 text-emerald-500" /></div>}
             title="No adoptions yet"
             description="Your garden is waiting. Browse available plants and find your first green companion!"
             action={
@@ -83,7 +80,7 @@ export default function MyAdoptionsPage() {
                       />
                     ) : (
                       <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-emerald-50 flex items-center justify-center text-4xl shadow-inner relative z-10 border-2 border-white">
-                        🌿
+                        <Leaf className="inline-block w-10 h-10 text-emerald-200" />
                       </div>
                     )}
                   </div>

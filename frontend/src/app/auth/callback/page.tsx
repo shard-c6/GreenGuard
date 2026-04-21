@@ -61,7 +61,7 @@ function CallbackHandler() {
     <div className="auth-page">
       <div className="auth-card" style={{ textAlign: 'center' }}>
         <div className="auth-logo justify-center">
-          <span className="logo-icon">🌿</span>
+          <img src="/logo.png" alt="Green Guard Logo" className="logo-icon" style={{ height: '100px', width: 'auto' }} />
         </div>
         <h1 className="auth-title mt-4">Authenticating...</h1>
         {error ? (

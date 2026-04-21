@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
 import Navbar from "@/components/Navbar";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import ImmersiveBackground from "@/components/ui/ImmersiveBackground";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,12 +23,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
-        <AuthProvider>
-          <Navbar />
-          <main className="main-content">{children}</main>
-        </AuthProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <AuthProvider>
+            <ImmersiveBackground />
+            <Navbar />
+            <main className="main-content relative z-10">{children}</main>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
