@@ -1,33 +1,34 @@
 # Flora Genius Consultant Microservice
+> **Role**: The Botanical Intelligence Engine of GreenGuard
 
-The **Flora Genius Consultant** is a specialized AI microservice within the GreenGuard ecosystem. It provides high-fidelity botanical identification and expert consultation services using a Retrieval-Augmented Generation (RAG) architecture.
+The **Flora Genius Consultant** is a high-performance AI microservice designed to provide expert botanical consultation. It utilizes a **Retrieval-Augmented Generation (RAG)** architecture to deliver verified, data-driven insights about Indian medicinal plants.
 
-## 🚀 Overview
+## 🚀 Key Features
 
-This microservice acts as the "Botanical Brain" of GreenGuard. It handles complex AI tasks that are offloaded from the main frontend to ensure high performance and scalability.
+- **High-Fidelity Identification**: Integrates with PlantNet API for professional-grade plant recognition.
+- **RAG-Powered Expert Advice**: Leverages Google Gemini 1.5 Flash and `pgvector` to answer complex queries based on a curated knowledge base of 130+ species.
+- **Contextual Intelligence**: Analyzes soil requirements, medicinal uses, and growth patterns in real-time.
 
-- **Frontend**: Next.js (Vercel)
-- **Backend**: Node.js/Express (Railway)
-- **Database**: Supabase + pgvector
-- **AI Models**: Gemini 1.5 Flash (Reasoning) & Gemini-Embedding-001 (Vectorization)
+## 🏗️ Technical Architecture
 
-## 🏗️ Architecture: RAG (Retrieval-Augmented Generation)
+- **Runtime**: Node.js & Express
+- **AI Engine**: Google Gemini 1.5 Flash (LLM) & Gemini-Embedding-001 (Vectors)
+- **Vector Store**: Supabase with `pgvector` extension
+- **RAG Flow**:
+    1. **Vectorization**: User queries are embedded into 768-dimensional vectors.
+    2. **Semantic Search**: Performs a similarity search in Supabase for the most relevant botanical facts.
+    3. **Augmented Prompting**: Injects retrieved context into the AI prompt for grounded, hallucination-free responses.
 
-Unlike standard AI chatbots, Flora Genius uses a **RAG** system to provide accurate, data-driven advice:
-1. **Embedding**: User queries are converted into 768-dimensional vectors.
-2. **Vector Search**: The system searches a Supabase `pgvector` database for the most relevant botanical data from 130+ Indian medicinal plants.
-3. **Augmentation**: The retrieved data is injected into the Gemini prompt as context.
-4. **Generation**: Gemini generates a structured, expert report based *only* on the verified botanical data.
-
-## 🛠️ API Endpoints
+## 🛠️ API Reference
 
 ### `POST /api/consultant/identify`
-Identifies a plant from an image URL using the PlantNet API and returns a specialized botanical summary.
+- **Method**: Multipart Form Data
+- **Field**: `image` (File)
+- **Returns**: PlantNet identification results + botanical summary.
 
 ### `POST /api/consultant/expert`
-Provides a detailed expert consultation.
-- **Input**: `{ "message": "Query string" }`
-- **Output**: Structured AI response with botanical context.
+- **Body**: `{ "scientificName": "...", "query": "..." }`
+- **Returns**: Structured markdown response from the expert engine.
 
 ## 📦 Local Setup
 
@@ -36,25 +37,28 @@ Provides a detailed expert consultation.
    npm install
    ```
 
-2. **Environment Variables**:
+2. **Environment Configuration**:
    Create a `.env` file with:
    - `GEMINI_API_KEY`: Google AI Studio key.
-   - `SUPABASE_URL`: Your Supabase project URL.
-   - `SUPABASE_SERVICE_ROLE_KEY`: Secret service role key.
+   - `SUPABASE_URL`: Supabase project URL.
+   - `SUPABASE_SERVICE_ROLE_KEY`: Service role key for vector search.
    - `PLANTNET_API_KEY`: PlantNet API key.
 
-3. **Ingest Data**:
+3. **Data Ingestion**:
    ```bash
    node scripts/ingest_json.js
    ```
 
-4. **Run Server**:
+4. **Start Development Server**:
    ```bash
    npm run dev
+   # Defaults to Port 5002
    ```
 
 ## ☁️ Deployment
 
-- **Hosting**: Railway (Auto-deploys from `main` branch).
-- **Root Directory**: Set to `/flora-genius-consultant` in Railway settings.
-- **Port**: 8080 (Configurable via `PORT` env var).
+- **Hosting**: Railway
+- **Config**: Root Directory set to `/flora-genius-consultant`.
+
+---
+*Developed for the GreenGuard Ecosystem | 2026*

@@ -159,6 +159,7 @@ All backend calls live in **`src/services/api.ts`**. They are grouped into domai
 | `ngoApi` | NGO Dashboard | `getDashboard`, `getStats`, `getApplications`, `submitOnboarding` |
 | `userReportsApi` | Reporting | `createReport` |
 | `aiApi` | AI Plant ID | `identify`, `getStatus` |
+| `floraConsultantApi` | Botanical Expert | `identify`, `getExpertAdvice` |
 
 ### How to Add a New API Call
 
@@ -236,7 +237,8 @@ AdoptionStatus  = 'pending' | 'approved' | 'rejected' | 'cancelled'
 | `/profile/[id]` | ✗ | — | Public user profile + followers/following modal |
 | `/profile/settings` | ✓ | all | Edit own display name, bio, phone, address |
 | `/notifications` | ✓ | all | Notification centre |
-| `/ai-identifier` | ✓ | all | AI-powered plant identification |
+| `/ai-identifier` | ✓ | all | AI-powered plant identification (Legacy) |
+| `/flora-genius-consultant` | ✓ | all | Premium AI-powered botanical expert (RAG) |
 | `/ngo/onboarding` | ✓ | adopter | Apply to become an NGO |
 | `/dashboard` | ✓ | all | Role-based dashboard redirect |
 | `/dashboard/adoptions` | ✓ | adopter | My adoption applications |
@@ -440,9 +442,12 @@ A system-wide styling approach using deep background blurs (`backdrop-blur-xl`) 
 - **Tokens**: Curated HSL color palettes defined in `globals.css`.
 - **Implementation**: Uses Tailwind 4's native support for advanced filter stacking.
 
-### C. Immersive Storytelling
-The landing page (`/`) uses the `AnimatedStory` component to guide users through the mission via scroll-based progression, leveraging `framer-motion`'s `useScroll` and `useTransform` hooks.
+### D. Flora Genius Expert Interface
+The `/flora-genius-consultant` page features a sophisticated chat interface integrated with the RAG microservice.
+- **Contextual Reasoning**: Automatically pulls plant names from URL params to initiate expert conversations.
+- **Markdown Support**: Renders complex botanical data with `react-markdown` and `remark-gfm`.
+- **Motion Effects**: Uses `AnimatePresence` for smooth message transitions and loading states.
 
 ---
 
-*Last updated: April 2026 | Green Guard v2.1 — Premium Edition*
+*Last updated: April 20, 2026 | Green Guard v2.2 — Intelligence Update*

@@ -1,7 +1,7 @@
 # Green Guard v2 — Project Requirements Document (PRD)
 
-> **Version:** 2.1 | **Last Updated:** April 19, 2026
-> **Backend Status:** ✅ Complete and optimized | **Frontend Status:** ✅ v2.1 Premium Active
+> **Version:** 2.2 | **Last Updated:** April 20, 2026
+> **Backend Status:** ✅ Complete and optimized | **Frontend Status:** ✅ v2.2 Intelligence Active
 
 ---
 
@@ -336,22 +336,22 @@ PATCH /api/notifications/:id/read
 
 ---
 
-### 3.10 AI Plant Identification
+### 3.10 AI Plant Identification & Expert Consultation
 | Feature | Details |
 |---------|---------|
 | **Identify** | Upload a plant photo → AI returns species, care info, geographic occurrence |
-| **Status** | Check if AI service is configured |
-| **Integration** | Via n8n webhook → PlantNet + Groq (flora-genius module) |
+| **Expert RAG** | Chat-based botanical consultation using Retrieval-Augmented Generation |
+| **Data Source** | 130+ Indian medicinal plants curated in Supabase `pgvector` |
+| **Integration** | Flora Genius Consultant microservice (Gemini 1.5 Flash) |
 
 **Frontend Page Needed:**
 - Plant identifier page (upload image → show results)
-- Integrate into plant creation form (auto-fill species)
+- Flora Genius Expert page (RAG chat interface)
 
-**API Endpoints:**
+**API Endpoints (Consultant Microservice - Port 5002):**
 ```
-POST /api/ai/identify     — multipart: image (single file)
-GET  /api/ai/status       — { available: true/false }
-GET  /api/posts/map       — Returns all plantations for global mapping
+POST /api/consultant/identify     — multipart: image (single file)
+POST /api/consultant/expert       — { scientificName, query }
 ```
 
 ---
@@ -484,12 +484,9 @@ Backend allows requests from the frontend URL set in `.env` (`FRONTEND_URL`). Up
 
 | Item | Status | Notes |
 |------|--------|-------|
-| n8n AI workflow | ✅ Active | flora-genius module fully integrated |
-| GitHub/Google OAuth | 🟡 In Progress | Auth middleware support added |
-| User Reporting | 🟡 In Progress | admin/resolveReport endpoints pending |
+| Flora Genius RAG | ✅ Active | High-fidelity botanical expert service |
+| GitHub/Google OAuth | ✅ Active | Integrated with Supabase Auth |
+| User Reporting | ✅ Active | Platform safety mechanisms in place |
 | Push notifications | 📋 Planned | Via service worker / FCM |
 | Direct messages | 📋 Future | User-to-user chat |
-| Plant search/filter | 📋 Planned | By name, species, distance |
-| Image optimization | 📋 Planned | Compress before upload |
-| Email notifications | 📋 Future | Supabase handles password reset emails already |
 | PWA support | 📋 Future | For mobile-like experience |
