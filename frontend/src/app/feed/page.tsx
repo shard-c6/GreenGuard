@@ -92,7 +92,7 @@ export default function FeedPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#fafbfc] pb-20">
+    <div className="min-h-screen pb-20">
       <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-xl border-b border-gray-100 px-6 py-4 mb-8">
         <div className="max-w-xl mx-auto flex items-center justify-between">
           <div>

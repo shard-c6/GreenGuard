@@ -1,7 +1,7 @@
 # Green Guard v2 — Project Requirements Document (PRD)
 
-> **Version:** 2.0 | **Last Updated:** March 21, 2026
-> **Backend Status:** ✅ Complete and tested | **Frontend Status:** 🟡 In Progress
+> **Version:** 2.1 | **Last Updated:** April 19, 2026
+> **Backend Status:** ✅ Complete and optimized | **Frontend Status:** ✅ v2.1 Premium Active
 
 ---
 
@@ -49,7 +49,7 @@
 
 **API Endpoints:**
 ```
-POST /api/auth/register       — { email, password, username, display_name, role }
+POST /api/auth/register       — { email, password, username, display_name, role, darpan_id?, onboarding_answers? }
 POST /api/auth/login          — { email, password }
 GET  /api/auth/me             — Returns current user profile
 PUT  /api/auth/me             — { display_name?, bio?, phone?, address? }
@@ -111,7 +111,7 @@ GET   /api/admin/stats
 
 **API Endpoints:**
 ```
-POST /api/ngo/onboarding     — { org_name, registration_number, website, mission, address }
+POST /api/ngo/onboarding     — { org_name, registration_number, website, mission, address, darpan_id, onboarding_answers }
 GET  /api/ngo/dashboard      — Returns { total_plants, total_adopted, pending_applications }
 GET  /api/ngo/applications   — ?status=pending|approved|rejected
 GET  /api/ngo/stats          — Returns { chart: [{month, planted, adopted}], totals: {...} }
@@ -146,7 +146,7 @@ GET    /api/plants                        — ?status=available&ngo_id=xxx&page=
 GET    /api/plants/:id
 PUT    /api/plants/:id                    — { plant_name?, species?, description?, address? }
 DELETE /api/plants/:id
-GET    /api/plants/nearby                 — ?lat=19.076&lng=72.877&radius=10000
+GET    /api/plants/nearby                 — ?lat=19.076&lng=72.877&radius=10000 (Uses PostGIS ST_DistanceSphere)
 GET    /api/plants/map
 ```
 
@@ -341,7 +341,7 @@ PATCH /api/notifications/:id/read
 |---------|---------|
 | **Identify** | Upload a plant photo → AI returns species, care info, geographic occurrence |
 | **Status** | Check if AI service is configured |
-| **Integration** | Via n8n webhook → PlantNet + Groq |
+| **Integration** | Via n8n webhook → PlantNet + Groq (flora-genius module) |
 
 **Frontend Page Needed:**
 - Plant identifier page (upload image → show results)
@@ -351,6 +351,7 @@ PATCH /api/notifications/:id/read
 ```
 POST /api/ai/identify     — multipart: image (single file)
 GET  /api/ai/status       — { available: true/false }
+GET  /api/posts/map       — Returns all plantations for global mapping
 ```
 
 ---
@@ -483,8 +484,9 @@ Backend allows requests from the frontend URL set in `.env` (`FRONTEND_URL`). Up
 
 | Item | Status | Notes |
 |------|--------|-------|
-| n8n AI workflow | 🟡 Pending | Webhook URL needed |
-| Google OAuth login | 📋 Planned | Can be added to Supabase Auth later |
+| n8n AI workflow | ✅ Active | flora-genius module fully integrated |
+| GitHub/Google OAuth | 🟡 In Progress | Auth middleware support added |
+| User Reporting | 🟡 In Progress | admin/resolveReport endpoints pending |
 | Push notifications | 📋 Planned | Via service worker / FCM |
 | Direct messages | 📋 Future | User-to-user chat |
 | Plant search/filter | 📋 Planned | By name, species, distance |

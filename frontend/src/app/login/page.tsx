@@ -49,8 +49,7 @@ export default function LoginPage() {
       <AtmosphericBackground active={true} />
       <div className="auth-card">
         <div className="auth-logo">
-          <span className="logo-icon">🌿</span>
-          <span>Green Guard</span>
+          <img src="/logo.png" alt="Green Guard" className="logo-icon" style={{ height: '100px', width: 'auto' }} />
         </div>
         <h1 className="auth-title">Welcome Back</h1>
         <p className="auth-subtitle">Sign in to continue to your dashboard</p>

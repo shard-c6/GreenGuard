@@ -1,4 +1,6 @@
 'use client';
+import { MapPin, Sprout, Leaf } from "lucide-react";
+
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -49,11 +51,6 @@ export default function PlantsPage() {
 
   return (
     <div className="page-container max-w-7xl mx-auto p-6 md:p-12 relative">
-      {/* Background Glows */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-50 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-50/50 rounded-full blur-[120px]" />
-      </div>
 
       <div className="relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12">
@@ -61,7 +58,7 @@ export default function PlantsPage() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            <h1 className="text-4xl font-black text-emerald-950 mb-2">🌿 Available Plants</h1>
+            <h1 className="text-4xl font-black text-emerald-950 mb-2"><Leaf className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Available Plants</h1>
             <p className="text-emerald-800/60 text-lg font-medium">Find your next green companion from verified NGOs</p>
           </motion.div>
 
@@ -95,7 +92,7 @@ export default function PlantsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <EmptyState icon={<span className="text-6xl mb-4">🌱</span>} title="No plants found" description="Try adjusting your filters or check back later." />
+            <EmptyState icon={<span className="text-6xl mb-4"><Sprout className="inline-block w-5 h-5 mr-1 align-text-bottom" /></span>} title="No plants found" description="Try adjusting your filters or check back later." />
           </motion.div>
         ) : (
           <>
@@ -130,7 +127,7 @@ export default function PlantsPage() {
                           <div className="space-y-3">
                             {plant.address && (
                               <p className="text-sm text-emerald-900/60 font-medium flex items-center gap-2">
-                                <span className="text-emerald-400">📍</span> {plant.address}
+                                <span className="text-emerald-400"><MapPin className="inline-block w-5 h-5 mr-1 align-text-bottom" /></span> {plant.address}
                               </p>
                             )}
                             {plant.profiles?.display_name && (

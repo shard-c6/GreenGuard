@@ -1,4 +1,6 @@
 'use client';
+import { Sprout, Globe, TreePine, Users, ClipboardList, Megaphone } from "lucide-react";
+
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -61,11 +63,6 @@ export default function NgoDashboardPage() {
 
   return (
     <div className="page-container max-w-6xl mx-auto p-6 md:p-12 relative">
-      {/* Background Glows */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] bg-emerald-100/40 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[45%] h-[45%] bg-blue-100/30 rounded-full blur-[120px]" />
-      </div>
 
       <header className="mb-12 relative z-10">
         <motion.h1 
@@ -73,7 +70,7 @@ export default function NgoDashboardPage() {
           animate={{ opacity: 1, x: 0 }}
           className="text-4xl font-black text-emerald-950 mb-2"
         >
-          🌍 NGO Dashboard
+          <Globe className="inline-block w-10 h-10 mr-2 align-bottom text-emerald-600" /> NGO Dashboard
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0 }}
@@ -88,9 +85,9 @@ export default function NgoDashboardPage() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 relative z-10">
         {[
-          { label: 'Total Plants', value: dashboard?.total_plants || 0, color: 'bg-white', icon: '🌳', link: '/dashboard/ngo/plants' },
-          { label: 'Adopted', value: dashboard?.total_adopted || 0, color: 'bg-white', icon: '🤝' },
-          { label: 'Pending Apps', value: dashboard?.pending_applications || 0, color: 'bg-emerald-50', icon: '📋', highlight: !!dashboard?.pending_applications, link: '/dashboard/ngo/applications' },
+          { label: 'Total Plants', value: dashboard?.total_plants || 0, color: 'bg-white', icon: TreePine, link: '/dashboard/ngo/plants' },
+          { label: 'Adopted', value: dashboard?.total_adopted || 0, color: 'bg-white', icon: Users },
+          { label: 'Pending Apps', value: dashboard?.pending_applications || 0, color: 'bg-emerald-50', icon: ClipboardList, highlight: !!dashboard?.pending_applications, link: '/dashboard/ngo/applications' },
         ].map((s, i) => (
           <motion.div
             key={i}
@@ -103,7 +100,7 @@ export default function NgoDashboardPage() {
               className={`${s.color} p-8 rounded-[2.5rem] border border-white shadow-xl shadow-emerald-900/5 block group hover:scale-[1.02] transition-all relative overflow-hidden`}
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
-              <div className="absolute top-0 right-0 p-6 text-4xl opacity-20 group-hover:scale-110 transition-transform">{s.icon}</div>
+              <div className="absolute top-0 right-0 p-6 text-emerald-100 group-hover:scale-110 transition-transform"><s.icon size={64} /></div>
               <p className="text-sm font-bold text-emerald-800/40 uppercase tracking-widest mb-1">{s.label}</p>
               <p className={`text-4xl font-black ${s.highlight ? 'text-emerald-600' : 'text-emerald-950'}`}>
                 {s.value}
@@ -126,9 +123,9 @@ export default function NgoDashboardPage() {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
         {[
-          { icon: '🌱', title: 'Add New Plant', desc: 'List a new plant for adoption', link: '/dashboard/ngo/plants/new' },
-          { icon: '📝', title: 'Applications', desc: 'Approve or reject requests', link: '/dashboard/ngo/applications' },
-          { icon: '📢', title: 'Create Post', desc: 'Share community updates', link: '/feed/new' },
+          { icon: Sprout, title: 'Add New Plant', desc: 'List a new plant for adoption', link: '/dashboard/ngo/plants/new' },
+          { icon: ClipboardList, title: 'Applications', desc: 'Approve or reject requests', link: '/dashboard/ngo/applications' },
+          { icon: Megaphone, title: 'Create Post', desc: 'Share community updates', link: '/feed/new' },
         ].map((a, i) => (
           <motion.div
             key={i}
@@ -141,7 +138,7 @@ export default function NgoDashboardPage() {
               className="bg-white/80 backdrop-blur-md rounded-[2.5rem] border border-white shadow-xl shadow-emerald-900/5 p-10 flex flex-col items-center text-center group hover:shadow-2xl hover:shadow-emerald-200 transition-all"
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
-              <div className="text-5xl mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform">{a.icon}</div>
+              <div className="text-emerald-500 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform"><a.icon size={48} /></div>
               <h3 className="text-xl font-black text-emerald-950 mb-2">{a.title}</h3>
               <p className="text-emerald-800/60 text-sm font-medium">{a.desc}</p>
             </Link>
