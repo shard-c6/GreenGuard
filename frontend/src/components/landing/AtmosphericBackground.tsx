@@ -21,8 +21,8 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
   });
 
   useEffect(() => {
-    // Generate particles only on the client to avoid hydration mismatch
-    const generated = Array.from({ length: 60 }).map((_, i) => ({
+    // Generate fewer particles on the client to drastically reduce scroll repaints
+    const generated = Array.from({ length: 20 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -60,6 +60,7 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
       {/* Mesh Gradient Overlays - More vibrant */}
       <div className="absolute inset-0 opacity-20 mix-blend-soft-light">
         <motion.div
+          style={{ willChange: "transform" }}
           animate={{
             scale: [1, 1.3, 1],
             x: [0, 100, 0],
@@ -73,6 +74,7 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
           className="absolute -top-1/4 -left-1/4 w-full h-full bg-emerald-950 blur-[180px] rounded-full opacity-40"
         />
         <motion.div
+          style={{ willChange: "transform" }}
           animate={{
             scale: [1.3, 1, 1.3],
             x: [0, -100, 0],
@@ -97,7 +99,7 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
             top: `${p.y}%`,
             width: p.size,
             height: p.size,
-            filter: 'blur(1px)',
+            willChange: 'transform, opacity',
           }}
           animate={{
             y: [0, -150, 0],
@@ -117,7 +119,8 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
       <motion.div
         style={{
           opacity: active ? 0.35 : useTransform(smoothProgress, [0, 0.5, 1], [0.2, 0.4, 0.2]),
-          rotate: useTransform(smoothProgress, [0, 1], [35, 45])
+          rotate: useTransform(smoothProgress, [0, 1], [35, 45]),
+          willChange: 'transform, opacity'
         }}
         className="absolute top-[-40%] left-[-10%] w-[150%] h-[120%] bg-gradient-to-b from-emerald-900/40 to-transparent pointer-events-none blur-3xl"
       />
