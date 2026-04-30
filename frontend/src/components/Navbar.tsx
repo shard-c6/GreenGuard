@@ -91,7 +91,7 @@ export default function Navbar() {
       <div className="navbar-inner">
         {/* Logo */}
         <Link href="/" className="navbar-logo">
-          <img src="/logo.png" alt="Green Guard Logo" className="logo-icon" style={{ height: '32px', width: 'auto' }} />
+          <Image src="/logo.png" alt="Green Guard Logo" width={120} height={32} className="logo-icon h-8 w-auto object-contain" priority />
         </Link>
 
         {/* Desktop Nav */}
