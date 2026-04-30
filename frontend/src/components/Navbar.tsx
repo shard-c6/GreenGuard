@@ -79,7 +79,7 @@ export default function Navbar() {
       <nav className="navbar">
         <div className="navbar-inner">
           <Link href="/" className="navbar-logo">
-            <Image src="/logo.png" alt="Green Guard Logo" width={128} height={32} className="logo-icon h-8 w-auto" priority />
+            <Image src="/logo.png" alt="Green Guard Logo" width={160} height={48} className="logo-icon h-12 w-auto object-contain" priority />
           </Link>
         </div>
       </nav>
@@ -91,7 +91,7 @@ export default function Navbar() {
       <div className="navbar-inner">
         {/* Logo */}
         <Link href="/" className="navbar-logo">
-          <Image src="/logo.png" alt="Green Guard Logo" width={120} height={32} className="logo-icon h-8 w-auto object-contain" priority />
+          <Image src="/logo.png" alt="Green Guard Logo" width={160} height={48} className="logo-icon h-12 w-auto object-contain" priority />
         </Link>
 
         {/* Desktop Nav */}
