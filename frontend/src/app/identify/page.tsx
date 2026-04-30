@@ -90,7 +90,9 @@ export default function AIIdentifyPage() {
               boxShadow: '0 8px 30px rgba(16, 163, 74, 0.3)'
             }}
           >
-            <Sparkles size={40} color="white" />
+            <div style={{ position: 'relative', width: 60, height: 60 }}>
+              <Image src="/flora-genius-logo.png" alt="Flora Genius" fill className="object-contain brightness-0 invert" />
+            </div>
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -154,10 +156,10 @@ export default function AIIdentifyPage() {
                       <Upload size={32} color="var(--gg-green)" />
                     </div>
                     <p style={{ fontSize: '1.1rem', fontWeight: 800, marginBottom: '0.5rem' }}>Drop your leaf photo</p>
-                    <p style={{ fontSize: '0.9rem', color: 'var(--muted-foreground)' }}>JPEG, PNG supported</p>
+                    <p style={{ fontSize: '0.9rem', color: 'var(--muted-foreground)' }}>JPEG, PNG, WebP supported</p>
                   </div>
                 )}
-                <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
+                <input ref={fileInputRef} type="file" accept="image/jpeg,image/png,image/webp" onChange={handleFileChange} className="hidden" />
               </div>
               
               <div className="flex flex-col gap-4 mt-8">

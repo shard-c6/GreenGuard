@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, Suspense } from 'react';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { floraConsultantApi } from '@/services/consultant.service';
 import Link from 'next/link';
@@ -84,7 +85,9 @@ function ChatContent() {
             fontSize: '1.75rem',
             boxShadow: '0 8px 20px rgba(16, 185, 129, 0.3)'
           }}>
-            🧪
+            <div style={{ position: 'relative', width: '70%', height: '70%' }}>
+              <Image src="/flora-genius-logo.png" alt="Flora Genius" fill className="object-contain brightness-0 invert" />
+            </div>
           </div>
           <div>
             <h1 style={{ fontSize: '1.5rem', fontWeight: 900, margin: 0, letterSpacing: '-0.02em' }}>Flora Genius <span style={{ color: 'var(--gg-green)' }}>Expert</span></h1>
