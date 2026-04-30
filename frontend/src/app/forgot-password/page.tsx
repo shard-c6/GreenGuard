@@ -3,6 +3,7 @@ import { Mail } from "lucide-react";
 
 
 import { useState, FormEvent } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { authApi } from '@/services/api';
 import AtmosphericBackground from '@/components/landing/AtmosphericBackground';
@@ -31,7 +32,9 @@ export default function ForgotPasswordPage() {
     <div className="auth-page">
       <AtmosphericBackground active={true} />
       <div className="auth-card">
-        <div className="auth-logo"><img src="/logo.png" alt="Green Guard" className="logo-icon" style={{ height: '64px', width: 'auto' }} /></div>
+        <div className="auth-logo" style={{ position: 'relative', height: '64px' }}>
+          <Image src="/logo.png" alt="Green Guard" fill className="object-contain" />
+        </div>
         <h1 className="auth-title">Reset Password</h1>
         <p className="auth-subtitle">We&apos;ll send you a link to reset your password</p>
         {error && <div className="auth-error">{error}</div>}

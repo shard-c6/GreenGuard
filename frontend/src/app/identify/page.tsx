@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 
 import { useState, useEffect, FormEvent, useRef } from 'react';
 import { useRouter } from 'next/navigation';
@@ -56,8 +57,9 @@ export default function AIIdentifyPage() {
       fd.append('image', image);
       const res = await floraConsultantApi.identify(fd);
       setResult(res.data as AiResult);
-    } catch (err: any) {
-      setError(err.response?.data?.error || 'Identification failed. Please ensure the image is a clear leaf photo.');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Identification failed. Please ensure the image is a clear leaf photo.';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -145,7 +147,7 @@ export default function AIIdentifyPage() {
                 className="hover:scale-[1.02] active:scale-[0.98]"
               >
                 {preview ? (
-                  <img src={preview} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute' }} />
+                  <Image src={preview} alt="Preview" fill className="object-cover" />
                 ) : (
                   <div className="flex flex-col items-center text-center">
                     <div style={{ padding: '1.5rem', background: 'var(--card)', borderRadius: '50%', marginBottom: '1.5rem', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>

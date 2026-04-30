@@ -138,7 +138,7 @@ export default function Home() {
             Become a Guardian.
           </h2>
           <p className="text-emerald-100/70 text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-sm">
-            Join thousands of others making a real, measurable impact on our planet's future. 
+            Join thousands of others making a real, measurable impact on our planet&apos;s future. 
             Start your legacy today.
           </p>
           <Link href="/register" className="bg-emerald-500 text-emerald-950 px-12 py-5 rounded-full font-black text-xl hover:bg-emerald-400 transition-all shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:shadow-[0_0_60px_rgba(16,185,129,0.6)] hover:scale-105 inline-block">

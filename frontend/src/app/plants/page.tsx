@@ -1,5 +1,6 @@
 'use client';
 import { MapPin, Sprout, Leaf } from "lucide-react";
+import Image from 'next/image';
 
 
 import { useEffect, useState } from 'react';
@@ -27,7 +28,7 @@ export default function PlantsPage() {
     if (!authLoading && !isAuthenticated) { router.push('/login'); return; }
     if (!isAuthenticated) return;
 
-    setLoading(true);
+    // Handled by default state and finally block
     plantsApi.getPlants({
       page,
       limit,
@@ -109,11 +110,12 @@ export default function PlantsPage() {
                     <Link href={`/plants/${plant.id}`} className="block group">
                       <div className="bg-white/80 backdrop-blur-md rounded-[2.5rem] border border-white shadow-xl shadow-emerald-900/5 overflow-hidden group-hover:shadow-2xl group-hover:shadow-emerald-200 transition-all h-full">
                         <div className="relative h-64 overflow-hidden">
-                          <img
+                          <Image
                             src={plant.image_urls?.[0] || '/placeholder-plant.jpg'}
                             alt={plant.plant_name}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400&q=80'; }}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           />
                           <div className="absolute top-4 right-4 z-10">
                             <Badge status={plant.adoption_status} />

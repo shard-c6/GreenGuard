@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent, useEffect } from 'react';
+import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { ngoApi } from '@/services/api';
 import { ChevronRight, ChevronLeft, CheckCircle2, Building2, ClipboardList, ShieldCheck } from 'lucide-react';
@@ -54,8 +54,9 @@ export default function NgoOnboardingPage() {
         onboarding_answers: answers
       });
       router.push('/ngo/onboarding/status');
-    } catch (err: any) {
-      setError(err.response?.data?.error?.message || 'Onboarding failed. Please check your inputs.');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Onboarding failed. Please check your inputs.';
+      setError(errorMessage);
       setStep(1); // Go back to start on error
     } finally {
       setLoading(false);

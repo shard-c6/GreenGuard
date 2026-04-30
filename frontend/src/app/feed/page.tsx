@@ -8,7 +8,8 @@ import { feedApi } from '@/services/api';
 import type { Post } from '@/types';
 import EmptyState from '@/components/ui/EmptyState';
 import { CardSkeleton } from '@/components/ui/Skeleton';
-import { Heart, MessageCircle, Bookmark, Share2, MapPin, TreePine, MoreHorizontal, UserPlus, CheckCircle2 } from 'lucide-react';
+import { Heart, MessageCircle, Bookmark, Share2, MapPin, TreePine, MoreHorizontal, CheckCircle2 } from 'lucide-react';
+import Image from 'next/image';
 
 function timeAgo(date: string) {
   const seconds = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
@@ -144,7 +145,7 @@ export default function FeedPage() {
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center font-black text-white text-lg shadow-lg shadow-emerald-100">
                       {post.profiles?.avatar_url ? (
-                        <img src={post.profiles.avatar_url} alt="" className="w-full h-full object-cover rounded-2xl" />
+                        <Image src={post.profiles.avatar_url} alt="" fill className="object-cover rounded-2xl" />
                       ) : (post.profiles?.display_name || post.profiles?.username || 'U')[0].toUpperCase()}
                     </div>
                     <div>
@@ -193,7 +194,7 @@ export default function FeedPage() {
                         <div key={j} className={`relative group/img overflow-hidden ${
                           post.image_urls.length === 3 && j === 0 ? 'row-span-2' : ''
                         }`}>
-                          <img src={url} alt="" className="w-full h-full object-cover aspect-square transition-transform duration-700 group-hover/img:scale-105" />
+                          <Image src={url} alt="" fill className="object-cover transition-transform duration-700 group-hover/img:scale-105" />
                           <div className="absolute inset-0 bg-black/5 group-hover/img:bg-black/0 transition-colors" />
                         </div>
                       ))}
