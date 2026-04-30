@@ -35,3 +35,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#vs code warnign supress
+frontend/final_lint_check.txt
+frontend/fresh_lint_output.txt
