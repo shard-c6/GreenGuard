@@ -1,5 +1,6 @@
 'use client';
 import { MapPin, Sprout } from "lucide-react";
+import Image from 'next/image';
 
 
 import { useEffect, useState } from 'react';
@@ -66,10 +67,12 @@ export default function PlantDetailPage() {
           animate={{ opacity: 1, scale: 1 }}
         >
           <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl shadow-emerald-900/10 border-4 border-white mb-6 relative group">
-            <img
+            <Image
               src={plant.image_urls?.[selectedImage] || 'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=1000&q=80'}
               alt={plant.plant_name}
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              fill
+              className="object-cover transition-transform duration-1000 group-hover:scale-105"
+              priority
             />
           </div>
           {plant.image_urls.length > 1 && (
@@ -83,7 +86,7 @@ export default function PlantDetailPage() {
                     i === selectedImage ? 'border-emerald-500 scale-105 shadow-lg shadow-emerald-100' : 'border-white opacity-60 hover:opacity-100'
                   }`}
                 >
-                  <img src={url} alt="" className="w-full h-full object-cover" />
+                  <Image src={url} alt="" width={96} height={96} className="w-full h-full object-cover" />
                 </motion.div>
               ))}
             </div>
@@ -224,7 +227,7 @@ export default function PlantDetailPage() {
                 {r.notes && (
                   <div>
                     <p className="text-[10px] font-black text-emerald-800/40 uppercase tracking-widest mb-1">Notes</p>
-                    <p className="text-emerald-900/70 font-medium italic">"{r.notes}"</p>
+                    <p className="text-emerald-900/70 font-medium italic">&quot;{r.notes}&quot;</p>
                   </div>
                 )}
               </motion.div>

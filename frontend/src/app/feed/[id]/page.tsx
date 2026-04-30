@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, type FormEvent } from 'react';
+import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/lib/auth';
@@ -74,7 +75,7 @@ export default function PostDetailPage() {
         <div className="post-header">
           <div className="post-avatar">
             {post.profiles?.avatar_url ? (
-              <img src={post.profiles.avatar_url} alt="" />
+              <Image src={post.profiles.avatar_url} alt="" fill className="object-cover rounded-full" />
             ) : (
               <span>{(post.profiles?.display_name || 'U')[0].toUpperCase()}</span>
             )}
@@ -89,7 +90,11 @@ export default function PostDetailPage() {
         {post.content && <p className="post-content">{post.content}</p>}
         {post.image_urls?.length > 0 && (
           <div className={`post-images ${post.image_urls.length > 1 ? 'grid-2' : 'grid-1'}`}>
-            {post.image_urls.map((url, i) => <img key={i} src={url} alt="" />)}
+            {post.image_urls.map((url, i) => (
+              <div key={i} className="relative aspect-video">
+                <Image src={url} alt="" fill className="object-cover rounded-lg" />
+              </div>
+            ))}
           </div>
         )}
       </div>
