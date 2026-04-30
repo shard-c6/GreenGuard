@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/lib/auth';
@@ -48,8 +49,8 @@ export default function LoginPage() {
     <div className="auth-page">
       <AtmosphericBackground active={true} />
       <div className="auth-card">
-        <div className="auth-logo">
-          <img src="/logo.png" alt="Green Guard" className="logo-icon" style={{ height: '100px', width: 'auto' }} />
+        <div className="auth-logo" style={{ position: 'relative', height: '100px' }}>
+          <Image src="/logo.png" alt="Green Guard" fill className="object-contain" />
         </div>
         <h1 className="auth-title">Welcome Back</h1>
         <p className="auth-subtitle">Sign in to continue to your dashboard</p>

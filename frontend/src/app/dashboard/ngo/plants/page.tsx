@@ -1,5 +1,6 @@
 'use client';
 import { Sprout } from "lucide-react";
+import Image from 'next/image';
 
 
 import { useEffect, useState } from 'react';
@@ -42,8 +43,9 @@ export default function MyPlantsPage() {
     try {
       await plantsApi.deletePlant(id);
       setPlants(plants.filter(p => p.id !== id));
-    } catch (err: any) {
-      alert(err.response?.data?.error?.message || 'Failed to delete plant');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to delete plant';
+      alert(errorMessage);
     }
   };
 
@@ -66,7 +68,7 @@ export default function MyPlantsPage() {
       <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div>
           <h1 className="page-title"><Sprout className="inline-block w-5 h-5 mr-1 align-text-bottom" /> My Plants</h1>
-          <p className="page-subtitle">Manage your organization's listed plants</p>
+          <p className="page-subtitle">Manage your organization&apos;s listed plants</p>
         </div>
         <Link href="/dashboard/ngo/plants/new" className="btn btn-primary">
           + Add New Plant
@@ -85,10 +87,11 @@ export default function MyPlantsPage() {
           {plants.map(plant => (
             <div key={plant.id} className="card overflow-hidden">
               <div style={{ height: 160, overflow: 'hidden', position: 'relative' }}>
-                <img 
+                <Image 
                   src={plant.image_urls?.[0] || 'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400&q=80'} 
                   alt={plant.plant_name}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  fill
+                  className="object-cover"
                 />
                 <div style={{ position: 'absolute', top: 12, right: 12 }}>
                   <Badge status={plant.adoption_status} />

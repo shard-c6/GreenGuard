@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, FormEvent, useEffect } from 'react';
+import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { feedApi } from '@/services/api';
 import { useAuth } from '@/lib/auth';
 import ImageUpload from '@/components/ui/ImageUpload';
-import { MapPin, Navigation, Info, ChevronLeft, Send, TreePine } from 'lucide-react';
+import { Navigation, Info, ChevronLeft, Send, TreePine } from 'lucide-react';
 
 export default function NewPostPage() {
   const router = useRouter();
@@ -61,8 +61,9 @@ export default function NewPostPage() {
 
       await feedApi.createPost(fd);
       router.push('/feed');
-    } catch (err: any) {
-      setError(err.response?.data?.error?.message || 'Failed to create post');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to create post';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -121,7 +122,7 @@ export default function NewPostPage() {
                     </div>
                     <div>
                       <p className="font-bold text-gray-900">Plantation Update</p>
-                      <p className="text-xs text-gray-500">Toggle this if you're reporting a new plantation</p>
+                      <p className="text-xs text-gray-500">Toggle this if you&apos;re reporting a new plantation</p>
                     </div>
                   </div>
                   <button 

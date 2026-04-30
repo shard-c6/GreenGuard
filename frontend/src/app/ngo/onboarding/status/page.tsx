@@ -52,17 +52,17 @@ export default function NgoStatusPage() {
         <div className="bg-white/5 rounded-2xl p-6 mb-8 border border-white/5 italic text-white/70 leading-relaxed">
           {status === 'pending' && (
             <>
-              "Quality is our priority. Our administrators are currently reviewing your Darpan ID and questionnaire responses to ensure the integrity of our green community."
+              &quot;Quality is our priority. Our administrators are currently reviewing your Darpan ID and questionnaire responses to ensure the integrity of our green community.&quot;
             </>
           )}
           {status === 'approved' && (
             <>
-              "Your organization has been successfully verified. You now have full access to list plants, manage adoptions, and post plantation updates."
+              &quot;Your organization has been successfully verified. You now have full access to list plants, manage adoptions, and post plantation updates.&quot;
             </>
           )}
           {status === 'rejected' && (
             <>
-              "Unfortunately, we couldn't verify your organization with the details provided. This might be due to an invalid Darpan ID or incomplete mission details."
+              &quot;Unfortunately, we couldn&apos;t verify your organization with the details provided. This might be due to an invalid Darpan ID or incomplete mission details.&quot;
             </>
           )}
         </div>

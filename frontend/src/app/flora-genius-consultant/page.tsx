@@ -50,7 +50,8 @@ function ChatContent() {
     try {
       const response = await floraConsultantApi.getExpertAdvice(plantName || 'General Plants', userMessage);
       setMessages(prev => [...prev, { role: 'assistant', content: response.answer }]);
-    } catch (error: any) {
+    } catch (error) {
+      console.error('Expert consultation error:', error);
       setMessages(prev => [...prev, { role: 'assistant', content: "I'm sorry, I encountered an error while consulting the botanical database. Please try again." }]);
     } finally {
       setLoading(false);

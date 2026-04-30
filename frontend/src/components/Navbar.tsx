@@ -7,6 +7,17 @@ import { useAuth } from '@/lib/auth';
 import { notificationsApi } from '@/services/api';
 import { Sun, Moon, Bell } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import Image from 'next/image';
+
+const NavLink = ({ href, children, pathname, onClick }: { href: string; children: React.ReactNode; pathname: string; onClick?: () => void }) => (
+  <Link
+    href={href}
+    className={`navbar-link ${pathname === href || pathname.startsWith(href + '/') ? 'active' : ''}`}
+    onClick={onClick}
+  >
+    {children}
+  </Link>
+);
 
 export default function Navbar() {
   const { user, isAuthenticated, loading, logout } = useAuth();
@@ -54,16 +65,6 @@ export default function Navbar() {
     router.push('/login');
   };
 
-  const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-    <Link
-      href={href}
-      className={`navbar-link ${pathname === href || pathname.startsWith(href + '/') ? 'active' : ''}`}
-      onClick={() => setMobileOpen(false)}
-    >
-      {children}
-    </Link>
-  );
-
   const getDashboardLink = () => {
     if (!user) return '/dashboard';
     switch (user.role) {
@@ -78,7 +79,7 @@ export default function Navbar() {
       <nav className="navbar">
         <div className="navbar-inner">
           <Link href="/" className="navbar-logo">
-            <img src="/logo.png" alt="Green Guard Logo" className="logo-icon" style={{ height: '32px', width: 'auto' }} />
+            <Image src="/logo.png" alt="Green Guard Logo" width={128} height={32} className="logo-icon h-8 w-auto" priority />
           </Link>
         </div>
       </nav>
@@ -98,11 +99,11 @@ export default function Navbar() {
           <div className="navbar-links">
             {user.role === 'adopter' && (
               <>
-                <NavLink href="/plants">Browse Plants</NavLink>
-                <NavLink href="/map">Plant Map</NavLink>
-                <NavLink href="/identify">AI Identify</NavLink>
-                <NavLink href="/flora-genius-consultant">AI Expert</NavLink>
-                <NavLink href="/dashboard/adoptions">My Adoptions</NavLink>
+                <NavLink href="/plants" pathname={pathname} onClick={() => setMobileOpen(false)}>Browse Plants</NavLink>
+                <NavLink href="/map" pathname={pathname} onClick={() => setMobileOpen(false)}>Plant Map</NavLink>
+                <NavLink href="/identify" pathname={pathname} onClick={() => setMobileOpen(false)}>AI Identify</NavLink>
+                <NavLink href="/flora-genius-consultant" pathname={pathname} onClick={() => setMobileOpen(false)}>AI Expert</NavLink>
+                <NavLink href="/dashboard/adoptions" pathname={pathname} onClick={() => setMobileOpen(false)}>My Adoptions</NavLink>
               </>
             )}
 
@@ -110,21 +111,21 @@ export default function Navbar() {
               <>
                 {user.ngo_profile?.status === 'approved' ? (
                   <>
-                    <NavLink href="/dashboard/ngo">Dashboard</NavLink>
-                    <NavLink href="/dashboard/ngo/plants">My Plants</NavLink>
-                    <NavLink href="/dashboard/ngo/applications">Applications</NavLink>
+                    <NavLink href="/dashboard/ngo" pathname={pathname} onClick={() => setMobileOpen(false)}>Dashboard</NavLink>
+                    <NavLink href="/dashboard/ngo/plants" pathname={pathname} onClick={() => setMobileOpen(false)}>My Plants</NavLink>
+                    <NavLink href="/dashboard/ngo/applications" pathname={pathname} onClick={() => setMobileOpen(false)}>Applications</NavLink>
                   </>
                 ) : (
-                  <NavLink href="/ngo/onboarding/status">Approval Status</NavLink>
+                  <NavLink href="/ngo/onboarding/status" pathname={pathname} onClick={() => setMobileOpen(false)}>Approval Status</NavLink>
                 )}
               </>
             )}
 
             {user.role === 'admin' && (
               <>
-                <NavLink href="/dashboard/admin">Admin Panel</NavLink>
-                <NavLink href="/map">Global Map</NavLink>
-                <NavLink href="/feed">Community Feed</NavLink>
+                <NavLink href="/dashboard/admin" pathname={pathname} onClick={() => setMobileOpen(false)}>Admin Panel</NavLink>
+                <NavLink href="/map" pathname={pathname} onClick={() => setMobileOpen(false)}>Global Map</NavLink>
+                <NavLink href="/feed" pathname={pathname} onClick={() => setMobileOpen(false)}>Community Feed</NavLink>
               </>
             )}
           </div>
@@ -160,7 +161,7 @@ export default function Navbar() {
                 >
                   <div className="profile-avatar">
                     {user?.avatar_url ? (
-                      <img src={user.avatar_url} alt={user.display_name || user.username} />
+                      <Image src={user.avatar_url} alt={user.display_name || user.username} width={32} height={32} className="rounded-full object-cover" />
                     ) : (
                       <span>{(user?.display_name || user?.username || 'U')[0].toUpperCase()}</span>
                     )}
@@ -229,11 +230,11 @@ export default function Navbar() {
         <div className="navbar-mobile">
           {user.role === 'adopter' && (
             <>
-              <NavLink href="/plants">Browse Plants</NavLink>
-              <NavLink href="/map">Plant Map</NavLink>
-              <NavLink href="/identify">AI Identify</NavLink>
-              <NavLink href="/flora-genius-consultant">AI Expert</NavLink>
-              <NavLink href="/dashboard/adoptions">My Adoptions</NavLink>
+              <NavLink href="/plants" pathname={pathname} onClick={() => setMobileOpen(false)}>Browse Plants</NavLink>
+              <NavLink href="/map" pathname={pathname} onClick={() => setMobileOpen(false)}>Plant Map</NavLink>
+              <NavLink href="/identify" pathname={pathname} onClick={() => setMobileOpen(false)}>AI Identify</NavLink>
+              <NavLink href="/flora-genius-consultant" pathname={pathname} onClick={() => setMobileOpen(false)}>AI Expert</NavLink>
+              <NavLink href="/dashboard/adoptions" pathname={pathname} onClick={() => setMobileOpen(false)}>My Adoptions</NavLink>
             </>
           )}
 
@@ -241,24 +242,24 @@ export default function Navbar() {
             <>
               {user.ngo_profile?.status === 'approved' ? (
                 <>
-                  <NavLink href="/dashboard/ngo">Dashboard</NavLink>
-                  <NavLink href="/dashboard/ngo/plants">My Plants</NavLink>
-                  <NavLink href="/dashboard/ngo/applications">Applications</NavLink>
+                  <NavLink href="/dashboard/ngo" pathname={pathname} onClick={() => setMobileOpen(false)}>Dashboard</NavLink>
+                  <NavLink href="/dashboard/ngo/plants" pathname={pathname} onClick={() => setMobileOpen(false)}>My Plants</NavLink>
+                  <NavLink href="/dashboard/ngo/applications" pathname={pathname} onClick={() => setMobileOpen(false)}>Applications</NavLink>
                 </>
               ) : (
-                <NavLink href="/ngo/onboarding/status">Approval Status</NavLink>
+                <NavLink href="/ngo/onboarding/status" pathname={pathname} onClick={() => setMobileOpen(false)}>Approval Status</NavLink>
               )}
             </>
           )}
 
           {user.role === 'admin' && (
             <>
-              <NavLink href="/dashboard/admin">Admin Panel</NavLink>
-              <NavLink href="/map">Global Map</NavLink>
-              <NavLink href="/feed">Community Feed</NavLink>
+              <NavLink href="/dashboard/admin" pathname={pathname} onClick={() => setMobileOpen(false)}>Admin Panel</NavLink>
+              <NavLink href="/map" pathname={pathname} onClick={() => setMobileOpen(false)}>Global Map</NavLink>
+              <NavLink href="/feed" pathname={pathname} onClick={() => setMobileOpen(false)}>Community Feed</NavLink>
             </>
           )}
-          <NavLink href="/notifications">Notifications {unreadCount > 0 && `(${unreadCount})`}</NavLink>
+          <NavLink href="/notifications" pathname={pathname} onClick={() => setMobileOpen(false)}>Notifications {unreadCount > 0 && `(${unreadCount})`}</NavLink>
         </div>
       )}
     </nav>

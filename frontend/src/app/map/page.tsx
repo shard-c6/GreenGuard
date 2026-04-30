@@ -6,7 +6,7 @@ import { useAuth } from '@/lib/auth';
 import { plantsApi, feedApi } from '@/services/api';
 import type { MapPlant, Post } from '@/types';
 import dynamic from 'next/dynamic';
-import { Map as MapIcon, Info, TreePine, MapPin } from 'lucide-react';
+import { Map as MapIcon, Info, TreePine } from 'lucide-react';
 
 // Dynamic import for Leaflet (not SSR-compatible)
 const LeafletMap = dynamic(() => import('@/components/map/LeafletMap'), { 
@@ -29,8 +29,8 @@ export default function MapPage() {
   useEffect(() => {
     if (!authLoading && !isAuthenticated) { router.push('/login'); return; }
     if (!isAuthenticated) return;
-
-    setLoading(true);
+    
+    // No need to set loading here as it's true by default and handled in finally
     Promise.all([
       plantsApi.getMapPlants(),
       feedApi.getMapPlantations(),
