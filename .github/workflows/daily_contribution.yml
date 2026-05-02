@@ -1,0 +1,27 @@
+name: Daily Contribution Streak
+
+on:
+  schedule:
+    - cron: '30 23 * * *' # Runs at 23:30 UTC every day
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  maintain-streak:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run Maintain Streak Script
+        run: |
+          chmod +x scripts/maintain_streak.sh
+          ./scripts/maintain_streak.sh
