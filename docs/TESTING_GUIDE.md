@@ -114,5 +114,5 @@ node scripts/seed.js
 This will create:
 - **Admin**: `admin@greenguard.com` / `@rrm$2026`
 - **Approved NGO**: `greenearth@ngo.org` / `Password123!`
-- **Sample Adopter**: `rishabh@test.com` / `Password123!`
+- **Sample Adopter**: `test_adopter@greenguard.com` / `Password123!`
 - 15+ Plants, 5 Adoptions, and 10 Social Posts.
