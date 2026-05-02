@@ -122,7 +122,7 @@ async function seed() {
     // 3. Create Adopters
     console.log('Creating Adopters...');
     const adopters = [
-      { email: 'rishabh@test.com', username: 'rishabh_h', display_name: 'Rishabh Hatlunkar' },
+      { email: 'test_adopter@greenguard.com', username: 'adopter_test', display_name: 'Test Adopter' },
       { email: 'shardul@test.com', username: 'shardul_k', display_name: 'Shardul Kulkarni' },
       { email: 'aarav@test.com', username: 'aarav_j', display_name: 'Aarav Joshi' }
     ];
@@ -234,7 +234,7 @@ async function seed() {
       Admin: ${adminEmail} / ${adminPassword}
       NGO (Approved): greenearth@ngo.org / Password123!
       NGO (Pending): rootsofhope@ngo.org / Password123!
-      Adopter: rishabh@test.com / Password123!
+      Adopter: test_adopter@greenguard.com / Password123!
     `);
 
   } catch (err) {

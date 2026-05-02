@@ -42,7 +42,7 @@ node scripts/seed.js
 | **Admin** | `admin@greenguard.com` | `@rrm$2026` |
 | **Approved NGO** | `greenearth@ngo.org` | `Password123!` |
 | **Pending NGO** | `rootsofhope@ngo.org` | `Password123!` |
-| **Adopter** | `rishabh@test.com` | `Password123!` |
+| **Adopter** | `test_adopter@greenguard.com` | `Password123!` |
 
 ---
 
