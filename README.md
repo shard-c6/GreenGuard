@@ -8,7 +8,7 @@
 [![API](https://img.shields.io/badge/API-v2.2.3-emerald?style=flat-square&logo=node.js)](https://green-guard-api.up.railway.app)
 [![Vercel](https://img.shields.io/badge/Live_Demo-Vercel-black?style=flat-square&logo=vercel)](https://greenguard.vercel.app)
 [![Supabase](https://img.shields.io/badge/Database-Supabase-3ECF8E?style=flat-square&logo=supabase)](https://supabase.com)
-[![GitHub stars](https://img.shields.io/github/stars/RishabhHatlunkar/GreenGuard?style=flat-square&logo=github)](https://github.com/RishabhHatlunkar/GreenGuard/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/shard-c6/greeguard_complete?style=flat-square&logo=github)](https://github.com/shard-c6/greeguard_complete/stargazers)
 
 **A premium botanical identification and adoption ecosystem powered by AI and RAG-based intelligence.**
 
@@ -60,8 +60,8 @@ GreenGuard is built for long-term sustainability. We employ automated systems to
 ### 1. Clone & Setup
 
 ```bash
-git clone https://github.com/RishabhHatlunkar/GreenGuard.git
-cd GreenGuard
+git clone https://github.com/shard-c6/greeguard_complete.git
+cd greeguard_complete
 ```
 
 ### 2. Environment Configuration
