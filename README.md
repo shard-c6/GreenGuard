@@ -58,15 +58,18 @@ GreenGuard is built for long-term sustainability. We employ automated systems to
 ## 🚀 Getting Started
 
 ### 1. Clone & Setup
+
 ```bash
 git clone https://github.com/RishabhHatlunkar/GreenGuard.git
 cd GreenGuard
 ```
 
 ### 2. Environment Configuration
+
 Configure `.env` files in `backend/`, `frontend/`, and `flora-genius-consultant/` using the provided templates.
 
 ### 3. Run Services
+
 ```bash
 # Terminal 1: Backend
 cd backend && npm run dev
@@ -85,11 +88,13 @@ cd flora-genius-consultant && npm run dev
 We welcome contributions from environmentalists and developers of all skill levels. Whether you're fixing a bug, adding botanical data, or suggesting a feature, your impact matters.
 
 ### 🗺️ Project Roadmap
+
 - [ ] **Mobile Transition**: Expanding the UI to a native mobile experience via Capacitor.
 - [ ] **Advanced RAG**: Implementing hybrid search for even more accurate plant identification.
 - [ ] **Global Species Expansion**: Reaching 500+ validated botanical entries.
 
 ### 🚀 How to Contribute
+
 1. **Explore**: Check out [DAILY_LOG.md](./DAILY_LOG.md) to see what's currently in progress.
 2. **Setup**: Follow the [Getting Started](#-getting-started) guide to run the project locally.
 3. **Standards**: Ensure all PRs include relevant updates to the technical log and documentation.
