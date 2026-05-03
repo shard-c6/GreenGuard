@@ -2,7 +2,7 @@ name: Daily Contribution Streak
 
 on:
   schedule:
-    - cron: '30 11 * * *' # Runs at 11:30 UTC every day
+    - cron: '0 6 * * *' # Runs at 11:30 IST (06:00 UTC) every day
   workflow_dispatch: # Allows manual triggering
 
 jobs:
