@@ -12,17 +12,18 @@ cd "$(dirname "$0")/.." || exit
 if [ ! -f "$LOG_FILE" ]; then
     echo "# GreenGuard Technical Log" > "$LOG_FILE"
     echo "" >> "$LOG_FILE"
-    echo "| Date | Activity | Notes |" >> "$LOG_FILE"
-    echo "|------|----------|-------|" >> "$LOG_FILE"
+    printf "| %-10s | %-21s | %-49s |\n" "Date" "Activity" "Notes" >> "$LOG_FILE"
+    printf "|-%-10s-|-%-21s-|-%-49s-|\n" "----------" "---------------------" "-------------------------------------------------" | tr ' ' '-' >> "$LOG_FILE"
 fi
 
 # Check if entry for today already exists
 if grep -q "$DATE" "$LOG_FILE"; then
     echo "Entry for $DATE already exists. Updating notes..."
-    # Optionally append to the notes column or just leave it
-    sed -i '' "s/| $DATE |.*/| $DATE | System Heartbeat | Heartbeat at $TIME |/" "$LOG_FILE"
+    # Format line to match table header alignment
+    NEW_LINE=$(printf "| %-10s | %-21s | %-49s |" "$DATE" "System Heartbeat" "Heartbeat at $TIME")
+    sed -i '' "s/| $DATE |.*/$NEW_LINE/" "$LOG_FILE"
 else
-    echo "| $DATE | System Heartbeat | Heartbeat at $TIME |" >> "$LOG_FILE"
+    printf "| %-10s | %-21s | %-49s |\n" "$DATE" "System Heartbeat" "Heartbeat at $TIME" >> "$LOG_FILE"
 fi
 
 # Git operations
