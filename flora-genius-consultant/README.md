@@ -2,7 +2,7 @@
 title: Flora Genius Consultant
 emoji: 🧠
 colorFrom: green
-colorTo: lime
+colorTo: blue
 sdk: docker
 app_port: 7860
 pinned: false
