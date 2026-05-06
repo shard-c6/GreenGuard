@@ -1,0 +1,86 @@
+name: Deploy to Hugging Face
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'flora-genius-consultant/**'
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create Deployment
+        id: deployment
+        uses: chrnorm/deployment-action@v2
+        with:
+          token: '${{ github.token }}'
+          environment-url: 'https://huggingface.co/spaces/shard-c6/green-guard-api'
+          environment: GreenGuard API
+
+      - name: Push to HF
+        run: |
+          git remote add hf https://shard-c6:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/shard-c6/green-guard-api
+          git subtree push --prefix backend hf main --force
+
+      - name: Update deployment status (success)
+        if: success()
+        uses: chrnorm/deployment-action@v2
+        with:
+          token: '${{ github.token }}'
+          environment-url: 'https://huggingface.co/spaces/shard-c6/green-guard-api'
+          state: 'success'
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+
+      - name: Update deployment status (failure)
+        if: failure()
+        uses: chrnorm/deployment-action@v2
+        with:
+          token: '${{ github.token }}'
+          state: 'failure'
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+
+  deploy-ai:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create Deployment
+        id: deployment
+        uses: chrnorm/deployment-action@v2
+        with:
+          token: '${{ github.token }}'
+          environment-url: 'https://huggingface.co/spaces/shard-c6/flora-genius-service'
+          environment: Flora Genius AI
+
+      - name: Push to HF
+        run: |
+          git remote add hf https://shard-c6:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/shard-c6/flora-genius-service
+          git subtree push --prefix flora-genius-consultant hf main --force
+
+      - name: Update deployment status (success)
+        if: success()
+        uses: chrnorm/deployment-action@v2
+        with:
+          token: '${{ github.token }}'
+          environment-url: 'https://huggingface.co/spaces/shard-c6/flora-genius-service'
+          state: 'success'
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+
+      - name: Update deployment status (failure)
+        if: failure()
+        uses: chrnorm/deployment-action@v2
+        with:
+          token: '${{ github.token }}'
+          state: 'failure'
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
