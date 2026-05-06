@@ -33,7 +33,7 @@ jobs:
 
       - name: Update deployment status (success)
         if: success()
-        uses: chrnorm/deployment-action@v2
+        uses: chrnorm/deployment-status@v2
         with:
           token: '${{ github.token }}'
           environment-url: 'https://huggingface.co/spaces/shard-c6/green-guard-api'
@@ -42,7 +42,7 @@ jobs:
 
       - name: Update deployment status (failure)
         if: failure()
-        uses: chrnorm/deployment-action@v2
+        uses: chrnorm/deployment-status@v2
         with:
           token: '${{ github.token }}'
           state: 'failure'
@@ -70,7 +70,7 @@ jobs:
 
       - name: Update deployment status (success)
         if: success()
-        uses: chrnorm/deployment-action@v2
+        uses: chrnorm/deployment-status@v2
         with:
           token: '${{ github.token }}'
           environment-url: 'https://huggingface.co/spaces/shard-c6/flora-genius-service'
@@ -79,7 +79,7 @@ jobs:
 
       - name: Update deployment status (failure)
         if: failure()
-        uses: chrnorm/deployment-action@v2
+        uses: chrnorm/deployment-status@v2
         with:
           token: '${{ github.token }}'
           state: 'failure'
