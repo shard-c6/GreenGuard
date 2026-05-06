@@ -51,7 +51,7 @@ GreenGuard is built for long-term sustainability. We employ automated systems to
 | **Frontend** | Next.js 16, React 19, Tailwind CSS 4, Framer Motion, Axios, Leaflet |
 | **Backend** | Node.js, Express.js, Supabase, PostGIS, JWT |
 | **AI/ML** | Google Gemini 1.5 Flash, Supabase `pgvector` (RAG) |
-| **DevOps** | Zeabur (Backend), Hugging Face (AI Service), Vercel (Frontend), Supabase (DB/Auth) |
+| **DevOps** | Hugging Face Spaces, Vercel (Frontend), Supabase (DB/Auth) |
 
 ---
 
