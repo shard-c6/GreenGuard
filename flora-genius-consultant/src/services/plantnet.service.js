@@ -1,6 +1,8 @@
 const axios = require('axios');
 const FormData = require('form-data');
 
+const sharp = require('sharp');
+
 /**
  * Identifies a plant using the PlantNet API.
  * @param {Buffer} imageBuffer - The image file buffer.
@@ -12,10 +14,21 @@ async function identifyPlant(imageBuffer, originalName, mimetype) {
     throw new Error('PLANTNET_API_KEY is not configured');
   }
 
+  let finalBuffer = imageBuffer;
+  let finalMimetype = mimetype;
+
+  // PlantNet does not support webp natively, so we convert to jpeg
+  if (mimetype === 'image/webp' || originalName.toLowerCase().endsWith('.webp')) {
+    finalBuffer = await sharp(imageBuffer)
+      .jpeg({ quality: 90 })
+      .toBuffer();
+    finalMimetype = 'image/jpeg';
+  }
+
   const form = new FormData();
-  form.append('images', imageBuffer, { 
-    filename: originalName,
-    contentType: mimetype 
+  form.append('images', finalBuffer, { 
+    filename: originalName.replace(/\.webp$/i, '.jpg'),
+    contentType: finalMimetype 
   });
   form.append('organs', 'leaf'); // Default to leaf for better accuracy
 

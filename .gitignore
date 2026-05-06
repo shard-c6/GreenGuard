@@ -2,6 +2,7 @@
 
 # dependencies
 backend/node_modules
+flora-genius-consultant/node_modules
 
 /.pnp
 .pnp.js
