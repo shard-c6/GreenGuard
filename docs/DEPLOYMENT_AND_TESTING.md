@@ -25,6 +25,31 @@ npm install
 npm run dev
 ```
 
+### AI Consultant Setup
+```bash
+cd flora-genius-consultant
+npm install
+npm run dev
+```
+
+---
+
+## 🚀 2. Production Hosting (Hugging Face)
+
+GreenGuard microservices are deployed on **Hugging Face Spaces** for high availability and free persistent hosting.
+
+### API & AI Services
+- **Backend API**: Deployed as a Docker container.
+- **AI Consultant**: Decoupled service for RAG and image identification.
+
+### Environment Requirements
+Ensure the following Secrets are set in Hugging Face:
+- `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`
+- `GEMINI_API_KEY`
+- `PORT` (Default: 7860)
+
+---
+
 ---
 
 ## 📦 2. Data Seeding

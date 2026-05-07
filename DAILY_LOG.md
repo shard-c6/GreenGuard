@@ -14,3 +14,7 @@ This log tracks daily progress, technical insights, and system maintenance for t
 | 2026-05-06 | Backend Migration Pivot| Pivoted from Zeabur to Hugging Face Spaces for free hosting. |
 | 2026-05-06 | Migration Completed   | Finished secret configuration and fixed WebP support for PlantNet. |
 | 2026-05-07 | System Heartbeat      | Heartbeat at 16:01:12                             |
+| 2026-05-07 | Data Ingestion        | Successfully ingested 50 new botanical entries into Supabase production DB. |
+| 2026-05-07 | Deployment Fixes      | Resolved `GH013` ruleset blocks and fixed `deploy-hf.yml` subtree logic. |
+| 2026-05-07 | System Optimization   | Configured `trust proxy` for HF load balancer and added AI healthchecks. |
+| 2026-05-07 | Branch Cleanup        | Removed stale branches, keeping only `main` and `frontend`. |

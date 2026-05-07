@@ -2,7 +2,7 @@
 
 <div align="center">
 
-| RELEASE | **v1.0.0** | BOTANICAL DATA | **250+ SPECIES** | UI STYLES | **50+ COMPONENTS** | STACK | **NEXT.js 16** | LICENSE | **MIT** |
+| RELEASE | **v1.0.0** | BOTANICAL DATA | **300+ SPECIES** | UI STYLES | **50+ COMPONENTS** | STACK | **NEXT.js 16** | LICENSE | **MIT** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 
 [![API](https://img.shields.io/badge/API-v1.0.0-emerald?style=flat-square&logo=node.js)](https://huggingface.co/spaces/shard-c6/green-guard-api)

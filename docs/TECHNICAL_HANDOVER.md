@@ -93,6 +93,16 @@ This document provides a comprehensive summary of the structural and architectur
  - **Rationale**: Resolves compatibility issues with the PlantNet identification engine which only accepts standard image formats.
  - **File**: `flora-genius-consultant/src/services/plantnet.service.js`
 
+### D. Production-Grade Networking
+- **Change**: Configured `app.set('trust proxy', 1)` in the Express backend.
+- **Rationale**: Essential for running behind Hugging Face's load balancer; ensures correct IP tracking and rate-limiting functionality.
+- **File**: `backend/app.js`
+
+### E. Deployment Workflow Stability
+- **Change**: Fixed the `deploy-hf.yml` GitHub Action by replacing the invalid `git subtree push --force` syntax with a `split-and-push` operation.
+- **Rationale**: Subtree push does not support the `--force` flag natively; the new method allows forceful overrides to HF Spaces branches.
+- **File**: `.github/workflows/deploy-hf.yml`
+
 
 ## 🚀 Future Roadmap & Recommendations
 
@@ -107,4 +117,4 @@ This document provides a comprehensive summary of the structural and architectur
 
 ---
 *Created by: Antigravity AI*
-*Last Updated: 2026-05-06*
+*Last Updated: 2026-05-07*
