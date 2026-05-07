@@ -12,7 +12,14 @@
 
 **A premium botanical identification and adoption ecosystem powered by AI and RAG-based intelligence.**
 
-<img src="./docs/assets/landing_page.png" alt="GreenGuard Landing Page" width="100%" />
+<img src="./docs/assets/banner.png" alt="GreenGuard Banner" width="100%" />
+
+### ✨ Core Ecosystem Highlights
+
+| 🤖 AI Botanical Consultant | 🗺️ Geospatial Plantation Mapping | 🤝 Community Social Feed |
+| :--- | :--- | :--- |
+| ![AI Consultant](./docs/assets/feature_ai.png) | ![Geospatial Mapping](./docs/assets/feature_map.png) | ![Community Feed](./docs/assets/feature_feed.png) |
+| **Real-time Identification**: Powered by Gemini 1.5 Flash and PlantNet, providing instant botanical diagnostics. | **Interactive Impact**: Live reforestation tracking with precise geospatial coordinates and carbon metrics. | **Sustainable Social**: Share growth milestones, adopt trees, and connect with verified environmental NGOs. |
 
 </div>
 
