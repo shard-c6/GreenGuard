@@ -20,6 +20,9 @@ const aiRoutes = require('./src/routes/ai.routes');
 
 const app = express();
 
+// Trust proxy is required when app is behind Hugging Face Spaces load balancer for rate limiting
+app.set('trust proxy', 1);
+
 // ─── Security ───────────────────────────────────────────────────
 app.use(helmet());
 app.use(cors({
