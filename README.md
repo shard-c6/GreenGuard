@@ -2,12 +2,12 @@
 
 <div align="center">
 
-| RELEASE | **v2.2.3** | BOTANICAL DATA | **130+ SPECIES** | UI STYLES | **50+ COMPONENTS** | STACK | **NEXT.js 16** | LICENSE | **MIT** |
+| RELEASE | **v1.0.0** | BOTANICAL DATA | **250+ SPECIES** | UI STYLES | **50+ COMPONENTS** | STACK | **NEXT.js 16** | LICENSE | **MIT** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 
-[![API](https://img.shields.io/badge/API-v2.2.3-emerald?style=flat-square&logo=node.js)](https://green-guard-api.up.railway.app)
-[![Vercel](https://img.shields.io/badge/Live_Demo-Vercel-black?style=flat-square&logo=vercel)](https://greenguard.vercel.app)
-[![Supabase](https://img.shields.io/badge/Database-Supabase-3ECF8E?style=flat-square&logo=supabase)](https://supabase.com)
+[![API](https://img.shields.io/badge/API-v1.0.0-emerald?style=flat-square&logo=node.js)](https://huggingface.co/spaces/shard-c6/green-guard-api)
+[![Vercel](https://img.shields.io/badge/Live_Demo-Vercel-black?style=flat-square&logo=vercel)](https://greeguardfe.vercel.app/)
+[![AI_Service](https://img.shields.io/badge/AI_Service-Hugging_Face-blue?style=flat-square&logo=huggingface)](https://huggingface.co/spaces/shard-c6/flora-genius-service)
 [![GitHub stars](https://img.shields.io/github/stars/shard-c6/greeguard_complete?style=flat-square&logo=github)](https://github.com/shard-c6/greeguard_complete/stargazers)
 
 **A premium botanical identification and adoption ecosystem powered by AI and RAG-based intelligence.**
@@ -26,7 +26,7 @@ GreenGuard is a state-of-the-art environmental platform designed to bridge the g
 
 ## ✨ Key Features
 
-- **🧠 Flora Genius Consultant (RAG AI)**: Standalone microservice utilizing Google Gemini for reasoning and Supabase `pgvector` for grounded botanical advice.
+- **🧠 Flora Genius Consultant (RAG AI)**: Standalone microservice utilizing Google Gemini for reasoning and Supabase `pgvector` for grounded botanical advice. Now with **WebP support** via server-side image processing.
 - **🎨 Premium Visual Engine**: Next.js 16 + Tailwind CSS 4 implementation featuring **Glassmorphism 2.0** and immersive **Atmospheric Backgrounds**.
 - **🗺️ Geospatial Discovery**: Integrated PostGIS to enable radius-based searches and live interactive plantation mapping.
 - **🛡️ NGO Verification**: Multi-step onboarding with Darpan ID validation and administrative impact questionnaires.
@@ -40,6 +40,7 @@ GreenGuard is built for long-term sustainability. We employ automated systems to
 
 - **🤖 Automated Daily Heartbeat**: A scheduled GitHub Action that validates repository connectivity and ensures daily progress tracking.
 - **📜 Live Technical Log**: All system updates and automated health checks are recorded in our [DAILY_LOG.md](./DAILY_LOG.md).
+- **🚀 CI/CD Rulesets**: Protected `main` branch with automated deployment to Hugging Face via GitHub Actions.
 - **✅ Continuous Monitoring**: Real-time status tracking of our AI microservices and database integrity.
 
 ---

@@ -75,6 +75,24 @@ This document provides a comprehensive summary of the structural and architectur
 - **File**: `docs/TESTING_GUIDE.md`
 
 ---
+ 
+ ## 6. Infrastructure & DevOps
+ 
+ ### A. Hugging Face Spaces Migration
+ - **Change**: Migrated both the Main API and AI Consultant service to Hugging Face Spaces (Docker containerized).
+ - **Rationale**: Provides free, stable, and persistent hosting for production-grade microservices.
+ - **Architecture**: Decoupled the AI reasoning engine (Flora Genius) into an independent service to ensure zero-latency bottlenecks for the main application.
+ 
+ ### B. Automated Deployment (CI/CD)
+ - **Change**: Implemented GitHub Actions for automated deployment.
+ - **Detail**: Every push to the `main` branch triggers a subtree split and push to the respective Hugging Face Spaces.
+ - **File**: `.github/workflows/deploy-hf.yml`
+ 
+ ### C. AI Image Processing Fix
+ - **Change**: Integrated the `sharp` library into the AI service to handle WebP-to-JPEG conversion.
+ - **Rationale**: Resolves compatibility issues with the PlantNet identification engine which only accepts standard image formats.
+ - **File**: `flora-genius-consultant/src/services/plantnet.service.js`
+
 
 ## 🚀 Future Roadmap & Recommendations
 
@@ -89,4 +107,4 @@ This document provides a comprehensive summary of the structural and architectur
 
 ---
 *Created by: Antigravity AI*
-*Last Updated: 2026-04-04*
+*Last Updated: 2026-05-06*
