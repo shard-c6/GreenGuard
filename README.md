@@ -12,7 +12,7 @@
 
 **A premium botanical identification and adoption ecosystem powered by AI and RAG-based intelligence.**
 
-<img src="./docs/assets/banner.png" alt="GreenGuard Banner" width="100%" />
+<img src="./docs/assets/landing_page.png" alt="GreenGuard Landing Page" width="100%" />
 
 </div>
 
