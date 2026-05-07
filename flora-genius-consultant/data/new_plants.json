@@ -1,0 +1,402 @@
+[
+    {
+        "plant_name": "Agastya",
+        "scientific_name": "Sesbania grandiflora",
+        "description": "A small, fast-growing tree with edible flowers and leaves, heavily used in Ayurveda and culinary practices.",
+        "medical_uses": "Treats night blindness, headaches, catarrh, and fevers. Highly rich in Vitamin A and calcium.",
+        "treatment_methods": "Consume the flowers and leaves cooked as a vegetable or steep the bark for a medicinal decoction.",
+        "care_instructions": "Thrives in full sun and well-draining soil. Requires regular watering and a tropical climate."
+    },
+    {
+        "plant_name": "Alstonia (Saptaparni)",
+        "scientific_name": "Alstonia scholaris",
+        "description": "A large evergreen tree with leaves in whorls of seven, known as the 'Devil's Tree' in some cultures.",
+        "medical_uses": "Used traditionally for malaria, chronic diarrhea, dysentery, and to improve bowel tone.",
+        "treatment_methods": "The bark is boiled to make an astringent decoction. Dosage must be controlled as high doses can be toxic.",
+        "care_instructions": "Needs tropical conditions, full sun to partial shade, and moist, well-draining soil."
+    },
+    {
+        "plant_name": "Amaltas (Golden Shower Tree)",
+        "scientific_name": "Cassia fistula",
+        "description": "A beautiful ornamental tree known for its cascading racemes of bright yellow flowers.",
+        "medical_uses": "A safe and effective purgative. Treats constipation, skin disorders, and fever.",
+        "treatment_methods": "The fruit pulp is soaked in water and consumed as a gentle laxative.",
+        "care_instructions": "Requires full sun and well-draining soil. Very drought-tolerant once established."
+    },
+    {
+        "plant_name": "Anacyclus (Akarkara)",
+        "scientific_name": "Anacyclus pyrethrum",
+        "description": "A perennial herb resembling chamomile, recognized by its roots which cause a tingling sensation on the tongue.",
+        "medical_uses": "Treats toothache, sore throat, and delayed speech in children. Acts as a nerve stimulant.",
+        "treatment_methods": "Chew a small piece of the root for instant toothache relief or use powdered root in honey.",
+        "care_instructions": "Prefers well-drained sandy or loamy soil and full sun. Needs moderate watering."
+    },
+    {
+        "plant_name": "Butea (Flame of the Forest)",
+        "scientific_name": "Butea monosperma",
+        "description": "A deciduous tree known for its spectacular bright orange-red flowers that bloom in spring.",
+        "medical_uses": "Treats bleeding disorders, intestinal worms, and skin diseases.",
+        "treatment_methods": "Seeds are used as an anthelmintic (dewormer). Flowers are steeped to make a cooling drink.",
+        "care_instructions": "Drought-resistant, grows in poor soil, and requires full sunlight."
+    },
+    {
+        "plant_name": "Caper Bush (Kabra)",
+        "scientific_name": "Capparis spinosa",
+        "description": "A perennial winter-deciduous plant that bears rounded, fleshy leaves and large white to pinkish-white flowers.",
+        "medical_uses": "Protects the liver, treats rheumatism, and acts as a diuretic and expectorant.",
+        "treatment_methods": "The unopened flower buds (capers) and roots are used in dietary and medicinal preparations.",
+        "care_instructions": "Requires dry heat and intense sunlight. Thrives in poor, rocky, and well-draining soils."
+    },
+    {
+        "plant_name": "Cissus (Hadjod)",
+        "scientific_name": "Cissus quadrangularis",
+        "description": "A perennial succulent vine characterized by its quadrangular stems, often used to heal bone fractures.",
+        "medical_uses": "Accelerates bone healing, treats osteoporosis, and relieves joint pain.",
+        "treatment_methods": "The stem juice is consumed or applied topically over fractures alongside traditional splinting.",
+        "care_instructions": "Thrives in warm, dry climates. Needs well-draining soil and can tolerate prolonged droughts."
+    },
+    {
+        "plant_name": "Clitoria (Shankhpushpi/Aparajita)",
+        "scientific_name": "Clitoria ternatea",
+        "description": "A vigorous twining vine bearing striking, deep blue flowers with a light yellow center.",
+        "medical_uses": "Acts as a brain tonic. Improves memory, reduces stress, and treats neurological disorders.",
+        "treatment_methods": "The roots and seeds are powdered and consumed, or flowers are brewed into a calming blue tea.",
+        "care_instructions": "Prefers full sun and rich, moist, well-draining soil. Requires a trellis for support."
+    },
+    {
+        "plant_name": "Costus (Keukand)",
+        "scientific_name": "Costus speciosus",
+        "description": "A tall perennial herb with large, spirally arranged leaves and beautiful white flowers with a red center.",
+        "medical_uses": "Treats diabetes, fever, asthma, and bronchitis.",
+        "treatment_methods": "The rhizome is boiled into a decoction or crushed to extract juice for respiratory and metabolic disorders.",
+        "care_instructions": "Needs partial shade and moist, well-draining soil. Frost-sensitive."
+    },
+    {
+        "plant_name": "Dhatura",
+        "scientific_name": "Datura stramonium",
+        "description": "A wild-growing herbaceous annual with trumpet-shaped flowers and spiky fruit capsules. Highly toxic.",
+        "medical_uses": "Used externally for severe joint pain, asthma (in controlled ancient practices), and muscle spasms.",
+        "treatment_methods": "Strictly for external use. Leaves are warmed and tied over painful joints to relieve arthritis.",
+        "care_instructions": "Grows vigorously in disturbed soils and full sun. Must be kept away from children and pets due to extreme toxicity."
+    },
+    {
+        "plant_name": "Euphorbia (Dugdhika)",
+        "scientific_name": "Euphorbia hirta",
+        "description": "A pantropical weed characterized by hairy stems and a milky sap that exudes when broken.",
+        "medical_uses": "Treats respiratory issues like asthma, bronchitis, and gastrointestinal disorders.",
+        "treatment_methods": "The entire plant is boiled into a tea for asthma or the sap is applied to warts.",
+        "care_instructions": "A hardy weed that grows in almost any soil and full sun. Highly drought-tolerant."
+    },
+    {
+        "plant_name": "Fumaria (Parpata)",
+        "scientific_name": "Fumaria indica",
+        "description": "A delicate, highly branched annual herb with clusters of small pinkish-purple flowers.",
+        "medical_uses": "Acts as a blood purifier, treats liver disorders, and relieves burning sensations in the body.",
+        "treatment_methods": "The whole plant is dried and brewed into a bitter decoction for liver and skin health.",
+        "care_instructions": "A winter weed that prefers cool climates, moist soil, and partial shade."
+    },
+    {
+        "plant_name": "Gloriosa (Kalihari)",
+        "scientific_name": "Gloriosa superba",
+        "description": "A striking climbing plant with flame-like red and yellow flowers. Highly poisonous if ingested.",
+        "medical_uses": "Used externally for gout, arthritis, and to stimulate labor in traditional practices.",
+        "treatment_methods": "Strictly applied topically as a paste over inflamed joints. Never ingested.",
+        "care_instructions": "Requires a trellis, well-draining soil, and a warm, humid climate."
+    },
+    {
+        "plant_name": "Gymnema (Meshasringi/Gudmar)",
+        "scientific_name": "Gymnema sylvestre",
+        "description": "A woody climbing shrub native to the tropical forests of India, Africa, and Australia.",
+        "medical_uses": "The 'sugar destroyer'. Reduces sugar cravings, lowers blood sugar levels, and aids in weight loss.",
+        "treatment_methods": "Chew fresh leaves to suppress sweet taste or take powdered dried leaves before meals.",
+        "care_instructions": "Needs a support structure, partial shade, and well-draining loamy soil."
+    },
+    {
+        "plant_name": "Hiptage (Madhavi Latha)",
+        "scientific_name": "Hiptage benghalensis",
+        "description": "A massive, rampant climbing shrub with highly fragrant, fringed white and yellow flowers.",
+        "medical_uses": "Treats skin diseases, rheumatism, and asthma.",
+        "treatment_methods": "The bark and leaves are processed into a paste for topical application or brewed into a mild decoction.",
+        "care_instructions": "Prefers full sun to partial shade and moist, well-drained soil. Can become invasive if not pruned."
+    },
+    {
+        "plant_name": "Holarrhena (Kutaja)",
+        "scientific_name": "Holarrhena pubescens",
+        "description": "A small to medium-sized deciduous tree bearing white, fragrant flowers and long, paired follicles.",
+        "medical_uses": "The supreme remedy for dysentery, diarrhea, and intestinal parasites.",
+        "treatment_methods": "The bark and seeds (Indrayava) are powdered and consumed with buttermilk or water.",
+        "care_instructions": "Grows in dry, deciduous forests. Thrives in full sun and rocky, well-draining soil."
+    },
+    {
+        "plant_name": "Ichnocarpus (Sariva/Black Creeper)",
+        "scientific_name": "Ichnocarpus frutescens",
+        "description": "A large, much-branched, woody climbing vine with rusty-haired young stems.",
+        "medical_uses": "Purifies blood, treats skin diseases, and acts as a cooling tonic.",
+        "treatment_methods": "The roots are boiled to make a cooling and detoxifying decoction.",
+        "care_instructions": "Requires full sun to partial shade and moist, well-draining soil."
+    },
+    {
+        "plant_name": "Leptadenia (Jivanti)",
+        "scientific_name": "Leptadenia reticulata",
+        "description": "A twining shrub with a corky bark and small, greenish-yellow flowers.",
+        "medical_uses": "Acts as a general restorative tonic. Improves vision and treats tuberculosis.",
+        "treatment_methods": "The roots and leaves are consumed as a powder or boiled with milk for nourishment.",
+        "care_instructions": "Drought-resistant. Grows well in sandy, well-draining soil under full sun."
+    },
+    {
+        "plant_name": "Mallotus (Kamila)",
+        "scientific_name": "Mallotus philippensis",
+        "description": "A small to medium-sized tree whose fruits are covered in a bright red, glandular powder.",
+        "medical_uses": "Treats tapeworm infections and skin diseases like scabies and ringworm.",
+        "treatment_methods": "The red powder from the fruit is taken internally (with caution) for worms or applied externally.",
+        "care_instructions": "Adaptable to various soils. Prefers full sun and moderate watering."
+    },
+    {
+        "plant_name": "Mesua (Nagakesara)",
+        "scientific_name": "Mesua ferrea",
+        "description": "A beautiful evergreen tree known for its heavy, hard wood and large, fragrant white flowers with yellow stamens.",
+        "medical_uses": "Treats bleeding piles, dysentery, and excessive menstrual bleeding.",
+        "treatment_methods": "The dried stamens are powdered and consumed with butter or honey.",
+        "care_instructions": "Requires a humid, tropical climate, partial shade when young, and well-draining, fertile soil."
+    },
+    {
+        "plant_name": "Mimusops (Bakula)",
+        "scientific_name": "Mimusops elengi",
+        "description": "A medium-sized evergreen tree prized for its intensely fragrant, star-shaped cream-colored flowers.",
+        "medical_uses": "Strengthens teeth and gums, treats headaches, and heals wounds.",
+        "treatment_methods": "Chew the twigs for oral hygiene. Boil the bark to make an astringent mouthwash.",
+        "care_instructions": "Prefers coastal and tropical climates. Thrives in full sun and well-draining sandy loam."
+    },
+    {
+        "plant_name": "Myrica (Katphala)",
+        "scientific_name": "Myrica esculenta",
+        "description": "A medium-sized tree found in the sub-Himalayan region, bearing small, edible, red, berry-like fruits.",
+        "medical_uses": "Treats asthma, chronic coughs, diarrhea, and fever.",
+        "treatment_methods": "The bark is powdered and used as a snuff for headaches or taken internally for respiratory issues.",
+        "care_instructions": "Requires cool, sub-tropical climates and acidic, well-draining soils."
+    },
+    {
+        "plant_name": "Nigella (Kalonji)",
+        "scientific_name": "Nigella sativa",
+        "description": "An annual flowering plant known for its black seeds, often referred to as 'black cumin'.",
+        "medical_uses": "Boosts immunity, treats asthma, lowers blood pressure, and promotes hair growth.",
+        "treatment_methods": "Consume the seeds daily or apply cold-pressed black seed oil to the skin and scalp.",
+        "care_instructions": "Prefers full sun and rich, well-draining soil. Requires regular watering during the growing season."
+    },
+    {
+        "plant_name": "Nyctanthes (Parijat/Night-flowering Jasmine)",
+        "scientific_name": "Nyctanthes arbor-tristis",
+        "description": "A small tree that blooms with intensely fragrant white flowers with orange stems, which fall at dawn.",
+        "medical_uses": "Treats sciatica, arthritis, chronic fevers (like malaria), and acts as a mild laxative.",
+        "treatment_methods": "Boil the leaves into a strong decoction to relieve sciatic nerve pain and joint inflammation.",
+        "care_instructions": "Needs a tropical climate, full sun to partial shade, and well-draining soil."
+    },
+    {
+        "plant_name": "Oroxylum (Shyonaka)",
+        "scientific_name": "Oroxylum indicum",
+        "description": "A small to medium-sized deciduous tree with massive compound leaves and large, sword-like seed pods.",
+        "medical_uses": "A key ingredient in 'Dashamoola'. Treats diarrhea, dysentery, joint pain, and asthma.",
+        "treatment_methods": "The root bark is boiled into a decoction for internal use or applied as a paste on swollen joints.",
+        "care_instructions": "Thrives in moist, deciduous forests. Prefers full sun and well-drained loamy soil."
+    },
+    {
+        "plant_name": "Psoralea (Bakuchi)",
+        "scientific_name": "Psoralea corylifolia",
+        "description": "An erect, annual herb recognized for its tiny, dark brown seeds.",
+        "medical_uses": "The primary Ayurvedic remedy for vitiligo, psoriasis, and leprosy.",
+        "treatment_methods": "The seed powder or oil is applied directly to the depigmented skin, followed by brief sun exposure.",
+        "care_instructions": "Requires full sun, warm temperatures, and well-draining sandy loam. Drought tolerant."
+    },
+    {
+        "plant_name": "Pterocarpus (Bijasar)",
+        "scientific_name": "Pterocarpus marsupium",
+        "description": "A large deciduous tree known as the Indian Kino Tree, whose wood and resin are highly medicinal.",
+        "medical_uses": "Excellent for managing diabetes, reducing cholesterol, and treating skin diseases.",
+        "treatment_methods": "Water stored overnight in tumblers made of its wood is consumed in the morning to lower blood sugar.",
+        "care_instructions": "Requires tropical climates, full sun, and well-draining soil. Can grow very large."
+    },
+    {
+        "plant_name": "Randia (Madanaphala)",
+        "scientific_name": "Catunaregam spinosa",
+        "description": "A large, thorny, deciduous shrub or small tree bearing round, yellowish fruits.",
+        "medical_uses": "The premier herb used for inducing vomiting (Vamana therapy) in Panchakarma detoxification.",
+        "treatment_methods": "The fruit powder is administered with honey and rock salt specifically to induce therapeutic emesis.",
+        "care_instructions": "Extremely hardy. Grows in dry, deciduous forests in full sun and poor soils."
+    },
+    {
+        "plant_name": "Sida (Bala)",
+        "scientific_name": "Sida cordifolia",
+        "description": "A perennial subshrub with heart-shaped leaves, renowned for its strength-giving properties.",
+        "medical_uses": "Treats nervous disorders, asthma, weight loss, and builds muscle strength and stamina.",
+        "treatment_methods": "The root and leaves are boiled with milk or made into medicated massage oils (e.g., Mahanarayan Taila).",
+        "care_instructions": "Grows wild as a weed. Prefers full sun and well-draining sandy or loamy soils."
+    },
+    {
+        "plant_name": "Smilax (Chopchini)",
+        "scientific_name": "Smilax china",
+        "description": "A climbing, woody vine with prickly stems and tuberous roots.",
+        "medical_uses": "Treats syphilis, gout, rheumatoid arthritis, and chronic skin diseases.",
+        "treatment_methods": "The tuberous roots are dried, powdered, and consumed as a decoction or with honey.",
+        "care_instructions": "Requires partial shade, moist, rich, and well-draining soil, along with a trellis for climbing."
+    },
+    {
+        "plant_name": "Sphaeranthus (Gorakhmundi)",
+        "scientific_name": "Sphaeranthus indicus",
+        "description": "A strongly scented, spreading aromatic herb with distinct globose, purple flower heads.",
+        "medical_uses": "Treats gout, enlarged spleen, skin diseases, and acts as a general nervine tonic.",
+        "treatment_methods": "The whole plant or the flower heads are dried and consumed as a powder or decoction.",
+        "care_instructions": "A weed of damp places and paddy fields. Thrives in moist, waterlogged clay soils."
+    },
+    {
+        "plant_name": "Strychnos (Kupilu/Nux Vomica)",
+        "scientific_name": "Strychnos nux-vomica",
+        "description": "A medium-sized tree bearing fruit resembling small oranges, containing highly toxic, disk-shaped seeds.",
+        "medical_uses": "A powerful nerve stimulant. Treats paralysis, neuralgia, and chronic dyspepsia.",
+        "treatment_methods": "Extremely toxic. Seeds must undergo rigorous purification (Shodhana) before use in minute, prescribed doses.",
+        "care_instructions": "Requires a hot, tropical climate. Thrives in full sun and well-draining laterite soils."
+    },
+    {
+        "plant_name": "Swertia (Chirayata)",
+        "scientific_name": "Swertia chirayita",
+        "description": "An annual or biennial herb native to the Himalayas, known for its intense bitterness.",
+        "medical_uses": "Treats chronic fevers, liver disorders, malaria, and improves appetite.",
+        "treatment_methods": "The whole plant is soaked in water overnight, and the extremely bitter infusion is consumed the next morning.",
+        "care_instructions": "Requires cool, high-altitude climates. Plant in moist, well-draining, humus-rich soil."
+    },
+    {
+        "plant_name": "Tephrosia (Sharapunkha)",
+        "scientific_name": "Tephrosia purpurea",
+        "description": "A highly branched, sub-erect herbaceous perennial that grows widely as a wasteland weed.",
+        "medical_uses": "The best herb for treating an enlarged spleen, liver disorders, and chronic wounds.",
+        "treatment_methods": "The root is chewed or boiled into a decoction for spleen and liver health.",
+        "care_instructions": "Grows vigorously in dry, sandy, or rocky soils. Highly drought-tolerant and requires full sun."
+    },
+    {
+        "plant_name": "Tinospora (Giloy/Amrita)",
+        "scientific_name": "Tinospora cordifolia",
+        "description": "A climbing, herbaceous vine with heart-shaped leaves, renowned as the 'root of immortality'.",
+        "medical_uses": "A supreme immunomodulator. Treats dengue, malaria, chronic fevers, diabetes, and arthritis.",
+        "treatment_methods": "The stem is crushed and boiled to make a potent decoction, often taken with ginger and honey.",
+        "care_instructions": "Requires a support tree (like Neem for added potency), full sun to partial shade, and moderate watering."
+    },
+    {
+        "plant_name": "Trigonella (Methi/Fenugreek)",
+        "scientific_name": "Trigonella foenum-graecum",
+        "description": "An annual plant cultivated worldwide; its seeds and leaves are staples in Indian cooking.",
+        "medical_uses": "Lowers blood sugar, improves milk production in nursing mothers, and reduces menstrual discomfort.",
+        "treatment_methods": "Soak seeds overnight and drink the water. Use leaves fresh in cooking or dry for later use.",
+        "care_instructions": "Requires full sun and well-draining, slightly acidic soil. Cool weather crop."
+    },
+    {
+        "plant_name": "Uraria (Prishniparni)",
+        "scientific_name": "Uraria picta",
+        "description": "An erect, little-branched perennial herb with distinctive variegated leaves and dense, cylindrical flower spikes.",
+        "medical_uses": "A key ingredient in 'Dashamoola'. Treats asthma, heart disease, bleeding disorders, and fractures.",
+        "treatment_methods": "The whole plant, particularly the root, is boiled to make a strengthening decoction.",
+        "care_instructions": "Prefers tropical climates, well-draining loamy soils, and full sun to partial shade."
+    },
+    {
+        "plant_name": "Valeriana (Tagar)",
+        "scientific_name": "Valeriana jatamansi",
+        "description": "A perennial herb native to the Himalayas, yielding a highly aromatic rhizome used as a sedative.",
+        "medical_uses": "Treats insomnia, anxiety, epilepsy, and acts as a potent nervine relaxant.",
+        "treatment_methods": "The dried root powder is consumed with warm milk before bed or used in aromatherapy.",
+        "care_instructions": "Requires high altitudes, cool temperatures, partial shade, and moist, rich soil."
+    },
+    {
+        "plant_name": "Woodfordia (Dhataki)",
+        "scientific_name": "Woodfordia fruticosa",
+        "description": "A much-branched, highly spreading shrub known for its brilliant, tubular red flowers.",
+        "medical_uses": "Treats severe diarrhea, dysentery, bleeding disorders, and acts as a fermentation agent in Ayurvedic wines (Asavas).",
+        "treatment_methods": "The dried flowers are powdered and taken with honey, or added to herbal decoctions to initiate fermentation.",
+        "care_instructions": "Extremely hardy. Thrives in full sun, rocky, well-draining soils, and dry climates."
+    },
+    {
+        "plant_name": "Zingiber (Adrak/Ginger)",
+        "scientific_name": "Zingiber officinale",
+        "description": "A flowering plant whose rhizome, ginger root, is a universally used spice and folk medicine.",
+        "medical_uses": "Treats nausea, motion sickness, osteoarthritis, indigestion, and chronic coughs.",
+        "treatment_methods": "Crush fresh ginger into tea, chew it with salt before meals, or use dried powder (Shunthi) in formulas.",
+        "care_instructions": "Requires hot, humid climates, partial shade, and rich, consistently moist, well-draining soil."
+    },
+    {
+        "plant_name": "Boerhavia (Punarnava)",
+        "scientific_name": "Boerhavia diffusa",
+        "description": "A trailing weed known to 'rejuvenate' the body, featuring small pink flowers and sticky seeds.",
+        "medical_uses": "A powerful diuretic. Treats kidney disorders, edema (swelling), anemia, and urinary tract infections.",
+        "treatment_methods": "The whole plant is dried and consumed as a decoction, or the fresh leaves are cooked as a vegetable.",
+        "care_instructions": "A highly resilient weed. Thrives in full sun and almost any soil type. Needs very little water."
+    },
+    {
+        "plant_name": "Cassia (Senna/Swarnapatri)",
+        "scientific_name": "Cassia angustifolia",
+        "description": "A small shrub native to the Arabian Peninsula and India, recognized for its yellow flowers and flat seed pods.",
+        "medical_uses": "An FDA-approved nonprescription laxative. Used to treat severe constipation and clear the bowel before diagnostic tests.",
+        "treatment_methods": "The dried leaves or pods are brewed into a tea. Must be used short-term to avoid dependency.",
+        "care_instructions": "Requires hot, dry climates, full sun, and well-draining sandy soils. Highly drought-tolerant."
+    },
+    {
+        "plant_name": "Centella (Gotu Kola/Mandukaparni)",
+        "scientific_name": "Centella asiatica",
+        "description": "A small, herbaceous, frost-tender perennial plant that grows creeping along the ground in swampy areas.",
+        "medical_uses": "The ultimate brain food. Enhances memory, heals wounds, treats varicose veins, and reduces anxiety.",
+        "treatment_methods": "Eat fresh leaves in salads, extract the juice, or brew dried leaves into a restorative tea.",
+        "care_instructions": "Needs high moisture and humidity. Grow in partial shade in continuously moist, boggy soil."
+    },
+    {
+        "plant_name": "Evolvulus (Shankhpushpi)",
+        "scientific_name": "Evolvulus alsinoides",
+        "description": "A small, hairy, perennial herb with beautiful, tiny, sky-blue, funnel-shaped flowers.",
+        "medical_uses": "A powerful brain tonic. Enhances cognitive function, reduces stress, treats epilepsy, and induces sleep.",
+        "treatment_methods": "The entire plant is dried, powdered, and consumed with warm milk or made into a medicated syrup.",
+        "care_instructions": "Grows wild in open, grassy areas. Prefers full sun and well-draining, sandy or rocky soils."
+    },
+    {
+        "plant_name": "Hemidesmus (Ananthamool)",
+        "scientific_name": "Hemidesmus indicus",
+        "description": "A slender, twining, aromatic shrub known for its sweet-smelling roots that resemble the scent of vanilla.",
+        "medical_uses": "Purifies the blood, treats skin diseases like eczema, acts as a coolant, and manages autoimmune disorders.",
+        "treatment_methods": "Boil the dried roots to make a fragrant herbal tea or decoction, often consumed during hot summers.",
+        "care_instructions": "Thrives in partial shade to full sun. Requires well-drained, sandy loam soil. Moderately drought-tolerant."
+    },
+    {
+        "plant_name": "Mucuna (Kapikachhu/Velvet Bean)",
+        "scientific_name": "Mucuna pruriens",
+        "description": "A vigorous climbing legume known for the extreme itchiness caused by the hairs on its seed pods.",
+        "medical_uses": "A natural source of L-DOPA. Used for Parkinson's disease, nervous disorders, and male infertility.",
+        "treatment_methods": "The seeds are strictly processed and powdered, typically consumed with milk. Great care must be taken to avoid the irritating pod hairs.",
+        "care_instructions": "Requires a tropical climate, full sun, and a trellis for support. Plant in well-drained, sandy loam soil."
+    },
+    {
+        "plant_name": "Phyllanthus (Bhumyamalaki)",
+        "scientific_name": "Phyllanthus niruri",
+        "description": "A widespread tropical weed characterized by small, round leaves arranged in rows with tiny fruits hidden underneath.",
+        "medical_uses": "Highly effective for liver disorders including Hepatitis B, jaundice, and helps break down kidney stones.",
+        "treatment_methods": "Crush the entire fresh plant to extract juice, or use dried plant powder boiled as a decoction.",
+        "care_instructions": "Grows easily in tropical environments. Prefers partial shade and moist, well-draining soil."
+    },
+    {
+        "plant_name": "Rauvolfia (Sarpagandha/Indian Snakeroot)",
+        "scientific_name": "Rauvolfia serpentina",
+        "description": "An evergreen shrub with whorled leaves and small, pinkish-white flowers, famous as the source of reserpine.",
+        "medical_uses": "A powerful tranquilizer used to treat severe high blood pressure, insomnia, and psychiatric disorders.",
+        "treatment_methods": "The roots are dried and ground. Due to its high potency, it must only be taken under strict medical supervision.",
+        "care_instructions": "Requires a hot, humid climate. Prefers partial shade and deep, fertile, highly organic, well-draining soil."
+    },
+    {
+        "plant_name": "Solanum (Kantakari)",
+        "scientific_name": "Solanum virginianum",
+        "description": "A prickly, low-growing perennial herb bearing bright purple flowers and yellow berries, covered in spines.",
+        "medical_uses": "A primary herb for respiratory ailments: treats asthma, chronic coughs, chest pain, and bronchitis.",
+        "treatment_methods": "The entire plant (roots, leaves, berries) is dried and boiled into a decoction, consumed with honey.",
+        "care_instructions": "Grows wild in dry, arid waste lands. Thrives in full sun and poor, sandy, well-draining soils."
+    },
+    {
+        "plant_name": "Tribulus (Gokshura)",
+        "scientific_name": "Tribulus terrestris",
+        "description": "A low-growing, creeping plant with thorny fruits, often considered a weed but highly valued in Ayurveda.",
+        "medical_uses": "Treats urinary tract infections, kidney stones, improves sexual health, and builds muscle strength.",
+        "treatment_methods": "The dried fruits and roots are powdered and boiled in water to make a decoction, often taken with honey.",
+        "care_instructions": "Thrives in dry, sandy, and arid environments. Requires full sunlight and very little water."
+    }
+]
