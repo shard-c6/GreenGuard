@@ -29,7 +29,7 @@ jobs:
       - name: Push to HF
         run: |
           git remote add hf https://shard-c6:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/shard-c6/green-guard-api
-          git subtree push --prefix backend hf main --force
+          git push hf `git subtree split --prefix backend HEAD`:main --force
 
       - name: Update deployment status (success)
         if: success()
@@ -66,7 +66,7 @@ jobs:
       - name: Push to HF
         run: |
           git remote add hf https://shard-c6:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/shard-c6/flora-genius-service
-          git subtree push --prefix flora-genius-consultant hf main --force
+          git push hf `git subtree split --prefix flora-genius-consultant HEAD`:main --force
 
       - name: Update deployment status (success)
         if: success()
