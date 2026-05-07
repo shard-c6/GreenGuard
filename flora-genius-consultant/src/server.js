@@ -16,6 +16,11 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('Flora Genius AI is running!');
+});
+
+
 /**
  * Endpoint 1: Identify Plant via PlantNet
  */
