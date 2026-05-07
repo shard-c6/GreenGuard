@@ -8,7 +8,8 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 async function ingest() {
-  const jsonPath = path.join(__dirname, '../data/plant_data.json');
+  const fileName = process.argv[2] || '../data/plant_data.json';
+  const jsonPath = path.join(__dirname, fileName);
   
   if (!fs.existsSync(jsonPath)) {
     console.error('Error: plant_data.json not found in data/ directory.');
