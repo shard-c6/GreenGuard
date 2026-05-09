@@ -46,19 +46,27 @@ app.post('/api/consultant/expert', async (req, res) => {
     // 1. Generate embedding for the user query
     const queryEmbedding = await gemini.getEmbedding(query);
 
-    // 2. Search Supabase for relevant context
-    // We filter by similarity and also prioritize the specific plant if scientificName is provided
-    const { data: contextChunks, error: searchError } = await supabase.rpc('match_plant_knowledge', {
+    // 2. Search Supabase using Hybrid Search (Semantic + Keyword)
+    const { data: contextChunks, error: searchError } = await supabase.rpc('hybrid_plant_search', {
+      query_text: query,
       query_embedding: queryEmbedding,
-      match_threshold: 0.3,
+      match_threshold: 0.2,
       match_count: 5
     });
 
     if (searchError) throw searchError;
 
-    const context = contextChunks.map(c => c.content).join('\n\n');
+    // 3. Reranking / Context Preparation
+    // Prioritize chunks that exactly match the scientific name provided by the identification service
+    const sortedChunks = contextChunks.sort((a, b) => {
+      const aMatch = a.scientific_name && a.scientific_name.toLowerCase() === scientificName.toLowerCase();
+      const bMatch = b.scientific_name && b.scientific_name.toLowerCase() === scientificName.toLowerCase();
+      return bMatch - aMatch;
+    });
 
-    // 3. Ask Gemini
+    const context = sortedChunks.map(c => c.content).join('\n\n');
+
+    // 4. Ask Gemini
     const response = await gemini.askExpert(scientificName, context, query);
     
     res.json({ success: true, answer: response });
