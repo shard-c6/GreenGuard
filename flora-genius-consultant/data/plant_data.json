@@ -2398,5 +2398,1749 @@
     "medical_uses": "Treats urinary tract infections, kidney stones, improves sexual health, and builds muscle strength.",
     "treatment_methods": "The dried fruits and roots are powdered and boiled in water to make a decoction, often taken with honey.",
     "care_instructions": "Thrives in dry, sandy, and arid environments. Requires full sunlight and very little water."
+  },
+  {
+    "plant_name": "Purple Coneflower",
+    "scientific_name": "Echinacea purpurea",
+    "description": "A hardy perennial native to North America, characterized by its prominent spiny central cone and drooping purple petals. It is a member of the daisy family and grows up to 4 feet tall.",
+    "medical_uses": "Widely recognized for its ability to boost the immune system and shorten the duration of the common cold and flu.",
+    "treatment_methods": "Commonly consumed as a tea brewed from dried roots and leaves, or taken as a liquid tincture or encapsulated root powder.",
+    "care_instructions": "Requires full sun to partial shade, well-draining soil, and moderate watering once the soil dries out."
+  },
+  {
+    "plant_name": "Milk Thistle",
+    "scientific_name": "Silybum marianum",
+    "description": "Recognizable by its prickly leaves with white veins and large purple flower heads, this plant is native to the Mediterranean region. It has been used for over 2,000 years in traditional medicine.",
+    "medical_uses": "Primary use is for liver protection and detoxification, specifically to treat conditions like cirrhosis and hepatitis.",
+    "treatment_methods": "The seeds are crushed and prepared as standardized extracts containing silymarin, or brewed into a mild decoction.",
+    "care_instructions": "Thrives in full sun and poor to average well-drained soil; very drought tolerant once established."
+  },
+  {
+    "plant_name": "Maidenhair Tree",
+    "scientific_name": "Ginkgo biloba",
+    "description": "One of the oldest living tree species, featuring unique fan-shaped leaves that turn bright gold in autumn. It is often referred to as a 'living fossil' with no close living relatives.",
+    "medical_uses": "Used to enhance cognitive function, improve memory, and increase blood circulation to the brain.",
+    "treatment_methods": "Concentrated extracts are made from the dried green leaves, usually available in tablet or capsule form.",
+    "care_instructions": "Prefers full sun, deep well-drained soil, and regular watering during its youth; very resistant to pollution."
+  },
+  {
+    "plant_name": "St. John's Wort",
+    "scientific_name": "Hypericum perforatum",
+    "description": "A flowering shrub native to Europe with bright yellow petals that have tiny translucent glandular dots. It has a long history of folklore and medicinal application.",
+    "medical_uses": "Clinically used to treat mild to moderate depression, anxiety, and menopausal symptoms.",
+    "treatment_methods": "The flowering tops are dried for tea or processed into oils, tinctures, and standardized capsules.",
+    "care_instructions": "Needs full sun to partial shade and prefers sandy or gravelly soil that drains quickly."
+  },
+  {
+    "plant_name": "Valerian",
+    "scientific_name": "Valeriana officinalis",
+    "description": "A tall perennial with heads of sweetly scented pink or white flowers and deeply divided leaves. Native to Europe and Asia, it is famous for the strong, earthy scent of its roots.",
+    "medical_uses": "Acts as a powerful natural sedative to treat insomnia, restlessness, and nervous tension.",
+    "treatment_methods": "The roots are dried and used in infusions, tinctures, or ground into powder for capsules.",
+    "care_instructions": "Grows best in moist, well-drained soil with full sun to partial shade; requires consistent watering."
+  },
+  {
+    "plant_name": "Black Elderberry",
+    "scientific_name": "Sambucus nigra",
+    "description": "A deciduous shrub or small tree that produces clusters of small cream-colored flowers followed by dark purple-black berries. It is native to most of Europe and North America.",
+    "medical_uses": "The berries are rich in antioxidants and are used to treat viral infections and respiratory congestion.",
+    "treatment_methods": "Berries must be cooked (raw berries are toxic) and are typically prepared as syrups, lozenges, or jams.",
+    "care_instructions": "Prefers moist, fertile, loamy soil and a sunny to partially shaded position."
+  },
+  {
+    "plant_name": "Burdock",
+    "scientific_name": "Arctium lappa",
+    "description": "A biennial plant known for its large, heart-shaped leaves and burrs that cling to fur and clothing. It is native to the temperate regions of the Old World.",
+    "medical_uses": "Used as a blood purifier, diuretic, and for treating skin conditions like eczema and psoriasis.",
+    "treatment_methods": "The long taproot is harvested and used in decoctions, as a cooked vegetable, or in tinctures.",
+    "care_instructions": "Requires deep, loose soil to accommodate the long root and a location with full sun."
+  },
+  {
+    "plant_name": "Astragalus",
+    "scientific_name": "Astragalus membranaceus",
+    "description": "A perennial herb in the legume family native to Mongolia and China. It features hairy stems and small yellow pea-like flowers.",
+    "medical_uses": "Used in traditional Chinese medicine to strengthen the 'Qi' and enhance the body's resistance to stress and infection.",
+    "treatment_methods": "The dried sliced roots are simmered in soups, brewed as tea, or taken as an extract.",
+    "care_instructions": "Requires sandy, well-drained soil and full sun; it is sensitive to overwatering and root rot."
+  },
+  {
+    "plant_name": "Rhodiola",
+    "scientific_name": "Rhodiola rosea",
+    "description": "Also known as Arctic root, this succulent perennial grows in cold, high-altitude regions of Europe and Asia. It produces small yellow flowers and thick, fleshy leaves.",
+    "medical_uses": "An adaptogen used to increase physical endurance, reduce fatigue, and help the body cope with psychological stress.",
+    "treatment_methods": "The rhizome is dried and standardized into extracts or consumed as a concentrated tea.",
+    "care_instructions": "Thrives in cool climates, well-draining rocky soil, and requires moderate water and full sun."
+  },
+  {
+    "plant_name": "Siberian Ginseng",
+    "scientific_name": "Eleutherococcus senticosus",
+    "description": "A woody shrub native to Northeastern Asia with palmately compound leaves and thorny stems. Despite its name, it is a distant relative of true ginseng.",
+    "medical_uses": "Used to improve athletic performance, boost mental alertness, and support the adrenal glands.",
+    "treatment_methods": "Dried roots and rhizomes are prepared as liquid extracts, tablets, or powders.",
+    "care_instructions": "Prefers moist, well-drained soil in partial shade; it is very cold-hardy."
+  },
+  {
+    "plant_name": "Chasteberry",
+    "scientific_name": "Vitex agnus-castus",
+    "description": "A deciduous shrub with aromatic, palm-shaped leaves and spikes of violet-blue flowers. It is native to the Mediterranean and Central Asia.",
+    "medical_uses": "Primarily used to balance female hormones and treat symptoms of PMS, menopause, and infertility.",
+    "treatment_methods": "The small dried fruits (berries) are used to make tinctures, capsules, or standardized extracts.",
+    "care_instructions": "Requires full sun and well-drained soil; once established, it is highly drought-tolerant."
+  },
+  {
+    "plant_name": "Baikal Skullcap",
+    "scientific_name": "Scutellaria baicalensis",
+    "description": "A perennial herb with lance-shaped leaves and vibrant blue-to-purple hooded flowers. It is native to China, Korea, Mongolia, and Russia.",
+    "medical_uses": "Known for its anti-inflammatory, antioxidant, and neuroprotective properties; often used for respiratory infections.",
+    "treatment_methods": "The golden-yellow dried root is boiled into a decoction or processed into medicinal powders.",
+    "care_instructions": "Prefers full sun and sandy, well-drained soil; does not tolerate heavy, wet clays."
+  },
+  {
+    "plant_name": "Sweet Wormwood",
+    "scientific_name": "Artemisia annua",
+    "description": "An annual herb with fern-like leaves and a powerful camphorous scent. It is native to temperate Asia but naturalized throughout the world.",
+    "medical_uses": "The source of artemisinin, a potent compound used globally to treat multi-drug resistant malaria.",
+    "treatment_methods": "Used as a tea in traditional settings, though clinical use involves purified chemical extracts.",
+    "care_instructions": "Easy to grow in full sun and well-draining soil; requires regular watering during hot periods."
+  },
+  {
+    "plant_name": "Rosemary",
+    "scientific_name": "Salvia rosmarinus",
+    "description": "A woody, perennial herb with needle-like leaves and a distinctive pine-like aroma. It is native to the Mediterranean coast.",
+    "medical_uses": "Used to improve memory, aid digestion, and as an anti-inflammatory agent; the oil is used for hair growth.",
+    "treatment_methods": "Fresh or dried leaves are used in culinary dishes and teas, while the essential oil is used topically.",
+    "care_instructions": "Needs full sun and very well-drained, slightly alkaline soil; sensitive to overwatering."
+  },
+  {
+    "plant_name": "English Lavender",
+    "scientific_name": "Lavandula angustifolia",
+    "description": "A compact shrub with narrow grey-green leaves and spikes of highly fragrant violet flowers. It is famous for its essential oil production.",
+    "medical_uses": "Used for its calming effects to treat anxiety, sleep disorders, and as a topical antiseptic for minor burns.",
+    "treatment_methods": "Flowers are used in teas, sachets, and distilled into essential oils for aromatherapy or topical use.",
+    "care_instructions": "Requires full sun and extremely well-drained soil; prune regularly to prevent woodiness."
+  },
+  {
+    "plant_name": "German Chamomile",
+    "scientific_name": "Matricaria chamomilla",
+    "description": "An annual plant with feathery leaves and small daisy-like flowers that smell like apples. It is native to Europe and Western Asia.",
+    "medical_uses": "Widely used to treat digestive upset, promote sleep, and soothe skin irritations and inflammations.",
+    "treatment_methods": "The dried flower heads are most commonly steeped as a tea or used in steam inhalations.",
+    "care_instructions": "Prefers full sun and can grow in various soil types as long as they are well-drained; easy to self-seed."
+  },
+  {
+    "plant_name": "Passionflower",
+    "scientific_name": "Passiflora incarnata",
+    "description": "A fast-growing climbing vine with spectacular, complex flowers and three-lobed leaves. Native to the Southeastern United States.",
+    "medical_uses": "Used as a mild sedative for nervous restlessness, anxiety, and to improve sleep quality.",
+    "treatment_methods": "The aerial parts (leaves and stems) are dried and used in teas, tinctures, or liquid extracts.",
+    "care_instructions": "Requires full sun to partial shade and well-drained soil; needs a trellis or support for climbing."
+  },
+  {
+    "plant_name": "Liquorice",
+    "scientific_name": "Glycyrrhiza glabra",
+    "description": "A perennial legume native to Southern Europe and parts of Asia. It produces spikes of purple-blue flowers and deep, sweet-tasting roots.",
+    "medical_uses": "Used for soothing sore throats, treating stomach ulcers, and as an expectorant for coughs.",
+    "treatment_methods": "The root is dried and chewed, boiled into a decoction, or processed into a thick extract block.",
+    "care_instructions": "Requires deep, rich, sandy soil to allow root expansion and a warm, sunny location."
+  },
+  {
+    "plant_name": "Pot Marigold",
+    "scientific_name": "Calendula officinalis",
+    "description": "A bright annual herb with orange or yellow petals. It is native to Southern Europe but widely cultivated in gardens worldwide.",
+    "medical_uses": "Valued for its wound-healing and anti-inflammatory properties, particularly for skin rashes and minor cuts.",
+    "treatment_methods": "The petals are infused into oils, made into salves/ointments, or brewed into a mild tea.",
+    "care_instructions": "Thrives in full sun or light shade and prefers well-drained, moderately fertile soil."
+  },
+  {
+    "plant_name": "Lemon Balm",
+    "scientific_name": "Melissa officinalis",
+    "description": "A perennial herb in the mint family with lemon-scented leaves. It grows in bushy clumps and produces small white flowers.",
+    "medical_uses": "Used to reduce stress and anxiety, promote sleep, and as a topical treatment for cold sores (herpes).",
+    "treatment_methods": "Leaves are used fresh or dried in teas, or the essential oil is applied topically in creams.",
+    "care_instructions": "Grows easily in full sun to partial shade; prefers moist but well-drained soil."
+  },
+  {
+    "plant_name": "Comfrey",
+    "scientific_name": "Symphytum officinale",
+    "description": "A large perennial with hairy leaves and bell-shaped flowers that can be purple, pink, or cream. It is native to Europe.",
+    "medical_uses": "Traditionally used to speed the healing of bruises, sprains, and bone fractures when applied topically.",
+    "treatment_methods": "Used externally as a poultice or infused oil; internal use is discouraged due to liver-toxic alkaloids.",
+    "care_instructions": "Prefers rich, moist soil and can thrive in full sun or deep shade; very deep-rooted and difficult to remove."
+  },
+  {
+    "plant_name": "Witch Hazel",
+    "scientific_name": "Hamamelis virginiana",
+    "description": "A deciduous shrub native to North America that produces unique spidery yellow flowers in late autumn or winter.",
+    "medical_uses": "A powerful astringent used to treat hemorrhoids, skin irritations, and varicose veins.",
+    "treatment_methods": "The bark and twigs are distilled or decocted to produce a liquid extract for topical application.",
+    "care_instructions": "Prefers moist, acidic, well-drained soil in sun or partial shade; requires consistent moisture."
+  },
+  {
+    "plant_name": "Marshmallow Root",
+    "scientific_name": "Althaea officinalis",
+    "description": "A tall perennial with velvety leaves and pale pink flowers, native to Europe and North Africa. It is found naturally in salt marshes and damp meadows.",
+    "medical_uses": "The root contains high mucilage content used to soothe irritated mucous membranes in the throat and stomach.",
+    "treatment_methods": "The dried root is cold-infused in water or simmered to create a soothing, slippery liquid.",
+    "care_instructions": "Needs consistently moist to wet soil and full sun to thrive."
+  },
+  {
+    "plant_name": "California Poppy",
+    "scientific_name": "Eschscholzia californica",
+    "description": "The state flower of California, featuring feathery blue-green leaves and brilliant orange, cup-shaped flowers that close at night.",
+    "medical_uses": "Used as a non-addictive sedative and analgesic to treat anxiety and insomnia.",
+    "treatment_methods": "The aerial parts are harvested and prepared as a tea or tincture, often combined with Valerian.",
+    "care_instructions": "Requires full sun and poor, fast-draining soil; very drought tolerant and self-seeds readily."
+  },
+  {
+    "plant_name": "Common Yarrow",
+    "scientific_name": "Achillea millefolium",
+    "description": "A hardy perennial with feathery, fern-like foliage and flat-topped clusters of small white or pink flowers. It is found throughout the Northern Hemisphere.",
+    "medical_uses": "Used to stop bleeding (styptic), treat fevers by inducing sweating, and aid digestion.",
+    "treatment_methods": "The leaves and flowers are used fresh as a poultice or dried for tea and tinctures.",
+    "care_instructions": "Very adaptable; prefers full sun and well-drained soil. Drought tolerant once established."
+  },
+  {
+    "plant_name": "Swiss Cheese Plant",
+    "scientific_name": "Monstera deliciosa",
+    "description": "A large tropical climber with glossy, heart-shaped leaves that develop deep splits and holes (fenestrations) as they mature. Native to Central American rainforests.",
+    "medical_uses": "None primarily used; grown for ornamental and air-purifying qualities.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Requires bright indirect light, a chunky peat-based soil mix, and watering when the top two inches of soil are dry."
+  },
+  {
+    "plant_name": "Calathea Orbifolia",
+    "scientific_name": "Goeppertia orbifolia",
+    "description": "A stunning foliage plant known for its large, round, leathery leaves with distinct silver-green stripes. It is native to the Amazonian rainforest.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Prefers medium indirect light, high humidity, and consistently moist (but not soggy) soil. Sensitive to tap water minerals."
+  },
+  {
+    "plant_name": "Philodendron Birkin",
+    "scientific_name": "Philodendron 'Birkin'",
+    "description": "A compact, non-climbing cultivar of Philodendron featuring dark green leaves with striking white or cream pinstripe variegation. Each leaf develops a unique pattern.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Thrives in bright indirect light and requires well-draining soil; allow the top half of the soil to dry between waterings."
+  },
+  {
+    "plant_name": "Elephant Ear",
+    "scientific_name": "Alocasia amazonica 'Polly'",
+    "description": "A dramatic indoor plant with dark, waxy, shield-shaped leaves featuring thick white veins and purple undersides. It has a compact growth habit.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Needs bright indirect light, high humidity, and warmth. Soil should be kept moist but well-aerated."
+  },
+  {
+    "plant_name": "Fiddle Leaf Fig",
+    "scientific_name": "Ficus lyrata",
+    "description": "A popular indoor tree with large, violin-shaped, glossy leaves that can grow up to 10 feet tall indoors. Native to the lowland tropical forests of Western Africa.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Requires very bright, filtered light and a stable environment. Water only when the top inch of soil is dry; sensitive to overwatering and drafts."
+  },
+  {
+    "plant_name": "String of Pearls",
+    "scientific_name": "Curio rowleyanus",
+    "description": "A unique trailing succulent with pea-shaped, spherical leaves that store water, growing along long, thin stems. It is native to the drier regions of Southwest Africa.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Requires bright light with some direct sun. Plant in cactus/succulent mix and water sparingly only when the 'pearls' start to shrivel."
+  },
+  {
+    "plant_name": "ZZ Plant",
+    "scientific_name": "Zamioculcas zamiifolia",
+    "description": "A drought-tolerant plant with upright, thick stems and shiny, dark green waxy leaves. It is native to East Africa and is known for being extremely resilient.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Extremely low-maintenance; thrives in low to bright indirect light and requires very infrequent watering (once every 3-4 weeks)."
+  },
+  {
+    "plant_name": "Bird of Paradise",
+    "scientific_name": "Strelitzia reginae",
+    "description": "A dramatic plant known for its large, crane-like flowers in bright orange and blue and its broad, banana-like leaves. Native to South Africa.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Needs very bright light or full sun to bloom. Prefers rich, well-drained soil and regular watering during the growing season."
+  },
+  {
+    "plant_name": "Prayer Plant",
+    "scientific_name": "Maranta leuconeura",
+    "description": "Features oval leaves with striking red veins and dark patterns that fold upward at night like hands in prayer. Native to the Brazilian tropics.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Requires medium to bright indirect light and high humidity. Keep soil consistently moist and use filtered water if possible."
+  },
+  {
+    "plant_name": "Rex Begonia",
+    "scientific_name": "Begonia rex-cultorum",
+    "description": "Grown for its spectacular foliage which comes in shades of silver, purple, red, and green, often with iridescent textures. They have asymmetrical, heart-shaped leaves.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Prefers bright indirect light and high humidity. Soil should be porous and kept slightly moist; avoid getting water on the leaves to prevent rot."
+  },
+  {
+    "plant_name": "Chinese Money Plant",
+    "scientific_name": "Pilea peperomioides",
+    "description": "A charming plant with round, coin-shaped leaves on long petioles, giving it a unique umbrella-like appearance. Originally from the Yunnan Province of China.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Thrives in bright indirect light. Water when the soil is nearly dry and rotate the plant regularly to ensure even growth."
+  },
+  {
+    "plant_name": "False Shamrock",
+    "scientific_name": "Oxalis triangularis",
+    "description": "A bulbous plant with deep purple, triangular leaflets that close like an umbrella at night. It produces delicate pale pink or white flowers.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Requires bright indirect light. Water when the top inch of soil is dry and allow the plant to go through its natural dormancy period if the leaves die back."
+  },
+  {
+    "plant_name": "Wax Plant",
+    "scientific_name": "Hoya carnosa",
+    "description": "A slow-growing climbing or trailing vine with thick, waxy leaves and clusters of star-shaped, fragrant flowers. Native to East Asia and Australia.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Prefers bright indirect light and very well-draining soil. Allow the soil to dry out completely between waterings; it is quite drought-tolerant."
+  },
+  {
+    "plant_name": "Watermelon Peperomia",
+    "scientific_name": "Peperomia argyreia",
+    "description": "A compact indoor plant with leaves that resemble the skin of a watermelon, with silver stripes on a green background and red stems.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Does best in medium to bright indirect light. Avoid overwatering; wait until the top 50-75% of soil is dry before watering again."
+  },
+  {
+    "plant_name": "Dragon Tree",
+    "scientific_name": "Dracaena reflexa var. angustifolia",
+    "description": "An architectural plant with slender, upright stems topped by a tuft of narrow, arching leaves with red margins. Native to Madagascar.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Tolerates lower light but thrives in bright indirect light. Water when the soil is dry and ensure the pot has excellent drainage."
+  },
+  {
+    "plant_name": "Arrowhead Plant",
+    "scientific_name": "Syngonium podophyllum",
+    "description": "A versatile plant that starts as a bushy cluster and becomes a climbing vine. Its leaves are shaped like arrows and often come in shades of green, cream, or pink.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Low to medium light is acceptable, but variegated types need more light. Keep soil moist but not waterlogged."
+  },
+  {
+    "plant_name": "Flamingo Lily",
+    "scientific_name": "Anthurium andraeanum",
+    "description": "Known for its shiny, heart-shaped green leaves and vibrant red, pink, or white spathes (flowers) with a central spadix. Native to Colombia and Ecuador.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Requires very bright indirect light and high humidity. Use a well-draining orchid-like bark mix and keep the soil slightly moist."
+  },
+  {
+    "plant_name": "Croton",
+    "scientific_name": "Codiaeum variegatum",
+    "description": "A bold shrub with thick, leathery leaves in vivid shades of yellow, red, orange, and green. Native to Indonesia, Malaysia, and Australia.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Needs very bright, direct light to maintain its intense colors. Requires consistent moisture and high humidity; it is sensitive to cold temperatures."
+  },
+  {
+    "plant_name": "African Violet",
+    "scientific_name": "Saintpaulia ionantha",
+    "description": "Small, fuzzy-leaved plants that produce clusters of velvet-textured flowers in purple, pink, or white. Native to higher altitudes in East Africa.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Requires bright indirect light and bottom-watering to avoid getting the leaves wet. Use a special African Violet soil mix for best results."
+  },
+  {
+    "plant_name": "Staghorn Fern",
+    "scientific_name": "Platycerium bifurcatum",
+    "description": "An epiphytic fern that grows on trees in the wild, producing two types of fronds: flat, shield-like fronds and arching, antler-like fronds.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Best grown on a wood mount. Requires bright indirect light and should be watered by soaking the entire mount or moss ball and letting it dry slightly."
+  },
+  {
+    "plant_name": "Nerve Plant",
+    "scientific_name": "Fittonia albivenis",
+    "description": "A low-growing plant with delicate leaves featuring a dense network of white, pink, or red veins. It is native to the tropical rainforests of Peru.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Needs low to medium light and high humidity. It is famous for 'fainting' (wilting dramatically) when the soil dries out, but it recovers quickly after watering."
+  },
+  {
+    "plant_name": "Polka Dot Plant",
+    "scientific_name": "Hypoestes phyllostachya",
+    "description": "A small, colorful plant with green leaves heavily spotted with pink, white, or red. Native to Madagascar.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Prefers bright indirect light and regular pinching back to prevent it from becoming leggy. Keep the soil consistently moist."
+  },
+  {
+    "plant_name": "Cast Iron Plant",
+    "scientific_name": "Aspidistra elatior",
+    "description": "A virtually indestructible plant with dark green, lance-shaped leaves that grow directly from the soil. Native to Japan and Taiwan.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Extremely tolerant of low light, poor soil, and neglect. Water only when the soil is completely dry."
+  },
+  {
+    "plant_name": "Yucca Cane",
+    "scientific_name": "Yucca gigantea",
+    "description": "Features thick, woody trunks topped with sword-like, leathery leaves. It is native to Mexico and Central America and provides a desert-like aesthetic.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Requires very bright light or full sun and well-draining soil. It is highly drought-tolerant; water only when the soil is dry through to the bottom."
+  },
+  {
+    "plant_name": "Ponytail Palm",
+    "scientific_name": "Beaucarnea recurvata",
+    "description": "Despite the name, it is a succulent, not a palm. It has a bulbous 'elephant foot' base that stores water and long, hair-like leaves that flow from the top.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Thrives in bright light. Because it stores water in its trunk, it should be watered very infrequently, usually once every 3 to 4 weeks."
+  },
+  {
+    "plant_name": "Saw Palmetto",
+    "scientific_name": "Serenoa repens",
+    "description": "A small palm native to the southeastern United States, characterized by fan-shaped leaves and dark berries. It grows slowly and forms dense thickets in pine flatwoods.",
+    "medical_uses": "Commonly used to treat symptoms of benign prostatic hyperplasia (BPH) and to support prostate health in men.",
+    "treatment_methods": "The ripened dried berries are processed into lipophilic extracts for oral consumption.",
+    "care_instructions": "Full sun to partial shade; highly tolerant of salt spray and sandy, nutrient-poor soils."
+  },
+  {
+    "plant_name": "Goldenseal",
+    "scientific_name": "Hydrastis canadensis",
+    "description": "A small perennial herb native to the hardwood forests of eastern North America. It has a thick, yellow knotted rhizome and produces a single raspberry-like fruit.",
+    "medical_uses": "Contains berberine; used as an antimicrobial agent for digestive issues, skin irritations, and mucous membrane inflammation.",
+    "treatment_methods": "The dried yellow rhizome and root are used in powders, tinctures, or salves.",
+    "care_instructions": "Deep shade, moist, humus-rich soil; requires a woodland-like environment."
+  },
+  {
+    "plant_name": "Feverfew",
+    "scientific_name": "Tanacetum parthenium",
+    "description": "A daisy-like perennial with aromatic, yellowish-green leaves and small white flowers with yellow centers. It was traditionally known as 'medieval aspirin'.",
+    "medical_uses": "Primarily used for the prevention of migraines and the reduction of symptoms associated with arthritis and inflammation.",
+    "treatment_methods": "Fresh or dried leaves are consumed as tea or in capsule form.",
+    "care_instructions": "Full sun, well-drained soil; relatively low maintenance and drought-tolerant."
+  },
+  {
+    "plant_name": "Cat's Claw",
+    "scientific_name": "Uncaria tomentosa",
+    "description": "A woody vine native to the Amazon rainforest, named for the hook-like thorns that grow along the stem. It can grow up to 100 feet in length.",
+    "medical_uses": "Used to treat osteoarthritis, rheumatoid arthritis, and various digestive disorders like diverticulitis and colitis.",
+    "treatment_methods": "The inner bark is dried and prepared as a decoction or concentrated liquid extract.",
+    "care_instructions": "Partial shade, high humidity, and moist, well-drained organic soil; best suited for tropical climates."
+  },
+  {
+    "plant_name": "Devil's Claw",
+    "scientific_name": "Harpagophytum procumbens",
+    "description": "A leafy perennial from the Kalahari Desert of Southern Africa, named for the hooks on its fruit. It spreads along the ground from a large tuberous primary root.",
+    "medical_uses": "Highly effective for treating lower back pain, tendonitis, and inflammation related to degenerative joint diseases.",
+    "treatment_methods": "Secondary storage tubers are sliced, dried, and used in teas or tablets.",
+    "care_instructions": "Full sun, sandy soil, and very little water; requires a hot, arid environment."
+  },
+  {
+    "plant_name": "Panax Ginseng",
+    "scientific_name": "Panax ginseng",
+    "description": "A slow-growing perennial with fleshy roots, native to the mountains of East Asia. It is often called 'Asian Ginseng' to distinguish it from its American cousin.",
+    "medical_uses": "Used to improve energy levels, physical stamina, and cognitive function; it is a powerful tonic for general vitality.",
+    "treatment_methods": "The dried root is chewed directly, brewed as tea, or taken as a powder.",
+    "care_instructions": "Deep shade, well-drained soil rich in leaf mold; requires several years to mature before harvest."
+  },
+  {
+    "plant_name": "Marshmallow",
+    "scientific_name": "Althaea officinalis",
+    "description": "A perennial species native to Europe, Western Asia, and North Africa that thrives in marshes. It features soft, velvety leaves and pale pink flowers.",
+    "medical_uses": "High mucilage content makes it excellent for soothing irritated throats, dry coughs, and digestive tract inflammation.",
+    "treatment_methods": "Roots or leaves are prepared as a cold infusion to preserve the mucilage properties.",
+    "care_instructions": "Full sun to partial shade, moist to wet soil; thrives in boggy conditions."
+  },
+  {
+    "plant_name": "Yarrow",
+    "scientific_name": "Achillea millefolium",
+    "description": "A hardy perennial with feathery, fern-like foliage and flat clusters of small white or pink flowers. It is found throughout the Northern Hemisphere.",
+    "medical_uses": "Used to stop bleeding (styptic), treat fevers by inducing sweating, and aid in digestive complaints.",
+    "treatment_methods": "Fresh leaves are crushed for wounds; dried aerial parts are used for tea.",
+    "care_instructions": "Full sun, well-drained soil; extremely drought-tolerant and adaptable."
+  },
+  {
+    "plant_name": "Skullcap",
+    "scientific_name": "Scutellaria lateriflora",
+    "description": "A hardy perennial herb in the mint family native to North America. It features small, helmet-shaped blue flowers.",
+    "medical_uses": "Valued for its ability to treat nervous tension, muscle tremors, and seizures due to its sedative and antispasmodic properties.",
+    "treatment_methods": "Dried aerial parts are typically prepared as a tea or tincture.",
+    "care_instructions": "Full sun to partial shade, moist to wet soil; often found near marshes or streams."
+  },
+  {
+    "plant_name": "Stinging Nettle",
+    "scientific_name": "Urtica dioica",
+    "description": "A herbaceous perennial covered in tiny stinging hairs that release irritating chemicals when touched. Despite its sting, it is a nutritional powerhouse.",
+    "medical_uses": "Used to treat symptoms of seasonal allergies (hay fever), joint pain, and urinary tract issues related to an enlarged prostate.",
+    "treatment_methods": "Leaves are blanched or dried (to remove sting) for tea, or roots are used in extracts.",
+    "care_instructions": "Partial shade, rich moist soil; can spread rapidly in favorable conditions."
+  },
+  {
+    "plant_name": "Dandelion",
+    "scientific_name": "Taraxacum officinale",
+    "description": "A ubiquitous perennial herb with a yellow flower head and serrated leaves. Every part of the plant from root to flower is edible and medicinal.",
+    "medical_uses": "Roots are used for liver detoxification and bile production; leaves act as a potent but potassium-sparing diuretic.",
+    "treatment_methods": "Roots are roasted for a coffee substitute or decocted; leaves are eaten fresh or dried for tea.",
+    "care_instructions": "Full sun to shade, any soil type; highly resilient and difficult to eradicate from lawns."
+  },
+  {
+    "plant_name": "Common Hawthorn",
+    "scientific_name": "Crataegus monogyna",
+    "description": "A thorny shrub or small tree native to Europe, North Africa, and West Asia. It produces clusters of white flowers and small red 'haws'.",
+    "medical_uses": "Primarily used to strengthen the heart and improve cardiovascular health, including congestive heart failure and irregular heartbeat.",
+    "treatment_methods": "Leaves, flowers, and berries are used in teas, tinctures, and standardized extracts.",
+    "care_instructions": "Full sun, adaptable to most soil types; very hardy and often used for hedging."
+  },
+  {
+    "plant_name": "Mullein",
+    "scientific_name": "Verbascum thapsus",
+    "description": "A biennial plant that produces a rosette of large, velvety, silver-green leaves in its first year and a tall flower spike in its second.",
+    "medical_uses": "Excellent for respiratory conditions; it acts as an expectorant to clear mucus and soothe dry, hacking coughs.",
+    "treatment_methods": "Leaves and flowers are infused as tea (strained well to remove hairs) or smoked for lung relief.",
+    "care_instructions": "Full sun, dry rocky soil; often found in disturbed areas and along roadsides."
+  },
+  {
+    "plant_name": "Slippery Elm",
+    "scientific_name": "Ulmus rubra",
+    "description": "A medium-sized tree native to eastern North America. The name refers to the mucilaginous quality of the inner bark.",
+    "medical_uses": "Used to soothe the digestive tract and relieve sore throats, heartburn, and gastrointestinal irritation.",
+    "treatment_methods": "The inner bark is ground into a fine powder and mixed with water to form a mucilage or 'gruel'.",
+    "care_instructions": "Full sun to partial shade, moist well-drained soil; grows best in rich bottomlands."
+  },
+  {
+    "plant_name": "Pinstripe Calathea",
+    "scientific_name": "Calathea ornata",
+    "description": "A striking indoor plant from South America with dark green leaves featuring thin, elegant pink stripes. The underside of the leaves is a deep purple.",
+    "medical_uses": "None primarily used; grown for its air-purifying qualities and ornamental beauty.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright indirect light, high humidity, and consistently moist, well-draining soil."
+  },
+  {
+    "plant_name": "Swiss Cheese Vine",
+    "scientific_name": "Monstera adansonii",
+    "description": "A tropical climber native to Central and South America, famous for its small, oval leaves filled with natural holes (fenestrations).",
+    "medical_uses": "None primarily used; valued as an indoor ornamental plant.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright indirect light, peat-based soil, and watering when the top inch of soil is dry."
+  },
+  {
+    "plant_name": "African Mask Plant",
+    "scientific_name": "Alocasia x amazonica",
+    "description": "A hybrid plant with large, dark green, shield-shaped leaves that have prominent white or silver veins. It is native to tropical Southeast Asia.",
+    "medical_uses": "None primarily used; known for its dramatic architectural look in interior design.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright indirect light, high humidity, and warm temperatures; keep soil moist but not soggy."
+  },
+  {
+    "plant_name": "Giant Bird of Paradise",
+    "scientific_name": "Strelitzia nicolai",
+    "description": "A massive plant native to South Africa with banana-like leaves and large white-and-blue flowers. Indoors, it creates a lush, tropical atmosphere.",
+    "medical_uses": "None primarily used; strictly ornamental.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Very bright light to direct sun, rich well-drained soil, and frequent watering in summer."
+  },
+  {
+    "plant_name": "String of Hearts",
+    "scientific_name": "Ceropegia woodii",
+    "description": "A trailing succulent-like vine native to South Africa and Zimbabwe, featuring heart-shaped leaves with silver mottling and purple undersides.",
+    "medical_uses": "None primarily used; popular as a delicate hanging indoor plant.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright indirect light, well-draining soil, and allow the soil to dry out between waterings."
+  },
+  {
+    "plant_name": "Polka Dot Begonia",
+    "scientific_name": "Begonia maculata",
+    "description": "An eye-catching plant native to Brazil, featuring long olive-green leaves covered in silver polka dots and a deep burgundy underside.",
+    "medical_uses": "None primarily used; highly decorative ornamental.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright indirect light, high humidity, and allow the top inch of soil to dry before watering."
+  },
+  {
+    "plant_name": "Cape Jasmine",
+    "scientific_name": "Gardenia jasminoides",
+    "description": "An evergreen shrub native to Asia, famous for its intensely fragrant white flowers and glossy dark green leaves.",
+    "medical_uses": "In traditional Chinese medicine, the fruit is used for its cooling properties to treat fevers and inflammation.",
+    "treatment_methods": "The dried fruits are used in decoctions or the flowers are used for scenting tea.",
+    "care_instructions": "Bright indirect light, high humidity, and acidic, well-drained soil; requires consistent moisture."
+  },
+  {
+    "plant_name": "Elderberry",
+    "scientific_name": "Sambucus nigra",
+    "description": "A large deciduous shrub native to Europe and North America that produces flat-topped clusters of cream flowers followed by dark purple berries. It prefers damp environments and full sun.",
+    "medical_uses": "Commonly used for its antiviral properties to treat cold and flu symptoms and boost the immune system.",
+    "treatment_methods": "Berries must be cooked and are typically prepared as syrups, lozenges, or teas; raw berries contain toxins.",
+    "care_instructions": "Full sun to partial shade; consistently moist, fertile soil; regular pruning in early spring."
+  },
+  {
+    "plant_name": "Ginkgo Biloba",
+    "scientific_name": "Ginkgo biloba",
+    "description": "A prehistoric 'living fossil' tree native to China, known for its unique fan-shaped leaves that turn golden-yellow in autumn. It is one of the oldest living tree species on the planet.",
+    "medical_uses": "Used to enhance cognitive function, improve memory, and increase blood circulation to the brain.",
+    "treatment_methods": "Standardized extracts from the dried green leaves are usually taken in capsule or tablet form.",
+    "care_instructions": "Full sun; adaptable to various soil types but prefers well-drained loamy soil; very drought-tolerant once established."
+  },
+  {
+    "plant_name": "Arnica",
+    "scientific_name": "Arnica montana",
+    "description": "A perennial herb belonging to the sunflower family, native to the mountainous regions of Europe and Siberia. It bears bright yellow, daisy-like flowers on hairy stems.",
+    "medical_uses": "Known for its anti-inflammatory and analgesic properties, used to treat bruising, swelling, and muscle aches.",
+    "treatment_methods": "Usually applied topically as a cream, gel, or oil; should not be applied to broken skin or ingested in pure form.",
+    "care_instructions": "Full sun to partial shade; moist, acidic, well-draining soil; prefers cooler climates."
+  },
+  {
+    "plant_name": "Hawthorn",
+    "scientific_name": "Crataegus monogyna",
+    "description": "A thorny deciduous tree or shrub native to Europe, Asia, and North America, producing white flowers and red berries called 'haws.' It is a member of the rose family.",
+    "medical_uses": "Primarily used to support cardiovascular health, improve blood flow, and manage mild heart failure or high blood pressure.",
+    "treatment_methods": "The berries, leaves, and flowers are used to create tinctures, teas, or standardized extracts.",
+    "care_instructions": "Full sun; well-drained soil; very hardy and tolerant of air pollution and wind."
+  },
+  {
+    "plant_name": "Peperomia Obtusifolia",
+    "scientific_name": "Peperomia obtusifolia",
+    "description": "Also known as the Baby Rubber Plant, it features thick, fleshy, spoon-shaped leaves that store water. It is a compact plant native to the rainforests of South America.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright to medium indirect light; water when the soil is almost dry; prefers high humidity but is adaptable."
+  },
+  {
+    "plant_name": "Anthurium",
+    "scientific_name": "Anthurium andreanum",
+    "description": "A striking tropical plant known for its waxy, heart-shaped red bracts (spathes) and yellow flower spikes. It is native to Colombia and Ecuador and blooms year-round in the right conditions.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright indirect light; keep soil slightly moist; high humidity and warm temperatures are required for blooming."
+  },
+  {
+    "plant_name": "Jade Plant",
+    "scientific_name": "Crassula ovata",
+    "description": "A succulent shrub with thick, oval-shaped leaves and woody stems that resemble a miniature tree. It is native to South Africa and Mozambique and is considered a symbol of good luck.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Full sun or very bright indirect light; water only when leaves feel slightly soft or soil is bone-dry; well-draining succulent soil."
+  },
+  {
+    "plant_name": "Zebra Plant",
+    "scientific_name": "Haworthiopsis fasciata",
+    "description": "A small, slow-growing succulent with dark green leaves adorned with horizontal white stripes or warts. It is native to South Africa and forms attractive rosettes.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright indirect light; water thoroughly but infrequently; prefers well-draining cactus mix and shallow pots."
+  },
+  {
+    "plant_name": "Kentia Palm",
+    "scientific_name": "Howea forsteriana",
+    "description": "An elegant, slow-growing palm with arching, dark green fronds, native to Lord Howe Island, Australia. It is highly prized as a durable indoor plant for offices and homes.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Low to bright indirect light; water when the top inch of soil is dry; prefers high humidity but is very resilient."
+  },
+  {
+    "plant_name": "Maidenhair Fern",
+    "scientific_name": "Adiantum raddianum",
+    "description": "A delicate fern with fine, fan-shaped leaflets on wiry black stems. It is native to the tropical and subtropical regions of South America and is known for its graceful appearance.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Medium indirect light; keep soil consistently moist; requires high humidity to prevent foliage from drying out."
+  },
+  {
+    "plant_name": "Hops",
+    "scientific_name": "Humulus lupulus",
+    "description": "A vigorous perennial climbing vine native to temperate regions of the Northern Hemisphere. It is most famous for its cones, which are used as a flavoring and stabilizing agent in beer.",
+    "medical_uses": "Used as a sedative to treat sleep disorders and anxiety; also has mild estrogenic properties.",
+    "treatment_methods": "The dried strobiles (cones) are used in teas, tinctures, or 'sleep pillows'.",
+    "care_instructions": "Full sun; deep, well-drained, nutrient-rich soil; requires a tall trellis or wire for climbing."
+  },
+  {
+    "plant_name": "Aluminum Plant",
+    "scientific_name": "Pilea cadierei",
+    "description": "A compact indoor plant with attractive green leaves that have raised silvery-metallic patches. It is native to China and Vietnam and is part of the nettle family.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Medium to bright indirect light; water when the top of the soil is dry; pinch the tips to maintain a bushy shape."
+  },
+  {
+    "plant_name": "Fishbone Cactus",
+    "scientific_name": "Epiphyllum anguliger",
+    "description": "A unique orchid cactus with long, flat, zigzag-edged stems that resemble a fish's skeleton. It is an epiphyte native to the rainforests of Mexico.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright indirect light; water when the top half of the soil is dry; prefers a well-draining organic soil mix."
+  },
+  {
+    "plant_name": "Catnip",
+    "scientific_name": "Nepeta cataria",
+    "description": "A perennial herb in the mint family with heart-shaped, grayish-green leaves and small white flowers. It is famous for its behavioral effects on domestic cats.",
+    "medical_uses": "Used in humans as a mild sedative to treat tension headaches, digestive upset, and insomnia.",
+    "treatment_methods": "The dried leaves and flowering tops are brewed into a gentle tea.",
+    "care_instructions": "Full sun to partial shade; well-drained soil; very hardy and easy to grow."
+  },
+  {
+    "plant_name": "Blue Star Fern",
+    "scientific_name": "Phlebodium aureum",
+    "description": "An epiphytic fern with blue-green, deeply lobed fronds that have a matte finish. In the wild, it grows on trees in the tropical rainforests of the Americas.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Medium to bright indirect light; water when the surface of the soil is dry; prefers well-aerated potting mix."
+  },
+  {
+    "plant_name": "Meadowsweet",
+    "scientific_name": "Filipendula ulmaria",
+    "description": "A perennial herb with clusters of fragrant, creamy-white flowers, native to Europe and Western Asia. It contains salicylic acid, the precursor to modern aspirin.",
+    "medical_uses": "Used for pain relief, reducing fever, and treating acid indigestion or stomach ulcers.",
+    "treatment_methods": "The flowering tops and leaves are used in teas or liquid tinctures.",
+    "care_instructions": "Full sun to partial shade; prefers damp to wet, alkaline soil; does well near ponds or stream banks."
+  },
+  {
+    "plant_name": "Lipstick Plant",
+    "scientific_name": "Aeschynanthus radicans",
+    "description": "An epiphytic trailing plant named for its bright red flowers that emerge from dark purple calyxes, resembling a tube of lipstick. It is native to the tropical regions of Southeast Asia.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright indirect light; water when the top inch of soil is dry; requires high humidity to flower well."
+  },
+  {
+    "plant_name": "Oxalis Triangularis",
+    "scientific_name": "Oxalis triangularis",
+    "description": "Commonly known as the False Shamrock, it features deep purple, triangular leaves that close up like umbrellas at night. It produces dainty white or pale pink flowers.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright indirect light; water when the top inch of soil is dry; enters a dormancy period where leaves may die back."
+  },
+  {
+    "plant_name": "Black Cohosh",
+    "scientific_name": "Actaea racemosa",
+    "description": "A tall perennial plant native to North American woodlands, producing long spikes of small, white, feathery flowers in mid-summer. The roots have a medicinal history among indigenous peoples.",
+    "medical_uses": "Commonly used to treat symptoms of menopause, including hot flashes, night sweats, and irritability.",
+    "treatment_methods": "The dried rhizome and roots are used in tinctures, tablets, or decoctions.",
+    "care_instructions": "Partial to full shade; rich, moist, organic soil; requires a cool, sheltered location."
+  },
+  {
+    "plant_name": "Bromeliad",
+    "scientific_name": "Guzmania lingulata",
+    "description": "An epiphytic tropical plant with a rosette of strap-like leaves and a center cup that holds water. It produces a long-lasting, vibrant flower spike in shades of red or orange.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright indirect light; keep the central reservoir filled with fresh water; well-draining orchid or bark mix."
+  },
+  {
+    "plant_name": "Elecampane",
+    "scientific_name": "Inula helenium",
+    "description": "A tall, stately perennial with large, pointed leaves and yellow, sunflower-like flowers. It is native to Europe and Western Asia and has been cultivated for medicine since antiquity.",
+    "medical_uses": "Used primarily for respiratory ailments, acting as an expectorant to clear mucus from the lungs.",
+    "treatment_methods": "The thick, aromatic root is harvested in the second year and used in decoctions or syrups.",
+    "care_instructions": "Full sun; moist, well-drained soil; needs significant space as it can reach 6 to 8 feet in height."
+  },
+  {
+    "plant_name": "Rattlesnake Plant",
+    "scientific_name": "Goeppertia insignis",
+    "description": "A striking foliage plant with long, narrow leaves that feature dark green spots on a light green background and a deep purple underside. It is native to Brazil.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Medium to bright indirect light; high humidity is essential; keep soil consistently moist but never waterlogged."
+  },
+  {
+    "plant_name": "English Hawthorn",
+    "scientific_name": "Crataegus monogyna",
+    "description": "A thorny deciduous shrub or small tree with deeply lobed leaves and white flowers, native to Europe, Northwest Africa, and West Asia.",
+    "medical_uses": "Renowned for supporting cardiovascular health, helping to regulate blood pressure and strengthen heart contractions.",
+    "treatment_methods": "Berries, leaves, and flowers are used to make teas, tinctures, or standardized liquid extracts.",
+    "care_instructions": "Full sun to partial shade; tolerant of most soil types; very hardy and wind-resistant."
+  },
+  {
+    "plant_name": "Heartleaf Philodendron",
+    "scientific_name": "Philodendron hederaceum",
+    "description": "A fast-growing climber with glossy, heart-shaped leaves. It is one of the easiest houseplants to maintain and is native to Central America and the Caribbean.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Low to bright indirect light; water when the top inch of soil is dry; very tolerant of varying indoor conditions."
+  },
+  {
+    "plant_name": "Burro's Tail",
+    "scientific_name": "Sedum morganianum",
+    "description": "A popular trailing succulent with long stems draped in small, teardrop-shaped blue-green leaves. It is native to Southern Mexico.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Bright indirect sunlight; water sparingly; extremely fragile leaves that fall off if touched or moved."
+  },
+  {
+    "plant_name": "Kimberly Queen Fern",
+    "scientific_name": "Nephrolepis obliterata",
+    "description": "A large, upright fern with stiff fronds that stay green year-round. It is native to Australia and is more heat and sun tolerant than most ferns.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Partial shade to bright indirect light; requires consistent moisture; high humidity preferred but adaptable."
+  },
+  {
+    "plant_name": "Common Mullein",
+    "scientific_name": "Verbascum thapsus",
+    "description": "A biennial plant with large, fuzzy, silver-green leaves and a tall spike of yellow flowers, found globally but native to Europe, North Africa, and Asia.",
+    "medical_uses": "Used to treat respiratory conditions such as asthma, bronchitis, and dry coughs due to its demulcent and expectorant properties.",
+    "treatment_methods": "Leaves and flowers are steeped as tea or smoked; infused oil of the flowers is used for earaches.",
+    "care_instructions": "Full sun; grows in poor, dry, disturbed soils; drought-tolerant."
+  },
+  {
+    "plant_name": "Greater Burdock",
+    "scientific_name": "Arctium lappa",
+    "description": "A biennial plant with large, heart-shaped leaves and purple flowers surrounded by hooked bracts (burs). It is native to Europe and Asia.",
+    "medical_uses": "Used as a blood purifier and to treat skin conditions like eczema, acne, and psoriasis.",
+    "treatment_methods": "The long taproot is harvested and used in decoctions, tinctures, or consumed as a root vegetable.",
+    "care_instructions": "Full sun; requires deep, loose, fertile soil for root development; can become a weed if not managed."
+  },
+  {
+    "plant_name": "Common Dandelion",
+    "scientific_name": "Taraxacum officinale",
+    "description": "A ubiquitous perennial with deeply lobed leaves and bright yellow flowers that turn into puffballs. While often a garden weed, it has high nutritional and medicinal value.",
+    "medical_uses": "The leaves act as a powerful diuretic, while the root is used to support liver function and digestion.",
+    "treatment_methods": "Leaves are eaten fresh or dried for tea; the root is roasted as a coffee substitute or used in decoctions.",
+    "care_instructions": "Full sun to partial shade; grows in almost any soil; requires no special care."
+  },
+  {
+    "plant_name": "Wild Passionflower",
+    "scientific_name": "Passiflora incarnata",
+    "description": "A climbing vine with intricate, exotic-looking flowers and three-lobed leaves, native to the Southeastern United States.",
+    "medical_uses": "Used primarily as a sedative and hypnotic to treat insomnia, anxiety, and nervous tension.",
+    "treatment_methods": "The aerial parts (leaves and stems) are dried and used in teas, tinctures, or liquid extracts.",
+    "care_instructions": "Full sun to partial shade; well-drained soil; requires a trellis or support for climbing."
+  },
+  {
+    "plant_name": "Maca",
+    "scientific_name": "Lepidium meyenii",
+    "description": "A biennial herbaceous plant native to the high Andes of Peru, cultivated for its edible hypocotyl (root).",
+    "medical_uses": "Used as an adaptogen to increase energy, stamina, and libido, and to balance hormones.",
+    "treatment_methods": "The root is dried and ground into a powder, which is added to smoothies, food, or taken in capsules.",
+    "care_instructions": "Full sun; extremely hardy, survives at high altitudes; prefers well-drained, volcanic soil."
+  },
+  {
+    "plant_name": "Blue Gum Eucalyptus",
+    "scientific_name": "Eucalyptus globulus",
+    "description": "A fast-growing evergreen tree native to Australia, known for its silver-blue leaves and distinct medicinal scent.",
+    "medical_uses": "Highly effective for respiratory relief, acting as an expectorant and decongestant for coughs and sinus congestion.",
+    "treatment_methods": "Leaves are steam-distilled to produce essential oil; also used in steam inhalations and chest rubs.",
+    "care_instructions": "Full sun; deep, well-drained soil; requires plenty of space; drought-tolerant once established."
+  },
+  {
+    "plant_name": "Chinese Peony",
+    "scientific_name": "Paeonia lactiflora",
+    "description": "A perennial herb with large, fragrant, showy flowers and glossy green leaves, native to East Asia.",
+    "medical_uses": "In Traditional Chinese Medicine, the white root is used to nourish the blood, treat menstrual issues, and alleviate pain.",
+    "treatment_methods": "The dried root without the bark (Bai Shao) is boiled in water as a decoction or taken as a powder.",
+    "care_instructions": "Full sun to partial shade; rich, well-drained, slightly acidic soil; requires cold winter dormancy to bloom."
+  },
+  {
+    "plant_name": "Blue Skullcap",
+    "scientific_name": "Scutellaria lateriflora",
+    "description": "A perennial mint native to North America, with small blue flowers and square stems, typically found in wetlands.",
+    "medical_uses": "Used as a mild sedative to treat anxiety, nervous tension, and convulsions.",
+    "treatment_methods": "The aerial parts are harvested and used fresh or dried in teas, tinctures, and liquid extracts.",
+    "care_instructions": "Partial shade; requires consistently moist to wet soil; high organic content preferred."
+  },
+  {
+    "plant_name": "Arnica Montana",
+    "scientific_name": "Arnica montana",
+    "description": "A mountain-dwelling perennial with orange-yellow daisy-like flowers, native to Europe and parts of North America.",
+    "medical_uses": "Used exclusively topically to reduce bruising, swelling, and pain from muscle aches and sports injuries.",
+    "treatment_methods": "Flower heads are infused in oils or used in homeopathic gels, creams, and ointments.",
+    "care_instructions": "Full sun; acidic, nutrient-poor soil; requires good drainage and cool summer temperatures."
+  },
+  {
+    "plant_name": "Eleuthero",
+    "scientific_name": "Eleutherococcus senticosus",
+    "description": "A woody shrub native to Northeastern Asia, featuring thorny stems and clusters of black berries. It is often called Siberian Ginseng.",
+    "medical_uses": "Used to enhance immune function, improve stamina, and combat general weakness and fatigue.",
+    "treatment_methods": "The dried root and rhizome are used in decoctions, powders, or liquid extracts.",
+    "care_instructions": "Partial shade to full sun; prefers moist, well-drained soil; very winter-hardy."
+  },
+  {
+    "plant_name": "Monstera Deliciosa",
+    "scientific_name": "Monstera deliciosa",
+    "description": "An iconic tropical plant native to Mexico and Central America, recognized by its large, glossy green leaves with natural holes known as fenestrations. It is a climbing evergreen that utilizes aerial roots to anchor itself to larger trees in the wild.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Thrives in bright, indirect sunlight. Water once every 1–2 weeks, allowing soil to dry out between waterings. Prefers high-quality potting soil with peat moss."
+  },
+  {
+    "plant_name": "Calendula",
+    "scientific_name": "Calendula officinalis",
+    "description": "Also known as Pot Marigold, this Mediterranean native produces bright orange and yellow flowers. It is a short-lived perennial often grown as an annual in cooler climates.",
+    "medical_uses": "Renowned for skin-healing properties, used to treat minor burns, rashes, and inflammation.",
+    "treatment_methods": "Dried petals are infused into carrier oils to make salves or steeped in water for a medicinal wash.",
+    "care_instructions": "Prefers full sun and moderate soil fertility. Water regularly but do not allow the soil to become waterlogged."
+  },
+  {
+    "plant_name": "European Elderberry",
+    "scientific_name": "Sambucus nigra",
+    "description": "A large deciduous shrub native to Europe and North America, producing clusters of small white flowers followed by dark purple-black berries. Both flowers and berries have long histories of use.",
+    "medical_uses": "Primarily used to boost the immune system and shorten the duration of cold and flu symptoms.",
+    "treatment_methods": "Berries must be cooked; they are typically prepared as a syrup, jelly, or lozenge. Flowers are often used in teas.",
+    "care_instructions": "Grows in full sun to partial shade. Prefers moist, fertile, well-drained soil."
+  },
+  {
+    "plant_name": "Nettle",
+    "scientific_name": "Urtica dioica",
+    "description": "A perennial herbaceous plant found worldwide, known for the stinging hairs on its leaves and stems that release irritating chemicals when touched. It has serrated leaves and inconspicuous greenish flowers.",
+    "medical_uses": "Used as a natural diuretic and to treat symptoms of an enlarged prostate and hay fever.",
+    "treatment_methods": "Dried leaves are steeped as tea, or the roots are processed into capsules and tinctures.",
+    "care_instructions": "Thrives in nitrogen-rich, damp soil and full sun to partial shade. Usually grown in controlled patches due to its invasive and stinging nature."
+  },
+  {
+    "plant_name": "Hoya Carnosa",
+    "scientific_name": "Hoya carnosa",
+    "description": "Also known as the Wax Plant, this tropical climbing vine from East Asia and Australia features thick, succulent-like leaves and clusters of star-shaped, fragrant flowers.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Thrives in bright indirect light. Requires a very well-draining soil mix and should only be watered when the soil is completely dry."
+  },
+  {
+    "plant_name": "Creeping Fig",
+    "scientific_name": "Ficus pumila",
+    "description": "A vigorous climbing vine native to East Asia, featuring small, heart-shaped juvenile leaves that cling tightly to walls and surfaces using adhesive roots.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Prefers bright indirect light. Needs consistently moist soil and occasional pruning to manage its rapid growth and invasive tendencies."
+  },
+  {
+    "plant_name": "Wild Yam",
+    "scientific_name": "Dioscorea villosa",
+    "description": "A perennial twinning vine native to Eastern North America. It has heart-shaped leaves and inconspicuous greenish-yellow flowers.",
+    "medical_uses": "Historically used to treat menstrual cramps and muscular pain; it contains diosgenin, a precursor used in the synthesis of hormones.",
+    "treatment_methods": "The dried rhizome is used to make liquid extracts or topical creams used for hormonal support.",
+    "care_instructions": "Requires partial shade and moist, well-drained, fertile soil. Needs a trellis or nearby shrubbery to climb."
+  },
+  {
+    "plant_name": "Ox Tongue",
+    "scientific_name": "Gasteria bicolor",
+    "description": "A South African succulent with thick, tongue-shaped leaves that are usually dark green with white spots. It is very similar in appearance to Aloe but lacks the sharp teeth.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Thrives in low to bright indirect light. Requires very little water and must be planted in a well-draining succulent mix."
+  },
+  {
+    "plant_name": "Venus Flytrap",
+    "scientific_name": "Dionaea muscipula",
+    "description": "A carnivorous plant native only to the wetlands of the Carolinas in the USA. It features specialized leaf blades with sensitive hairs that snap shut to trap insects.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Requires very bright light (direct sun is best). Must be grown in nutrient-poor, acidic soil (peat/perlite) and watered only with distilled or rainwater."
+  },
+  {
+    "plant_name": "Pitcher Plant",
+    "scientific_name": "Nepenthes",
+    "description": "A genus of carnivorous plants native to Southeast Asia, characterized by modified leaves that form deep, fluid-filled pits used to drown and digest insects.",
+    "medical_uses": "None primarily used.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Requires bright, indirect light and high humidity. Use a moss-based, nutrient-poor substrate and keep the soil consistently damp with distilled water."
+  },
+  {
+    "plant_name": "Chickweed",
+    "scientific_name": "Stellaria media",
+    "description": "A delicate, low-growing annual herb native to Europe but naturalized worldwide. It has small, oval leaves and tiny white star-shaped flowers.",
+    "medical_uses": "Used topically to relieve itchy skin, eczema, and minor burns; also used internally as a mild diuretic.",
+    "treatment_methods": "Fresh plant material is used in salves or infusions; it is also edible and often used in salads.",
+    "care_instructions": "Thrives in cool, moist, and shady conditions. Prefers nitrogen-rich soil and is often considered a common garden weed."
+  },
+  {
+    "plant_name": "Self-Heal",
+    "scientific_name": "Prunella vulgaris",
+    "description": "A creeping perennial herb in the mint family, found across the temperate Northern Hemisphere. It produces square stems and spikes of purple, two-lipped flowers.",
+    "medical_uses": "Traditionally used for wound healing, sore throats, and its potent antiviral and antibacterial properties.",
+    "treatment_methods": "The whole plant is used fresh or dried in teas, poultices, or as a mouthwash for oral sores.",
+    "care_instructions": "Grows well in full sun to partial shade. Very adaptable to different soil types but prefers consistently moist ground."
+  },
+  {
+    "plant_name": "Plantain",
+    "scientific_name": "Plantago major",
+    "description": "A common perennial herb with broad, oval leaves that grow in a basal rosette. It is found growing in lawns and along roadsides globally.",
+    "medical_uses": "Highly effective as a 'drawing' herb for drawing out stingers, splinters, or toxins from insect bites.",
+    "treatment_methods": "Fresh leaves are crushed into a poultice and applied directly to the skin; also used in oils and balves.",
+    "care_instructions": "Requires full sun to partial shade and can grow in almost any soil, including compacted and poor ground."
+  },
+  {
+    "plant_name": "African Baobab",
+    "scientific_name": "Adansonia digitata",
+    "description": "A massive, long-lived tree with a swollen trunk native to the African savannah. It is often called the 'Tree of Life' due to its ability to store water and provide nutrient-dense fruit.",
+    "medical_uses": "Rich in Vitamin C; used to treat fever, diarrhea, and inflammatory skin conditions.",
+    "treatment_methods": "Powdered fruit pulp is mixed into drinks; bark is decocted for treating internal heat and fevers.",
+    "care_instructions": "Requires full sun and extremely well-draining sandy soil. Highly drought-tolerant; water sparingly during the dormant winter period."
+  },
+  {
+    "plant_name": "Marula",
+    "scientific_name": "Sclerocarya birrea",
+    "description": "A medium-sized deciduous tree widespread in sub-Saharan Africa. It produces a succulent yellow fruit used to make the famous Amarula liqueur.",
+    "medical_uses": "Bark contains antihistamines; used for malaria prophylaxis and treating stomach cramps.",
+    "treatment_methods": "A decoction of the inner bark is taken orally for indigestion or as a wash for skin irritations.",
+    "care_instructions": "Thrives in warm, frost-free climates. Prefers deep, sandy soil and moderate watering once established."
+  },
+  {
+    "plant_name": "Sausage Tree",
+    "scientific_name": "Kigelia africana",
+    "description": "A tree recognized by its massive, sausage-shaped fruits hanging from long rope-like stalks. It features large, dark red bell-shaped flowers that bloom at night.",
+    "medical_uses": "Known for antifungal and antibacterial properties; used to treat eczema and psoriasis.",
+    "treatment_methods": "Dried fruit is ground into a paste for topical application on skin sores or fungal infections.",
+    "care_instructions": "Needs plenty of space and full sun. Requires fertile, well-draining soil and regular watering during the growing season."
+  },
+  {
+    "plant_name": "Fever Tree",
+    "scientific_name": "Vachellia xanthophloea",
+    "description": "A distinctive acacia with smooth, lime-yellow powdery bark. It is native to swampy or riverine areas of Eastern and Southern Africa.",
+    "medical_uses": "Traditionally used to treat prophylactic fevers and eye infections.",
+    "treatment_methods": "Bark infusions are prepared for bathing to reduce high body temperatures or used as an eye wash.",
+    "care_instructions": "Requires very high light levels and wet, clay-rich soil. It is one of the few acacias that thrives in waterlogged ground."
+  },
+  {
+    "plant_name": "Mopane",
+    "scientific_name": "Colophospermum mopane",
+    "description": "A tree with characteristic butterfly-shaped leaves that fold together during the heat of the day. It dominates many arid landscapes in Southern Africa.",
+    "medical_uses": "Used as an antiseptic for wounds and to treat persistent coughs.",
+    "treatment_methods": "Leaves are chewed to extract juices for sore throats; crushed roots are used as a poultice on wounds.",
+    "care_instructions": "Extremely hardy and drought-tolerant. Prefers alluvial or lime-rich soils and full sun."
+  },
+  {
+    "plant_name": "Umbrella Thorn",
+    "scientific_name": "Vachellia tortilis",
+    "description": "The quintessential African savannah tree, known for its flat-topped canopy and hook-and-straight thorns. It provides essential shade and food for wildlife.",
+    "medical_uses": "Used for treating stomach aches and skin allergies.",
+    "treatment_methods": "Gum from the bark is dissolved in water for digestive issues; bark decoctions are used as a skin wash.",
+    "care_instructions": "Very drought-resistant. Needs well-drained soil and thrives in hot, arid environments."
+  },
+  {
+    "plant_name": "Cape Honeysuckle",
+    "scientific_name": "Tecoma capensis",
+    "description": "An evergreen scrambling shrub with clusters of brilliant orange, trumpet-shaped flowers. It is native to Southern Africa and is a favorite for sunbirds.",
+    "medical_uses": "Traditionally used to relieve pain and induce sleep.",
+    "treatment_methods": "Dried bark is powdered and taken in small doses for insomnia or to reduce high fever.",
+    "care_instructions": "Fast-growing and versatile. Thrives in full sun to partial shade and can tolerate moderate frost."
+  },
+  {
+    "plant_name": "Water Berry",
+    "scientific_name": "Syzygium cordatum",
+    "description": "An evergreen tree found near water sources across Africa. It has thick, leathery leaves and produces edible, purple fleshy berries.",
+    "medical_uses": "Bark and roots are used for respiratory ailments and tuberculosis symptoms.",
+    "treatment_methods": "A decoction of the bark is used as an emetic or a gargle for throat infections.",
+    "care_instructions": "Prefers moist to wet soil and full sun. Ideal for planting near ponds or in marshy areas."
+  },
+  {
+    "plant_name": "Wild Peach",
+    "scientific_name": "Kiggelaria africana",
+    "description": "A hardy evergreen tree with grey-green foliage that resembles a peach tree but is unrelated. It produces distinctive warty seed capsules.",
+    "medical_uses": "Primarily used in traditional rituals and as a general tonic.",
+    "treatment_methods": "Leaf infusions are sometimes used as a mild sedative or for livestock health.",
+    "care_instructions": "Tolerant of wind and frost. Grows best in well-composted soil with regular watering."
+  },
+  {
+    "plant_name": "King Protea",
+    "scientific_name": "Protea cynaroides",
+    "description": "The national flower of South Africa, this shrub produces the largest flower heads in the genus. It is adapted to the fynbos biome and fire-prone ecosystems.",
+    "medical_uses": "None primarily used; historically used for 'bossiestroop' (cough syrup).",
+    "treatment_methods": "Nectar was historically boiled down to a syrup for chest complaints, though now primarily ornamental.",
+    "care_instructions": "Requires acidic, nutrient-poor, well-drained soil. Must have excellent air circulation and full sun."
+  },
+  {
+    "plant_name": "Buffalo Thorn",
+    "scientific_name": "Ziziphus mucronata",
+    "description": "A deciduous tree with zig-zagging branches and paired thorns. It holds deep cultural significance in Zulu and Xhosa traditions.",
+    "medical_uses": "Used for pain relief and treating respiratory complaints.",
+    "treatment_methods": "Crushed leaves are applied to boils and skin sores; bark infusions are used for chest pains.",
+    "care_instructions": "Highly adaptable to various soil types. Drought and frost resistant, preferring full sun."
+  },
+  {
+    "plant_name": "Natal Mahogany",
+    "scientific_name": "Trichilia emetica",
+    "description": "A large, handsome evergreen tree with dark green glossy leaves. It produces cream-colored flowers and woody capsules with red and black seeds.",
+    "medical_uses": "The bark is a powerful emetic; oil from seeds is used for skin healing.",
+    "treatment_methods": "Bark is soaked in water for stomach cleansing; seed oil is applied topically to dry or itchy skin.",
+    "care_instructions": "Needs a frost-free climate and plenty of water. Prefers rich, deep soil and semi-shade when young."
+  },
+  {
+    "plant_name": "Wild Gardenia",
+    "scientific_name": "Gardenia thunbergia",
+    "description": "A slow-growing shrub with silver-grey bark and stiff branches. It produces large, intensely fragrant white flowers that open at night.",
+    "medical_uses": "Roots are used to treat skin diseases and as a treatment for leprosy in traditional medicine.",
+    "treatment_methods": "Infusions of the roots are used as a wash; fruit pulp is sometimes used as a soap substitute.",
+    "care_instructions": "Prefers acidic soil and filtered shade. Requires consistent moisture but must have good drainage."
+  },
+  {
+    "plant_name": "Common Coral Tree",
+    "scientific_name": "Erythrina lysistemon",
+    "description": "A striking tree that produces brilliant scarlet flowers on bare branches before the leaves appear. It is a signature tree of the South African landscape.",
+    "medical_uses": "Used to treat open wounds and promote healing after surgery.",
+    "treatment_methods": "Crushed bark is applied as a poultice to sores; infusions are used as an antibacterial wash.",
+    "care_instructions": "Thrives in sunny, warm areas. Requires well-drained soil and is very drought tolerant once established."
+  },
+  {
+    "plant_name": "Tree Wisteria",
+    "scientific_name": "Bolusanthus speciosus",
+    "description": "A small, deciduous tree that produces drooping racemes of mauve or violet pea-like flowers. It is considered one of the most beautiful indigenous trees of Africa.",
+    "medical_uses": "Bark is used to treat stomach problems and abdominal pain.",
+    "treatment_methods": "Dried and powdered bark is mixed with water and consumed for digestive distress.",
+    "care_instructions": "Requires full sun and well-drained soil. It is slow-growing but moderately drought and frost resistant."
+  },
+  {
+    "plant_name": "Wild Medlar",
+    "scientific_name": "Vangueria infausta",
+    "description": "A small deciduous tree with velvet-textured leaves. It produces edible, sandy-brown fruits that taste like dried apples.",
+    "medical_uses": "Root infusions are used for treating malaria and dental aches.",
+    "treatment_methods": "Roots are boiled and the liquid is drunk for fever; pounded leaves are applied to swollen limbs.",
+    "care_instructions": "Prefers well-drained, sandy soil. It is hardy and can tolerate light frost and dry conditions."
+  },
+  {
+    "plant_name": "Sourplum",
+    "scientific_name": "Ximenia caffra",
+    "description": "A spiny shrub or small tree found in woodlands. It produces bright red, oval fruits that are extremely tart and rich in Vitamin C.",
+    "medical_uses": "The leaves and roots are used to treat sexually transmitted infections and stomach parasites.",
+    "treatment_methods": "Roots are decocted for internal parasites; leaf extracts are used as an eye drop for inflammation.",
+    "care_instructions": "Drought-tolerant and hardy. Prefers full sun and sandy, well-drained soil."
+  },
+  {
+    "plant_name": "Candelabra Tree",
+    "scientific_name": "Euphorbia ingens",
+    "description": "A succulent tree with a massive, branch-like structure resembling a candelabra. It contains a toxic, milky white latex.",
+    "medical_uses": "Used in very small, controlled doses as a drastic purgative or for skin growths.",
+    "treatment_methods": "Latex is applied very carefully to warts (highly caustic); generally avoided for internal use due to toxicity.",
+    "care_instructions": "Requires full sun and very little water. Must have gravelly, fast-draining soil to prevent root rot."
+  },
+  {
+    "plant_name": "Quiver Tree",
+    "scientific_name": "Aloidendron dichotomum",
+    "description": "A tall, iconic succulent tree native to the arid regions of Namibia and South Africa. Its branches were traditionally used by San people to make quivers.",
+    "medical_uses": "None primarily used; mostly cultural and ornamental.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Must have full sun and extremely dry conditions. Use specialized cactus/succulent mix for soil and water once every few weeks."
+  },
+  {
+    "plant_name": "Frankincense",
+    "scientific_name": "Boswellia sacra",
+    "description": "A small tree native to the Horn of Africa. It produces the aromatic resin used worldwide in incense and perfumes.",
+    "medical_uses": "Used for its anti-inflammatory and antiseptic properties.",
+    "treatment_methods": "The resin is chewed for oral health or distilled into essential oil for joint pain relief.",
+    "care_instructions": "Thrives in harsh, rocky, desert environments. Needs intense sun and very little water."
+  },
+  {
+    "plant_name": "Myrrh",
+    "scientific_name": "Commiphora myrrha",
+    "description": "A spiny shrub with trifoliate leaves native to Somalia and Ethiopia. It exudes a natural oleoresin known as myrrh.",
+    "medical_uses": "Highly valued for treating mouth sores, gingivitis, and respiratory congestion.",
+    "treatment_methods": "Resin is used as a tincture for topical application or as a gargle.",
+    "care_instructions": "Requires hot, arid conditions and stony soil. Very sensitive to overwatering and high humidity."
+  },
+  {
+    "plant_name": "Cape Chestnut",
+    "scientific_name": "Calodendrum capense",
+    "description": "A magnificent forest tree that becomes covered in large clusters of pink, orchid-like flowers in summer. The seeds are black and oil-rich.",
+    "medical_uses": "Bark is used in traditional skin tonics and for treating internal parasites.",
+    "treatment_methods": "Bark infusions are taken orally for stomach worms; seed oil is used in cosmetic balms.",
+    "care_instructions": "Prefers fertile, deep soil and plenty of water. Can handle light frost but prefers a sheltered, sunny spot."
+  },
+  {
+    "plant_name": "Jackalberry",
+    "scientific_name": "Diospyros mespiliformis",
+    "description": "A large, dark-barked tree often found on termite mounds. It produces small, sweet, fleshy fruits that are a favorite of many animals.",
+    "medical_uses": "Leaves and bark are used for treating wounds and dysentery.",
+    "treatment_methods": "A decoction of the bark is used to wash wounds; leaves are boiled for a drink to stop diarrhea.",
+    "care_instructions": "Slow growing but very hardy. Prefers deep, moist soil and full sun to partial shade."
+  },
+  {
+    "plant_name": "Weeping Sage",
+    "scientific_name": "Buddleja salviifolia",
+    "description": "A large shrub with long, drooping branches and sage-like leaves. It produces dense, fragrant flower spikes ranging from white to purple.",
+    "medical_uses": "Used to treat eye infections and respiratory issues.",
+    "treatment_methods": "A leaf infusion is used as a soothing eye wash or as a tea for coughs.",
+    "care_instructions": "Extremely hardy and frost-tolerant. Thrives in full sun with moderate watering and regular pruning."
+  },
+  {
+    "plant_name": "Black Monkey Orange",
+    "scientific_name": "Strychnos madagascariensis",
+    "description": "A small tree with glossy leaves and hard, round, golf-ball sized fruits. Despite the name, the fruit pulp is edible and sweet-tart.",
+    "medical_uses": "Roots are used to treat inflamed throats and various stomach ailments.",
+    "treatment_methods": "Root scrapings are boiled in water and the infusion is drunk for relief of pain.",
+    "care_instructions": "Needs sandy, well-drained soil and a sunny position. It is drought-tolerant once established."
+  },
+  {
+    "plant_name": "Rock Fig",
+    "scientific_name": "Ficus abutilifolia",
+    "description": "A picturesque tree with white bark and large, heart-shaped leaves. It is often found growing directly out of cracks in rock faces.",
+    "medical_uses": "Used to treat chest complaints and to stimulate milk production in cattle.",
+    "treatment_methods": "Latex from the leaves is used topically for skin warts; bark infusions are used for respiratory issues.",
+    "care_instructions": "Needs full sun and extremely well-drained, rocky soil. Water moderately in summer, keep dry in winter."
+  },
+  {
+    "plant_name": "Wild Date Palm",
+    "scientific_name": "Phoenix reclinata",
+    "description": "A multi-stemmed palm that grows in dense clumps along riverbanks. It produces small, edible dates and has sharp spines at the leaf bases.",
+    "medical_uses": "Roots are used for treating pleurisy and stomach pains.",
+    "treatment_methods": "The roots are boiled and the liquid is consumed to alleviate chest pain.",
+    "care_instructions": "Requires constant access to water and full sun. Tolerates salt spray and moderate frost."
+  },
+  {
+    "plant_name": "Paperbark Thorn",
+    "scientific_name": "Vachellia sieberiana",
+    "description": "A large tree with a flat crown and corky, peeling, cream-colored bark. It is a prominent feature of the African highveld.",
+    "medical_uses": "Used for treating inflammation and as a treatment for coughs.",
+    "treatment_methods": "Bark decoctions are used for bathing swollen limbs; the gum is used for chest ailments.",
+    "care_instructions": "Needs space to spread. Prefers well-drained soil and deep watering during the summer months."
+  },
+  {
+    "plant_name": "Lavender Tree",
+    "scientific_name": "Heteropyxis natalensis",
+    "description": "A small tree with bark that peels in flakes, revealing white patches. The leaves smell strongly of lavender when crushed.",
+    "medical_uses": "Used as a disinfectant and for treating nosebleeds.",
+    "treatment_methods": "Steam from boiled leaves is inhaled for colds; powdered leaves are used to stop bleeding.",
+    "care_instructions": "Grows best in full sun and well-composted soil. It is drought and frost-resistant."
+  },
+  {
+    "plant_name": "Cross-berry",
+    "scientific_name": "Grewia occidentalis",
+    "description": "A scrambling shrub with star-shaped purple flowers and distinct four-lobed fruits. It is widely distributed across Southern Africa.",
+    "medical_uses": "Used to treat wounds and help with childbirth in traditional medicine.",
+    "treatment_methods": "The bark is soaked in water to make a dressing for wounds; leaf infusions are used to ease labor.",
+    "care_instructions": "Very adaptable; grows in sun or shade. Needs well-drained soil and regular pruning to keep shape."
+  },
+  {
+    "plant_name": "Small Knobwood",
+    "scientific_name": "Zanthoxylum capense",
+    "description": "A small tree identified by the cone-shaped knobs on its trunk, each tipped with a spine. The leaves have a strong citrus scent.",
+    "medical_uses": "Commonly used for toothache and flatulence.",
+    "treatment_methods": "The fruit or bark is chewed to relieve tooth pain; leaf tea is used for colic.",
+    "care_instructions": "Prefers a sunny spot with well-drained soil. It is slow-growing but very hardy."
+  },
+  {
+    "plant_name": "Broad-leaved Coral Tree",
+    "scientific_name": "Erythrina latissima",
+    "description": "A sturdy tree with large, leathery, woolly leaves and magnificent red flower heads. The bark is thick and corky.",
+    "medical_uses": "Used for treating skin sores and as a protective charm in rituals.",
+    "treatment_methods": "Pounded bark is applied to boils; the seeds are sometimes used in jewelry but are toxic if ingested.",
+    "care_instructions": "Requires a frost-free environment and full sun. Needs well-drained soil and minimal water in winter."
+  },
+  {
+    "plant_name": "Wild Laburnum",
+    "scientific_name": "Calpurnia aurea",
+    "description": "A graceful small tree with drooping sprays of bright yellow flowers. It is often used as a decorative garden plant.",
+    "medical_uses": "Used topically to treat lice, maggots, and skin itches in livestock and humans.",
+    "treatment_methods": "Crushed leaves and bark are used as a wash for the skin or scalp.",
+    "care_instructions": "Prefers full sun to partial shade and rich soil. Requires regular watering for best flowering."
+  },
+  {
+    "plant_name": "Cabbage Tree",
+    "scientific_name": "Cussonia spicata",
+    "description": "A unique tree with a thick trunk and a crown of large, palmately compound leaves. Its roots are fleshy and succulent.",
+    "medical_uses": "Used as a diuretic and for treating malaria.",
+    "treatment_methods": "A decoction of the roots or bark is used to treat fever or ease water retention.",
+    "care_instructions": "Needs well-drained soil and full sun. Do not overwater as the fleshy roots are prone to rot."
+  },
+  {
+    "plant_name": "Wild Pear",
+    "scientific_name": "Dombeya rotundifolia",
+    "description": "One of the first trees to bloom in spring, producing clouds of white, honey-scented flowers. The leaves are round, rough, and leathery.",
+    "medical_uses": "Used for treating heart palpitations and intestinal upsets.",
+    "treatment_methods": "A decoction of the bark is used to treat nausea or as a tonic for heart health.",
+    "care_instructions": "Extremely hardy and drought-resistant. Thrives in full sun and various soil types."
+  },
+  {
+    "plant_name": "Weeping Boer-bean",
+    "scientific_name": "Schotia brachypetala",
+    "description": "A tree famous for its deep red flowers that produce so much nectar they appear to 'weep'. The seeds are edible when roasted.",
+    "medical_uses": "Bark is used to treat heartburn and hangovers.",
+    "treatment_methods": "A decoction of the bark is taken for digestive comfort or as a general tonic.",
+    "care_instructions": "Frost-sensitive when young. Prefers deep, fertile soil and full sun; very drought-tolerant once mature."
+  },
+  {
+    "plant_name": "Weeping Wattle",
+    "scientific_name": "Peltophorum africanum",
+    "description": "A beautiful tree with fine, fern-like foliage and upright spikes of crinkled yellow flowers. In spring, it is often home to 'spittle bugs'.",
+    "medical_uses": "Used for treating wounds, diarrhea, and sore throats.",
+    "treatment_methods": "The bark is boiled to make a liquid for gargling or for cleaning sores.",
+    "care_instructions": "Prefers warm climates and sandy soil. Requires moderate water and full sun to bloom well."
+  },
+  {
+    "plant_name": "Silver Cluster-leaf",
+    "scientific_name": "Terminalia sericea",
+    "description": "A tree with stunning silvery-blue foliage due to fine hairs on the leaves. It is a common sight in sandy African bushveld.",
+    "medical_uses": "Used for treating stomach pains, diarrhea, and as an antibiotic.",
+    "treatment_methods": "The roots are decocted for stomach issues; bark is used topically for skin infections.",
+    "care_instructions": "Thrives in deep, sandy soils. Extremely drought-resistant and requires full sun."
+  },
+  {
+    "plant_name": "Pepper-bark Tree",
+    "scientific_name": "Warburgia salutaris",
+    "description": "A highly medicinal tree with leaves and bark that have a hot, peppery taste. It is currently endangered due to over-harvesting for traditional medicine.",
+    "medical_uses": "A natural antibiotic; used for coughs, colds, and fungal infections.",
+    "treatment_methods": "Dried bark or leaves are taken as a tea for respiratory relief or used in steam treatments.",
+    "care_instructions": "Prefers moist, well-drained soil and partial shade. Protect from frost when young."
+  },
+  {
+    "plant_name": "Blue Guarri",
+    "scientific_name": "Euclea crispa",
+    "description": "A hardy evergreen shrub with blue-green foliage. It produces small, pea-sized berries that turn black when ripe.",
+    "medical_uses": "The roots provide a dye and are used as a strong purgative.",
+    "treatment_methods": "Root infusions are taken in small quantities for digestive cleansing or used as a toothbrush.",
+    "care_instructions": "Extremely tough; grows in rocks, clay, or sand. Tolerates extreme cold and drought."
+  },
+  {
+    "plant_name": "Giant White Bird of Paradise",
+    "scientific_name": "Strelitzia nicolai",
+    "description": "A banana-like tree with massive leaves and large black and white flowers. It can reach heights of 10 meters in its coastal forest habitat.",
+    "medical_uses": "None primarily used; popular as a structural ornamental.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Requires rich soil and lots of water to look its best. Thrives in full sun or bright filtered light."
+  },
+  {
+    "plant_name": "Tree Fuchsia",
+    "scientific_name": "Halleria lucida",
+    "description": "A tree with a somewhat weeping habit that produces orange or red tubular flowers directly on the trunk and branches.",
+    "medical_uses": "Used for treating earaches and skin conditions.",
+    "treatment_methods": "Leaf juice is squeezed into the ear for pain; bark is used for skin washes.",
+    "care_instructions": "Prefers moist soil and partial shade. It is an excellent bird-attracting tree for gardens."
+  },
+  {
+    "plant_name": "Real Yellowwood",
+    "scientific_name": "Podocarpus latifolius",
+    "description": "The national tree of South Africa, this slow-growing conifer has a straight trunk and elegant, narrow leaves.",
+    "medical_uses": "None primarily used; highly prized for its timber.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Prefers forest-like conditions: cool, moist, and slightly acidic soil with partial shade."
+  },
+  {
+    "plant_name": "Leadwood",
+    "scientific_name": "Combretum imberbe",
+    "description": "One of the largest trees in Africa, known for its extremely dense, heavy wood and grey bark that breaks into small rectangles.",
+    "medical_uses": "The smoke from burning leaves is used to treat coughs and colds.",
+    "treatment_methods": "Inhalation of smoke from the leaves; root decoctions are used for stomach pain.",
+    "care_instructions": "Very slow-growing. Needs full sun, well-drained soil, and very little water once established."
+  },
+  {
+    "plant_name": "River Bushwillow",
+    "scientific_name": "Combretum erythrophyllum",
+    "description": "A medium to large tree often found along riverbanks. Its leaves turn a beautiful reddish color in autumn.",
+    "medical_uses": "Used primarily as a purgative and for treating venereal diseases.",
+    "treatment_methods": "Root decoctions are taken orally; however, seeds are known to be poisonous.",
+    "care_instructions": "Thrives in moist soil and full sun. It is fast-growing and relatively frost-hardy."
+  },
+  {
+    "plant_name": "Camphor Bush",
+    "scientific_name": "Tarchonanthus camphoratus",
+    "description": "A shrub or small tree with grey-green leaves that smell strongly of camphor when crushed. It produces cotton-wool-like flower heads.",
+    "medical_uses": "Used for treating asthma, headaches, and toothaches.",
+    "treatment_methods": "Leaves are smoked or inhaled in steam; leaf tea is used for stomach troubles.",
+    "care_instructions": "Extremely hardy. Tolerates salt spray, drought, and heavy frost. Prefers full sun."
+  },
+  {
+    "plant_name": "Snot Apple",
+    "scientific_name": "Azanza garckeana",
+    "description": "A deciduous shrub or tree that produces edible, glutinous fruits. The fruit is often chewed like gum, releasing a sweet mucilage.",
+    "medical_uses": "Used to treat coughs, chest pains, and infertility.",
+    "treatment_methods": "Root decoctions are drunk for internal ailments; the fruit is consumed for general health.",
+    "care_instructions": "Prefers well-drained soil and a warm climate. Moderately drought-tolerant."
+  },
+  {
+    "plant_name": "Wild Olive",
+    "scientific_name": "Olea europaea subsp. cuspidata",
+    "description": "A hardy evergreen tree with a dense canopy and small edible (but bitter) olives. It is the ancestor of the cultivated olive.",
+    "medical_uses": "Leaves are used to treat high blood pressure and sore throats.",
+    "treatment_methods": "A tea made from the leaves is drunk daily for hypertension; used as a gargle for throat infections.",
+    "care_instructions": "Very tough. Requires full sun and well-drained soil. Extremely drought and frost-resistant."
+  },
+  {
+    "plant_name": "Mountain Cypress",
+    "scientific_name": "Widdringtonia nodiflora",
+    "description": "A multi-stemmed shrub or tree native to mountainous regions. It is one of the few African conifers and can resprout after fire.",
+    "medical_uses": "None primarily used; mainly ecological and ornamental.",
+    "treatment_methods": "N/A",
+    "care_instructions": "Requires high rainfall and acidic, well-drained soil. Best suited for cool, mist-belt gardens."
+  },
+  {
+    "plant_name": "Uña de Gato",
+    "scientific_name": "Uncaria tomentosa",
+    "description": "A woody vine native to the Amazon rainforest, named for its hook-like thorns that resemble the claws of a cat. It can grow up to 100 feet long and is found climbing the canopy of dense South American forests.",
+    "medical_uses": "Known for powerful anti-inflammatory and immune-modulating properties. It is frequently used to treat arthritis, digestive disorders like gastritis, and to boost immune response.",
+    "treatment_methods": "The inner bark is typically prepared as a decoction by boiling it in water for 20-30 minutes, or consumed as a concentrated liquid extract.",
+    "care_instructions": "Requires high humidity, bright indirect light, and well-draining, nutrient-rich soil. It thrives in tropical conditions and needs support for its climbing vines."
+  },
+  {
+    "plant_name": "Muira Puama",
+    "scientific_name": "Ptychopetalum olacoides",
+    "description": "Commonly known as 'potency wood,' this small tree is indigenous to the Brazilian Amazon. It produces small, white flowers with a fragrance similar to jasmine.",
+    "medical_uses": "Primarily used as an aphrodisiac and nerve tonic. It is also utilized for neuromuscular problems, menstrual cramps, and joint pain.",
+    "treatment_methods": "The roots and bark are prepared as a tincture or a decoction, often combined with high-proof alcohol to extract the active resins.",
+    "care_instructions": "Needs a hot, humid tropical environment with consistent moisture and acidic soil. It does best in dappled sunlight."
+  },
+  {
+    "plant_name": "Pau d'Arco",
+    "scientific_name": "Handroanthus impetiginosus",
+    "description": "A massive canopy tree with vibrant purple flowers, native to the rainforests of South America. It is exceptionally durable and resistant to rot and fungal growth.",
+    "medical_uses": "Contains lapachol, which provides potent antifungal, antibacterial, and antiviral properties. It is often used to treat candida, skin infections, and inflammatory conditions.",
+    "treatment_methods": "The inner bark is harvested and dried to be made into a tea or infusion. It is usually simmered for a minimum of 15 minutes to release its compounds.",
+    "care_instructions": "Prefers full sun and well-drained soil. While hardy in tropical landscapes, it requires significant space due to its potential height."
+  },
+  {
+    "plant_name": "Chuchuhuasi",
+    "scientific_name": "Maytenus krukovii",
+    "description": "A large canopy tree found throughout the western Amazon basin, characterized by its extremely tough, reddish bark. It has been used for centuries by indigenous tribes for systemic vitality.",
+    "medical_uses": "Acts as a powerful analgesic and anti-inflammatory. It is used to treat osteoarthritis, rheumatoid arthritis, and chronic back pain.",
+    "treatment_methods": "The bark is macerated in local cane spirit (aguardiente) or boiled into a long-simmering decoction.",
+    "care_instructions": "Requires deep, fertile soil and high rainfall. It is difficult to cultivate outside of its native tropical lowland habitat."
+  },
+  {
+    "plant_name": "Sangre de Grado",
+    "scientific_name": "Croton lechleri",
+    "description": "Known as 'Dragon's Blood,' this medium-sized tree features heart-shaped leaves and produces a thick, blood-red latex when the bark is cut. It is a pioneer species in the Amazonian rainforest.",
+    "medical_uses": "The sap is a powerful wound healer and antiseptic. It is used topically for cuts and internally for stomach ulcers and diarrhea.",
+    "treatment_methods": "The liquid resin is applied directly to the skin where it dries into a protective film, or a few drops are diluted in water for internal consumption.",
+    "care_instructions": "Grows rapidly in full sun to partial shade. It requires moist, well-aerated soil and tropical temperatures."
+  },
+  {
+    "plant_name": "Iporuru",
+    "scientific_name": "Alchornea castaneifolia",
+    "description": "A shrubby tree typically found growing along the riverbanks of the Amazon. It produces small, inconspicuous flowers and serrated leaves.",
+    "medical_uses": "Highly valued for its ability to treat inflammatory joint conditions. It is also used as an anti-viral agent against respiratory infections.",
+    "treatment_methods": "Leaves and bark are used to make a cold maceration or a warm infusion. Sometimes the leaves are applied as a warm compress on painful joints.",
+    "care_instructions": "Needs very wet conditions and can tolerate occasional flooding. It thrives in full sun and rich, silty soil."
+  },
+  {
+    "plant_name": "Clavo Huasca",
+    "scientific_name": "Tynnanthus panurensis",
+    "description": "A large woody vine that produces a distinct clove-like aroma when the bark or wood is crushed. It belongs to the Bignoniaceae family and climbs high into the forest canopy.",
+    "medical_uses": "Used traditionally as an aphrodisiac for both men and women. It also aids digestion and relieves intestinal gas.",
+    "treatment_methods": "The vine wood is chopped and infused into alcohol or water. It is frequently an ingredient in the 'Seven Roots' tonic of Peru.",
+    "care_instructions": "Requires a trellis or large tree for support. It needs consistent moisture, high humidity, and filtered light."
+  },
+  {
+    "plant_name": "Mulungu",
+    "scientific_name": "Erythrina mulungu",
+    "description": "A beautiful ornamental tree from the cerrado of Brazil, known for its striking orange flowers. It is a nitrogen-fixing tree that improves soil quality.",
+    "medical_uses": "Acts as a powerful natural sedative and anxiolytic. It is used to treat insomnia, high blood pressure, and nervous system disorders.",
+    "treatment_methods": "A decoction is made from the bark or root. It is often taken before bed to promote deep sleep.",
+    "care_instructions": "Drought-tolerant once established but prefers well-drained soil and full sun. It is sensitive to frost."
+  },
+  {
+    "plant_name": "Suma",
+    "scientific_name": "Hebanthe eriantha",
+    "description": "Often called 'Brazilian Ginseng,' this ground-running vine is native to the Amazon basin. It has an extensive root system that stores concentrated nutrients.",
+    "medical_uses": "Considered a premier adaptogen that increases resistance to stress. It is used to balance hormones, boost energy, and improve libido.",
+    "treatment_methods": "The large root is dried and ground into a fine powder, which is then encapsulated or mixed into smoothies.",
+    "care_instructions": "Requires loose, sandy soil to allow root expansion. It needs a warm climate and regular watering during the growing season."
+  },
+  {
+    "plant_name": "Anamu",
+    "scientific_name": "Petiveria alliacea",
+    "description": "A perennial herb found in the Amazon and tropical South America that emits a strong garlic-like odor from its roots and leaves. It grows low to the ground in shaded forest areas.",
+    "medical_uses": "Used as an immunostimulant and for its anti-leukemic properties. It also serves as a remedy for sinusitis and inflammation.",
+    "treatment_methods": "An infusion of the leaves is drunk, or the roots are macerated in alcohol for topical or internal use.",
+    "care_instructions": "Thrives in partial to full shade and moist soil. It is a hardy plant but can be invasive in ideal tropical conditions."
+  },
+  {
+    "plant_name": "Espinheira Santa",
+    "scientific_name": "Maytenus ilicifolia",
+    "description": "A small evergreen tree with holly-like leaves native to southern Brazil. It is highly regarded in South American urban pharmacies as well as indigenous medicine.",
+    "medical_uses": "Specific for digestive health, particularly in treating gastric ulcers, reflux, and chronic gastritis. It is also used as a mild laxative.",
+    "treatment_methods": "The leaves are prepared as an infusion. For ulcers, it is typically consumed on an empty stomach.",
+    "care_instructions": "Prefers subtropical to tropical climates and well-drained soil. It can tolerate light shade but grows best in full sun."
+  },
+  {
+    "plant_name": "Abuta",
+    "scientific_name": "Abuta grandifolia",
+    "description": "A woody vine or climbing shrub with large, leathery leaves found throughout the Amazon. It is often referred to as the 'midwife's herb' due to its focus on women's health.",
+    "medical_uses": "Used to balance hormones, stop internal bleeding, and treat menstrual cramps. It is also utilized as a remedy for malaria.",
+    "treatment_methods": "The root or bark is boiled into a decoction. In traditional ceremonies, it is sometimes used as a secondary ingredient in infusions.",
+    "care_instructions": "Requires high humidity and rich organic soil. It should be grown in a spot with bright, filtered light."
+  },
+  {
+    "plant_name": "Amargo",
+    "scientific_name": "Quassia amara",
+    "description": "A small tree or shrub with bright red flowers, native to the tropical regions of northern South America. It contains quassinoids, which are among the bitterest substances found in nature.",
+    "medical_uses": "Used as a digestive bitter to stimulate appetite and treat gallbladder issues. It is also an effective natural insecticide and treatment for intestinal parasites.",
+    "treatment_methods": "Bark shavings are soaked in cold water overnight or briefly simmered. The extremely bitter liquid is then strained and consumed.",
+    "care_instructions": "Requires a consistently warm, frost-free environment and fertile, moist soil. It prefers partial shade."
+  },
+  {
+    "plant_name": "Ayahuasca Vine",
+    "scientific_name": "Banisteriopsis caapi",
+    "description": "A massive jungle liana with circular bark patterns, considered sacred by many Amazonian cultures. It serves as the primary base for the traditional ceremonial brew of the same name.",
+    "medical_uses": "Acts as a Monoamine Oxidase Inhibitor (MAOI) and is being researched for treating depression, PTSD, and addiction. It is also used traditionally as a physical purgative.",
+    "treatment_methods": "The woody vine is pounded with wooden mallets and boiled for many hours to create a concentrated liquid.",
+    "care_instructions": "Needs deep soil and a large structure to climb. It requires a tropical climate with high rainfall and indirect forest-floor lighting when young."
+  },
+  {
+    "plant_name": "Chacruna",
+    "scientific_name": "Psychotria viridis",
+    "description": "A perennial shrub in the coffee family that grows in the humid lowlands of the Amazon. It features small red berries and glossy, opposite leaves.",
+    "medical_uses": "Known for its high DMT content, it is used primarily in ceremonial medicine for its psychoactive effects in combination with MAOI-containing plants. It also has minor antimicrobial properties.",
+    "treatment_methods": "The leaves are boiled together with Banisteriopsis caapi vines. It is rarely used alone medically.",
+    "care_instructions": "Requires very high humidity, warm temperatures, and acidic, well-draining soil. It is sensitive to direct sunlight and prefers shaded conditions."
+  },
+  {
+    "plant_name": "Yoco",
+    "scientific_name": "Paullinia yoco",
+    "description": "A woody vine native to the western Amazon, particularly in the Putumayo region. It is closely related to Guarana but is harvested from the wild rather than cultivated.",
+    "medical_uses": "Used as a potent stimulant to suppress hunger and fatigue during long forest treks. It also acts as a febrifuge and a general tonic.",
+    "treatment_methods": "The bark is scraped into cold water, which is then squeezed to release the caffeine-rich juices and drunk.",
+    "care_instructions": "Thrives in the primary rainforest canopy. For cultivation, it needs high heat, constant moisture, and a mature tree for support."
+  },
+  {
+    "plant_name": "Wira Wira",
+    "scientific_name": "Achyrocline satureioides",
+    "description": "A silver-leaved perennial herb that grows in the Andean regions of South America. Its flowers are small, yellow, and have a woolly texture.",
+    "medical_uses": "Widely used for respiratory ailments, including asthma, bronchitis, and the common cold. It also has hepatoprotective (liver-protecting) properties.",
+    "treatment_methods": "The dried flowers and leaves are steeped in hot water to make a medicinal tea.",
+    "care_instructions": "Can tolerate cooler temperatures than Amazonian plants but needs well-drained, sandy soil and full sun."
+  },
+  {
+    "plant_name": "Manaca",
+    "scientific_name": "Brunfelsia uniflora",
+    "description": "A small shrub with flowers that change color from purple to white over several days. It is native to the Amazon and the Atlantic Forest of Brazil.",
+    "medical_uses": "Used to stimulate the lymphatic system and treat syphilis and rheumatism. It is also an ingredient in traditional folk remedies for clearing 'stagnant' energy.",
+    "treatment_methods": "A decoction is made from the root, though it must be used with caution due to its high potency.",
+    "care_instructions": "Requires rich, acidic soil and consistent moisture. It does best in partial shade and warm temperatures."
+  },
+  {
+    "plant_name": "Huacapurana",
+    "scientific_name": "Campsiandra angustifolia",
+    "description": "A large tree that grows in the flooded forests (igapó) of the Amazon. It is known for its incredible resilience to prolonged submersion in river water.",
+    "medical_uses": "Used traditionally as a remedy for malaria and high fevers. The bark is also utilized for its wound-healing and anti-diarrheal properties.",
+    "treatment_methods": "The bark is boiled into a concentrated decoction or used as a topical wash for skin infections.",
+    "care_instructions": "Needs very wet conditions and can survive underwater for months. It requires full sun and heavy clay or silty soil."
+  },
+  {
+    "plant_name": "Jurubeba",
+    "scientific_name": "Solanum paniculatum",
+    "description": "A prickly, nightshade-family shrub native to Brazil and Paraguay. It produces small yellow fruits and is considered a common weed in some tropical pastures.",
+    "medical_uses": "The root, leaf, and fruit are used to treat liver disorders, jaundice, and sluggish digestion. It is also a common ingredient in Brazilian medicinal wines.",
+    "treatment_methods": "Infusions or decoctions of the root and leaves are most common. The fruits can be macerated in wine.",
+    "care_instructions": "Extremely hardy; prefers full sun and can tolerate poor soil. It needs minimal water once established."
+  },
+  {
+    "plant_name": "Jatoba",
+    "scientific_name": "Hymenaea courbaril",
+    "description": "A massive tree that produces a hard, edible fruit and a clear resin known as 'copal.' It is found throughout the Caribbean and South American rainforests.",
+    "medical_uses": "Used to treat respiratory conditions like asthma and laryngitis. It is also valued as an energy tonic and antifungal treatment.",
+    "treatment_methods": "The bark is made into a decoction, while the resin is often burned as an aromatic or used in tinctures.",
+    "care_instructions": "Requires a large area for growth, full sun, and well-drained soil. It is very resistant to pests."
+  },
+  {
+    "plant_name": "Balsam of Peru",
+    "scientific_name": "Myroxylon balsamum",
+    "description": "A large tree native to Central and South America. Despite its name, it is primarily sourced from El Salvador but was historically shipped through Peru.",
+    "medical_uses": "The resin is used for its antiseptic and anti-inflammatory properties, particularly for skin conditions, hemorrhoids, and as an expectorant for coughs.",
+    "treatment_methods": "The resin is collected by scorching the bark and then applying cloths to soak up the liquid, which is then processed into a balsam.",
+    "care_instructions": "Requires a tropical climate with a distinct dry season. It prefers fertile, loamy soil and full sun."
+  },
+  {
+    "plant_name": "Copaiba",
+    "scientific_name": "Copaifera officinalis",
+    "description": "A large Amazonian tree known as the 'diesel tree' because its resin can be used as fuel. It is one of the most important medicinal trees in South American folk medicine.",
+    "medical_uses": "The oleoresin is a potent anti-inflammatory used for urinary tract infections, sore throats, and inflammatory skin conditions.",
+    "treatment_methods": "The resin is harvested by tapping the trunk (similar to maple syrup). It can be applied topically or taken in very small amounts internally.",
+    "care_instructions": "Prefers moist, sandy soil and high humidity. It is slow-growing and requires a tropical forest environment."
+  },
+  {
+    "plant_name": "Yerba Mate",
+    "scientific_name": "Ilex paraguariensis",
+    "description": "An evergreen shrub or small tree native to the subtropical highlands of South America. Its leaves are the source of the most popular social beverage in the region.",
+    "medical_uses": "Acts as a powerful stimulant and antioxidant. It is used to boost cognitive function, aid weight loss, and relieve fatigue.",
+    "treatment_methods": "The leaves are dried, aged, and then steeped in hot (but not boiling) water in a traditional gourd.",
+    "care_instructions": "Prefers subtropical temperatures and slightly acidic, well-drained soil. It requires moderate rainfall and partial shade when young."
+  },
+  {
+    "plant_name": "Quina",
+    "scientific_name": "Cinchona officinalis",
+    "description": "A small tree native to the tropical Andean forests. It is historically famous as the original source of quinine, the first effective treatment for malaria.",
+    "medical_uses": "Primary source for anti-malarial compounds. It is also used as an appetite stimulant and to treat leg cramps and heart palpitations.",
+    "treatment_methods": "The bark is dried and ground, then prepared as a decoction or tincture.",
+    "care_instructions": "Thrives in high-altitude, misty mountain environments. It requires cool, humid air and well-drained, volcanic soil."
+  },
+  {
+    "plant_name": "Coca",
+    "scientific_name": "Erythroxylum coca",
+    "description": "A shrub native to the eastern slopes of the Andes mountains. It has played a central role in Andean culture for thousands of years for both nutritional and medicinal purposes.",
+    "medical_uses": "Used to treat altitude sickness, hunger, and fatigue. It also acts as an anesthetic and a digestive aid.",
+    "treatment_methods": "The leaves are chewed with an alkaline substance (like lime or ash) or steeped as a mild herbal tea.",
+    "care_instructions": "Requires high altitude and specific tropical conditions. It needs moist soil, high humidity, and protection from strong winds."
+  },
+  {
+    "plant_name": "Achiote",
+    "scientific_name": "Bixa orellana",
+    "description": "Also known as the lipstick tree, this shrub is famous for its bright red seed pods. It is native to the tropical regions of the Americas.",
+    "medical_uses": "The leaves are used for prostate inflammation and urinary tract infections. The seeds are used for skin issues and as a digestive aid.",
+    "treatment_methods": "Leaves are prepared as an infusion. The seeds are used to make a paste or extracted into oils for topical use.",
+    "care_instructions": "Grows best in full sun and rich, moist soil. It is easy to cultivate in tropical and subtropical gardens."
+  },
+  {
+    "plant_name": "Bobinsana",
+    "scientific_name": "Calliandra angustifolia",
+    "description": "A beautiful shrub that grows along the riverbanks of the Amazon, featuring delicate, powder-puff pink flowers. It is considered a 'master teacher plant' by indigenous healers.",
+    "medical_uses": "Used for rheumatism, uterine disorders, and as a physical and spiritual heart tonic. It is also used to strengthen the body against colds.",
+    "treatment_methods": "A decoction of the bark or roots is traditionally used. It is often taken early in the morning.",
+    "care_instructions": "Needs very wet soil and can handle high water tables. It thrives in full sun and tropical heat."
+  },
+  {
+    "plant_name": "Ajos Sacha",
+    "scientific_name": "Mansoa alliacea",
+    "description": "An Amazonian vine that smells and tastes strongly of garlic. It produces beautiful lavender-colored, trumpet-shaped flowers.",
+    "medical_uses": "Used for pain relief, specifically for arthritis and headaches. It is also a powerful antifungal and is used to treat colds and flu.",
+    "treatment_methods": "The leaves and bark are macerated in water or alcohol. It can also be added to baths for systemic relief.",
+    "care_instructions": "Requires a sturdy trellis for its vigorous vines. It prefers full sun to partial shade and moist, rich soil."
+  },
+  {
+    "plant_name": "Piri Piri",
+    "scientific_name": "Cyperus articulatus",
+    "description": "A sedge-like plant that grows in marshy areas of the Amazon. It has a long history of use in both medicine and shamanic traditions.",
+    "medical_uses": "The rhizomes are used to treat nausea, epilepsy, and as a digestive aid. It is also used in 'luck' charms and aromatic perfumes.",
+    "treatment_methods": "The aromatic rhizomes are dried and ground into powder or prepared as an infusion.",
+    "care_instructions": "Requires semi-aquatic conditions. It must be grown in saturated soil or at the edge of a pond in full sun."
+  },
+  {
+    "plant_name": "Matico",
+    "scientific_name": "Piper aduncum",
+    "description": "A shrub or small tree in the pepper family, native to the Amazon and high-altitude Andean valleys. It has distinctively spiked flower spikes and lance-shaped leaves.",
+    "medical_uses": "Highly regarded for its ability to stop bleeding and heal wounds. It is also used for digestive distress and respiratory infections.",
+    "treatment_methods": "Leaves are used as a topical poultice for wounds or steeped as a tea for internal issues.",
+    "care_instructions": "Prefers moist, well-drained soil and partial shade. It is a very fast-growing plant that can tolerate various light levels."
+  },
+  {
+    "plant_name": "Tayuya",
+    "scientific_name": "Cayaponia tayuya",
+    "description": "A woody vine native to the Amazon rainforest, particularly in Brazil and Peru. It produces small, greenish flowers and a large, bitter root system.",
+    "medical_uses": "Used primarily for pain management and detoxification. It is often employed for chronic skin conditions like psoriasis and for treating gout.",
+    "treatment_methods": "The root is used to make a decoction or tincture. It is very bitter and often blended with other herbs.",
+    "care_instructions": "Needs a trellis and high humidity. It requires fertile soil and constant moisture during its growth phase."
+  },
+  {
+    "plant_name": "Guaçatonga",
+    "scientific_name": "Casearia sylvestris",
+    "description": "A small tree found across most of South America, known for its small, cream-colored flowers that grow along the stems. It is a staple in Brazilian herbal medicine.",
+    "medical_uses": "Valued for its anti-ulcer and wound-healing properties. It is also being studied for its ability to neutralize certain snake venoms and inhibit tumor growth.",
+    "treatment_methods": "An infusion of the leaves is drunk for stomach issues, or applied as a wash for skin lesions.",
+    "care_instructions": "Very adaptable; can grow in full sun or shade and tolerates a range of soil types as long as they are well-drained."
+  },
+  {
+    "plant_name": "Mapacho",
+    "scientific_name": "Nicotiana rustica",
+    "description": "A very potent species of tobacco native to the Amazon. It has much higher nicotine content than commercial tobacco and is considered a sacred medicinal plant.",
+    "medical_uses": "Used as an antiseptic for skin infections and as a treatment for respiratory parasites. It is also used in traditional cleansing rituals to clear the mind.",
+    "treatment_methods": "Leaves are macerated in water for a nasal rinse or applied topically as a paste. It is also used as a fumigant.",
+    "care_instructions": "Requires full sun and rich, nitrogen-heavy soil. It is an annual plant that grows quickly in warm weather."
+  },
+  {
+    "plant_name": "Camu Camu",
+    "scientific_name": "Myrciaria dubia",
+    "description": "A small bushy tree that grows in the flooded banks of the Amazon river. It produces a tart, cherry-like fruit that has the highest recorded Vitamin C content of any plant.",
+    "medical_uses": "Used to boost the immune system, improve skin health, and as an anti-viral. It is also used to support mood and eye health.",
+    "treatment_methods": "The fruit is dried and ground into a powder or consumed as a fresh juice pulp.",
+    "care_instructions": "Requires very wet soil and thrives in flooded environments. It needs full sun and a tropical, frost-free climate."
+  },
+  {
+    "plant_name": "Aguaje",
+    "scientific_name": "Mauritia flexuosa",
+    "description": "A majestic palm tree that grows in swampy areas of the Amazon. It is known as the 'Tree of Life' due to its many uses for food, fiber, and medicine.",
+    "medical_uses": "High in phytoestrogens, it is used to balance female hormones and treat symptoms of menopause. It is also rich in Vitamin A (beta-carotene).",
+    "treatment_methods": "The fruit pulp is eaten fresh or made into a supplement oil.",
+    "care_instructions": "Requires swamp-like conditions with standing water and full sun. It is a very large palm and needs significant space."
+  },
+  {
+    "plant_name": "Guarana",
+    "scientific_name": "Paullinia cupana",
+    "description": "A climbing vine in the maple family, native to the Amazon basin. It is famous for its seeds, which resemble human eyeballs when the fruit splits open.",
+    "medical_uses": "Contains twice the concentration of caffeine found in coffee beans. It is used to improve mental focus, boost metabolism, and reduce physical fatigue.",
+    "treatment_methods": "The seeds are dried, roasted, and ground into a paste or powder to be mixed with water or sugar.",
+    "care_instructions": "Requires high rainfall, high humidity, and acidic soil. It needs a structure to climb and dappled sunlight."
+  },
+  {
+    "plant_name": "Boldo",
+    "scientific_name": "Peumus boldus",
+    "description": "A slow-growing evergreen tree native to the central region of Chile. Its leaves have a strong, woody, and slightly camphor-like aroma.",
+    "medical_uses": "Primarily used for gallbladder and liver health. It stimulates the production of bile and helps treat gallstones and digestive sluggishness.",
+    "treatment_methods": "Dried leaves are steeped in hot water for a short time to make a medicinal tea.",
+    "care_instructions": "Prefers a Mediterranean climate with dry summers and well-drained soil. It is somewhat drought-tolerant once established."
+  },
+  {
+    "plant_name": "Catuaba",
+    "scientific_name": "Erythroxylum catuaba",
+    "description": "A vigorous tree found in the northern parts of Brazil. It belongs to the same family as Coca but does not contain the same alkaloids.",
+    "medical_uses": "Famous as a central nervous system stimulant and aphrodisiac. It is used to treat agitation, poor memory, and sexual dysfunction.",
+    "treatment_methods": "The bark is boiled in water to make a deep red decoction or infused into alcohol.",
+    "care_instructions": "Thrives in tropical sun and well-drained soil. It requires moderate watering and high temperatures year-round."
+  },
+  {
+    "plant_name": "Sacha Inchi",
+    "scientific_name": "Plukenetia volubilis",
+    "description": "A perennial vine with star-shaped seed pods, native to the high-altitude rainforests of the Andes. It has been cultivated for centuries by indigenous groups.",
+    "medical_uses": "The seeds are exceptionally high in Omega-3, 6, and 9 fatty acids. Used to support heart health, lower cholesterol, and reduce brain inflammation.",
+    "treatment_methods": "The seeds are roasted and eaten, or cold-pressed into a nutrient-dense oil.",
+    "care_instructions": "Requires a warm climate and a trellis for climbing. It prefers well-drained soil and regular moisture."
+  },
+  {
+    "plant_name": "Yacon",
+    "scientific_name": "Smallanthus sonchifolius",
+    "description": "A species of perennial daisy grown in the Northern and Central Andes for its crisp, sweet-tasting tubers. It looks somewhat like a sunflower.",
+    "medical_uses": "The tubers contain fructooligosaccharides, which are prebiotics. It is used to manage blood sugar in diabetics and aid in weight loss.",
+    "treatment_methods": "The tuber is eaten raw like a fruit, juiced, or processed into a concentrated syrup.",
+    "care_instructions": "Grows best in mild climates with moderate rainfall. It needs loose, rich soil to develop large tubers."
+  },
+  {
+    "plant_name": "Espina Colorada",
+    "scientific_name": "Solanum sisymbriifolium",
+    "description": "A very thorny shrub native to South America, producing small red fruits that look like cherry tomatoes. It is often used as a trap crop in agriculture.",
+    "medical_uses": "Used as a diuretic and for liver and gallbladder support. It is also used in traditional medicine to treat hypertension.",
+    "treatment_methods": "The root and leaves are used to prepare a decoction or infusion.",
+    "care_instructions": "Very hardy and can grow in disturbed soils. It requires full sun and minimal care."
+  },
+  {
+    "plant_name": "Incense Tree",
+    "scientific_name": "Protium heptaphyllum",
+    "description": "A large tree from the Amazon that exudes a highly aromatic white resin when the bark is damaged. It is related to Frankincense.",
+    "medical_uses": "The resin is used for its anti-inflammatory and analgesic properties. It is often used to treat respiratory congestion and as a wound healer.",
+    "treatment_methods": "The hardened resin is burned as incense for respiratory issues or dissolved in oil for topical applications.",
+    "care_instructions": "Requires a tropical environment and moist, sandy-clay soil. It grows best in the forest understory when young."
+  },
+  {
+    "plant_name": "Canelilla",
+    "scientific_name": "Aniba canelilla",
+    "description": "An Amazonian tree with bark that smells strongly of cinnamon. It is found in the Guianas, Brazil, and Peru.",
+    "medical_uses": "Used for digestive upsets and as a treatment for menstrual pain and irregularities. It also has mild sedative properties.",
+    "treatment_methods": "The bark is used to make an aromatic tea or decoction.",
+    "care_instructions": "Needs a tropical climate and consistent moisture. It prefers slightly acidic soil and dappled sunlight."
+  },
+  {
+    "plant_name": "Chiricaspi",
+    "scientific_name": "Brunfelsia grandiflora",
+    "description": "A shrub or small tree with large, fragrant flowers that change from purple to white. It is native to the Amazonian slopes of the Andes.",
+    "medical_uses": "Used to treat 'cold' diseases like rheumatism and arthritis. It is also used as a febrifuge to break persistent fevers.",
+    "treatment_methods": "The bark and roots are boiled into a decoction. It is known for causing a characteristic tingling sensation in the body.",
+    "care_instructions": "Requires rich, well-draining soil and regular watering. It thrives in partial shade and warm temperatures."
+  },
+  {
+    "plant_name": "Pedra Hume Caá",
+    "scientific_name": "Myrcia sphaerocarpa",
+    "description": "A medium-sized shrub found in the Amazon and northeastern parts of Brazil. It has small leathery leaves and is often called 'vegetable insulin'.",
+    "medical_uses": "Used primarily to treat diabetes and balance blood sugar levels. It is also used as an astringent to treat diarrhea.",
+    "treatment_methods": "The leaves are prepared as an infusion and typically consumed after meals.",
+    "care_instructions": "Needs a tropical climate, full sun to partial shade, and well-aerated soil."
+  },
+  {
+    "plant_name": "Cumala",
+    "scientific_name": "Virola elongata",
+    "description": "A tall tree in the nutmeg family, native to the Amazon rainforest. It produces a red resin when the bark is cut.",
+    "medical_uses": "The resin is used topically for skin parasites and fungal infections. It has also been used in high concentrations for its psychoactive alkaloids in traditional contexts.",
+    "treatment_methods": "The resin is collected and applied directly to the skin or dried into a powder.",
+    "care_instructions": "Requires a primary rainforest environment, high humidity, and deep, fertile soil."
+  },
+  {
+    "plant_name": "Ishpingo",
+    "scientific_name": "Ocotea quixos",
+    "description": "Also known as Amazonian Cinnamon, this tree produces calyxes that are used as a spice. It is native to Ecuador and Colombia.",
+    "medical_uses": "Used as a digestive aid, anti-inflammatory, and for improving circulation. It has high concentrations of trans-cinnamaldehyde.",
+    "treatment_methods": "The flower calyxes or bark are simmered in water to make a medicinal tea or syrup.",
+    "care_instructions": "Requires high rainfall and tropical temperatures. It prefers rich, organic-heavy soil."
+  },
+  {
+    "plant_name": "Carqueja",
+    "scientific_name": "Baccharis trimera",
+    "description": "A unique-looking perennial herb with winged, leafless stems that perform photosynthesis. It is found in the grasslands of Brazil, Paraguay, and Argentina.",
+    "medical_uses": "Highly effective for liver detoxification, digestion, and as an aid for weight loss. It is also used to strengthen the stomach and intestines.",
+    "treatment_methods": "The green 'wings' or stems are dried and made into a very bitter infusion.",
+    "care_instructions": "Prefers full sun and can tolerate drier, sandier soils than many Amazonian herbs. It is relatively easy to grow in subtropical climates."
   }
 ]
