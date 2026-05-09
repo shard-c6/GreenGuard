@@ -43,18 +43,41 @@ app.post('/api/consultant/expert', async (req, res) => {
   if (!scientificName || !query) return res.status(400).json({ error: 'Scientific name and query are required' });
 
   try {
-    // 1. Generate embedding for the user query
-    const queryEmbedding = await gemini.getEmbedding(query);
-
-    // 2. Search Supabase using Hybrid Search (Semantic + Keyword)
-    const { data: contextChunks, error: searchError } = await supabase.rpc('hybrid_plant_search', {
-      query_text: query,
-      query_embedding: queryEmbedding,
-      match_threshold: 0.2,
-      match_count: 5
+    // 1. Generate query expansions
+    const expandedQueries = await gemini.expandQuery(query);
+    const allQueries = [query, ...expandedQueries];
+    
+    // 2. Execute parallel searches
+    const searchPromises = allQueries.map(async (q) => {
+      try {
+        const qEmbedding = await gemini.getEmbedding(q);
+        const { data, error } = await supabase.rpc('hybrid_plant_search', {
+          query_text: q,
+          query_embedding: qEmbedding,
+          match_threshold: 0.2,
+          match_count: 3 // Reduced from 5 to manage context size across multiple queries
+        });
+        if (error) throw error;
+        return data || [];
+      } catch (err) {
+        console.error(`Search failed for variant "${q}":`, err.message);
+        return [];
+      }
     });
-
-    if (searchError) throw searchError;
+    
+    const resultsArray = await Promise.all(searchPromises);
+    
+    // 3. Flatten and Deduplicate results
+    const uniqueChunksMap = new Map();
+    resultsArray.flat().forEach(chunk => {
+      if (chunk && chunk.id) {
+        uniqueChunksMap.set(chunk.id, chunk);
+      } else if (chunk && chunk.content) {
+        uniqueChunksMap.set(chunk.content.substring(0, 50), chunk); // Fallback deduplication
+      }
+    });
+    
+    const contextChunks = Array.from(uniqueChunksMap.values());
 
     // 3. Reranking / Context Preparation
     // Prioritize chunks that exactly match the scientific name provided by the identification service

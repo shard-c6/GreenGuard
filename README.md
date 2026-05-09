@@ -94,7 +94,7 @@ We welcome contributions from environmentalists and developers of all skill leve
 ### 🗺️ Project Roadmap
 
 - [ ] **Mobile Transition**: Expanding the UI to a native mobile experience via Capacitor.
-- [ ] **Advanced RAG**: Implementing hybrid search for even more accurate plant identification.
+- [x] **Advanced RAG**: Implementing hybrid search for even more accurate plant identification.
 - [ ] **Global Species Expansion**: Reaching 500+ validated botanical entries.
 
 ### 🚀 How to Contribute

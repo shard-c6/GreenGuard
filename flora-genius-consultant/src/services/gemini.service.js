@@ -45,4 +45,42 @@ async function askExpert(plantName, context, query) {
   return result.response.text();
 }
 
-module.exports = { getEmbedding, askExpert };
+/**
+ * Expands a user query into 3 distinct variations to improve search recall.
+ */
+async function expandQuery(query) {
+  if (!process.env.GEMINI_API_KEY) throw new Error('GEMINI_API_KEY is not configured');
+
+  const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
+
+  const prompt = `
+    You are an expert botanical search assistant. Your task is to take a user's plant-related query and generate 3 alternative versions of it.
+    The goal is to catch different synonyms, perspectives, or technical terms that might be present in a botanical database.
+    
+    Original Query: "${query}"
+    
+    CRITICAL INSTRUCTIONS:
+    - Output ONLY a valid JSON array of 3 strings.
+    - Do not include markdown formatting like \`\`\`json.
+    - Do not include any explanations.
+    
+    Example Output:
+    ["alternative query 1", "alternative query 2", "alternative query 3"]
+  `;
+
+  try {
+    const result = await model.generateContent(prompt);
+    let text = result.response.text().trim();
+    // Clean up potential markdown formatting if the LLM ignores instructions
+    text = text.replace(/^```json\s*/, '').replace(/^```\s*/, '').replace(/\s*```$/, '');
+    
+    const variants = JSON.parse(text);
+    if (!Array.isArray(variants)) throw new Error("Invalid format returned by LLM");
+    return variants.slice(0, 3);
+  } catch (error) {
+    console.error("Query expansion failed, falling back to original query:", error);
+    return []; // Return empty array on failure, we'll still use the original query
+  }
+}
+
+module.exports = { getEmbedding, askExpert, expandQuery };
