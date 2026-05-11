@@ -21,10 +21,11 @@ export const floraConsultantApi = {
   /**
    * Gets expert RAG advice from Gemini for a specific plant.
    */
-  getExpertAdvice: async (scientificName: string, query: string) => {
+  getExpertAdvice: async (scientificName: string, query: string, history: { role: string, content: string }[] = []) => {
     const response = await consultantApi.post('/consultant/expert', {
       scientificName,
       query,
+      history,
     });
     return response.data;
   },

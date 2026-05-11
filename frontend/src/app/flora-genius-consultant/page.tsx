@@ -49,7 +49,8 @@ function ChatContent() {
     setLoading(true);
 
     try {
-      const response = await floraConsultantApi.getExpertAdvice(plantName || 'General Plants', userMessage);
+      // Pass messages from index 1 to avoid sending the initial hardcoded greeting, which would break Gemini's alternating role rule
+      const response = await floraConsultantApi.getExpertAdvice(plantName || 'General Plants', userMessage, messages.slice(1));
       setMessages(prev => [...prev, { role: 'assistant', content: response.answer }]);
     } catch (error) {
       console.error('Expert consultation error:', error);
