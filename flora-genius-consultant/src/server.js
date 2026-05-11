@@ -39,7 +39,7 @@ app.post('/api/consultant/identify', upload.single('image'), async (req, res) =>
  * Endpoint 2: Expert Advice (RAG)
  */
 app.post('/api/consultant/expert', async (req, res) => {
-  const { scientificName, query } = req.body;
+  const { scientificName, query, history } = req.body;
   if (!scientificName || !query) return res.status(400).json({ error: 'Scientific name and query are required' });
 
   try {
@@ -90,7 +90,7 @@ app.post('/api/consultant/expert', async (req, res) => {
     const context = sortedChunks.map(c => c.content).join('\n\n');
 
     // 4. Ask Gemini
-    const response = await gemini.askExpert(scientificName, context, query);
+    const response = await gemini.askExpert(scientificName, context, query, history || []);
     
     res.json({ success: true, answer: response });
   } catch (error) {
