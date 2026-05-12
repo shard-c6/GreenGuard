@@ -108,8 +108,8 @@ async function seed() {
         mission: n.mission,
         darpan_id: n.darpan_id,
         onboarding_answers: {
-           annual_capacity: "10000+ trees",
-           primary_region: "India - Maharashtra",
+           annual_capacity: '10000+ trees',
+           primary_region: 'India - Maharashtra',
            experience_years: 5
         }
       });
@@ -172,7 +172,7 @@ async function seed() {
             longitude: lng,
             adoption_status: status,
             price: 500 + (Math.floor(Math.random() * 5) * 100),
-            image_urls: [`https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=600`],
+            image_urls: ['https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=600'],
             health_status: 'healthy',
             planted_date: new Date().toISOString().split('T')[0]
         }).select().single();
@@ -201,8 +201,8 @@ async function seed() {
     const posts = [
         {
             author_id: seededNgos[0],
-            content: "We just finished our monsoon plantation drive at Sanjay Gandhi National Park! 🌳✨ #Reforestation",
-            image_urls: ["https://images.unsplash.com/photo-1576085898323-2183ba9b222c?q=80&w=800"],
+            content: 'We just finished our monsoon plantation drive at Sanjay Gandhi National Park! 🌳✨ #Reforestation',
+            image_urls: ['https://images.unsplash.com/photo-1576085898323-2183ba9b222c?q=80&w=800'],
             post_type: 'plantation',
             latitude: 19.2288,
             longitude: 72.9182,
@@ -211,14 +211,14 @@ async function seed() {
         },
         {
             author_id: seededAdopters[0],
-            content: "Just adopted my first Neem tree! Can't wait to see it grow. 🌿",
-            image_urls: ["https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=800"],
+            content: 'Just adopted my first Neem tree! Can\'t wait to see it grow. 🌿',
+            image_urls: ['https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=800'],
             post_type: 'normal'
         },
         {
             author_id: seededNgos[0],
-            content: "Our Banyan trees are showing incredible growth this month. Check out the height comparison!",
-            image_urls: ["https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=800"],
+            content: 'Our Banyan trees are showing incredible growth this month. Check out the height comparison!',
+            image_urls: ['https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=800'],
             post_type: 'normal'
         }
     ];

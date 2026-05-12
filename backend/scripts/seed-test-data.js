@@ -40,7 +40,7 @@ async function seedTestData() {
       species: 'Ficus Benjamina',
       description: 'A beautiful indoor plant, great for air purification.',
       image_urls: ['https://images.unsplash.com/photo-1598512752271-33f913a5af13?auto=format&fit=crop&q=80&w=400'],
-      location: `SRID=4326;POINT(73.8567 18.5204)`, // Longitude Latitude
+      location: 'SRID=4326;POINT(73.8567 18.5204)', // Longitude Latitude
       address: 'Near Shaniwar Wada, Pune',
       adoption_status: 'available'
     },
@@ -50,7 +50,7 @@ async function seedTestData() {
       species: 'Aloe Vera',
       description: 'Hardy and medicinal. Perfect for a sunny balcony.',
       image_urls: ['https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?auto=format&fit=crop&q=80&w=400'],
-      location: `SRID=4326;POINT(73.9272 18.5089)`, // Hadapsar area
+      location: 'SRID=4326;POINT(73.9272 18.5089)', // Hadapsar area
       address: 'Magarpatta City, Pune',
       adoption_status: 'available'
     },
@@ -60,7 +60,7 @@ async function seedTestData() {
       species: 'Hibiscus Rosa-sinensis',
       description: 'Produces vibrant red flowers. Needs daily watering.',
       image_urls: ['https://images.unsplash.com/photo-1591880911855-40899478f771?auto=format&fit=crop&q=80&w=400'],
-      location: `SRID=4326;POINT(73.8340 18.5283)`, // Shivaji Nagar
+      location: 'SRID=4326;POINT(73.8340 18.5283)', // Shivaji Nagar
       address: 'Shivajinagar, Pune',
       adoption_status: 'available'
     }

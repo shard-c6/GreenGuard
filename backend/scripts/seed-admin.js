@@ -68,7 +68,7 @@ async function seedAdmin() {
   console.log('✅ Admin account created successfully!');
   console.log(`   Email    : ${email}`);
   console.log(`   Username : ${username}`);
-  console.log(`   Role     : admin`);
+  console.log('   Role     : admin');
   console.log(`   ID       : ${userId}`);
   console.log('\n   You can now log in via POST /api/auth/login');
 }
