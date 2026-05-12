@@ -36,8 +36,18 @@ fi
 git add "$LOG_FILE"
 # Only commit if there are changes
 if ! git diff --cached --quiet; then
+    BRANCH_NAME="chore/streak-$DATE"
+    git checkout -b "$BRANCH_NAME"
     git commit -m "chore: daily heartbeat $DATE [skip ci]"
-    git push origin main
+    git push -u origin "$BRANCH_NAME"
+    
+    # Check if gh CLI is available
+    if command -v gh &> /dev/null; then
+        gh pr create --title "chore: daily heartbeat $DATE" --body "Automated daily heartbeat" --base main --head "$BRANCH_NAME"
+        gh pr merge "$BRANCH_NAME" --merge --delete-branch
+    else
+        git push origin main
+    fi
 else
     echo "No changes to commit."
 fi
