@@ -159,7 +159,7 @@ All backend calls live in **`src/services/api.ts`**. They are grouped into domai
 | `ngoApi` | NGO Dashboard | `getDashboard`, `getStats`, `getApplications`, `submitOnboarding` |
 | `userReportsApi` | Reporting | `createReport` |
 | `aiApi` | AI Plant ID | `identify`, `getStatus` |
-| `floraConsultantApi` | Botanical Expert | `identify`, `getExpertAdvice` |
+| `floraConsultantApi` | Botanical Expert | `identify`, `getExpertAdvice` (Supports Chat History) |
 
 ### How to Add a New API Call
 
@@ -442,12 +442,11 @@ A system-wide styling approach using deep background blurs (`backdrop-blur-xl`) 
 - **Tokens**: Curated HSL color palettes defined in `globals.css`.
 - **Implementation**: Uses Tailwind 4's native support for advanced filter stacking.
 
-### D. Flora Genius Expert Interface
-The `/flora-genius-consultant` page features a sophisticated chat interface integrated with the RAG microservice.
-- **Contextual Reasoning**: Automatically pulls plant names from URL params to initiate expert conversations.
-- **Markdown Support**: Renders complex botanical data with `react-markdown` and `remark-gfm`.
-- **Motion Effects**: Uses `AnimatePresence` for smooth message transitions and loading states.
+### E. Conversational Memory (May 2026 Update)
+The AI Consultant now maintains a stateful conversation history.
+- **Implementation**: The frontend passes a `history` array to the backend, which is mapped to Gemini's `startChat` history buffer.
+- **User Experience**: Allows for multi-turn dialogues where the AI remembers previous questions and context within the same session.
 
 ---
 
-*Last updated: April 20, 2026 | Green Guard v2.2 — Intelligence Update*
+*Last updated: May 12, 2026 | Green Guard v2.3 — Memory Update*

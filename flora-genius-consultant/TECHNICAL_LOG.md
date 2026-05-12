@@ -29,6 +29,11 @@ This document chronicles the technical challenges and solutions encountered duri
 - **Root Cause**: The microservice was using an `ANON_KEY` which did not have permissions to execute the `pgvector` similarity search.
 - **Resolution**: Switched to the `SERVICE_ROLE_KEY` for backend-to-backend communication, providing the necessary elevated permissions for the RAG search.
 
+### 6. Conversational Context Loss
+- **Problem**: Users had to re-identify or re-explain their plant in every message, as the AI only processed the current query.
+- **Root Cause**: The initial implementation used `model.generateContent` which is stateless.
+- **Resolution**: Transitioned to Gemini's `startChat` interface. Implemented a history parsing layer in `gemini.service.js` that maps frontend message objects into the required `user`/`model` parts array, enabling true multi-turn botanical consultations.
+
 ## 📝 Lessons Learned
 - **Key Prefix Sensitivity**: Always verify `AIza` prefixes for Google Cloud/Gemini keys.
 - **Type Agnostic Functions**: When building RPC functions for AI, only return the minimum necessary data to avoid schema conflicts.

@@ -29,8 +29,8 @@ GreenGuard is a state-of-the-art environmental platform designed to bridge the g
 
 ## ✨ Key Features
 
-- **🧠 Flora Genius Consultant (RAG AI)**: Standalone microservice utilizing Google Gemini for reasoning and Supabase `pgvector` for grounded botanical advice. Now with **WebP support** via server-side image processing.
-- **🎨 Premium Visual Engine**: Next.js 16 + Tailwind CSS 4 implementation featuring **Glassmorphism 2.0** and immersive **Atmospheric Backgrounds**.
+- **🧠 Flora Genius Consultant (RAG AI)**: Standalone microservice utilizing Google Gemini for reasoning and Supabase `pgvector` for grounded botanical advice. Now featuring **Stateful Conversational Memory** using the `startChat` interface for multi-turn dialogues.
+- **🎨 Premium Visual Engine**: Next.js 16 + React 19 + Tailwind CSS 4 implementation featuring **Glassmorphism 2.0**, **Framer Motion 12**, and immersive **Atmospheric Backgrounds**.
 - **🗺️ Geospatial Discovery**: Integrated PostGIS to enable radius-based searches and live interactive plantation mapping.
 - **🛡️ NGO Verification**: Multi-step onboarding with Darpan ID validation and administrative impact questionnaires.
 - [📸 Growth Timeline](./docs/FEATURES.md#growth-timeline): Track plant health from sapling to tree with health metrics and community sharing.
@@ -93,9 +93,11 @@ We welcome contributions from environmentalists and developers of all skill leve
 
 ### 🗺️ Project Roadmap
 
-- [ ] **Mobile Transition**: Expanding the UI to a native mobile experience via Capacitor.
-- [x] **Advanced RAG**: Implementing hybrid search for even more accurate plant identification.
-- [ ] **Global Species Expansion**: Reaching 500+ validated botanical entries.
+- [ ] **Mobile Transition**: Expanding the UI to a native mobile experience via Capacitor & Offline PWAs.
+- [x] **Advanced RAG**: Integrated hybrid search and stateful conversational memory for precision diagnostics.
+- [x] **Global Species Expansion**: Successfully reached 500+ validated botanical entries.
+- [ ] **Scalability Engine**: Implementing Redis caching, Edge middleware, and API rate limiting.
+- [ ] **UI/UX Polish**: Smooth page transitions and micro-interactions using Framer Motion.
 
 ### 🚀 How to Contribute
 
