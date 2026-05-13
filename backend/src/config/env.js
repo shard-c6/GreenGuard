@@ -29,4 +29,6 @@ module.exports = {
   adminEmail: process.env.ADMIN_EMAIL || 'admin@greenguard.com',
   adminPassword: process.env.ADMIN_PASSWORD || 'changeme',
   adminUsername: process.env.ADMIN_USERNAME || 'admin',
+  /** Optional — smart care alerts (Gemini 1.5 Flash REST) */
+  geminiApiKey: process.env.GEMINI_API_KEY || '',
 };

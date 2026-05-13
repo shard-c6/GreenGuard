@@ -16,6 +16,7 @@ const postRoutes = require('./src/routes/post.routes');
 const profileRoutes = require('./src/routes/profile.routes');
 const reportRoutes = require('./src/routes/report.routes');
 const notificationRoutes = require('./src/routes/notification.routes');
+const smartAlertRoutes = require('./routes/notifications');
 const aiRoutes = require('./src/routes/ai.routes');
 
 const app = express();
@@ -65,6 +66,7 @@ app.use('/api/adoptions', adoptionRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/profiles', profileRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api/notifications', smartAlertRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/ai', aiRoutes);
 
