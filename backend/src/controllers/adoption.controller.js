@@ -159,6 +159,14 @@ async function approve(req, res) {
       })
       .eq('id', application.plant_id);
 
+    // Auto-insert user_plants row for the adopter
+    await supabaseAdmin
+      .from('user_plants')
+      .upsert(
+        { user_id: application.adopter_id, plant_id: application.plant_id },
+        { onConflict: 'user_id,plant_id' }
+      );
+
     // Auto-reject all other pending applications for this plant
     await supabaseAdmin
       .from('adoptions')
