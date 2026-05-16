@@ -6,8 +6,9 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/lib/auth';
 import { floraConsultantApi } from '@/services/consultant.service';
+import { savedPlantsApi } from '@/services/api';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Upload, Search, MessageSquare, Info, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react';
+import { Upload, Search, MessageSquare, Info, ShieldCheck, Sparkles, ArrowRight, Leaf, CheckCircle2 } from 'lucide-react';
 
 interface AiResult {
   common_name?: string;
@@ -35,7 +36,34 @@ export default function AIIdentifyPage() {
   const [result, setResult] = useState<AiResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState<{ text: string, type: 'success' | 'info' | 'error' } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSave = async () => {
+    if (!result || !preview) return;
+    setSaving(true);
+    setSaveMessage(null);
+    try {
+      await savedPlantsApi.savePlant({
+        common_name: result.common_name,
+        scientific_name: result.scientific_name,
+        confidence: result.confidence,
+        image_url: preview, // Note: In a real app, you'd upload this to a storage bucket first
+        ai_consultation: `Fun fact: ${result.fact}\nUses: ${result.uses}\nCO2: ${result.co2}\nOxygen: ${result.oxygen}`,
+        plant_net_data: result
+      });
+      setSaveMessage({ text: 'Saved to My Garden! 🌿', type: 'success' });
+    } catch (err: any) {
+      if (err.response?.data?.error?.code === 'DUPLICATE_ENTRY') {
+        setSaveMessage({ text: 'Already in your garden', type: 'info' });
+      } else {
+        setSaveMessage({ text: 'Failed to save. Try again.', type: 'error' });
+      }
+    } finally {
+      setSaving(false);
+    }
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -248,12 +276,41 @@ export default function AIIdentifyPage() {
                       </div>
                     </div>
                     
-                    <Link 
-                      href={`/flora-genius-consultant?plant=${encodeURIComponent(result.scientific_name || result.common_name || '')}`}
-                      className="btn btn-primary w-full h-16 rounded-2xl flex items-center justify-center gap-3 text-lg font-bold shadow-xl hover:shadow-green-500/20"
-                    >
-                      <Sparkles size={22} /> Consult AI Specialist <ArrowRight size={20} />
-                    </Link>
+                    {saveMessage && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className={`flex items-center gap-2 p-3 rounded-xl mb-4 text-sm font-bold ${
+                          saveMessage.type === 'success' ? 'bg-green-100 text-green-700 border border-green-200' :
+                          saveMessage.type === 'info' ? 'bg-blue-100 text-blue-700 border border-blue-200' :
+                          'bg-red-100 text-red-700 border border-red-200'
+                        }`}
+                      >
+                        {saveMessage.type === 'success' ? <CheckCircle2 size={18} /> : <Info size={18} />}
+                        {saveMessage.text}
+                      </motion.div>
+                    )}
+
+                    <div className="flex flex-col gap-3">
+                      <button 
+                        onClick={handleSave}
+                        disabled={saving}
+                        className="btn btn-outline w-full h-14 rounded-2xl flex items-center justify-center gap-3 text-base font-bold transition-all hover:bg-green-50 hover:text-green-700 hover:border-green-300 disabled:opacity-50"
+                      >
+                        {saving ? (
+                          <div className="spinner w-5 h-5 border-gg-green" />
+                        ) : (
+                          <><Leaf size={20} className="text-gg-green" /> Save to My Garden</>
+                        )}
+                      </button>
+
+                      <Link 
+                        href={`/flora-genius-consultant?plant=${encodeURIComponent(result.scientific_name || result.common_name || '')}`}
+                        className="btn btn-primary w-full h-16 rounded-2xl flex items-center justify-center gap-3 text-lg font-bold shadow-xl hover:shadow-green-500/20"
+                      >
+                        <Sparkles size={22} /> Consult AI Specialist <ArrowRight size={20} />
+                      </Link>
+                    </div>
                   </div>
                 </motion.div>
               ) : (
