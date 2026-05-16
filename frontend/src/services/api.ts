@@ -2,8 +2,8 @@ import axios from 'axios';
 import type {
   ApiResponse, LoginResponse, RegisterResponse, AuthUser,
   Plant, NearbyPlant, MapPlant, Adoption, Post, Comment,
-  GrowthReport, Notification, PlatformStats, AdminDashboard, UserReport, NgoDashboard,
-  NgoStatsResponse, NgoProfile, User, AiIdentifyResponse, AiStatusResponse
+  GrowthReport, Notification, CareAlert, PlatformStats, AdminDashboard, UserReport, NgoDashboard,
+  NgoStatsResponse, NgoProfile, User, AiIdentifyResponse, AiStatusResponse, SavedPlant
 } from '@/types';
 
 // ─── Axios Instance ──────────────────────────────────────────
@@ -216,6 +216,15 @@ export const notificationsApi = {
 
   markAllRead: () =>
     api.patch<ApiResponse<{ message: string }>>('/notifications/read-all'),
+
+  generateCareAlerts: () =>
+    api.get<ApiResponse<{ alerts: CareAlert[] }>>('/notifications/generate'),
+
+  dismissCareAlert: (plantId: string, careType: 'watering' | 'fertilizing') =>
+    api.patch<ApiResponse<{ plant_id: string; careType: string; updated_at: string }>>(
+      `/notifications/dismiss/${plantId}`,
+      { careType },
+    ),
 };
 
 // ─── Admin ───────────────────────────────────────────────────
@@ -287,6 +296,22 @@ export const aiApi = {
 
   getStatus: () =>
     api.get<ApiResponse<AiStatusResponse>>('/ai/status'),
+};
+
+// ─── Saved Plants (Issue #25) ───────────────────────────────
+
+export const savedPlantsApi = {
+  getSavedPlants: () =>
+    api.get<ApiResponse<SavedPlant[]>>('/saved-plants'),
+
+  savePlant: (data: Partial<SavedPlant>) =>
+    api.post<ApiResponse<SavedPlant>>('/saved-plants', data),
+
+  updateNotes: (id: string, notes: string) =>
+    api.patch<ApiResponse<SavedPlant>>(`/saved-plants/${id}`, { notes }),
+
+  deleteSavedPlant: (id: string) =>
+    api.delete<ApiResponse<{ message: string }>>(`/saved-plants/${id}`),
 };
 
 export default api;

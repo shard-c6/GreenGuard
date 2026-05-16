@@ -103,6 +103,7 @@ export default function Navbar() {
                 <NavLink href="/map" pathname={pathname} onClick={() => setMobileOpen(false)}>Plant Map</NavLink>
                 <NavLink href="/identify" pathname={pathname} onClick={() => setMobileOpen(false)}>AI Identify</NavLink>
                 <NavLink href="/flora-genius-consultant" pathname={pathname} onClick={() => setMobileOpen(false)}>AI Expert</NavLink>
+                <NavLink href="/dashboard/my-garden" pathname={pathname} onClick={() => setMobileOpen(false)}>My Garden</NavLink>
                 <NavLink href="/dashboard/adoptions" pathname={pathname} onClick={() => setMobileOpen(false)}>My Adoptions</NavLink>
               </>
             )}
@@ -234,6 +235,7 @@ export default function Navbar() {
               <NavLink href="/map" pathname={pathname} onClick={() => setMobileOpen(false)}>Plant Map</NavLink>
               <NavLink href="/identify" pathname={pathname} onClick={() => setMobileOpen(false)}>AI Identify</NavLink>
               <NavLink href="/flora-genius-consultant" pathname={pathname} onClick={() => setMobileOpen(false)}>AI Expert</NavLink>
+              <NavLink href="/dashboard/my-garden" pathname={pathname} onClick={() => setMobileOpen(false)}>My Garden</NavLink>
               <NavLink href="/dashboard/adoptions" pathname={pathname} onClick={() => setMobileOpen(false)}>My Adoptions</NavLink>
             </>
           )}
