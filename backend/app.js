@@ -18,6 +18,7 @@ const reportRoutes = require('./src/routes/report.routes');
 const notificationRoutes = require('./src/routes/notification.routes');
 const smartAlertRoutes = require('./routes/notifications');
 const aiRoutes = require('./src/routes/ai.routes');
+const savedPlantRoutes = require('./routes/savedPlants');
 
 const app = express();
 
@@ -69,6 +70,7 @@ app.use('/api/reports', reportRoutes);
 app.use('/api/notifications', smartAlertRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/saved-plants', savedPlantRoutes);
 
 // ─── 404 Handler ────────────────────────────────────────────────
 app.use((req, res) => {

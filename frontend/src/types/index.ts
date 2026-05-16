@@ -247,6 +247,17 @@ export interface Notification {
   created_at: string;
 }
 
+/** Smart care alerts (Issue #37) — AI-generated overdue watering/fertilizing tips */
+export interface CareAlert {
+  id: string;
+  plantId: string;
+  plantName: string;
+  careType: 'watering' | 'fertilizing';
+  tip: string;
+  urgency: 'high' | 'medium';
+  daysOverdue: number;
+}
+
 // ─── Admin ──────────────────────────────────────────────────
 
 export interface PlatformStats {
@@ -305,4 +316,20 @@ export interface AiIdentifyResponse {
 export interface AiStatusResponse {
   available: boolean;
   message: string;
+}
+
+// ─── Saved Plants (Issue #25) ───────────────────────────────
+
+export interface SavedPlant {
+  id: string;
+  user_id: string;
+  common_name: string | null;
+  scientific_name: string | null;
+  confidence: number | null;
+  image_url: string | null;
+  ai_consultation: string | null;
+  plant_net_data: any;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
 }
