@@ -2,23 +2,40 @@
 import { Sprout, Leaf } from "lucide-react";
 
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { adoptionsApi } from '@/services/api';
-import type { Adoption } from '@/types';
+import { adoptionsApi, notificationsApi } from '@/services/api';
+import type { Adoption, CareAlert } from '@/types';
 import Badge from '@/components/ui/Badge';
 import EmptyState from '@/components/ui/EmptyState';
+import NotificationBell from '@/components/NotificationBell';
+import AlertPanel from '@/components/AlertPanel';
 
 export default function MyAdoptionsPage() {
   const [adoptions, setAdoptions] = useState<Adoption[]>([]);
   const [loading, setLoading] = useState(true);
+  const [careAlerts, setCareAlerts] = useState<CareAlert[]>([]);
+  const [alertsOpen, setAlertsOpen] = useState(false);
 
   useEffect(() => {
     adoptionsApi.getMyAdoptions()
       .then(r => setAdoptions(r.data.data))
       .catch(() => {})
       .finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    notificationsApi.generateCareAlerts()
+      .then(r => setCareAlerts(r.data.data.alerts))
+      .catch(() => {});
+  }, []);
+
+  const handleDismissCareAlert = useCallback(async (plantId: string, careType: 'watering' | 'fertilizing') => {
+    await notificationsApi.dismissCareAlert(plantId, careType);
+    setCareAlerts(prev => prev.filter(
+      a => !(a.plantId === plantId && a.careType === careType),
+    ));
   }, []);
 
   if (loading) return (
@@ -34,11 +51,26 @@ export default function MyAdoptionsPage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative z-10 mb-12"
+        className="relative z-10 mb-12 flex flex-col gap-6 md:flex-row md:items-start md:justify-between"
       >
-        <h1 className="text-4xl font-black text-emerald-950 mb-2"><Leaf className="inline-block w-8 h-8 mr-2 align-bottom text-emerald-600" /> My Adoptions</h1>
-        <p className="text-emerald-800/60 text-lg font-medium">Track your plant adoption applications and growing family.</p>
+        <div className="max-w-2xl">
+          <h1 className="text-4xl font-black text-emerald-950 mb-2"><Leaf className="inline-block w-8 h-8 mr-2 align-bottom text-emerald-600" /> My Garden</h1>
+          <p className="text-emerald-800/60 text-lg font-medium">Track your plant adoption applications and growing family.</p>
+        </div>
+        <div className="flex shrink-0 justify-end md:pt-1">
+          <NotificationBell
+            count={careAlerts.length}
+            onClick={() => setAlertsOpen(o => !o)}
+          />
+        </div>
       </motion.div>
+
+      <AlertPanel
+        open={alertsOpen}
+        alerts={careAlerts}
+        onClose={() => setAlertsOpen(false)}
+        onDismiss={handleDismissCareAlert}
+      />
 
       {adoptions.length === 0 ? (
         <motion.div
