@@ -5,6 +5,8 @@ import { AuthProvider } from "@/lib/auth";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ImmersiveBackground from "@/components/ui/ImmersiveBackground";
+import PWARegistrar from "@/components/PWARegistrar";
+import AddToHomeScreen from "@/components/AddToHomeScreen";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -20,6 +22,7 @@ export const metadata: Metadata = {
   title: "Green Guard — Plant Adoption Platform",
   description: "A community-driven plant adoption platform connecting NGOs with passionate adopters to nurture green spaces.",
   keywords: ["plant adoption", "NGO", "green spaces", "community", "environment"],
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
@@ -29,9 +32,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="theme-color" content="#10b981" />
+      </head>
       <body className={`${outfit.variable} ${dmSans.variable} font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <AuthProvider>
+            <PWARegistrar />
+            <AddToHomeScreen />
             <ImmersiveBackground />
             <Navbar />
             <main className="main-content relative z-10">{children}</main>
