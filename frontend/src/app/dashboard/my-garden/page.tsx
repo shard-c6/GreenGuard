@@ -21,16 +21,17 @@ import type { SavedPlant } from '@/types';
 import { useAuth } from '@/lib/auth';
 import { useRouter } from 'next/navigation';
 import EmptyState from '@/components/ui/EmptyState';
+import { savePlantOffline, getAllPlantsOffline, deletePlantOffline } from '@/lib/indexeddb';
 
 export default function MyGardenPage() {
   const { isAuthenticated, loading: authLoading } = useAuth();
   const router = useRouter();
   const [savedPlants, setSavedPlants] = useState<SavedPlant[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editNotes, setEditNotes] = useState('');
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [isOfflineMode, setIsOfflineMode] = useState(false);
 
   useEffect(() => {
     if (!authLoading && !isAuthenticated) {
@@ -42,10 +43,23 @@ export default function MyGardenPage() {
     try {
       setLoading(true);
       const res = await savedPlantsApi.getSavedPlants();
-      setSavedPlants(res.data.data);
-    } catch (err: any) {
-      setError('Failed to load your garden. Please try again.');
-      console.error(err);
+      const plants = res.data.data;
+      setSavedPlants(plants);
+      setIsOfflineMode(false);
+      // Save all fetched plants to IndexedDB for offline use
+      for (const plant of plants) {
+        await savePlantOffline(plant);
+      }
+    } catch (err) {
+      console.warn('Failed to fetch from API, attempting IndexedDB fallback...', err);
+      // Attempt fallback to IndexedDB
+      const cachedPlants = await getAllPlantsOffline();
+      if (cachedPlants && cachedPlants.length > 0) {
+        setSavedPlants(cachedPlants);
+        setIsOfflineMode(true);
+      } else {
+        console.error('Failed to load your garden offline: No cached plants available.');
+      }
     } finally {
       setLoading(false);
     }
@@ -58,9 +72,14 @@ export default function MyGardenPage() {
   }, [isAuthenticated, fetchSavedPlants]);
 
   const handleDelete = async (id: string) => {
+    if (isOfflineMode) {
+      alert('You are offline. Removing plants is disabled in offline mode.');
+      return;
+    }
     if (!window.confirm('Are you sure you want to remove this plant from your garden?')) return;
     try {
       await savedPlantsApi.deleteSavedPlant(id);
+      await deletePlantOffline(id); // Delete from offline store too
       setSavedPlants(prev => prev.filter(p => p.id !== id));
     } catch (err) {
       console.error('Delete error:', err);
@@ -69,13 +88,26 @@ export default function MyGardenPage() {
   };
 
   const handleStartEdit = (plant: SavedPlant) => {
+    if (isOfflineMode) {
+      alert('You are offline. Editing notes is disabled in offline mode.');
+      return;
+    }
     setEditingId(plant.id);
     setEditNotes(plant.notes || '');
   };
 
   const handleSaveNotes = async (id: string) => {
+    if (isOfflineMode) {
+      alert('You are offline. Saving notes is disabled in offline mode.');
+      return;
+    }
     try {
       await savedPlantsApi.updateNotes(id, editNotes);
+      // Update IndexedDB cache
+      const updatedPlant = savedPlants.find(p => p.id === id);
+      if (updatedPlant) {
+        await savePlantOffline({ ...updatedPlant, notes: editNotes });
+      }
       setSavedPlants(prev => prev.map(p => p.id === id ? { ...p, notes: editNotes } : p));
       setEditingId(null);
     } catch (err) {
@@ -106,6 +138,19 @@ export default function MyGardenPage() {
         </h1>
         <p className="text-emerald-800/60 text-lg font-medium">Your personal collection of botanical discoveries and AI insights.</p>
       </motion.div>
+
+      {isOfflineMode && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8 p-4 rounded-3xl bg-amber-500/10 border border-amber-500/20 backdrop-blur-md flex items-center gap-3 text-amber-700 dark:text-amber-400 font-bold"
+        >
+          <Info className="w-5 h-5 flex-shrink-0 animate-pulse text-amber-500" />
+          <div className="text-sm">
+            Offline mode: Displaying garden details cached on your device. Adding, editing notes, and deleting plants are disabled offline.
+          </div>
+        </motion.div>
+      )}
 
       {savedPlants.length === 0 ? (
         <motion.div
