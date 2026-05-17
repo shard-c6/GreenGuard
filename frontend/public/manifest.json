@@ -1,0 +1,24 @@
+{
+  "name": "GreenGuard",
+  "short_name": "GreenGuard",
+  "description": "A community-driven plant adoption platform connecting NGOs with passionate adopters to nurture green spaces.",
+  "theme_color": "#10b981",
+  "background_color": "#011d16",
+  "display": "standalone",
+  "start_url": "/",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/flora-genius-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
