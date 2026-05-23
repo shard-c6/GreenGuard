@@ -46,6 +46,25 @@ if (env.nodeEnv !== 'test') {
 // ─── Rate Limiting ──────────────────────────────────────────────
 app.use('/api/', generalLimiter);
 
+// ─── Supabase Request-Context Middleware ──────────────────────────
+const { getSupabaseClient, supabaseLocalStorage } = require('./src/config/supabase');
+
+app.use((req, res, next) => {
+  const authHeader = req.headers.authorization;
+  let token = null;
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    token = authHeader.split(' ')[1];
+  }
+  
+  const userClient = getSupabaseClient(token);
+  req.supabase = userClient;
+  
+  supabaseLocalStorage.run({ userClient }, () => {
+    next();
+  });
+});
+
+
 // ─── Health Check ───────────────────────────────────────────────
 app.get('/api/health', (req, res) => {
   res.json({

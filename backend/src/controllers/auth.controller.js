@@ -1,4 +1,4 @@
-const { supabase, supabaseAdmin } = require('../config/supabase');
+const { supabase, supabaseServiceRole: supabaseAdmin } = require('../config/supabase');
 const { success, created, error, unauthorized, serverError } = require('../utils/response');
 const env = require('../config/env');
 

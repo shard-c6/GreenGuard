@@ -1,7 +1,10 @@
 node_modules/
 .env
+.env*
+env copy
 *.log
 dist/
 coverage/
 .DS_Store
 Thumbs.db
+
