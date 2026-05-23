@@ -8,8 +8,10 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 async function getEmbedding(text) {
   try {
     if (!process.env.GEMINI_API_KEY) throw new Error('GEMINI_API_KEY is not configured');
-    
-    const model = genAI.getGenerativeModel({ model: 'text-embedding-004' });
+    const model = genAI.getGenerativeModel({ 
+      model: 'text-embedding-004',
+      systemInstruction: 'You are a botanical embedding system that converts plant descriptions and medical details into highly semantic high-dimensional vector representations.'
+    });
     const result = await model.embedContent({
       content: { parts: [{ text: text }] },
       outputDimensionality: 3072
@@ -40,8 +42,6 @@ async function getEmbedding(text) {
 async function askExpert(plantName, context, query, history = []) {
   if (!process.env.GEMINI_API_KEY) throw new Error('GEMINI_API_KEY is not configured');
 
-  const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
-
   const systemPrompt = `
     You are "Flora Genius", the most advanced premium AI botanical consultant specialized in Indian plants.
     
@@ -60,10 +60,12 @@ async function askExpert(plantName, context, query, history = []) {
     ${context}
   `;
 
-  const formattedHistory = [
-    { role: 'user', parts: [{ text: systemPrompt }] },
-    { role: 'model', parts: [{ text: 'Acknowledged. I am Flora Genius. How can I assist you with this plant today?' }] }
-  ];
+  const model = genAI.getGenerativeModel({ 
+    model: 'gemini-flash-latest',
+    systemInstruction: systemPrompt
+  });
+
+  const formattedHistory = [];
 
   if (history && Array.isArray(history) && history.length > 0) {
     history.forEach(msg => {
@@ -88,13 +90,9 @@ async function askExpert(plantName, context, query, history = []) {
 async function expandQuery(query) {
   if (!process.env.GEMINI_API_KEY) throw new Error('GEMINI_API_KEY is not configured');
 
-  const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
-
-  const prompt = `
+  const systemInstruction = `
     You are an expert botanical search assistant. Your task is to take a user's plant-related query and generate 3 alternative versions of it.
     The goal is to catch different synonyms, perspectives, or technical terms that might be present in a botanical database.
-    
-    Original Query: "${query}"
     
     CRITICAL INSTRUCTIONS:
     - Output ONLY a valid JSON array of 3 strings.
@@ -103,6 +101,15 @@ async function expandQuery(query) {
     
     Example Output:
     ["alternative query 1", "alternative query 2", "alternative query 3"]
+  `;
+
+  const model = genAI.getGenerativeModel({ 
+    model: 'gemini-flash-latest',
+    systemInstruction: systemInstruction
+  });
+
+  const prompt = `
+    Original Query: "${query}"
   `;
 
   try {

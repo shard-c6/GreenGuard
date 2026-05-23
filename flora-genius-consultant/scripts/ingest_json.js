@@ -9,7 +9,20 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 async function ingest() {
   const fileName = process.argv[2] || '../data/plant_data.json';
-  const jsonPath = path.join(__dirname, fileName);
+  
+  // Resolve project root boundary to restrict all file processing inside it
+  const projectRoot = path.resolve(__dirname, '..');
+  
+  // Resolve absolute path and normalize to strip traversal sequences
+  const resolvedPath = path.resolve(__dirname, fileName);
+  const jsonPath = path.normalize(resolvedPath);
+
+  // Strictly verify the directory boundary using a trailing-slash checked prefix
+  const expectedPrefix = projectRoot + path.sep;
+  if (!jsonPath.startsWith(expectedPrefix)) {
+    console.error('Security Error: Path traversal detected! Access denied.');
+    return;
+  }
   
   if (!fs.existsSync(jsonPath)) {
     console.error('Error: plant_data.json not found in data/ directory.');
@@ -35,7 +48,10 @@ async function ingest() {
       // Generate Embedding
       let embedding;
       try {
-        const model = genAI.getGenerativeModel({ model: 'text-embedding-004' });
+        const model = genAI.getGenerativeModel({ 
+          model: 'text-embedding-004',
+          systemInstruction: 'You are a botanical embedding system that converts plant descriptions and medical details into highly semantic high-dimensional vector representations.'
+        });
         const result = await model.embedContent({
           content: { parts: [{ text: content }] },
           outputDimensionality: 3072
