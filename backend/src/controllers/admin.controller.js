@@ -1,4 +1,4 @@
-const { supabaseAdmin } = require('../config/supabase');
+const { supabaseServiceRole: supabaseAdmin } = require('../config/supabase');
 const { success, error, notFound, serverError } = require('../utils/response');
 const { parsePagination } = require('../utils/pagination');
 

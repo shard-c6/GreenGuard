@@ -1,4 +1,4 @@
-const { supabaseAdmin } = require('../config/supabase');
+const { supabaseServiceRole: supabaseAdmin } = require('../config/supabase');
 const { v4: uuidv4 } = require('crypto');
 
 /**

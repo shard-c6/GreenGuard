@@ -1,4 +1,4 @@
-const { supabaseAdmin } = require('../config/supabase');
+const { supabaseServiceRole: supabaseAdmin } = require('../config/supabase');
 
 /**
  * Creates a notification for a user.
