@@ -11,3 +11,10 @@ yarn-debug.log*
 yarn-error.log*
 .DS_Store
 Thumbs.db
+*.md
+test/
+scripts/
+scratch*/
+scratch_check_db.js
+env copy
+*copy
