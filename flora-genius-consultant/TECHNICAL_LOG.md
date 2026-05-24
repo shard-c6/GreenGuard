@@ -52,6 +52,14 @@ This document chronicles the technical challenges and solutions encountered duri
   5. **Prompt Injection Protections**: Hardened system and query templates in `gemini.service.js` by wrapping untrusted data in distinctive non-HTML banners and instructing Gemini to strictly ignore override directives.
   6. **Frontend Integration**: Enhanced frontend consultant service to automatically intercept and inject the client's `gg_token` into all outbound consultant API requests.
 
+### 8. Secure Infrastructure, Docker, and SQL Functions (Issue #59)
+
+- **Problem**: Development artifacts and backups were vulnerable to leaking inside Docker production builds (VULN-013), database functions using `SECURITY DEFINER` lacked proper search paths (VULN-014), and internal server stack traces leaked in non-production environments (VULN-017).
+- **Resolutions**:
+  1. **Docker Secrets Leak Prevention**: Upgraded both backend and AI microservice `.dockerignore` files to explicitly ignore `.env` files, tests, scripts, local scratch files, markdown docs, and git files.
+  2. **Supabase Function Injection Fixes**: Patched all 8 `SECURITY DEFINER` SQL functions across the migrations (`migration.sql`, `comments_migration.sql`, `hybrid_search_migration.sql`) to specify `SET search_path = public` ensuring they lock searches to the public schema.
+  3. **Error Handler Stack Leakage Mitigation**: Securely refactored `errorHandler.js` so that `err.message` is exclusively returned if the environment `NODE_ENV` is explicitly `'development'`, defaulting to a safe, generic `'Internal server error'` response otherwise.
+
 ## 📝 Lessons Learned
 
 - **Key Prefix Sensitivity**: Always verify `AIza` prefixes for Google Cloud/Gemini keys.
@@ -59,4 +67,5 @@ This document chronicles the technical challenges and solutions encountered duri
 - **Environment Parity**: Always use `node scripts/ingest_json.js` to verify environment variables locally before pushing to production.
 - **Defense in Depth**: Secure and isolate microservice architectures with modular validation, strict size limits, and role validations early in the development lifecycle to prevent compounding API quota abuse.
 - **Static Analysis Compliance**: Avoid using dynamic bracket notations (`cleaned[key]`) and HTML-like delimiters (`<tag>`) inside JS templates to prevent prototype pollution and browser XSS false positives.
+
 
