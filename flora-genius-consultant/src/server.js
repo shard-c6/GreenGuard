@@ -2,29 +2,86 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const { createClient } = require('@supabase/supabase-js');
 const plantnet = require('./services/plantnet.service');
 const gemini = require('./services/gemini.service');
+const authMiddleware = require('./middleware/auth.middleware');
+const xssMiddleware = require('./middleware/xss.middleware');
 
 const app = express();
-const upload = multer({ storage: multer.memoryStorage() });
+
+// Trust proxy for rate limiter to correctly see client IP when running behind proxies
+app.set('trust proxy', 1);
+
+// Configure multer with strict limits (5MB max image size)
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024
+  }
+});
 
 // Configuration
 const PORT = process.env.PORT || 5002;
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 
-app.use(cors());
-app.use(express.json());
+// Security Headers
+app.use(helmet());
+
+// CORS Configuration - restrict to trusted origins
+const allowedOrigins = [];
+if (process.env.FRONTEND_URL) {
+  allowedOrigins.push(process.env.FRONTEND_URL);
+}
+// Default development origins
+allowedOrigins.push('http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173');
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps, curl, or server-to-server)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
+// Body Parser with strict limit (1MB max body payload)
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: true, limit: '1mb' }));
+
+// Input Sanitization (XSS mitigation)
+app.use(xssMiddleware);
+
+// Rate Limiter — 10 requests per 15 minutes per user
+const consultantLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10, // 10 requests per window
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req) => req.user?.id || req.ip,
+  message: {
+    success: false,
+    error: { code: 'RATE_LIMITED', message: 'Too many requests. Please try again later.' },
+  },
+});
 
 app.get('/', (req, res) => {
   res.send('Flora Genius AI is running!');
 });
 
 
+
 /**
  * Endpoint 1: Identify Plant via PlantNet
  */
-app.post('/api/consultant/identify', upload.single('image'), async (req, res) => {
+app.post('/api/consultant/identify', authMiddleware, consultantLimiter, upload.single('image'), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ error: 'Image is required' });
     
@@ -38,9 +95,21 @@ app.post('/api/consultant/identify', upload.single('image'), async (req, res) =>
 /**
  * Endpoint 2: Expert Advice (RAG)
  */
-app.post('/api/consultant/expert', async (req, res) => {
+app.post('/api/consultant/expert', authMiddleware, consultantLimiter, async (req, res) => {
   const { scientificName, query, history } = req.body;
-  if (!scientificName || !query) return res.status(400).json({ error: 'Scientific name and query are required' });
+  
+  if (!scientificName || !query) {
+    return res.status(400).json({ error: 'Scientific name and query are required' });
+  }
+
+  // Strict validation of input types and lengths
+  if (typeof scientificName !== 'string' || scientificName.trim().length === 0 || scientificName.length > 100) {
+    return res.status(400).json({ error: 'Invalid scientific name length/type (max 100 chars)' });
+  }
+
+  if (typeof query !== 'string' || query.trim().length === 0 || query.length > 1000) {
+    return res.status(400).json({ error: 'Invalid query length/type (max 1000 chars)' });
+  }
 
   try {
     // 1. Generate query expansions
@@ -60,7 +129,8 @@ app.post('/api/consultant/expert', async (req, res) => {
         if (error) throw error;
         return data || [];
       } catch (err) {
-        console.error(`Search failed for variant "${q}":`, err.message);
+        const sanitizedQ = typeof q === 'string' ? q.replace(/[\r\n]/g, '_') : '';
+        console.error(`Search failed for variant "${sanitizedQ}":`, err.message);
         return [];
       }
     });
