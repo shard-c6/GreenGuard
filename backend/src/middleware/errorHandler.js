@@ -23,7 +23,8 @@ function errorHandler(err, req, res, _next) {
     });
   }
 
-  return serverError(res, process.env.NODE_ENV === 'production' ? 'Internal server error' : err.message);
+  const message = process.env.NODE_ENV === 'development' ? err.message : 'Internal server error';
+  return serverError(res, message);
 }
 
 module.exports = errorHandler;

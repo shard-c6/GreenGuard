@@ -199,7 +199,7 @@ BEGIN
   )
   ORDER BY distance_meters;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 
 -- Increment/Decrement counters for likes and bookmarks
@@ -207,25 +207,25 @@ CREATE OR REPLACE FUNCTION increment_likes(p_post_id UUID) RETURNS VOID AS $$
 BEGIN
   UPDATE posts SET likes_count = likes_count + 1 WHERE id = p_post_id;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 CREATE OR REPLACE FUNCTION decrement_likes(p_post_id UUID) RETURNS VOID AS $$
 BEGIN
   UPDATE posts SET likes_count = GREATEST(0, likes_count - 1) WHERE id = p_post_id;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 CREATE OR REPLACE FUNCTION increment_bookmarks(p_post_id UUID) RETURNS VOID AS $$
 BEGIN
   UPDATE posts SET bookmarks_count = bookmarks_count + 1 WHERE id = p_post_id;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 CREATE OR REPLACE FUNCTION decrement_bookmarks(p_post_id UUID) RETURNS VOID AS $$
 BEGIN
   UPDATE posts SET bookmarks_count = GREATEST(0, bookmarks_count - 1) WHERE id = p_post_id;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 
 -- ════════════════════════════════════════════════════════════════
