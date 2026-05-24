@@ -66,4 +66,4 @@ BEGIN
   ORDER BY similarity DESC
   LIMIT match_count;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;

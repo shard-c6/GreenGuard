@@ -23,13 +23,13 @@ CREATE OR REPLACE FUNCTION increment_comments(p_post_id UUID) RETURNS VOID AS $$
 BEGIN
   UPDATE posts SET comments_count = comments_count + 1 WHERE id = p_post_id;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 CREATE OR REPLACE FUNCTION decrement_comments(p_post_id UUID) RETURNS VOID AS $$
 BEGIN
   UPDATE posts SET comments_count = GREATEST(0, comments_count - 1) WHERE id = p_post_id;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 -- ─── COMMENTS RLS ──────────────────────────────────────────────
 ALTER TABLE comments ENABLE ROW LEVEL SECURITY;
