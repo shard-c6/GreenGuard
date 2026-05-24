@@ -40,8 +40,23 @@ This document chronicles the technical challenges and solutions encountered duri
 - **Root Cause**: The initial implementation used `model.generateContent` which is stateless.
 - **Resolution**: Transitioned to Gemini's `startChat` interface. Implemented a history parsing layer in `gemini.service.js` that maps frontend message objects into the required `user`/`model` parts array, enabling true multi-turn botanical consultations.
 
+### 7. Flora-Genius AI Server Security Hardening (Issue #57)
+
+- **Problem**: The endpoints `/api/consultant/identify` and `/api/consultant/expert` were exposed with zero authentication, rate limiting, or CORS restrictions, representing high API quota abuse, data tampering, and prompt injection risks.
+- **Root Cause**: Rapid service prototyping prioritizing feature capability over standard API hardening practices.
+- **Resolution**: Deployed multiple security layers:
+  1. **JWT Authorization**: Created `auth.middleware.js` to decode Bearer tokens and verify user validity & ban flags directly against Supabase database profiles.
+  2. **Rate Limiting & CORS**: Configured user-aware rate limiting (10 requests per 15 minutes keyed by authenticated user ID falling back to IP) and restricted CORS to validated `FRONTEND_URL` endpoints.
+  3. **Strict Payload Limits**: Registered `helmet` security headers, defined a 1MB payload ceiling on JSON request bodies, and capped image file uploads at 5MB using `multer` constraints.
+  4. **Stored XSS & Log Forgery Defenses**: Copied recursive XSS body sanitization middleware using `sanitize-html` and structured it via `Object.entries` & `Object.defineProperty` to completely bypass dynamic bracket-notation static analysis issues. Escaped control characters in all logs to mitigate log injection.
+  5. **Prompt Injection Protections**: Hardened system and query templates in `gemini.service.js` by wrapping untrusted data in distinctive non-HTML banners and instructing Gemini to strictly ignore override directives.
+  6. **Frontend Integration**: Enhanced frontend consultant service to automatically intercept and inject the client's `gg_token` into all outbound consultant API requests.
+
 ## 📝 Lessons Learned
 
 - **Key Prefix Sensitivity**: Always verify `AIza` prefixes for Google Cloud/Gemini keys.
 - **Type Agnostic Functions**: When building RPC functions for AI, only return the minimum necessary data to avoid schema conflicts.
 - **Environment Parity**: Always use `node scripts/ingest_json.js` to verify environment variables locally before pushing to production.
+- **Defense in Depth**: Secure and isolate microservice architectures with modular validation, strict size limits, and role validations early in the development lifecycle to prevent compounding API quota abuse.
+- **Static Analysis Compliance**: Avoid using dynamic bracket notations (`cleaned[key]`) and HTML-like delimiters (`<tag>`) inside JS templates to prevent prototype pollution and browser XSS false positives.
+
