@@ -7,6 +7,18 @@ const consultantApi = axios.create({
   timeout: 60000, // Longer timeout for AI generation
 });
 
+// Request interceptor — attach JWT
+consultantApi.interceptors.request.use((config) => {
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('gg_token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+  }
+  return config;
+});
+
+
 export const floraConsultantApi = {
   /**
    * Identifies a plant image via the Consultant microservice (PlantNet).
