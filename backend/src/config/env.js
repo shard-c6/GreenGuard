@@ -4,6 +4,10 @@ const requiredVars = [
   'SUPABASE_URL',
   'SUPABASE_ANON_KEY',
   'SUPABASE_SERVICE_ROLE_KEY',
+  'ADMIN_EMAIL',
+  'ADMIN_PASSWORD',
+  'ADMIN_USERNAME',
+  'FRONTEND_URL',
 ];
 
 for (const varName of requiredVars) {
@@ -26,9 +30,9 @@ module.exports = {
   rateLimitMax: parseInt(process.env.RATE_LIMIT_MAX, 10) || 100,
   maxFileSizeMb: parseInt(process.env.MAX_FILE_SIZE_MB, 10) || 5,
   maxImagesPerPlant: parseInt(process.env.MAX_IMAGES_PER_PLANT, 10) || 3,
-  adminEmail: process.env.ADMIN_EMAIL || 'admin@greenguard.com',
-  adminPassword: process.env.ADMIN_PASSWORD || 'changeme',
-  adminUsername: process.env.ADMIN_USERNAME || 'admin',
+  adminEmail: process.env.ADMIN_EMAIL,
+  adminPassword: process.env.ADMIN_PASSWORD,
+  adminUsername: process.env.ADMIN_USERNAME,
   /** Optional — smart care alerts (Gemini 1.5 Flash REST) */
   geminiApiKey: process.env.GEMINI_API_KEY || '',
 };

@@ -52,6 +52,22 @@ async function approveNgo(req, res) {
 
     if (dbError || !data) return notFound(res, 'NGO not found or not in pending status');
 
+    // Elevate user's profile role to 'ngo' in the profiles table
+    const { error: profileError } = await supabaseAdmin
+      .from('profiles')
+      .update({ role: 'ngo' })
+      .eq('id', ngoId);
+
+    if (profileError) {
+      console.error('Failed to update profile role for NGO:', profileError);
+      // Attempt rollback of NGO approval status
+      await supabaseAdmin
+        .from('ngo_profiles')
+        .update({ status: 'pending', approved_by: null, approved_at: null })
+        .eq('id', ngoId);
+      return serverError(res, 'Failed to update user profile role to NGO');
+    }
+
     return success(res, { ngo_id: ngoId, status: 'approved', approved_at: data.approved_at });
   } catch (err) {
     console.error('approveNgo error:', err);
