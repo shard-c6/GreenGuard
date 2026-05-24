@@ -27,8 +27,21 @@ app.set('trust proxy', 1);
 
 // ─── Security ───────────────────────────────────────────────────
 app.use(helmet());
+
+const allowedOrigins = [env.frontendUrl];
+if (env.nodeEnv === 'development' || env.nodeEnv === 'test') {
+  allowedOrigins.push('http://localhost:3000', 'http://localhost:3001');
+}
+
 app.use(cors({
-  origin: env.frontendUrl ? [env.frontendUrl, 'http://localhost:3000', 'http://localhost:3001'] : '*',
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps, curl, or server-to-server)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -37,6 +50,10 @@ app.use(cors({
 // ─── Parsing ────────────────────────────────────────────────────
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
+
+// ─── Input Sanitization (XSS Mitigation) ──────────────────────────
+const xssMiddleware = require('./src/middleware/xss.middleware');
+app.use(xssMiddleware);
 
 // ─── Logging ────────────────────────────────────────────────────
 if (env.nodeEnv !== 'test') {

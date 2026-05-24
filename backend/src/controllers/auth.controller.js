@@ -37,12 +37,16 @@ async function register(req, res) {
 
     const userId = authData.user.id;
 
+    // NGO and Admin roles must NOT be self-assigned at registration.
+    // They default to 'adopter' and require admin approval.
+    const finalRole = 'adopter';
+
     // Create profile row (use upsert to handle cases where a trigger might have already created a skeleton profile)
     const { error: profileError } = await supabaseAdmin
       .from('profiles')
       .upsert({
         id: userId,
-        role,
+        role: finalRole,
         username,
         display_name: display_name || username,
         email,
@@ -79,13 +83,13 @@ async function register(req, res) {
 
     if (signInError) {
       return created(res, {
-        user: { id: userId, email, role, username },
+        user: { id: userId, email, role: finalRole, username },
         message: 'Account created. Please log in.',
       });
     }
 
     return created(res, {
-      user: { id: userId, email, role, username },
+      user: { id: userId, email, role: finalRole, username },
       session: {
         access_token: session.session.access_token,
         refresh_token: session.session.refresh_token,
