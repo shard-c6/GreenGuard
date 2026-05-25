@@ -35,15 +35,33 @@ export const floraConsultantApi = {
   },
 
   /**
-   * Gets expert RAG advice from Gemini for a specific plant.
+   * Gets expert RAG advice from Gemini for a specific plant, supporting an optional image context file.
    */
-  getExpertAdvice: async (scientificName: string, query: string, history: { role: string, content: string }[] = []) => {
-    const response = await consultantApi.post('/consultant/expert', {
-      scientificName,
-      query,
-      history,
-    });
-    return response.data;
+  getExpertAdvice: async (
+    scientificName: string, 
+    query: string, 
+    history: { role: string, content: string }[] = [],
+    imageFile: File | null = null
+  ) => {
+    if (imageFile) {
+      const formData = new FormData();
+      formData.append('scientificName', scientificName);
+      formData.append('query', query);
+      formData.append('history', JSON.stringify(history));
+      formData.append('image', imageFile);
+
+      const response = await consultantApi.post('/consultant/expert', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      return response.data;
+    } else {
+      const response = await consultantApi.post('/consultant/expert', {
+        scientificName,
+        query,
+        history,
+      });
+      return response.data;
+    }
   },
 };
 
