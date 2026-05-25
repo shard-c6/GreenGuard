@@ -1,10 +1,14 @@
 import axios from 'axios';
 
 const CONSULTANT_API_BASE = process.env.NEXT_PUBLIC_CONSULTANT_API_URL || 'http://localhost:5002/api';
+const CONSULTANT_API_KEY = process.env.NEXT_PUBLIC_CONSULTANT_API_KEY || '';
 
 const consultantApi = axios.create({
   baseURL: CONSULTANT_API_BASE,
   timeout: 60000, // Longer timeout for AI generation
+  headers: {
+    'x-api-key': CONSULTANT_API_KEY,
+  },
 });
 
 // Request interceptor — attach JWT
