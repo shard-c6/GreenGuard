@@ -102,77 +102,120 @@ app.post('/api/consultant/identify', apiKeyMiddleware, authMiddleware, consultan
   }
 });
 
-/**
- * Endpoint 2: Expert Advice (RAG)
- */
-app.post('/api/consultant/expert', apiKeyMiddleware, authMiddleware, consultantLimiter, async (req, res) => {
-  const { scientificName, query, history } = req.body;
+app.post('/api/consultant/expert', apiKeyMiddleware, authMiddleware, consultantLimiter, upload.single('image'), async (req, res) => {
+  let { scientificName, query, history } = req.body;
   
-  if (!scientificName || !query) {
-    return res.status(400).json({ error: 'Scientific name and query are required' });
+  if (!query) {
+    return res.status(400).json({ error: 'Query is required' });
   }
 
-  // Strict validation of input types and lengths
-  if (typeof scientificName !== 'string' || scientificName.trim().length === 0 || scientificName.length > 100) {
-    return res.status(400).json({ error: 'Invalid scientific name length/type (max 100 chars)' });
-  }
-
+  // Strict validation of query types and lengths
   if (typeof query !== 'string' || query.trim().length === 0 || query.length > 1000) {
     return res.status(400).json({ error: 'Invalid query length/type (max 1000 chars)' });
   }
 
+  if (scientificName && (typeof scientificName !== 'string' || scientificName.trim().length === 0 || scientificName.length > 100)) {
+    return res.status(400).json({ error: 'Invalid scientific name length/type (max 100 chars)' });
+  }
+
+  // Parse history string if sent as a multipart/form-data field
+  let historyParsed = history;
+  if (typeof history === 'string') {
+    try {
+      historyParsed = JSON.parse(history);
+    } catch (e) {
+      historyParsed = [];
+    }
+  }
+
   try {
-    // 1. Generate query expansions
-    const expandedQueries = await gemini.expandQuery(query);
-    const allQueries = [query, ...expandedQueries];
-    
-    // 2. Execute parallel searches
-    const searchPromises = allQueries.map(async (q) => {
+    let identifiedPlant = null;
+
+    // Auto-identification: Run PlantNet identification if an image is uploaded and scientificName is unspecified
+    if (req.file && (!scientificName || scientificName === 'General Plants' || scientificName.trim() === '')) {
       try {
-        const qEmbedding = await gemini.getEmbedding(q);
-        const { data, error } = await supabase.rpc('hybrid_plant_search', {
-          query_text: q,
-          query_embedding: qEmbedding,
-          match_threshold: 0.2,
-          match_count: 3 // Reduced from 5 to manage context size across multiple queries
-        });
-        if (error) throw error;
-        return data || [];
-      } catch (err) {
-        const sanitizedQ = typeof q === 'string' ? q.replace(/[\r\n]/g, '_') : '';
-        console.error(`Search failed for variant "${sanitizedQ}":`, err.message);
-        return [];
+        console.log('[AUTO-IDENTIFY] Image uploaded without plant context. Initiating identification...');
+        const identification = await plantnet.identifyPlant(req.file.buffer, req.file.originalname, req.file.mimetype);
+        
+        scientificName = identification.scientific_name;
+        identifiedPlant = {
+          scientificName: identification.scientific_name,
+          commonName: identification.common_name,
+          confidence: identification.confidence
+        };
+        console.log(`[AUTO-IDENTIFY SUCCESS] Identified plant as: ${identification.scientific_name} (${identification.common_name})`);
+      } catch (identError) {
+        console.warn(`[AUTO-IDENTIFY WARNING] PlantNet failed: ${identError.message}. Falling back to General Plants.`);
+        scientificName = 'General Plants';
       }
-    });
-    
-    const resultsArray = await Promise.all(searchPromises);
-    
-    // 3. Flatten and Deduplicate results
-    const uniqueChunksMap = new Map();
-    resultsArray.flat().forEach(chunk => {
-      if (chunk && chunk.id) {
-        uniqueChunksMap.set(chunk.id, chunk);
-      } else if (chunk && chunk.content) {
-        uniqueChunksMap.set(chunk.content.substring(0, 50), chunk); // Fallback deduplication
-      }
-    });
-    
-    const contextChunks = Array.from(uniqueChunksMap.values());
+    }
 
-    // 3. Reranking / Context Preparation
-    // Prioritize chunks that exactly match the scientific name provided by the identification service
-    const sortedChunks = contextChunks.sort((a, b) => {
-      const aMatch = a.scientific_name && a.scientific_name.toLowerCase() === scientificName.toLowerCase();
-      const bMatch = b.scientific_name && b.scientific_name.toLowerCase() === scientificName.toLowerCase();
-      return bMatch - aMatch;
-    });
-
-    const context = sortedChunks.map(c => c.content).join('\n\n');
-
-    // 4. Ask Gemini
-    const response = await gemini.askExpert(scientificName, context, query, history || []);
+    let context = '';
     
-    res.json({ success: true, answer: response });
+    // Execute RAG similarity search if we have a valid plant context (i.e. not General Plants)
+    if (scientificName && scientificName !== 'General Plants' && scientificName.trim() !== '') {
+      // 1. Generate query expansions
+      const expandedQueries = await gemini.expandQuery(query);
+      const allQueries = [query, ...expandedQueries];
+      
+      // 2. Execute parallel searches
+      const searchPromises = allQueries.map(async (q) => {
+        try {
+          const qEmbedding = await gemini.getEmbedding(q);
+          const { data, error } = await supabase.rpc('hybrid_plant_search', {
+            query_text: q,
+            query_embedding: qEmbedding,
+            match_threshold: 0.2,
+            match_count: 3
+          });
+          if (error) throw error;
+          return data || [];
+        } catch (err) {
+          const sanitizedQ = typeof q === 'string' ? q.replace(/[\r\n]/g, '_') : '';
+          console.error(`Search failed for variant "${sanitizedQ}":`, err.message);
+          return [];
+        }
+      });
+      
+      const resultsArray = await Promise.all(searchPromises);
+      
+      // 3. Flatten and Deduplicate results
+      const uniqueChunksMap = new Map();
+      resultsArray.flat().forEach(chunk => {
+        if (chunk && chunk.id) {
+          uniqueChunksMap.set(chunk.id, chunk);
+        } else if (chunk && chunk.content) {
+          uniqueChunksMap.set(chunk.content.substring(0, 50), chunk);
+        }
+      });
+      
+      const contextChunks = Array.from(uniqueChunksMap.values());
+  
+      // 4. Reranking / Context Preparation
+      const sortedChunks = contextChunks.sort((a, b) => {
+        const aMatch = a.scientific_name && a.scientific_name.toLowerCase() === scientificName.toLowerCase();
+        const bMatch = b.scientific_name && b.scientific_name.toLowerCase() === scientificName.toLowerCase();
+        return bMatch - aMatch;
+      });
+  
+      context = sortedChunks.map(c => c.content).join('\n\n');
+    }
+
+    // 5. Ask Gemini using optional multi-modal image buffers
+    const response = await gemini.askExpert(
+      scientificName || 'General Plants',
+      context,
+      query,
+      historyParsed || [],
+      req.file ? req.file.buffer : null,
+      req.file ? req.file.mimetype : null
+    );
+    
+    res.json({ 
+      success: true, 
+      answer: response, 
+      identifiedPlant: identifiedPlant 
+    });
   } catch (error) {
     console.error('Expert API Error:', error);
     res.status(500).json({ error: error.message });

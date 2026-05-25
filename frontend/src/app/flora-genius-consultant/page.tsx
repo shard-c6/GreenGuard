@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface Message {
   role: 'user' | 'assistant';
   content: string;
+  imageUrl?: string; // Optional local image preview URL for chat bubbles
 }
 
 function ChatContent() {
@@ -20,9 +21,13 @@ function ChatContent() {
   
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState<string>('');
   const [loading, setLoading] = useState(false);
   const [initialized, setInitialized] = useState(false);
+  
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (plantName && !initialized) {
@@ -30,7 +35,7 @@ function ChatContent() {
       setMessages([{ role: 'assistant', content: initialMessage }]);
       setInitialized(true);
     } else if (!plantName && !initialized) {
-      setMessages([{ role: 'assistant', content: "Namaste! I am **Flora Genius**. Please identify a plant first using our scanner, or ask me about any Indian medicinal plant you're interested in!" }]);
+      setMessages([{ role: 'assistant', content: "Namaste! I am **Flora Genius**. Please identify a plant first using our scanner, upload an image below to identify it in-chat, or ask me about any Indian medicinal plant you're interested in!" }]);
       setInitialized(true);
     }
   }, [plantName, initialized]);
@@ -39,19 +44,84 @@ function ChatContent() {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  // Clean up object URLs to prevent browser memory leaks
+  useEffect(() => {
+    return () => {
+      if (imagePreviewUrl) {
+        URL.revokeObjectURL(imagePreviewUrl);
+      }
+    };
+  }, [imagePreviewUrl]);
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedImage(file);
+      if (imagePreviewUrl) {
+        URL.revokeObjectURL(imagePreviewUrl);
+      }
+      setImagePreviewUrl(URL.createObjectURL(file));
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setSelectedImage(null);
+    if (imagePreviewUrl) {
+      URL.revokeObjectURL(imagePreviewUrl);
+      setImagePreviewUrl('');
+    }
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
   const handleSend = async (e?: React.FormEvent) => {
     e?.preventDefault();
-    if (!input.trim() || loading) return;
+    if ((!input.trim() && !selectedImage) || loading) return;
 
-    const userMessage = input.trim();
+    const userMessage = input.trim() || 'Attached a plant image for visual analysis.';
+    const imageToUpload = selectedImage;
+    let localImageUrl = '';
+    
+    if (imageToUpload) {
+      localImageUrl = URL.createObjectURL(imageToUpload);
+    }
+
+    // Reset inputs immediately for responsive UX
     setInput('');
-    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setSelectedImage(null);
+    if (imagePreviewUrl) {
+      setImagePreviewUrl('');
+    }
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+
+    setMessages(prev => [...prev, { 
+      role: 'user', 
+      content: userMessage,
+      imageUrl: localImageUrl || undefined
+    }]);
     setLoading(true);
 
     try {
-      // Pass messages from index 1 to avoid sending the initial hardcoded greeting, which would break Gemini's alternating role rule
-      const response = await floraConsultantApi.getExpertAdvice(plantName || 'General Plants', userMessage, messages.slice(1));
-      setMessages(prev => [...prev, { role: 'assistant', content: response.answer }]);
+      // Send message along with optional image upload
+      const response = await floraConsultantApi.getExpertAdvice(
+        plantName || 'General Plants', 
+        userMessage, 
+        messages.slice(1),
+        imageToUpload
+      );
+      
+      let finalAnswer = response.answer;
+      
+      // If the microservice automatically identified a plant in the image, notify the user in-chat
+      if (response.identifiedPlant) {
+        const { commonName, confidence } = response.identifiedPlant;
+        finalAnswer = `🤖 **Auto-Identified Plant**: *${commonName}* (${confidence.toFixed(1)}% confidence)\n\n` + finalAnswer;
+      }
+
+      setMessages(prev => [...prev, { role: 'assistant', content: finalAnswer }]);
     } catch (error) {
       console.error('Expert consultation error:', error);
       setMessages(prev => [...prev, { role: 'assistant', content: "I'm sorry, I encountered an error while consulting the botanical database. Please try again." }]);
@@ -92,7 +162,7 @@ function ChatContent() {
           </div>
           <div>
             <h1 style={{ fontSize: '1.5rem', fontWeight: 900, margin: 0, letterSpacing: '-0.02em' }}>Flora Genius <span style={{ color: 'var(--gg-green)' }}>Expert</span></h1>
-            <p style={{ fontSize: '0.85rem', color: 'var(--muted-foreground)', margin: 0, opacity: 0.8 }}>Powered by Specialized RAG Architecture</p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--muted-foreground)', margin: 0, opacity: 0.8 }}>Powered by Multimodal RAG Architecture</p>
           </div>
         </div>
         <Link href="/identify" className="btn btn-outline" style={{ borderRadius: '12px', padding: '0.6rem 1.2rem' }}>
@@ -144,6 +214,22 @@ function ChatContent() {
                     ? '0 10px 25px rgba(16, 185, 129, 0.2)' 
                     : '0 4px 15px rgba(0, 0, 0, 0.05)'
                 }}>
+                  {/* Inline Image Attachment inside Message Bubble */}
+                  {msg.imageUrl && (
+                    <div style={{ 
+                      position: 'relative', 
+                      width: '100%', 
+                      maxWidth: '280px', 
+                      height: '180px', 
+                      borderRadius: '12px', 
+                      overflow: 'hidden', 
+                      marginBottom: '1rem',
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                    }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={msg.imageUrl} alt="Uploaded plant context" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                  )}
                   <div className="prose max-w-none">
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
                       {msg.content}
@@ -185,53 +271,165 @@ function ChatContent() {
           background: 'var(--muted)', 
           borderTop: '1px solid var(--border)'
         }}>
-          <form onSubmit={handleSend} style={{ display: 'flex', gap: '1rem', position: 'relative' }}>
-            <div style={{ flex: 1, position: 'relative' }}>
+          <form onSubmit={handleSend} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', position: 'relative' }}>
+            
+            {/* Attachment Thumbnail Preview Wrapper */}
+            <AnimatePresence>
+              {imagePreviewUrl && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  style={{ 
+                    position: 'relative', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '1rem', 
+                    background: 'var(--card)', 
+                    border: '1px solid var(--border)', 
+                    borderRadius: '16px', 
+                    padding: '0.75rem 1rem',
+                    width: 'fit-content',
+                    boxShadow: '0 8px 25px rgba(0, 0, 0, 0.1)'
+                  }}
+                >
+                  <div style={{ position: 'relative', width: 60, height: 60, borderRadius: '8px', overflow: 'hidden' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={imagePreviewUrl} alt="Thumbnail preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--foreground)', maxWidth: '150px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {selectedImage?.name}
+                    </span>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--muted-foreground)' }}>
+                      {selectedImage?.size ? (selectedImage.size / 1024).toFixed(0) : '0'} KB
+                    </span>
+                  </div>
+                  <button 
+                    type="button" 
+                    onClick={handleRemoveImage}
+                    style={{ 
+                      width: 24, 
+                      height: 24, 
+                      borderRadius: '50%', 
+                      background: 'rgba(239, 68, 68, 0.15)', 
+                      color: 'rgb(239, 68, 68)', 
+                      border: 'none',
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      fontSize: '0.75rem', 
+                      cursor: 'pointer',
+                      transition: 'all 0.2s'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.background = 'rgb(239, 68, 68)';
+                      e.currentTarget.style.color = 'white';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.background = 'rgba(239, 68, 68, 0.15)';
+                      e.currentTarget.style.color = 'rgb(239, 68, 68)';
+                    }}
+                  >
+                    ✕
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Input fields and control buttons */}
+            <div style={{ display: 'flex', gap: '1rem', width: '100%' }}>
+              {/* Hidden file input */}
               <input 
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder={`Ask Flora Genius about ${plantName || 'Indian medicinal plants'}...`}
-                style={{ 
-                  width: '100%',
-                  background: 'var(--card)', 
-                  border: '1px solid var(--border)', 
-                  borderRadius: '16px', 
-                  padding: '1.1rem 1.5rem',
-                  paddingRight: '4rem',
-                  color: 'var(--foreground)',
-                  fontSize: '1rem',
-                  outline: 'none',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.05)'
-                }}
-                onFocus={(e) => {
-                  e.target.style.borderColor = 'var(--gg-green)';
-                  e.target.style.background = 'rgba(255, 255, 255, 0.08)';
-                  e.target.style.boxShadow = '0 0 0 4px rgba(16, 185, 129, 0.1)';
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                  e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-                  e.target.style.boxShadow = 'none';
-                }}
+                type="file" 
+                ref={fileInputRef} 
+                onChange={handleImageChange} 
+                accept="image/*" 
+                style={{ display: 'none' }} 
               />
+              
+              {/* Visual Upload Button */}
+              <button 
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                disabled={loading}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: selectedImage ? 'rgba(16, 185, 129, 0.1)' : 'var(--card)',
+                  border: selectedImage ? '1px solid var(--gg-green)' : '1px solid var(--border)',
+                  borderRadius: '16px',
+                  width: '56px',
+                  height: '56px',
+                  color: selectedImage ? 'var(--gg-green)' : 'var(--muted-foreground)',
+                  fontSize: '1.4rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  boxShadow: selectedImage ? '0 0 15px rgba(16, 185, 129, 0.15)' : 'none'
+                }}
+                onMouseOver={(e) => {
+                  if (!selectedImage) {
+                    e.currentTarget.style.borderColor = 'var(--gg-green)';
+                    e.currentTarget.style.color = 'var(--gg-green)';
+                  }
+                }}
+                onMouseOut={(e) => {
+                  if (!selectedImage) {
+                    e.currentTarget.style.borderColor = 'var(--border)';
+                    e.currentTarget.style.color = 'var(--muted-foreground)';
+                  }
+                }}
+              >
+                📷
+              </button>
+
+              <div style={{ flex: 1, position: 'relative' }}>
+                <input 
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder={selectedImage ? "Describe this plant image or ask a question..." : `Ask Flora Genius about ${plantName || 'Indian medicinal plants'}...`}
+                  style={{ 
+                    width: '100%',
+                    background: 'var(--card)', 
+                    border: '1px solid var(--border)', 
+                    borderRadius: '16px', 
+                    padding: '1.1rem 1.5rem',
+                    color: 'var(--foreground)',
+                    fontSize: '1rem',
+                    outline: 'none',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.05)'
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = 'var(--gg-green)';
+                    e.target.style.background = 'rgba(255, 255, 255, 0.08)';
+                    e.target.style.boxShadow = '0 0 0 4px rgba(16, 185, 129, 0.1)';
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+                    e.target.style.background = 'rgba(255, 255, 255, 0.05)';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                />
+              </div>
+              <button 
+                type="submit" 
+                className="btn btn-primary" 
+                disabled={(!input.trim() && !selectedImage) || loading}
+                style={{ 
+                  borderRadius: '16px', 
+                  padding: '0 2rem', 
+                  height: '56px',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  fontSize: '0.85rem'
+                }}
+              >
+                Consult
+              </button>
             </div>
-            <button 
-              type="submit" 
-              className="btn btn-primary" 
-              disabled={!input.trim() || loading}
-              style={{ 
-                borderRadius: '16px', 
-                padding: '0 2rem', 
-                height: 'auto',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-                fontSize: '0.85rem'
-              }}
-            >
-              Consult
-            </button>
           </form>
           <div style={{ marginTop: '0.75rem', textAlign: 'center' }}>
             <p style={{ fontSize: '0.7rem', color: 'var(--muted-foreground)', opacity: 0.5 }}>

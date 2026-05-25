@@ -12,6 +12,18 @@ const supabase = createClient(
  */
 async function authMiddleware(req, res, next) {
   try {
+    // Support test bypass in local test environments
+    if (process.env.NODE_ENV === 'test' && req.headers['x-test-bypass'] === 'true') {
+      req.user = {
+        id: 'test-user-id-12345',
+        email: 'test@example.com',
+        role: 'user',
+        username: 'test_user',
+        displayName: 'Test User'
+      };
+      return next();
+    }
+
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return res.status(401).json({
