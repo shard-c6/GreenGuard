@@ -9,6 +9,9 @@ const plantnet = require('./services/plantnet.service');
 const gemini = require('./services/gemini.service');
 const authMiddleware = require('./middleware/auth.middleware');
 const xssMiddleware = require('./middleware/xss.middleware');
+const apiKeyMiddleware = require('./middleware/apiKey.middleware');
+const loggingMiddleware = require('./middleware/logging.middleware');
+
 
 const app = express();
 
@@ -27,6 +30,16 @@ const upload = multer({
 const PORT = process.env.PORT || 5002;
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 
+// Body Parser with strict limit (1MB max body payload)
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: true, limit: '1mb' }));
+
+// Input Sanitization (XSS mitigation)
+app.use(xssMiddleware);
+
+// Global Request Logger & Anomaly Detector (placed after body parsing so req.body can be scanned)
+app.use(loggingMiddleware);
+
 // Security Headers
 app.use(helmet());
 
@@ -35,8 +48,10 @@ const allowedOrigins = [];
 if (process.env.FRONTEND_URL) {
   allowedOrigins.push(process.env.FRONTEND_URL);
 }
-// Default development origins
-allowedOrigins.push('http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173');
+// Default development origins - only added in non-production environments
+if (process.env.NODE_ENV !== 'production') {
+  allowedOrigins.push('http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173');
+}
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -49,15 +64,8 @@ app.use(cors({
   },
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key'],
 }));
-
-// Body Parser with strict limit (1MB max body payload)
-app.use(express.json({ limit: '1mb' }));
-app.use(express.urlencoded({ extended: true, limit: '1mb' }));
-
-// Input Sanitization (XSS mitigation)
-app.use(xssMiddleware);
 
 // Rate Limiter — 10 requests per 15 minutes per user
 const consultantLimiter = rateLimit({
@@ -65,12 +73,14 @@ const consultantLimiter = rateLimit({
   max: 10, // 10 requests per window
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { keyGeneratorIpFallback: false },
   keyGenerator: (req) => req.user?.id || req.ip,
   message: {
     success: false,
     error: { code: 'RATE_LIMITED', message: 'Too many requests. Please try again later.' },
   },
 });
+
 
 app.get('/', (req, res) => {
   res.send('Flora Genius AI is running!');
@@ -81,7 +91,7 @@ app.get('/', (req, res) => {
 /**
  * Endpoint 1: Identify Plant via PlantNet
  */
-app.post('/api/consultant/identify', authMiddleware, consultantLimiter, upload.single('image'), async (req, res) => {
+app.post('/api/consultant/identify', apiKeyMiddleware, authMiddleware, consultantLimiter, upload.single('image'), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ error: 'Image is required' });
     
@@ -95,7 +105,7 @@ app.post('/api/consultant/identify', authMiddleware, consultantLimiter, upload.s
 /**
  * Endpoint 2: Expert Advice (RAG)
  */
-app.post('/api/consultant/expert', authMiddleware, consultantLimiter, async (req, res) => {
+app.post('/api/consultant/expert', apiKeyMiddleware, authMiddleware, consultantLimiter, async (req, res) => {
   const { scientificName, query, history } = req.body;
   
   if (!scientificName || !query) {
