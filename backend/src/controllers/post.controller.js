@@ -244,6 +244,7 @@ async function mapPlantations(req, res) {
 
     if (dbError) return error(res, dbError.message, 400);
 
+    res.set('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=60');
     return success(res, data);
   } catch (err) {
     console.error('mapPlantations error:', err);
