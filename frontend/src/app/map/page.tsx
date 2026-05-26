@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/lib/auth';
 import { plantsApi, feedApi } from '@/services/api';
 import type { MapPlant, Post } from '@/types';
@@ -19,18 +19,25 @@ const LeafletMap = dynamic(() => import('@/components/map/LeafletMap'), {
   )
 });
 
-export default function MapPage() {
+function MapContent() {
   const { isAuthenticated, loading: authLoading } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  
   const [plants, setPlants] = useState<MapPlant[]>([]);
   const [plantations, setPlantations] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Parse edge geolocated coordinates from query string
+  const latParam = searchParams.get('lat');
+  const lngParam = searchParams.get('lng');
+  const centerLat = latParam ? parseFloat(latParam) : undefined;
+  const centerLng = lngParam ? parseFloat(lngParam) : undefined;
 
   useEffect(() => {
     if (!authLoading && !isAuthenticated) { router.push('/login'); return; }
     if (!isAuthenticated) return;
     
-    // No need to set loading here as it's true by default and handled in finally
     Promise.all([
       plantsApi.getMapPlants(),
       feedApi.getMapPlantations(),
@@ -77,7 +84,12 @@ export default function MapPage() {
         </div>
       </div>
 
-      <LeafletMap plants={plants} plantations={plantations} />
+      <LeafletMap 
+        plants={plants} 
+        plantations={plantations} 
+        centerLat={centerLat} 
+        centerLng={centerLng} 
+      />
 
       {/* Floating Legend */}
       <div className="absolute bottom-10 right-10 z-[1000] w-64 bg-white/90 backdrop-blur-md rounded-[2.5rem] border border-white shadow-2xl p-6">
@@ -114,5 +126,18 @@ function LegendItem({ color, label, count, icon }: { color: string, label: strin
       </div>
       <span className="text-[10px] font-black text-gray-300 group-hover:text-emerald-600 transition-colors bg-gray-50 px-2 py-1 rounded-full">{count}</span>
     </div>
+  );
+}
+
+export default function MapPage() {
+  return (
+    <Suspense fallback={
+      <div className="h-[calc(100vh-64px)] w-full flex flex-col items-center justify-center bg-gray-50 gap-4">
+        <div className="w-12 h-12 border-4 border-emerald-100 border-t-emerald-600 rounded-full animate-spin" />
+        <p className="text-gray-500 font-black tracking-widest uppercase text-xs">Synchronizing Eco-Data</p>
+      </div>
+    }>
+      <MapContent />
+    </Suspense>
   );
 }
