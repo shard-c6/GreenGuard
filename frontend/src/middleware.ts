@@ -13,7 +13,7 @@ export function middleware(request: NextRequest) {
   if (pathname === '/map') {
     // If the coordinates are already explicitly specified in the query parameters, skip rewrite
     if (!searchParams.has('lat') || !searchParams.has('lng')) {
-      const geo = request.geo || {};
+      const geo = (request as any).geo || {};
       
       // Default to New Delhi, India coordinates during local dev or if geo is unavailable
       const lat = geo.latitude || '28.6139';
