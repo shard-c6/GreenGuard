@@ -19,17 +19,30 @@ const parseLngLat = (location: string | null): [number, number] | null => {
 interface LeafletMapProps {
   plants: MapPlant[];
   plantations: Post[];
+  centerLat?: number;
+  centerLng?: number;
 }
 
 // ─── Map Controller ──────────────────────────────────────────
 
-const MapController = () => {
+interface MapControllerProps {
+  centerLat?: number;
+  centerLng?: number;
+}
+
+const MapController = ({ centerLat, centerLng }: MapControllerProps) => {
   const map = useMap();
   useEffect(() => {
     map.on('locationfound', (e: L.LocationEvent) => {
       map.flyTo(e.latlng, 14, { duration: 2 });
     });
   }, [map]);
+
+  useEffect(() => {
+    if (centerLat !== undefined && centerLng !== undefined) {
+      map.flyTo([centerLat, centerLng], 11, { duration: 1.5 });
+    }
+  }, [map, centerLat, centerLng]);
 
   return (
     <div className="absolute top-6 right-6 z-[1000] flex flex-col gap-2">
@@ -67,7 +80,7 @@ const MapController = () => {
 
 // ─── Component ───────────────────────────────────────────────
 
-export default function LeafletMap({ plants, plantations }: LeafletMapProps) {
+export default function LeafletMap({ plants, plantations, centerLat, centerLng }: LeafletMapProps) {
   const iconsRef = useRef<Record<string, L.DivIcon>>({});
 
   // Initialize icons
@@ -132,12 +145,12 @@ export default function LeafletMap({ plants, plantations }: LeafletMapProps) {
       `}</style>
       
       <MapContainer
-        center={[20.5937, 78.9629]}
-        zoom={5}
+        center={centerLat !== undefined && centerLng !== undefined ? [centerLat, centerLng] : [20.5937, 78.9629]}
+        zoom={centerLat !== undefined && centerLng !== undefined ? 11 : 5}
         style={{ width: '100%', height: '100%' }}
         scrollWheelZoom
       >
-        <MapController />
+        <MapController centerLat={centerLat} centerLng={centerLng} />
         <TileLayer
           attribution='&copy; OpenStreetMap'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
