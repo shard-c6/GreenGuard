@@ -68,4 +68,33 @@ This document chronicles the technical challenges and solutions encountered duri
 - **Defense in Depth**: Secure and isolate microservice architectures with modular validation, strict size limits, and role validations early in the development lifecycle to prevent compounding API quota abuse.
 - **Static Analysis Compliance**: Avoid using dynamic bracket notations (`cleaned[key]`) and HTML-like delimiters (`<tag>`) inside JS templates to prevent prototype pollution and browser XSS false positives.
 
+### 9. Edge-Level Geolocation Centering (Issue #35)
+
+- **Problem**: Querying browser geolocation API directly on the client side caused visual map initialization lag and build warnings during production static pre-rendering of App Router pages.
+- **Root Cause**: Reading `useSearchParams()` outside of a React `<Suspense>` boundary in Next.js causes full deoptimization during static builds.
+- **Resolution**: Implemented Next.js Edge Middleware (`middleware.ts`) to intercept `/map` visits, parse Vercel's `request.geo` headers (falling back to New Delhi in local dev), and rewrite route parameters. Wrapped search query readers inside a custom `<Suspense>` container in the main React template, and leveraged Leaflet's `flyTo` transitions inside `MapController` to gracefully glide the viewpoint over coordinates.
+
+### 10. Redis Caching & Format String Warnings (Issue #39)
+
+- **Problem**: Scalability limits due to in-memory rate limiters resetting on restarts, redundant PlantNet/Gemini API spend, and static analysis security alerts.
+- **Root Causes**:
+  - `express-rate-limit` defaults to in-memory tracking.
+  - Security warning: Weak MD5 hashing found in caching services.
+  - CodeQL warning: "Use of externally-controlled format string" due to dynamic console error variables.
+- **Resolutions**:
+  - Integrated `rate-limit-redis` and `ioredis` to manage shared counters, with a silent fallback to memory if Redis is offline during local test runs.
+  - Implemented a secure triple-cache: PlantNet (SHA-256 of image buffer), Supabase vector search (query hash), and Gemini Advice (query + image hash).
+  - Resolved MD5 warning by switching to **SHA-256** for unique cache keys.
+  - Fixed CodeQL alert by migrating console logging to static format strings: `console.error('Search failed for variant "%s": %s', query, error.message)`.
+
+## 📝 Lessons Learned
+
+- **Key Prefix Sensitivity**: Always verify `AIza` prefixes for Google Cloud/Gemini keys.
+- **Type Agnostic Functions**: When building RPC functions for AI, only return the minimum necessary data to avoid schema conflicts.
+- **Environment Parity**: Always use `node scripts/ingest_json.js` to verify environment variables locally before pushing to production.
+- **Defense in Depth**: Secure and isolate microservice architectures with modular validation, strict size limits, and role validations early in the development lifecycle to prevent compounding API quota abuse.
+- **Static Analysis Compliance**: Avoid using dynamic bracket notations (`cleaned[key]`) and HTML-like delimiters (`<tag>`) inside JS templates to prevent prototype pollution and browser XSS false positives.
+- **Safe Log Audits**: Always separate variables from format templates when writing to system loggers to prevent format specifier manipulation.
+- **Resilient Fallback Design**: Always implement silent, crash-free fallbacks for network systems (like Redis) to support offline development.
+
 
