@@ -25,8 +25,7 @@
 - **File**: `backend/env copy` (tracked in git), commit `e6ac09a`
 - **Impact**: **CATASTROPHIC** — The `SUPABASE_SERVICE_ROLE_KEY` (which bypasses ALL Row Level Security) was committed in plain text:
   ```
-  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
-  I6ImVvcG13dmRtZ3p4b2F4cXFmc2RxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIs...
+  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.<REDACTED_SUPABASE_SERVICE_ROLE_KEY>
   ```
 - **Risk**: Anyone with read access to the repository can extract this key from git history. With it, they can:
   - Read/write/delete ALL data in ALL tables (bypasses RLS)
@@ -42,7 +41,7 @@
 
 ### VULN-002: Gemini API Key Committed to Git History
 - **File**: `backend/env copy` (commit `e6ac09a`), also in `flora-genius-consultant/.env` (on disk)
-- **Impact**: Anyone can use your Google Gemini API key (`***REDACTED_GEMINI_KEY***`) to:
+- **Impact**: Anyone can use your Google Gemini API key (`AIzaSyBujysWYTwV1Erbj-dv0KCQpMXaN******`) to:
   - Generate unlimited AI content billed to your account
   - Exhaust your API quota, causing service outage
   - Use the key for malicious content generation attributed to your project
