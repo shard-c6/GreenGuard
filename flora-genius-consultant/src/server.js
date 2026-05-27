@@ -244,7 +244,7 @@ app.post('/api/consultant/expert', apiKeyMiddleware, authMiddleware, consultantL
             return data || [];
           } catch (err) {
             const sanitizedQ = typeof q === 'string' ? q.replace(/[\r\n]/g, '_') : '';
-            console.error(`Search failed for variant "${sanitizedQ}":`, err.message);
+            console.error('Search failed for variant "%s": %s', sanitizedQ, err.message);
             return [];
           }
         });
