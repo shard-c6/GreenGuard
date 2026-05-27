@@ -21,8 +21,8 @@ function getHash(buffer) {
  */
 function getQueryKey(scientificName, query) {
   const normalized = `${(scientificName || '').trim().toLowerCase()}:${(query || '').trim().toLowerCase()}`;
-  const md5 = crypto.createHash('md5').update(normalized).digest('hex');
-  return md5;
+  const sha256 = crypto.createHash('sha256').update(normalized).digest('hex');
+  return sha256;
 }
 
 /**

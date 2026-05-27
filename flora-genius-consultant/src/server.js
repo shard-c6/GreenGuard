@@ -224,7 +224,8 @@ app.post('/api/consultant/expert', apiKeyMiddleware, authMiddleware, consultantL
         console.log(`[CACHE HIT] Serving RAG vector search context from Redis for key: ${vectorCacheKey}`);
         context = cachedContext;
       } else {
-        console.log(`[CACHE MISS] Running vector similarity RAG search on Supabase for scientificName: ${scientificName}`);
+        const sanitizedName = String(scientificName).replace(/[^a-zA-Z0-9()\s._-]/g, '');
+        console.log(`[CACHE MISS] Running vector similarity RAG search on Supabase for scientificName: ${sanitizedName}`);
         // 1. Generate query expansions
         const expandedQueries = await gemini.expandQuery(query);
         const allQueries = [query, ...expandedQueries];
