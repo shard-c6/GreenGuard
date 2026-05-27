@@ -4,9 +4,12 @@ const cors = require('cors');
 const multer = require('multer');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const { RedisStore } = require('rate-limit-redis');
+const { redisClient, redisAvailable } = require('./config/redis');
 const { createClient } = require('@supabase/supabase-js');
 const plantnet = require('./services/plantnet.service');
 const gemini = require('./services/gemini.service');
+const cache = require('./services/cache.service');
 const authMiddleware = require('./middleware/auth.middleware');
 const xssMiddleware = require('./middleware/xss.middleware');
 const apiKeyMiddleware = require('./middleware/apiKey.middleware');
@@ -68,7 +71,7 @@ app.use(cors({
 }));
 
 // Rate Limiter — 10 requests per 15 minutes per user
-const consultantLimiter = rateLimit({
+const consultantLimiterOpts = {
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10, // 10 requests per window
   standardHeaders: true,
@@ -79,7 +82,16 @@ const consultantLimiter = rateLimit({
     success: false,
     error: { code: 'RATE_LIMITED', message: 'Too many requests. Please try again later.' },
   },
-});
+};
+
+if (redisAvailable() && redisClient) {
+  consultantLimiterOpts.store = new RedisStore({
+    sendCommand: (...args) => redisClient.call(...args),
+    prefix: 'flora:limiter:consultant:',
+  });
+}
+
+const consultantLimiter = rateLimit(consultantLimiterOpts);
 
 
 app.get('/', (req, res) => {
@@ -95,8 +107,20 @@ app.post('/api/consultant/identify', apiKeyMiddleware, authMiddleware, consultan
   try {
     if (!req.file) return res.status(400).json({ error: 'Image is required' });
     
+    const imageHash = cache.getHash(req.file.buffer);
+    const cacheKey = `flora:plantnet:${imageHash}`;
+    
+    const cachedResult = await cache.get(cacheKey);
+    if (cachedResult) {
+      console.log(`[CACHE HIT] Serving PlantNet result from Redis for image hash: ${imageHash}`);
+      return res.json({ success: true, data: cachedResult, source: 'cache' });
+    }
+
     const identification = await plantnet.identifyPlant(req.file.buffer, req.file.originalname, req.file.mimetype);
-    res.json({ success: true, data: identification });
+    
+    await cache.set(cacheKey, identification, 7 * 24 * 60 * 60); // Cache for 7 days
+    
+    res.json({ success: true, data: identification, source: 'api' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -130,75 +154,126 @@ app.post('/api/consultant/expert', apiKeyMiddleware, authMiddleware, consultantL
 
   try {
     let identifiedPlant = null;
+    let imageHash = null;
+
+    if (req.file) {
+      imageHash = cache.getHash(req.file.buffer);
+    }
 
     // Auto-identification: Run PlantNet identification if an image is uploaded and scientificName is unspecified
     if (req.file && (!scientificName || scientificName === 'General Plants' || scientificName.trim() === '')) {
-      try {
-        console.log('[AUTO-IDENTIFY] Image uploaded without plant context. Initiating identification...');
-        const identification = await plantnet.identifyPlant(req.file.buffer, req.file.originalname, req.file.mimetype);
-        
-        scientificName = identification.scientific_name;
+      const plantnetCacheKey = `flora:plantnet:${imageHash}`;
+      const cachedPlant = await cache.get(plantnetCacheKey);
+      
+      if (cachedPlant) {
+        console.log(`[CACHE HIT] Serving Auto-Identified plant from cache: ${cachedPlant.scientific_name}`);
+        scientificName = cachedPlant.scientific_name;
         identifiedPlant = {
-          scientificName: identification.scientific_name,
-          commonName: identification.common_name,
-          confidence: identification.confidence
+          scientificName: cachedPlant.scientific_name,
+          commonName: cachedPlant.common_name,
+          confidence: cachedPlant.confidence
         };
-        console.log(`[AUTO-IDENTIFY SUCCESS] Identified plant as: ${identification.scientific_name} (${identification.common_name})`);
-      } catch (identError) {
-        console.warn(`[AUTO-IDENTIFY WARNING] PlantNet failed: ${identError.message}. Falling back to General Plants.`);
-        scientificName = 'General Plants';
+      } else {
+        try {
+          console.log('[AUTO-IDENTIFY] Image uploaded without plant context. Initiating identification...');
+          const identification = await plantnet.identifyPlant(req.file.buffer, req.file.originalname, req.file.mimetype);
+          
+          scientificName = identification.scientific_name;
+          identifiedPlant = {
+            scientificName: identification.scientific_name,
+            commonName: identification.common_name,
+            confidence: identification.confidence
+          };
+          
+          // Cache PlantNet result
+          await cache.set(plantnetCacheKey, identification, 7 * 24 * 60 * 60);
+          console.log(`[AUTO-IDENTIFY SUCCESS] Identified plant as: ${identification.scientific_name} (${identification.common_name})`);
+        } catch (identError) {
+          console.warn(`[AUTO-IDENTIFY WARNING] PlantNet failed: ${identError.message}. Falling back to General Plants.`);
+          scientificName = 'General Plants';
+        }
       }
+    }
+
+    // Attempt to serve the entire Gemini consultation from cache if it exists
+    const geminiQueryMd5 = cache.getQueryKey(scientificName || 'General Plants', query);
+    const geminiCacheKey = imageHash 
+      ? `flora:gemini:${geminiQueryMd5}:${imageHash}`
+      : `flora:gemini:${geminiQueryMd5}`;
+      
+    const cachedAnswer = await cache.get(geminiCacheKey);
+    if (cachedAnswer) {
+      console.log(`[CACHE HIT] Serving Gemini expert advice from Redis for key: ${geminiCacheKey}`);
+      return res.json({ 
+        success: true, 
+        answer: cachedAnswer, 
+        identifiedPlant: identifiedPlant,
+        source: 'cache'
+      });
     }
 
     let context = '';
     
     // Execute RAG similarity search if we have a valid plant context (i.e. not General Plants)
     if (scientificName && scientificName !== 'General Plants' && scientificName.trim() !== '') {
-      // 1. Generate query expansions
-      const expandedQueries = await gemini.expandQuery(query);
-      const allQueries = [query, ...expandedQueries];
+      const vectorCacheKey = `flora:vector:${geminiQueryMd5}`;
       
-      // 2. Execute parallel searches
-      const searchPromises = allQueries.map(async (q) => {
-        try {
-          const qEmbedding = await gemini.getEmbedding(q);
-          const { data, error } = await supabase.rpc('hybrid_plant_search', {
-            query_text: q,
-            query_embedding: qEmbedding,
-            match_threshold: 0.2,
-            match_count: 3
-          });
-          if (error) throw error;
-          return data || [];
-        } catch (err) {
-          const sanitizedQ = typeof q === 'string' ? q.replace(/[\r\n]/g, '_') : '';
-          console.error(`Search failed for variant "${sanitizedQ}":`, err.message);
-          return [];
-        }
-      });
-      
-      const resultsArray = await Promise.all(searchPromises);
-      
-      // 3. Flatten and Deduplicate results
-      const uniqueChunksMap = new Map();
-      resultsArray.flat().forEach(chunk => {
-        if (chunk && chunk.id) {
-          uniqueChunksMap.set(chunk.id, chunk);
-        } else if (chunk && chunk.content) {
-          uniqueChunksMap.set(chunk.content.substring(0, 50), chunk);
-        }
-      });
-      
-      const contextChunks = Array.from(uniqueChunksMap.values());
-  
-      // 4. Reranking / Context Preparation
-      const sortedChunks = contextChunks.sort((a, b) => {
-        const aMatch = a.scientific_name && a.scientific_name.toLowerCase() === scientificName.toLowerCase();
-        const bMatch = b.scientific_name && b.scientific_name.toLowerCase() === scientificName.toLowerCase();
-        return bMatch - aMatch;
-      });
-  
-      context = sortedChunks.map(c => c.content).join('\n\n');
+      // Try fetching context from cache
+      const cachedContext = await cache.get(vectorCacheKey);
+      if (cachedContext !== null) {
+        console.log(`[CACHE HIT] Serving RAG vector search context from Redis for key: ${vectorCacheKey}`);
+        context = cachedContext;
+      } else {
+        console.log(`[CACHE MISS] Running vector similarity RAG search on Supabase for scientificName: ${scientificName}`);
+        // 1. Generate query expansions
+        const expandedQueries = await gemini.expandQuery(query);
+        const allQueries = [query, ...expandedQueries];
+        
+        // 2. Execute parallel searches
+        const searchPromises = allQueries.map(async (q) => {
+          try {
+            const qEmbedding = await gemini.getEmbedding(q);
+            const { data, error } = await supabase.rpc('hybrid_plant_search', {
+              query_text: q,
+              query_embedding: qEmbedding,
+              match_threshold: 0.2,
+              match_count: 3
+            });
+            if (error) throw error;
+            return data || [];
+          } catch (err) {
+            const sanitizedQ = typeof q === 'string' ? q.replace(/[\r\n]/g, '_') : '';
+            console.error(`Search failed for variant "${sanitizedQ}":`, err.message);
+            return [];
+          }
+        });
+        
+        const resultsArray = await Promise.all(searchPromises);
+        
+        // 3. Flatten and Deduplicate results
+        const uniqueChunksMap = new Map();
+        resultsArray.flat().forEach(chunk => {
+          if (chunk && chunk.id) {
+            uniqueChunksMap.set(chunk.id, chunk);
+          } else if (chunk && chunk.content) {
+            uniqueChunksMap.set(chunk.content.substring(0, 50), chunk);
+          }
+        });
+        
+        const contextChunks = Array.from(uniqueChunksMap.values());
+    
+        // 4. Reranking / Context Preparation
+        const sortedChunks = contextChunks.sort((a, b) => {
+          const aMatch = a.scientific_name && a.scientific_name.toLowerCase() === scientificName.toLowerCase();
+          const bMatch = b.scientific_name && b.scientific_name.toLowerCase() === scientificName.toLowerCase();
+          return bMatch - aMatch;
+        });
+    
+        context = sortedChunks.map(c => c.content).join('\n\n');
+        
+        // Cache vector context search for 24 hours
+        await cache.set(vectorCacheKey, context, 24 * 60 * 60);
+      }
     }
 
     // 5. Ask Gemini using optional multi-modal image buffers
@@ -211,10 +286,14 @@ app.post('/api/consultant/expert', apiKeyMiddleware, authMiddleware, consultantL
       req.file ? req.file.mimetype : null
     );
     
+    // Cache the advice for 12 hours
+    await cache.set(geminiCacheKey, response, 12 * 60 * 60);
+    
     res.json({ 
       success: true, 
       answer: response, 
-      identifiedPlant: identifiedPlant 
+      identifiedPlant: identifiedPlant,
+      source: 'api'
     });
   } catch (error) {
     console.error('Expert API Error:', error);
