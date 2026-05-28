@@ -19,9 +19,9 @@ async function seed() {
   try {
     // 1. Create ADMIN (from .env)
     console.log('Creating Admin...');
-    const adminEmail = process.env.ADMIN_EMAIL || 'shard.chogale1983@gmail.com';
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@greenguard.in';
     const adminPassword = process.env.ADMIN_PASSWORD || 'GreenGuard2026!';
-    
+
     let { data: adminUser, error: adminErr } = await supabaseAdmin.auth.admin.createUser({
       email: adminEmail,
       password: adminPassword,
@@ -30,7 +30,7 @@ async function seed() {
     });
 
     if (adminErr && !adminErr.message.includes('already been registered')) {
-        throw adminErr;
+      throw adminErr;
     }
 
     const adminId = adminUser?.user?.id || (await supabaseAdmin.from('profiles').select('id').eq('email', adminEmail).single()).data?.id;
@@ -88,7 +88,7 @@ async function seed() {
       });
 
       if (uErr && !uErr.message.includes('already been registered')) continue;
-      
+
       const userId = userData?.user?.id || (await supabaseAdmin.from('profiles').select('id').eq('email', n.email).single()).data?.id;
 
       await supabaseAdmin.from('profiles').upsert({
@@ -108,9 +108,9 @@ async function seed() {
         mission: n.mission,
         darpan_id: n.darpan_id,
         onboarding_answers: {
-           annual_capacity: '10000+ trees',
-           primary_region: 'India - Maharashtra',
-           experience_years: 5
+          annual_capacity: '10000+ trees',
+          primary_region: 'India - Maharashtra',
+          experience_years: 5
         }
       });
 
@@ -136,7 +136,7 @@ async function seed() {
       });
 
       if (uErr && !uErr.message.includes('already been registered')) continue;
-      
+
       const userId = userData?.user?.id || (await supabaseAdmin.from('profiles').select('id').eq('email', a.email).single()).data?.id;
 
       await supabaseAdmin.from('profiles').upsert({
@@ -155,76 +155,76 @@ async function seed() {
     const plantIds = [];
 
     for (let i = 0; i < 15; i++) {
-        const ngoId = seededNgos[i % seededNgos.length];
-        const species = plantSpecies[i % plantSpecies.length];
-        const status = i < 8 ? 'available' : i < 12 ? 'pending' : 'adopted';
-        
-        // Random locations around Mumbai/Pune region
-        const lat = 19.0760 + (Math.random() - 0.5) * 0.5;
-        const lng = 72.8777 + (Math.random() - 0.5) * 0.5;
+      const ngoId = seededNgos[i % seededNgos.length];
+      const species = plantSpecies[i % plantSpecies.length];
+      const status = i < 8 ? 'available' : i < 12 ? 'pending' : 'adopted';
 
-        const { data: plant, error: pErr } = await supabaseAdmin.from('plants').insert({
-            ngo_id: ngoId,
-            plant_name: `${species} Tree #${i+1}`,
-            species: species,
-            location: `POINT(${lng} ${lat})`,
-            latitude: lat,
-            longitude: lng,
-            adoption_status: status,
-            price: 500 + (Math.floor(Math.random() * 5) * 100),
-            image_urls: ['https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=600'],
-            health_status: 'healthy',
-            planted_date: new Date().toISOString().split('T')[0]
-        }).select().single();
+      // Random locations around Mumbai/Pune region
+      const lat = 19.0760 + (Math.random() - 0.5) * 0.5;
+      const lng = 72.8777 + (Math.random() - 0.5) * 0.5;
 
-        if (plant) plantIds.push(plant.id);
+      const { data: plant, error: pErr } = await supabaseAdmin.from('plants').insert({
+        ngo_id: ngoId,
+        plant_name: `${species} Tree #${i + 1}`,
+        species: species,
+        location: `POINT(${lng} ${lat})`,
+        latitude: lat,
+        longitude: lng,
+        adoption_status: status,
+        price: 500 + (Math.floor(Math.random() * 5) * 100),
+        image_urls: ['https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=600'],
+        health_status: 'healthy',
+        planted_date: new Date().toISOString().split('T')[0]
+      }).select().single();
+
+      if (plant) plantIds.push(plant.id);
     }
 
     // 5. Create Adoptions
     console.log('Creating Adoptions...');
     for (let i = 0; i < 5; i++) {
-        const adopterId = seededAdopters[i % seededAdopters.length];
-        const plantId = plantIds[i + 8]; // Using pending/adopted plants
-        const status = i < 3 ? 'approved' : 'pending';
+      const adopterId = seededAdopters[i % seededAdopters.length];
+      const plantId = plantIds[i + 8]; // Using pending/adopted plants
+      const status = i < 3 ? 'approved' : 'pending';
 
-        await supabaseAdmin.from('adoptions').insert({
-            adopter_id: adopterId,
-            plant_id: plantId,
-            ngo_id: seededNgos[0],
-            status: status,
-            total_amount: 500
-        });
+      await supabaseAdmin.from('adoptions').insert({
+        adopter_id: adopterId,
+        plant_id: plantId,
+        ngo_id: seededNgos[0],
+        status: status,
+        total_amount: 500
+      });
     }
 
     // 6. Create Social Posts
     console.log('Creating Posts...');
     const posts = [
-        {
-            author_id: seededNgos[0],
-            content: 'We just finished our monsoon plantation drive at Sanjay Gandhi National Park! 🌳✨ #Reforestation',
-            image_urls: ['https://images.unsplash.com/photo-1576085898323-2183ba9b222c?q=80&w=800'],
-            post_type: 'plantation',
-            latitude: 19.2288,
-            longitude: 72.9182,
-            location: 'POINT(72.9182 19.2288)',
-            address: 'Sanjay Gandhi National Park, Mumbai'
-        },
-        {
-            author_id: seededAdopters[0],
-            content: 'Just adopted my first Neem tree! Can\'t wait to see it grow. 🌿',
-            image_urls: ['https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=800'],
-            post_type: 'normal'
-        },
-        {
-            author_id: seededNgos[0],
-            content: 'Our Banyan trees are showing incredible growth this month. Check out the height comparison!',
-            image_urls: ['https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=800'],
-            post_type: 'normal'
-        }
+      {
+        author_id: seededNgos[0],
+        content: 'We just finished our monsoon plantation drive at Sanjay Gandhi National Park! 🌳✨ #Reforestation',
+        image_urls: ['https://images.unsplash.com/photo-1576085898323-2183ba9b222c?q=80&w=800'],
+        post_type: 'plantation',
+        latitude: 19.2288,
+        longitude: 72.9182,
+        location: 'POINT(72.9182 19.2288)',
+        address: 'Sanjay Gandhi National Park, Mumbai'
+      },
+      {
+        author_id: seededAdopters[0],
+        content: 'Just adopted my first Neem tree! Can\'t wait to see it grow. 🌿',
+        image_urls: ['https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=800'],
+        post_type: 'normal'
+      },
+      {
+        author_id: seededNgos[0],
+        content: 'Our Banyan trees are showing incredible growth this month. Check out the height comparison!',
+        image_urls: ['https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=800'],
+        post_type: 'normal'
+      }
     ];
 
     for (const p of posts) {
-        await supabaseAdmin.from('posts').insert(p);
+      await supabaseAdmin.from('posts').insert(p);
     }
 
     console.log('✅ Seeding Complete!');

@@ -17,7 +17,7 @@ async function seedTestData() {
   console.log('🌱 Seeding test data for User Dashboard...\n');
 
   // 1. Get Admin User
-  const adminEmail = process.env.ADMIN_EMAIL || 'shard.chogale1983@gmail.com';
+  const adminEmail = process.env.ADMIN_EMAIL || 'admin@greenguard.in';
   const { data: admin, error: adminError } = await supabaseAdmin
     .from('profiles')
     .select('id')
