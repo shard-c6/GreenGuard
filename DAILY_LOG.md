@@ -51,3 +51,7 @@ This log tracks daily progress, technical insights, and system maintenance for t
 | 2026-05-26 | Edge Geolocation Optimization | Intercepted client maps at Edge with Next.js Middleware and added Leaflet flyTo animations.       |
 | 2026-05-27 | System Heartbeat      | Heartbeat at 10:02:51                             |
 | 2026-05-28 | System Heartbeat      | Heartbeat at 10:12:17                             |
+| 2026-05-28 | Next.js 15+ Route Compatibility | Resolved Next.js compile/typecheck failure by updating the dynamic route parameter `context.params` to a Promise type. |
+| 2026-05-28 | Email Migration & Hardening | Swapped fallback `admin@greenguard.com` to valid contact email `shard.chogale1983@gmail.com` and `test_adopter@greenguard.com` to `test_adopter@gmail.com` in seeders, cleanup scripts, and docs. |
+| 2026-05-28 | Branch Pruning & Cleanup | Deleted all 9 stale/merged local branches, leaving a clean `main` development branch. |
+
