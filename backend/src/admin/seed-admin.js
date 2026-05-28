@@ -17,7 +17,7 @@ const supabaseAdmin = createClient(
 async function seedAdmin() {
   console.log('🌱 Seeding admin account...\n');
 
-  const email = process.env.ADMIN_EMAIL || 'admin@greenguard.com';
+  const email = process.env.ADMIN_EMAIL || 'shard.chogale1983@gmail.com';
   const password = process.env.ADMIN_PASSWORD || 'changeme';
   const username = process.env.ADMIN_USERNAME || 'admin';
 

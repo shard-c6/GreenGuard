@@ -19,7 +19,7 @@ async function seed() {
   try {
     // 1. Create ADMIN (from .env)
     console.log('Creating Admin...');
-    const adminEmail = process.env.ADMIN_EMAIL || 'admin@greenguard.com';
+    const adminEmail = process.env.ADMIN_EMAIL || 'shard.chogale1983@gmail.com';
     const adminPassword = process.env.ADMIN_PASSWORD || 'GreenGuard2026!';
     
     let { data: adminUser, error: adminErr } = await supabaseAdmin.auth.admin.createUser({
@@ -122,7 +122,7 @@ async function seed() {
     // 3. Create Adopters
     console.log('Creating Adopters...');
     const adopters = [
-      { email: 'test_adopter@greenguard.com', username: 'adopter_test', display_name: 'Test Adopter' },
+      { email: 'test_adopter@gmail.com', username: 'adopter_test', display_name: 'Test Adopter' },
       { email: 'shardul@test.com', username: 'shardul_k', display_name: 'Shardul Kulkarni' },
       { email: 'aarav@test.com', username: 'aarav_j', display_name: 'Aarav Joshi' }
     ];
@@ -234,7 +234,7 @@ async function seed() {
       Admin: ${adminEmail} / ${adminPassword}
       NGO (Approved): greenearth@ngo.org / Password123!
       NGO (Pending): rootsofhope@ngo.org / Password123!
-      Adopter: test_adopter@greenguard.com / Password123!
+      Adopter: test_adopter@gmail.com / Password123!
     `);
 
   } catch (err) {

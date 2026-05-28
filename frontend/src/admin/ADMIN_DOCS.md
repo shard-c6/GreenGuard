@@ -52,4 +52,4 @@ A new reporting system was implemented to allow users and NGOs to report suspici
 
 ## 🔑 Admin Access
 - **Login URL**: `http://localhost:3000/login`
-- **Credentials**: `admin@greenguard.com` / `@rrm$2026`
+- **Credentials**: `shard.chogale1983@gmail.com` / `@rrm$2026`

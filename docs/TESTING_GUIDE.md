@@ -112,7 +112,7 @@ To quickly populate the project for testing, use the included seeder:
 node scripts/seed.js
 ```
 This will create:
-- **Admin**: `admin@greenguard.com` / `@rrm$2026`
+- **Admin**: `shard.chogale1983@gmail.com` / `@rrm$2026`
 - **Approved NGO**: `greenearth@ngo.org` / `Password123!`
-- **Sample Adopter**: `test_adopter@greenguard.com` / `Password123!`
+- **Sample Adopter**: `test_adopter@gmail.com` / `Password123!`
 - 15+ Plants, 5 Adoptions, and 10 Social Posts.

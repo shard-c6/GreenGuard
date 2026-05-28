@@ -28,7 +28,7 @@ const TABLES = [
 async function cleanup() {
   console.log('🧹 Starting thorough system cleanup...\n');
 
-  const adminEmail = process.env.ADMIN_EMAIL || 'admin@greenguard.com';
+  const adminEmail = process.env.ADMIN_EMAIL || 'shard.chogale1983@gmail.com';
 
   // 1. Clear Storage Buckets
   console.log('📦 Cleaning Storage Buckets...');

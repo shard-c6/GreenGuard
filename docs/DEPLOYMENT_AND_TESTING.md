@@ -64,10 +64,10 @@ node scripts/seed.js
 ### Seeded Test Accounts
 | Role | Email | Password |
 |:---|:---|:---|
-| **Admin** | `admin@greenguard.com` | `@rrm$2026` |
+| **Admin** | `shard.chogale1983@gmail.com` | `@rrm$2026` |
 | **Approved NGO** | `greenearth@ngo.org` | `Password123!` |
 | **Pending NGO** | `rootsofhope@ngo.org` | `Password123!` |
-| **Adopter** | `test_adopter@greenguard.com` | `Password123!` |
+| **Adopter** | `test_adopter@gmail.com` | `Password123!` |
 
 ---
 

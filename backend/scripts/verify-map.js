@@ -15,7 +15,7 @@ async function verifyMapData() {
   console.log('🗺️  Seeding a test plantation post for map verification...');
 
   // 1. Get Admin User
-  const adminEmail = process.env.ADMIN_EMAIL || 'admin@greenguard.com';
+  const adminEmail = process.env.ADMIN_EMAIL || 'shard.chogale1983@gmail.com';
   const { data: admin } = await supabase.from('profiles').select('id').eq('email', adminEmail).single();
 
   if (!admin) {

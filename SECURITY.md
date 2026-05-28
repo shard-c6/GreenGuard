@@ -23,7 +23,7 @@ If you are running an older beta version, please upgrade to the latest productio
 
 If you discover a vulnerability, please report it privately:
 
-1. **Email Us**: Send an encrypted or detailed email to **shardul.chogale@greenguard** containing the details.
+1. **Email Us**: Send an encrypted or detailed email to **shard.chogale1983@gmail.com** containing the details.
 2. **Include Details**:
    - The component affected (e.g. `frontend`, `backend API`, `flora-genius-consultant` AI service, or the Postgres DB).
    - A description of the vulnerability and its potential impact.
