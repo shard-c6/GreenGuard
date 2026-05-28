@@ -21,12 +21,16 @@ async function handleProxy(req: NextRequest, context: { params: Promise<{ path?:
   headers.set('x-api-key', CONSULTANT_API_KEY);
 
   try {
+    // Read request body to ArrayBuffer if not a GET/HEAD request to avoid stream proxy issues on Vercel/serverless environments
+    let requestBody: ArrayBuffer | undefined = undefined;
+    if (req.method !== 'GET' && req.method !== 'HEAD') {
+      requestBody = await req.arrayBuffer();
+    }
+
     const requestOptions: RequestInit = {
       method: req.method,
       headers,
-      body: req.body,
-      // @ts-ignore - needed for passing request streams in Node/Next
-      duplex: 'half',
+      body: requestBody,
     };
 
     const response = await fetch(targetUrl, requestOptions);
@@ -36,10 +40,17 @@ async function handleProxy(req: NextRequest, context: { params: Promise<{ path?:
       status: response.status,
       headers: response.headers,
     });
-  } catch (error) {
-    console.error('Secure proxy connection failed:', error);
+  } catch (error: any) {
+    console.error('Secure proxy connection failed:', {
+      targetUrl,
+      method: req.method,
+      error: error?.message || error
+    });
     return NextResponse.json(
-      { error: 'Could not connect to secure consultant microservice.' },
+      { 
+        error: 'Could not connect to secure consultant microservice.',
+        details: error?.message || String(error)
+      },
       { status: 500 }
     );
   }
