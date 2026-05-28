@@ -9,7 +9,7 @@ All admin-related logic and UI have been consolidated into dedicated `admin` fol
 ### Frontend (`frontend/src/admin/`)
 
 | File | Description |
-|------|-------------|
+| :--- | :--- |
 | `AdminDashboard.tsx` | The core logic and UI components for the Admin Dashboard (Stats, User Management, NGO Verification, Reports). |
 | `ReportUserModal.tsx` | A reusable modal component for submitting malicious activity reports. |
 | `ADMIN_DOCS.md` | This documentation file. |
@@ -17,7 +17,7 @@ All admin-related logic and UI have been consolidated into dedicated `admin` fol
 ### Backend (`green-guard-backend/src/admin/`)
 
 | File | Description |
-|------|-------------|
+| :--- | :--- |
 | `admin.controller.js` | Business logic for platform stats, user banning, and NGO vetting. |
 | `admin.routes.js` | Protected REST endpoints for administrative actions. |
 | `userReport.controller.js` | Logic for handling report submissions and resolutions. |

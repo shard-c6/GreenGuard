@@ -18,7 +18,7 @@ Testing is split into three main layers:
 
 ### A. The Adopter Journey
 
-* **Registration/Login**:
+- **Registration/Login**:
   - [ ] Sign up as 'Plant Adopter'.
   - [ ] Login and verify profile details in the Navbar.
 - **NGO Onboarding (Enhanced)**:
@@ -41,7 +41,7 @@ ck if the list updates.
 
 ### B. The NGO Journey
 
-* **NGO Onboarding**:
+- **NGO Onboarding**:
   - [ ] Register as an 'NGO'.
   - [ ] Complete the onboarding form (Org Name, Website, Logo).
   - [ ] Verify you can't access dashboard features until onboarding is complete.
@@ -59,7 +59,7 @@ ck if the list updates.
 
 ### C. The Admin Journey
 
-* **NGO Verification Portal**:
+- **NGO Verification Portal**:
   - [ ] Go to the **Verification Tab** in the Admin Dashboard.
   - [ ] Review pending NGO applications.
   - [ ] Open the **Verification Modal**:
@@ -74,10 +74,10 @@ ck if the list updates.
 ## 3. Edge Case Matrix
 
 | Feature | Edge Case Scenario | Expected Behavior |
-|---------|--------------------|-------------------|
+| :--- | :--- | :--- |
 | **Auth** | Login with incorrect password | Error: "Invalid email or password" |
 | **Registration** | Register with an existing username | Error: "Username is already taken" |
-| **Plant Adoption**| Adopt a plant that is already 'In Adoption' | Button should be disabled or hide form |
+| **Plant Adoption** | Adopt a plant that is already 'In Adoption' | Button should be disabled or hide form |
 | **File Upload** | Upload non-image files (e.g., .exe) | Validation error: "Please upload image files only" |
 | **AI ID** | Upload image of a non-plant (e.g., a car) | Handle gracefully: "No plant identified" |
 | **Feed** | NGO posts with empty content | Form validation should block submit |

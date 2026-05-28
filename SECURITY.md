@@ -9,7 +9,7 @@ We take the security of GreenGuard, our AI botanical models, and our users' geos
 We currently actively maintain and support the following versions of GreenGuard:
 
 | Version | Supported          | Release Date |
-| ------- | ------------------ | ------------ |
+| :--- | :--- | :--- |
 | v1.x    | ✅ Active Support   | May 2026     |
 | v0.x    | ❌ End of Life     | Beta Testing |
 

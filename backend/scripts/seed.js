@@ -155,7 +155,7 @@ async function seed() {
     const plantIds = [];
 
     for (let i = 0; i < 15; i++) {
-      const ngoId = seededNgos[i % seededNgos.length];
+      const ngoId = seededNgos.at(i % seededNgos.length);
       const species = plantSpecies[i % plantSpecies.length];
       const status = i < 8 ? 'available' : i < 12 ? 'pending' : 'adopted';
 
@@ -183,7 +183,7 @@ async function seed() {
     // 5. Create Adoptions
     console.log('Creating Adoptions...');
     for (let i = 0; i < 5; i++) {
-      const adopterId = seededAdopters[i % seededAdopters.length];
+      const adopterId = seededAdopters.at(i % seededAdopters.length);
       const plantId = plantIds[i + 8]; // Using pending/adopted plants
       const status = i < 3 ? 'approved' : 'pending';
 

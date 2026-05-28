@@ -71,7 +71,7 @@ node scripts/seed.js
 ### Seeded Test Accounts
 
 | Role | Email | Password |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **Admin** | `admin@greenguard.in` | `@rrm$2026` |
 | **Approved NGO** | `greenearth@ngo.org` | `Password123!` |
 | **Pending NGO** | `rootsofhope@ngo.org` | `Password123!` |
