@@ -40,16 +40,17 @@ async function handleProxy(req: NextRequest, context: { params: Promise<{ path?:
       status: response.status,
       headers: response.headers,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const err = error instanceof Error ? error : new Error(String(error));
     console.error('Secure proxy connection failed:', {
       targetUrl,
       method: req.method,
-      error: error?.message || error
+      error: err.message
     });
     return NextResponse.json(
       { 
         error: 'Could not connect to secure consultant microservice.',
-        details: error?.message || String(error)
+        details: err.message
       },
       { status: 500 }
     );
