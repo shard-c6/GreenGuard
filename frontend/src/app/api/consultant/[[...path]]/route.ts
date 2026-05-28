@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const CONSULTANT_BACKEND_URL = process.env.CONSULTANT_API_URL || 'http://localhost:5002/api';
 const CONSULTANT_API_KEY = process.env.CONSULTANT_API_KEY || 'gg_secret_consultant_key_2026';
 
-async function handleProxy(req: NextRequest, context: { params: { path?: string[] } }) {
+async function handleProxy(req: NextRequest, context: { params: Promise<{ path?: string[] }> }) {
   // Await params per Next.js 15 routing standards if required
   const params = await context.params;
   const subpath = params.path ? params.path.join('/') : '';
