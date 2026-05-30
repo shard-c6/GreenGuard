@@ -112,6 +112,10 @@ We welcome contributions from environmentalists and developers of all skill leve
 
 ## 📄 Documentation
 
+- [**Getting Started Guide**](./docs/GETTING_STARTED.md) — Complete local development and onboarding guide.
+- [**API Specification**](./docs/API_SPECIFICATION.md) — Flora Genius AI Consultant endpoint details.
+- [**Database & RAG Logic**](./docs/DATABASE_AND_RAG.md) — Supabase schema, PostGIS spatial queries, and pgvector RAG mechanics.
+- [**Contributing Guidelines**](./CONTRIBUTING.md) — Branch naming standards, GPG/SSH signature requirements, and workflows.
 - [**Project Report**](./docs/PROJECT_REPORT.md) — Full ecosystem walkthrough.
 - [**Technical Handover**](./docs/TECHNICAL_HANDOVER.md) — Architectural details and schema logic.
 - [**Deployment Guide**](./docs/DEPLOYMENT_AND_TESTING.md) — Production setup and seeding.

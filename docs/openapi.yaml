@@ -1,0 +1,191 @@
+openapi: 3.0.3
+info:
+  title: Flora Genius AI Consultant API
+  description: |
+    Microservice API for the GreenGuard botanical AI assistant (Flora Genius Consultant).
+    Provides automatic plant identification via PlantNet and expert botanical advice using a hybrid RAG (Retrieval-Augmented Generation) query system powered by Gemini 1.5 Flash.
+  version: 1.0.0
+servers:
+  - url: http://localhost:5002
+    description: Local Development Server
+  - url: https://huggingface.co/spaces/shard-c6/flora-genius-service
+    description: Production Hugging Face Space
+paths:
+  /api/consultant/identify:
+    post:
+      summary: Identify plant species from an image
+      description: Uploads a plant image, calculates its hash, checks Redis cache, and invokes the PlantNet API if not cached.
+      security:
+        - ApiKeyAuth: []
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                  description: Plant image file (maximum 5MB, supported format: JPEG, PNG, WEBP)
+              required:
+                - image
+      responses:
+        '200':
+          description: Successful plant identification
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      scientific_name:
+                        type: string
+                        example: "Neem"
+                      common_name:
+                        type: string
+                        example: "Azadirachta indica"
+                      confidence:
+                        type: number
+                        example: 0.94
+                  source:
+                    type: string
+                    enum: [api, cache]
+                    example: api
+        '400':
+          description: Image is required or exceeds the 5MB size limit
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Image is required"
+        '401':
+          description: Missing or invalid API Key / Authorization token
+        '429':
+          description: Rate limited (10 requests per 15 minutes)
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "PlantNet API connection timeout"
+
+  /api/consultant/expert:
+    post:
+      summary: Get expert botanical advice
+      description: |
+        Generates expert advice using RAG vector similarity search on Supabase (pgvector) and Google Gemini 1.5 Flash.
+        If an image is uploaded without a specified scientific plant name, the endpoint first performs auto-identification.
+      security:
+        - ApiKeyAuth: []
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                scientificName:
+                  type: string
+                  maxLength: 100
+                  description: Scientific name of the plant context. Use "General Plants" or leave empty for general context.
+                  example: "Azadirachta indica"
+                query:
+                  type: string
+                  minLength: 1
+                  maxLength: 1000
+                  description: The botanical question or prompt.
+                  example: "How often should I water my Neem tree?"
+                history:
+                  type: string
+                  description: JSON string representing chat history array for conversational memory.
+                  example: '[{"role":"user","parts":"I adopted a Neem tree"},{"role":"model","parts":"Congratulations! How can I help you today?"}]'
+                image:
+                  type: string
+                  format: binary
+                  description: Optional image file for multi-modal context (e.g., leaf diagnosis, maximum 5MB).
+              required:
+                - query
+      responses:
+        '200':
+          description: Expert botanical response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  answer:
+                    type: string
+                    description: Markdown-formatted expert botanical response from Gemini 1.5 Flash.
+                    example: "Neem trees (*Azadirachta indica*) are highly drought-resistant and require moderate watering..."
+                  identifiedPlant:
+                    type: object
+                    nullable: true
+                    properties:
+                      scientificName:
+                        type: string
+                        example: "Azadirachta indica"
+                      commonName:
+                        type: string
+                        example: "Neem"
+                      confidence:
+                        type: number
+                        example: 0.94
+                  source:
+                    type: string
+                    enum: [api, cache]
+                    example: api
+        '400':
+          description: Invalid request parameters, missing query, or malformed history
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid query length/type (max 1000 chars)"
+        '401':
+          description: Missing or invalid API Key / Authorization token
+        '429':
+          description: Rate limited (10 requests per 15 minutes)
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Gemini API rate limit exceeded"
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: The microservice shared API access key.
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: The user auth token issued by Supabase Auth.
