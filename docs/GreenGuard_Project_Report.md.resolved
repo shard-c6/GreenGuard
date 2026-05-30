@@ -875,7 +875,7 @@ A complete **Postman collection** was created to test all 40+ endpoints:
 
 | Role | Email | Password |
 |---|---|---|
-| Admin | `admin@greenguard.com` | `@rrm$2026` |
+| Admin | `admin@greenguard.in` | `@rrm$2026` |
 | Approved NGO | `greenearth@ngo.org` | `Password123!` |
 | Pending NGO | `rootsofhope@ngo.org` | `Password123!` |
 | Adopter | `rishabh@test.com` | `Password123!` |

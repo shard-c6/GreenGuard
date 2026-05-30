@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const CONSULTANT_BACKEND_URL = process.env.CONSULTANT_API_URL || 'http://localhost:5002/api';
 const CONSULTANT_API_KEY = process.env.CONSULTANT_API_KEY || 'gg_secret_consultant_key_2026';
 
-async function handleProxy(req: NextRequest, context: { params: { path?: string[] } }) {
+async function handleProxy(req: NextRequest, context: { params: Promise<{ path?: string[] }> }) {
   // Await params per Next.js 15 routing standards if required
   const params = await context.params;
   const subpath = params.path ? params.path.join('/') : '';
@@ -21,12 +21,16 @@ async function handleProxy(req: NextRequest, context: { params: { path?: string[
   headers.set('x-api-key', CONSULTANT_API_KEY);
 
   try {
+    // Read request body to ArrayBuffer if not a GET/HEAD request to avoid stream proxy issues on Vercel/serverless environments
+    let requestBody: ArrayBuffer | undefined = undefined;
+    if (req.method !== 'GET' && req.method !== 'HEAD') {
+      requestBody = await req.arrayBuffer();
+    }
+
     const requestOptions: RequestInit = {
       method: req.method,
       headers,
-      body: req.body,
-      // @ts-ignore - needed for passing request streams in Node/Next
-      duplex: 'half',
+      body: requestBody,
     };
 
     const response = await fetch(targetUrl, requestOptions);
@@ -36,10 +40,18 @@ async function handleProxy(req: NextRequest, context: { params: { path?: string[
       status: response.status,
       headers: response.headers,
     });
-  } catch (error) {
-    console.error('Secure proxy connection failed:', error);
+  } catch (error: unknown) {
+    const err = error instanceof Error ? error : new Error(String(error));
+    console.error('Secure proxy connection failed:', {
+      targetUrl,
+      method: req.method,
+      error: err.message
+    });
     return NextResponse.json(
-      { error: 'Could not connect to secure consultant microservice.' },
+      { 
+        error: 'Could not connect to secure consultant microservice.',
+        details: err.message
+      },
       { status: 500 }
     );
   }

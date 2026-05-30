@@ -15,7 +15,7 @@ async function verifyMapData() {
   console.log('🗺️  Seeding a test plantation post for map verification...');
 
   // 1. Get Admin User
-  const adminEmail = process.env.ADMIN_EMAIL || 'admin@greenguard.com';
+  const adminEmail = process.env.ADMIN_EMAIL || 'admin@greenguard.in';
   const { data: admin } = await supabase.from('profiles').select('id').eq('email', adminEmail).single();
 
   if (!admin) {
@@ -40,7 +40,7 @@ async function verifyMapData() {
   if (error) {
     console.error('❌ Failed to insert test post:', error.message);
     if (error.message.includes('column "post_type" does not exist')) {
-       console.error('👉 This means the SQL migration was NOT successful.');
+      console.error('👉 This means the SQL migration was NOT successful.');
     }
   } else {
     console.log('✅ Success! Test plantation post created with ID:', data.id);

@@ -50,3 +50,15 @@ This log tracks daily progress, technical insights, and system maintenance for t
 | 2026-05-25 | System Heartbeat              | Heartbeat at 10:18:46                                                                             |
 | 2026-05-26 | Edge Geolocation Optimization | Intercepted client maps at Edge with Next.js Middleware and added Leaflet flyTo animations.       |
 | 2026-05-27 | System Heartbeat      | Heartbeat at 10:02:51                             |
+| 2026-05-28 | System Heartbeat      | Heartbeat at 10:12:17                             |
+| 2026-05-28 | Next.js 15+ Route Compatibility | Resolved Next.js compile/typecheck failure by updating the dynamic route parameter `context.params` to a Promise type. |
+| 2026-05-28 | Email Migration & Hardening | Swapped fallback `admin@greenguard.com` to valid contact email `shard.chogale1983@gmail.com` and `test_adopter@greenguard.com` to `test_adopter@gmail.com` in seeders, cleanup scripts, and docs. |
+| 2026-05-28 | Branch Pruning & Cleanup | Deleted all 9 stale/merged local branches, leaving a clean `main` development branch. |
+| 2026-05-28 | Vercel Proxy Body Stream Fix | Consumed request body as `ArrayBuffer` in Next.js dynamic Route Handler proxy to fully support body forwarding in Vercel Serverless/Edge functions without stream failures, and added robust connection failure diagnostics. |
+| 2026-05-28 | ESLint Type Hardening | Replaced explicit `any` with `unknown` type matching in the proxy Route Handler `catch` block to satisfy `@typescript-eslint/no-explicit-any` ESLint rules, resolving the Vercel compile/deployment block. |
+| 2026-05-28 | Codebase Linter Hardening | Fixed AST security bracket-notation warning in `seed.js` using `.at()` array index access, and formatted markdown tables, headings, and lists to resolve all linter warnings across the entire repository. |
+
+
+
+
+| 2026-05-29 | System Heartbeat      | Heartbeat at 10:01:41                             |

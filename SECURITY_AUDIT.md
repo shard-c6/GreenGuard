@@ -10,7 +10,7 @@
 ## Executive Summary
 
 | Severity   | Count  | Immediate Financial Risk                                      |
-|------------|--------|---------------------------------------------------------------|
+| :--- | :--- | :--- |
 | 🔴 CRITICAL | 5      | Yes — credential theft, full DB takeover, unlimited API spend |
 | 🟠 HIGH     | 6      | Yes — data exfiltration, privilege escalation, abuse          |
 | 🟡 MEDIUM   | 7      | Moderate — operational risk, compliance issues                |
@@ -259,7 +259,7 @@
 ## Remediation Priority Matrix
 
 | Priority | Vulnerability | Action                                       | Timeline        |
-|----------|---------------|----------------------------------------------|-----------------|
+| :--- | :--- | :--- | :--- |
 | 🔴 P0     | VULN-001      | Rotate Supabase service role key NOW         | **Immediate**   |
 | 🔴 P0     | VULN-002      | Revoke and rotate Gemini API key NOW         | **Immediate**   |
 | 🔴 P0     | VULN-003      | Delete `.env` from disk, add `.dockerignore` | **Today**       |
@@ -286,7 +286,7 @@
 ## Estimated Financial Exposure
 
 | Scenario                          | Estimated Impact                                   |
-|-----------------------------------|----------------------------------------------------|
+| :--- | :--- |
 | Supabase key abuse → full DB wipe | **$10,000–$100,000+** (data loss, recovery, legal) |
 | Gemini API key abuse              | **$100–$10,000/month** (API charges)               |
 | User data breach (GDPR/CCPA)      | **$10,000–$500,000+** (regulatory fines)           |
@@ -298,7 +298,7 @@
 ## Appendix: Files Reviewed
 
 | Path                                        | Type                    | Status     |
-|---------------------------------------------|-------------------------|------------|
+| :--- | :--- | :--- |
 | `backend/app.js`                            | Server entry            | Reviewed ✅ |
 | `backend/server.js`                         | Server bootstrap        | Reviewed ✅ |
 | `backend/src/config/env.js`                 | Config                  | Reviewed ✅ |

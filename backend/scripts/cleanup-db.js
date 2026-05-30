@@ -28,7 +28,7 @@ const TABLES = [
 async function cleanup() {
   console.log('🧹 Starting thorough system cleanup...\n');
 
-  const adminEmail = process.env.ADMIN_EMAIL || 'admin@greenguard.com';
+  const adminEmail = process.env.ADMIN_EMAIL || "admin@greenguard.in";
 
   // 1. Clear Storage Buckets
   console.log('📦 Cleaning Storage Buckets...');
@@ -68,7 +68,7 @@ async function cleanup() {
   console.log('\n📊 Clearing Table Data...');
   for (const table of TABLES) {
     let query = supabaseAdmin.from(table).delete();
-    
+
     if (['follows', 'likes', 'bookmarks'].includes(table)) {
       query = query.neq('user_id', '00000000-0000-0000-0000-000000000000');
       if (table === 'follows') {
