@@ -116,5 +116,5 @@ This document provides a comprehensive summary of the structural and architectur
 3. **n8n Integration**: Finalize the webhook listener for the AI Leaf Diagnosis feature.
 
 ---
-*Created by: Antigravity AI*
+*Created by: Students of Vidyalankar Institute of Technology, Mumbai in collaboration with Google's Antigravity*
 *Last Updated: 2026-06-19*
