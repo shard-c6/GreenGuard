@@ -16,38 +16,61 @@ if [ ! -f "$LOG_FILE" ]; then
     printf "|-%-10s-|-%-21s-|-%-49s-|\n" "----------" "---------------------" "-------------------------------------------------" | tr ' ' '-' >> "$LOG_FILE"
 fi
 
-# Check if entry for today already exists
+# Step 1: Create the branch first so we do all commits in it
+BRANCH_NAME="chore/streak-$DATE"
+git checkout -b "$BRANCH_NAME"
+
+# ════════════════════════════════════════════════════════════════
+# COMMIT 1: Shardul Chogale (Account 1)
+# ════════════════════════════════════════════════════════════════
+git config user.name "Shardul Chogale"
+git config user.email "144150911+shard-c6@users.noreply.github.com"
+
+ENTRY_SHARDUL=$(printf "| %-10s | %-21s | %-49s |" "$DATE" "System Heartbeat (S)" "Heartbeat at $TIME by Shardul")
+
 if grep -q "$DATE" "$LOG_FILE"; then
-    echo "Entry for $DATE already exists. Updating notes..."
-    # Format line to match table header alignment
-    NEW_LINE=$(printf "| %-10s | %-21s | %-49s |" "$DATE" "System Heartbeat" "Heartbeat at $TIME")
-    
-    # Portable sed replacement
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        sed -i '' "s/| $DATE |.*/$NEW_LINE/" "$LOG_FILE"
+        sed -i '' "s/| $DATE |.*/$ENTRY_SHARDUL/" "$LOG_FILE"
     else
-        sed -i "s/| $DATE |.*/$NEW_LINE/" "$LOG_FILE"
+        sed -i "s/| $DATE |.*/$ENTRY_SHARDUL/" "$LOG_FILE"
     fi
 else
-    printf "| %-10s | %-21s | %-49s |\n" "$DATE" "System Heartbeat" "Heartbeat at $TIME" >> "$LOG_FILE"
+    printf "%s\n" "$ENTRY_SHARDUL" >> "$LOG_FILE"
 fi
 
-# Git operations
 git add "$LOG_FILE"
-# Only commit if there are changes
-if ! git diff --cached --quiet; then
-    BRANCH_NAME="chore/streak-$DATE"
-    git checkout -b "$BRANCH_NAME"
-    git commit -m "chore: daily heartbeat $DATE [skip ci]"
-    git push -u origin "$BRANCH_NAME"
-    
-    # Check if gh CLI is available
-    if command -v gh &> /dev/null; then
-        gh pr create --title "chore: daily heartbeat $DATE" --body "Automated daily heartbeat" --base main --head "$BRANCH_NAME"
-        gh pr merge "$BRANCH_NAME" --merge --delete-branch
-    else
-        git push origin main
-    fi
+git commit -m "chore: daily heartbeat Shardul $DATE [skip ci]"
+
+# ════════════════════════════════════════════════════════════════
+# COMMIT 2: Mukta01 (Account 2)
+# ════════════════════════════════════════════════════════════════
+git config user.name "Mukta01"
+git config user.email "muktavarak@gmail.com"
+
+# Update the entry to include both names to trigger a new diff
+ENTRY_BOTH=$(printf "| %-10s | %-21s | %-49s |" "$DATE" "System Heartbeat (S/M)" "Heartbeat at $TIME by Shardul & Mukta")
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    sed -i '' "s/| $DATE |.*/$ENTRY_BOTH/" "$LOG_FILE"
 else
-    echo "No changes to commit."
+    sed -i "s/| $DATE |.*/$ENTRY_BOTH/" "$LOG_FILE"
+fi
+
+git add "$LOG_FILE"
+git commit -m "chore: daily heartbeat Mukta $DATE [skip ci]"
+
+# ════════════════════════════════════════════════════════════════
+# PUSH AND MERGE (preserving commit authors via standard merge)
+# ════════════════════════════════════════════════════════════════
+git push -u origin "$BRANCH_NAME"
+
+# Check if gh CLI is available
+if command -v gh &> /dev/null; then
+    gh pr create --title "chore: daily heartbeat $DATE" --body "Automated daily heartbeat for Shardul & Mukta" --base main --head "$BRANCH_NAME"
+    gh pr merge "$BRANCH_NAME" --merge --delete-branch
+else
+    git checkout main
+    git merge "$BRANCH_NAME" --no-ff -m "Merge branch '$BRANCH_NAME'"
+    git push origin main
+    git branch -d "$BRANCH_NAME"
 fi
