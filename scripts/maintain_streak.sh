@@ -30,9 +30,9 @@ ENTRY_SHARDUL=$(printf "| %-10s | %-21s | %-49s |" "$DATE" "System Heartbeat (S)
 
 if grep -q "$DATE" "$LOG_FILE"; then
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        sed -i '' "s/| $DATE |.*/$ENTRY_SHARDUL/" "$LOG_FILE"
+        sed -i '' "s#| $DATE |.*#$ENTRY_SHARDUL#" "$LOG_FILE"
     else
-        sed -i "s/| $DATE |.*/$ENTRY_SHARDUL/" "$LOG_FILE"
+        sed -i "s#| $DATE |.*#$ENTRY_SHARDUL#" "$LOG_FILE"
     fi
 else
     printf "%s\n" "$ENTRY_SHARDUL" >> "$LOG_FILE"
@@ -51,9 +51,9 @@ git config user.email "muktavarak@gmail.com"
 ENTRY_BOTH=$(printf "| %-10s | %-21s | %-49s |" "$DATE" "System Heartbeat (S/M)" "Heartbeat at $TIME by Shardul & Mukta")
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    sed -i '' "s/| $DATE |.*/$ENTRY_BOTH/" "$LOG_FILE"
+    sed -i '' "s#| $DATE |.*#$ENTRY_BOTH#" "$LOG_FILE"
 else
-    sed -i "s/| $DATE |.*/$ENTRY_BOTH/" "$LOG_FILE"
+    sed -i "s#| $DATE |.*#$ENTRY_BOTH#" "$LOG_FILE"
 fi
 
 git add "$LOG_FILE"
