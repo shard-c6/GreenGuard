@@ -9,8 +9,7 @@ async function getEmbedding(text) {
   try {
     if (!process.env.GEMINI_API_KEY) throw new Error('GEMINI_API_KEY is not configured');
     const model = genAI.getGenerativeModel({ 
-      model: 'text-embedding-004',
-      systemInstruction: 'You are a botanical embedding system that converts plant descriptions and medical details into highly semantic high-dimensional vector representations.'
+      model: 'gemini-embedding-001'
     });
     const result = await model.embedContent({
       content: { parts: [{ text: text }] },

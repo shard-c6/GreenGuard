@@ -19,7 +19,7 @@ CREATE INDEX IF NOT EXISTS idx_plant_knowledge_fts ON public.plant_knowledge USI
 -- This uses Reciprocal Rank Fusion (RRF) to combine Vector and Keyword results
 CREATE OR REPLACE FUNCTION hybrid_plant_search(
   query_text TEXT,
-  query_embedding VECTOR(768),
+  query_embedding VECTOR(3072),
   match_count INT DEFAULT 5,
   match_threshold FLOAT DEFAULT 0.2
 )
