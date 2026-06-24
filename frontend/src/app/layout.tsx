@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import ImmersiveBackground from "@/components/ui/ImmersiveBackground";
 import PWARegistrar from "@/components/PWARegistrar";
 import AddToHomeScreen from "@/components/AddToHomeScreen";
+import { Toaster } from "sonner";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body className={`${outfit.variable} ${dmSans.variable} font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <AuthProvider>
+            <Toaster position="top-right" richColors theme="system" closeButton />
             <PWARegistrar />
             <AddToHomeScreen />
             <ImmersiveBackground />

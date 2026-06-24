@@ -6,6 +6,7 @@ import { feedApi } from '@/services/api';
 import { useAuth } from '@/lib/auth';
 import ImageUpload from '@/components/ui/ImageUpload';
 import { Navigation, Info, ChevronLeft, Send, TreePine } from 'lucide-react';
+import { toast } from 'sonner';
 
 export default function NewPostPage() {
   const router = useRouter();
@@ -23,15 +24,16 @@ export default function NewPostPage() {
   const isNgo = user?.role === 'ngo';
 
   const handleGetLocation = () => {
-    if (!navigator.geolocation) return alert('Geolocation not supported');
+    if (!navigator.geolocation) return toast.error('Geolocation is not supported by your browser');
     setLocating(true);
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setLocation(prev => ({ ...prev, lat: pos.coords.latitude.toString(), lng: pos.coords.longitude.toString() }));
         setLocating(false);
+        toast.success('Location fetched successfully!');
       },
       () => {
-        alert('Could not get location. Please enter manually.');
+        toast.warning('Could not retrieve location. Please fill coordinates manually.');
         setLocating(false);
       }
     );
@@ -60,10 +62,12 @@ export default function NewPostPage() {
       }
 
       await feedApi.createPost(fd);
+      toast.success('Post published successfully!');
       router.push('/feed');
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to create post';
       setError(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
