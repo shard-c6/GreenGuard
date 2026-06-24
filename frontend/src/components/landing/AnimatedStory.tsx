@@ -72,7 +72,7 @@ export default function AnimatedStory() {
               <Link href="/register" className="bg-emerald-600 text-white px-10 py-5 rounded-full font-black text-xl hover:bg-emerald-500 transition-all hover:scale-105 shadow-2xl shadow-emerald-500/40">
                 Join the Mission
               </Link>
-              <Link href="/login" className="bg-white text-emerald-950 px-10 py-5 rounded-full font-black text-xl border-2 border-white hover:bg-emerald-50 transition-all">
+              <Link href="/login" className="bg-white/10 backdrop-blur-md text-white px-10 py-5 rounded-full font-black text-xl border-2 border-white/20 hover:bg-white/20 hover:border-white transition-all shadow-lg">
                 Sign In
               </Link>
             </div>

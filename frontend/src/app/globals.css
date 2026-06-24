@@ -8,21 +8,22 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #059669;
-  border-radius: 10px;
-  border: 2px solid #020617;
+  background: var(--border);
+  border-radius: 9999px;
+  border: 2px solid var(--background);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #10b981;
+  background: var(--primary);
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -114,9 +115,9 @@ html {
 .dark {
   --background: #011d16;
   --foreground: #ecfdf5;
-  --card: rgba(2, 44, 34, 0.6);
+  --card: rgba(2, 44, 34, 0.5);
   --card-foreground: #ecfdf5;
-  --popover: rgba(2, 44, 34, 0.8);
+  --popover: rgba(2, 44, 34, 0.7);
   --popover-foreground: #ecfdf5;
   --primary: #10b981;
   --primary-foreground: #011d16;
@@ -127,8 +128,8 @@ html {
   --accent: #059669;
   --accent-foreground: #ecfdf5;
   --destructive: #ef4444;
-  --border: #064e3b;
-  --input: #064e3b;
+  --border: rgba(16, 185, 129, 0.2);
+  --input: rgba(16, 185, 129, 0.2);
   --ring: #34d399;
   --sidebar: #011d16;
   --sidebar-foreground: #ecfdf5;
@@ -136,7 +137,7 @@ html {
   --sidebar-primary-foreground: #011d16;
   --sidebar-accent: #064e3b;
   --sidebar-accent-foreground: #ecfdf5;
-  --sidebar-border: #064e3b;
+  --sidebar-border: rgba(16, 185, 129, 0.2);
   --sidebar-ring: #34d399;
 }
 
@@ -159,9 +160,10 @@ html {
   top: 0;
   z-index: 50;
   background: var(--card);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
 }
 
 .navbar-inner {
@@ -468,17 +470,51 @@ html {
 
 .card {
   background: var(--card);
-  backdrop-filter: blur(12px) saturate(120%);
-  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 0 20px rgba(16, 185, 129, 0.05);
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-xl);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .glass-card {
+  background: rgba(2, 44, 34, 0.35);
+  border: 1px solid rgba(52, 211, 153, 0.12);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.glass-card:hover {
   transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-2xl);
+}
+
+.dark .glass-panel {
+  background: rgba(1, 29, 22, 0.7);
+  border: 1px solid rgba(52, 211, 153, 0.15);
 }
 
 .card-body { padding: 1.25rem; }
@@ -690,12 +726,12 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .auth-card {
   width: 100%;
   max-width: 480px;
-  background: rgba(2, 44, 34, 0.8); /* Slightly more transparent emerald-950 */
-  backdrop-filter: blur(40px) saturate(150%);
-  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  background: rgba(2, 44, 34, 0.65); /* Highly translucent deep green */
+  backdrop-filter: blur(40px) saturate(160%);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
   border-radius: 60px; /* Matching landing story boxes */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+  border: 1px solid rgba(52, 211, 153, 0.2); /* Emerald light refraction edge */
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.05);
   padding: 3.5rem;
   position: relative;
   z-index: 10;
@@ -1334,4 +1370,96 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .btn-danger:hover {
   background: #dc2626;
   border-color: #dc2626;
+}
+
+/* ════════════════════════════════════════════════════════════
+   WCAG AA COMPLIANCE OVERRIDES FOR DARK THEME
+   ════════════════════════════════════════════════════════════ */
+
+.dark {
+  /* Text colors */
+  .text-gray-900,
+  .text-slate-900,
+  .text-zinc-900,
+  .text-neutral-900,
+  .text-black {
+    color: var(--foreground) !important;
+  }
+
+  .text-gray-800,
+  .text-slate-800,
+  .text-zinc-800,
+  .text-neutral-800 {
+    color: rgba(236, 253, 245, 0.95) !important;
+  }
+
+  .text-gray-700,
+  .text-slate-700,
+  .text-zinc-700,
+  .text-neutral-700 {
+    color: rgba(236, 253, 245, 0.85) !important;
+  }
+
+  .text-gray-650,
+  .text-slate-650 {
+    color: rgba(236, 253, 245, 0.8) !important;
+  }
+
+  .text-gray-600,
+  .text-slate-600,
+  .text-zinc-600,
+  .text-neutral-600 {
+    color: var(--muted-foreground) !important;
+  }
+
+  .text-gray-500,
+  .text-slate-500,
+  .text-zinc-500,
+  .text-neutral-500,
+  .text-gray-400,
+  .text-slate-400,
+  .text-zinc-400,
+  .text-neutral-400 {
+    color: rgba(110, 231, 183, 0.8) !important;
+  }
+
+  /* Background colors */
+  .bg-white {
+    background-color: var(--card) !important;
+  }
+
+  .bg-gray-50,
+  .bg-slate-50,
+  .bg-zinc-50,
+  .bg-neutral-50,
+  .bg-gray-100,
+  .bg-slate-100,
+  .bg-zinc-100,
+  .bg-neutral-100 {
+    background-color: var(--muted) !important;
+  }
+
+  /* Borders */
+  .border-gray-100,
+  .border-slate-100,
+  .border-gray-200,
+  .border-slate-200,
+  .border-zinc-200,
+  .border-neutral-200 {
+    border-color: var(--border) !important;
+  }
+
+  /* Hovers & Interactive States */
+  .hover\:bg-gray-50:hover,
+  .hover\:bg-slate-50:hover,
+  .hover\:bg-emerald-50:hover,
+  .hover\:bg-gray-100:hover,
+  .hover\:bg-slate-100:hover {
+    background-color: var(--secondary) !important;
+  }
+
+  .hover\:text-gray-900:hover,
+  .hover\:text-slate-900:hover {
+    color: var(--foreground) !important;
+  }
 }
