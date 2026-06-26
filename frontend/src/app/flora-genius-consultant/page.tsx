@@ -15,6 +15,14 @@ interface Message {
   imageUrl?: string; // Optional local image preview URL for chat bubbles
 }
 
+function getSafeUrl(url: string | undefined): string {
+  if (!url) return '';
+  if (url.startsWith('blob:') || url.startsWith('data:image/') || url.startsWith('https://images.unsplash.com/')) {
+    return url;
+  }
+  return '';
+}
+
 function ChatContent() {
   const searchParams = useSearchParams();
   const plantName = searchParams.get('plant') || '';
@@ -227,7 +235,7 @@ function ChatContent() {
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
                     }}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={msg.imageUrl} alt="Uploaded plant context" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <img src={getSafeUrl(msg.imageUrl)} alt="Uploaded plant context" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                   )}
                   <div className="prose max-w-none">
@@ -295,7 +303,7 @@ function ChatContent() {
                 >
                   <div style={{ position: 'relative', width: 60, height: 60, borderRadius: '8px', overflow: 'hidden' }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={imagePreviewUrl} alt="Thumbnail preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={getSafeUrl(imagePreviewUrl)} alt="Thumbnail preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--foreground)', maxWidth: '150px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>

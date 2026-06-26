@@ -18,13 +18,13 @@ const QUERY_LENGTH_THRESHOLD = 800;    // Character length threshold for large p
 
 // Suspicious patterns representing potential prompt injection attempts
 const SUSPICIOUS_PATTERNS = [
-  /ignore\s+(?:any|previous)?\s*instruction/gi,
+  /ignore\s+(?:(?:any|previous)\s+)?instruction/gi,
   /system\s+prompt/gi,
   /override\s+instruction/gi,
   /you\s+are\s+now\s+a/gi,
   /forget\s+everything/gi,
   /new\s+instruction/gi,
-  /disregard\s+(?:the|above)?\s*instruction/gi,
+  /disregard\s+(?:(?:the|above)\s+)?instruction/gi,
   /translate\s+this\s+prompt/gi
 ];
 

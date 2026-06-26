@@ -1,5 +1,10 @@
 require('dotenv').config();
+const crypto = require('crypto');
 const { supabaseAdmin } = require('../src/config/supabase');
+
+function secureRandom() {
+  return crypto.randomBytes(4).readUInt32BE(0) / 0xffffffff;
+}
 
 /**
  * PRODUCTION-LEVEL SEEDER
@@ -160,8 +165,8 @@ async function seed() {
       const status = i < 8 ? 'available' : i < 12 ? 'pending' : 'adopted';
 
       // Random locations around Mumbai/Pune region
-      const lat = 19.0760 + (Math.random() - 0.5) * 0.5;
-      const lng = 72.8777 + (Math.random() - 0.5) * 0.5;
+      const lat = 19.0760 + (secureRandom() - 0.5) * 0.5;
+      const lng = 72.8777 + (secureRandom() - 0.5) * 0.5;
 
       const { data: plant, error: pErr } = await supabaseAdmin.from('plants').insert({
         ngo_id: ngoId,
@@ -171,7 +176,7 @@ async function seed() {
         latitude: lat,
         longitude: lng,
         adoption_status: status,
-        price: 500 + (Math.floor(Math.random() * 5) * 100),
+        price: 500 + (Math.floor(secureRandom() * 5) * 100),
         image_urls: ['https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=600'],
         health_status: 'healthy',
         planted_date: new Date().toISOString().split('T')[0]
@@ -231,10 +236,10 @@ async function seed() {
     console.log(`
       SEEDED CREDENTIALS:
       -------------------
-      Admin: ${adminEmail} / ${adminPassword}
-      NGO (Approved): greenearth@ngo.org / Password123!
-      NGO (Pending): rootsofhope@ngo.org / Password123!
-      Adopter: test_adopter@gmail.com / Password123!
+      Admin: ${adminEmail} / [REDACTED]
+      NGO (Approved): greenearth@ngo.org / [REDACTED]
+      NGO (Pending): rootsofhope@ngo.org / [REDACTED]
+      Adopter: test_adopter@gmail.com / [REDACTED]
     `);
 
   } catch (err) {
