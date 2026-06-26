@@ -2,6 +2,11 @@ const { createClient } = require('@supabase/supabase-js');
 const env = require('./env');
 const { AsyncLocalStorage } = require('async_hooks');
 
+// Node 20 lacks native WebSocket, so provide it globally for Supabase
+if (typeof globalThis.WebSocket === 'undefined') {
+  globalThis.WebSocket = require('ws');
+}
+
 // Create a local storage context for Supabase request clients
 const supabaseLocalStorage = new AsyncLocalStorage();
 
