@@ -42,31 +42,13 @@ git add "$LOG_FILE"
 git commit -m "chore: daily heartbeat Shardul $DATE [skip ci]"
 
 # ════════════════════════════════════════════════════════════════
-# COMMIT 2: Mukta01 (Account 2)
-# ════════════════════════════════════════════════════════════════
-git config user.name "Mukta01"
-git config user.email "muktavarak@gmail.com"
-
-# Update the entry to include both names to trigger a new diff
-ENTRY_BOTH=$(printf "| %-10s | %-21s | %-49s |" "$DATE" "System Heartbeat (S/M)" "Heartbeat at $TIME by Shardul & Mukta")
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    sed -i '' "s#| $DATE |.*#${ENTRY_BOTH//&/\\&}#" "$LOG_FILE"
-else
-    sed -i "s#| $DATE |.*#${ENTRY_BOTH//&/\\&}#" "$LOG_FILE"
-fi
-
-git add "$LOG_FILE"
-git commit -m "chore: daily heartbeat Mukta $DATE [skip ci]"
-
-# ════════════════════════════════════════════════════════════════
 # PUSH AND MERGE (preserving commit authors via standard merge)
 # ════════════════════════════════════════════════════════════════
 git push -u origin "$BRANCH_NAME"
 
 # Check if gh CLI is available
 if command -v gh &> /dev/null; then
-    gh pr create --title "chore: daily heartbeat $DATE" --body "Automated daily heartbeat for Shardul & Mukta" --base main --head "$BRANCH_NAME"
+    gh pr create --title "chore: daily heartbeat $DATE" --body "Automated daily heartbeat for Shardul" --base main --head "$BRANCH_NAME"
     gh pr merge "$BRANCH_NAME" --merge --delete-branch
 else
     git checkout main
@@ -74,3 +56,4 @@ else
     git push origin main
     git branch -d "$BRANCH_NAME"
 fi
+
