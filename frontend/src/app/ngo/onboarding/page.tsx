@@ -6,6 +6,7 @@ import { ngoApi } from '@/services/api';
 import { ChevronRight, ChevronLeft, CheckCircle2, Building2, ClipboardList, ShieldCheck } from 'lucide-react';
 import AtmosphericBackground from '@/components/landing/AtmosphericBackground';
 import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'sonner';
 
 const QUESTIONS = [
   { id: 'mission_statement', label: 'Primary mission statement *', placeholder: 'What is the core purpose of your organization?', type: 'textarea' },
@@ -34,7 +35,6 @@ export default function NgoOnboardingPage() {
     specialties: '',
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const nextStep = () => setStep(s => Math.min(s + 1, 3));
   const prevStep = () => setStep(s => Math.max(s - 1, 1));
@@ -46,7 +46,6 @@ export default function NgoOnboardingPage() {
       return;
     }
 
-    setError('');
     setLoading(true);
     try {
       await ngoApi.submitOnboarding({
@@ -56,7 +55,7 @@ export default function NgoOnboardingPage() {
       router.push('/ngo/onboarding/status');
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Onboarding failed. Please check your inputs.';
-      setError(errorMessage);
+      toast.error(errorMessage);
       setStep(1); // Go back to start on error
     } finally {
       setLoading(false);
@@ -112,17 +111,6 @@ export default function NgoOnboardingPage() {
         </header>
 
         {renderStepIndicator()}
-
-        {error && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            className="mb-8 p-5 bg-red-500/10 border border-red-500/20 text-red-200 rounded-2xl flex items-center gap-4 text-sm font-medium"
-          >
-             <span className="text-2xl">⚠️</span>
-             {error}
-          </motion.div>
-        )}
 
         <form onSubmit={handleSubmit} className="space-y-8">
           <AnimatePresence mode="wait">

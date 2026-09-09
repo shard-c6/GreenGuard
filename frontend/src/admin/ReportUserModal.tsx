@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { userReportsApi } from '@/services/api';
 import type { ReportReason } from '@/types';
+import { toast } from 'sonner';
 
 interface ReportUserModalProps {
   reportedUserId: string;
@@ -24,18 +25,16 @@ export default function ReportUserModal({ reportedUserId, reportedUserName, onCl
   const [reason, setReason] = useState<ReportReason | ''>('');
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!reason) {
-      setError('Please select a reason');
+      toast.error('Please select a reason');
       return;
     }
 
     setLoading(true);
-    setError('');
     try {
       await userReportsApi.createReport({
         reported_user_id: reportedUserId,
@@ -49,7 +48,7 @@ export default function ReportUserModal({ reportedUserId, reportedUserName, onCl
       }, 1500);
     } catch (err: unknown) {
       const axiosErr = err as { response?: { data?: { error?: { message?: string } } } };
-      setError(axiosErr?.response?.data?.error?.message || 'Failed to submit report');
+      toast.error(axiosErr?.response?.data?.error?.message || 'Failed to submit report');
     } finally {
       setLoading(false);
     }
@@ -115,12 +114,6 @@ export default function ReportUserModal({ reportedUserId, reportedUserName, onCl
                   }}
                 />
               </div>
-
-              {error && (
-                <p style={{ color: 'var(--destructive)', fontSize: '0.8rem', marginBottom: '1rem' }}>
-                  ⚠️ {error}
-                </p>
-              )}
 
               <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
                 <button type="button" className="btn btn-outline" onClick={onClose} disabled={loading}>

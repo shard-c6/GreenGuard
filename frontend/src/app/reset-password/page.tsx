@@ -5,24 +5,27 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { authApi } from '@/services/api';
 import AtmosphericBackground from '@/components/landing/AtmosphericBackground';
+import { toast } from 'sonner';
 
 export default function ResetPasswordPage() {
   const router = useRouter();
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (password !== confirm) return setError('Passwords do not match');
-    setError('');
+    if (password !== confirm) {
+      toast.error('Passwords do not match');
+      return;
+    }
     setLoading(true);
     try {
       await authApi.resetPassword(password);
+      toast.success('Password reset successfully');
       router.push('/login');
     } catch {
-      setError('Failed to reset password. The link may have expired.');
+      toast.error('Failed to reset password. The link may have expired.');
     } finally {
       setLoading(false);
     }
@@ -35,7 +38,6 @@ export default function ResetPasswordPage() {
         <div className="auth-logo"><img src="/logo.png" alt="Green Guard" className="logo-icon" style={{ height: '100px', width: 'auto' }} /></div>
         <h1 className="auth-title">Set New Password</h1>
         <p className="auth-subtitle">Enter your new password below</p>
-        {error && <div className="auth-error">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="form-label">New Password</label>

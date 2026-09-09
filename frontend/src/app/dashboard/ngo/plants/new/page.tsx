@@ -6,6 +6,7 @@ import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { plantsApi } from '@/services/api';
 import ImageUpload from '@/components/ui/ImageUpload';
+import { toast } from 'sonner';
 
 export default function NewPlantPage() {
   const router = useRouter();
@@ -17,11 +18,11 @@ export default function NewPlantPage() {
   const [files, setFiles] = useState<File[]>([]);
   const [loading, setLoading] = useState(false);
   const [geoLoading, setGeoLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const handleGetCurrentLocation = () => {
     if (!navigator.geolocation) {
-      return setError('Geolocation is not supported by your browser');
+      toast.error('Geolocation is not supported by your browser');
+      return;
     }
 
     setGeoLoading(true);
@@ -48,7 +49,7 @@ export default function NewPlantPage() {
         }
       },
       (err) => {
-        setError(`Failed to get location: ${err.message}`);
+        toast.error(`Failed to get location: ${err.message}`);
         setGeoLoading(false);
       },
       { enableHighAccuracy: true, timeout: 10000 }
@@ -57,7 +58,6 @@ export default function NewPlantPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
     try {
       const fd = new FormData();
@@ -77,9 +77,10 @@ export default function NewPlantPage() {
       if (Object.keys(careInfo).length > 0) fd.append('care_info', JSON.stringify(careInfo));
       files.forEach(f => fd.append('images', f));
       await plantsApi.createPlant(fd);
+      toast.success('Plant listed successfully');
       router.push('/dashboard/ngo');
     } catch (err: unknown) {
-      setError((err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Failed to create plant');
+      toast.error((err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Failed to create plant');
     } finally {
       setLoading(false);
     }
@@ -90,8 +91,6 @@ export default function NewPlantPage() {
       <button className="btn btn-ghost btn-sm" onClick={() => router.back()} style={{ marginBottom: '1rem' }}>← Back</button>
       <h1 className="page-title"><Sprout className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Add New Plant</h1>
       <p className="page-subtitle" style={{ marginBottom: '2rem' }}>List a plant available for adoption</p>
-
-      {error && <div className="auth-error">{error}</div>}
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">

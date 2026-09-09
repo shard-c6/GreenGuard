@@ -9,6 +9,7 @@ import { floraConsultantApi } from '@/services/consultant.service';
 import { savedPlantsApi } from '@/services/api';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Upload, Search, MessageSquare, Info, ShieldCheck, Sparkles, ArrowRight, Leaf, CheckCircle2 } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface AiResult {
   common_name?: string;
@@ -35,15 +36,12 @@ export default function AIIdentifyPage() {
   const [preview, setPreview] = useState<string | null>(null);
   const [result, setResult] = useState<AiResult | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
   const [saving, setSaving] = useState(false);
-  const [saveMessage, setSaveMessage] = useState<{ text: string, type: 'success' | 'info' | 'error' } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSave = async () => {
     if (!result || !preview) return;
     setSaving(true);
-    setSaveMessage(null);
     try {
       await savedPlantsApi.savePlant({
         common_name: result.common_name,
@@ -53,12 +51,12 @@ export default function AIIdentifyPage() {
         ai_consultation: `Fun fact: ${result.fact}\nUses: ${result.uses}\nCO2: ${result.co2}\nOxygen: ${result.oxygen}`,
         plant_net_data: result
       });
-      setSaveMessage({ text: 'Saved to My Garden! 🌿', type: 'success' });
+      toast.success('Saved to My Garden! 🌿');
     } catch (err: any) {
       if (err.response?.data?.error?.code === 'DUPLICATE_ENTRY') {
-        setSaveMessage({ text: 'Already in your garden', type: 'info' });
+        toast.info('Already in your garden');
       } else {
-        setSaveMessage({ text: 'Failed to save. Try again.', type: 'error' });
+        toast.error('Failed to save. Try again.');
       }
     } finally {
       setSaving(false);
@@ -71,14 +69,15 @@ export default function AIIdentifyPage() {
       setImage(file);
       setPreview(URL.createObjectURL(file));
       setResult(null);
-      setError('');
     }
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!image) return setError('Please upload an image first');
-    setError('');
+    if (!image) {
+      toast.error('Please upload an image first');
+      return;
+    }
     setLoading(true);
     try {
       const fd = new FormData();
@@ -87,7 +86,7 @@ export default function AIIdentifyPage() {
       setResult(res.data as AiResult);
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Identification failed. Please ensure the image is a clear leaf photo.';
-      setError(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -275,21 +274,6 @@ export default function AIIdentifyPage() {
                         </p>
                       </div>
                     </div>
-                    
-                    {saveMessage && (
-                      <motion.div 
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className={`flex items-center gap-2 p-3 rounded-xl mb-4 text-sm font-bold ${
-                          saveMessage.type === 'success' ? 'bg-green-100 text-green-700 border border-green-200' :
-                          saveMessage.type === 'info' ? 'bg-blue-100 text-blue-700 border border-blue-200' :
-                          'bg-red-100 text-red-700 border border-red-200'
-                        }`}
-                      >
-                        {saveMessage.type === 'success' ? <CheckCircle2 size={18} /> : <Info size={18} />}
-                        {saveMessage.text}
-                      </motion.div>
-                    )}
 
                     <div className="flex flex-col gap-3">
                       <button 
@@ -325,11 +309,6 @@ export default function AIIdentifyPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-2">Awaiting Analysis</h3>
                   <p className="text-muted-foreground max-w-xs">Upload a clear photo to reveal identification and expert insights.</p>
-                  {error && (
-                    <div className="mt-6 p-4 bg-red-50 text-red-600 rounded-xl text-sm font-medium border border-red-100">
-                      {error}
-                    </div>
-                  )}
                 </motion.div>
               )}
             </AnimatePresence>

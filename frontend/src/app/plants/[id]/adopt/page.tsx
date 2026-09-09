@@ -17,13 +17,11 @@ export default function AdoptFormPage() {
   const { id: plantId } = useParams<{ id: string }>();
   const router = useRouter();
   const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
     try {
       await adoptionsApi.apply(plantId, answers);
@@ -31,7 +29,6 @@ export default function AdoptFormPage() {
       setSubmitted(true);
     } catch (err: unknown) {
       const errorMessage = (err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Failed to submit application';
-      setError(errorMessage);
       toast.error(errorMessage);
     } finally {
       setLoading(false);
@@ -63,8 +60,6 @@ export default function AdoptFormPage() {
       <button className="btn btn-ghost btn-sm" onClick={() => router.back()} style={{ marginBottom: '1rem' }}>← Back</button>
       <h1 className="page-title">📋 Adoption Application</h1>
       <p className="page-subtitle" style={{ marginBottom: '2rem' }}>Answer the questions below to apply for plant adoption.</p>
-
-      {error && <div className="auth-error">{error}</div>}
 
       <form onSubmit={handleSubmit}>
         {QUESTIONS.map(q => (

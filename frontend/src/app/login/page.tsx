@@ -7,18 +7,17 @@ import Link from 'next/link';
 import { useAuth } from '@/lib/auth';
 import SocialButtons from '@/components/auth/SocialButtons';
 import AtmosphericBackground from '@/components/landing/AtmosphericBackground';
+import { toast } from 'sonner';
 
 export default function LoginPage() {
   const { login } = useAuth();
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
     try {
       const user = await login(email, password);
@@ -39,7 +38,7 @@ export default function LoginPage() {
       }
     } catch (err: unknown) {
       const msg = (err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Login failed. Please try again.';
-      setError(msg);
+      toast.error(msg);
     } finally {
       setLoading(false);
     }
@@ -54,7 +53,6 @@ export default function LoginPage() {
         </div>
         <h1 className="auth-title">Welcome Back</h1>
         <p className="auth-subtitle">Sign in to continue to your dashboard</p>
-        {error && <div className="auth-error">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="form-label">Email</label>
