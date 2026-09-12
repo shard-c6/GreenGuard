@@ -1,0 +1,37 @@
+# ─── GreenGuard CODEOWNERS ────────────────────────────────────────
+# Routes review requests by area of ownership.
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default — team lead reviews anything not otherwise claimed
+*                               @shard-c6
+
+# ─── Database, migrations, RLS ────────────────────────────────────
+/backend/supabase/              @rahulcodes-java @shard-c6
+/supabase/                      @rahulcodes-java @shard-c6
+/scripts/migrations/            @rahulcodes-java @shard-c6
+/backend/src/admin/*.sql        @rahulcodes-java @shard-c6
+
+# ─── AI / ML ──────────────────────────────────────────────────────
+/flora-genius-consultant/       @shard-c6 @rahulcodes-java
+/flora-genius-consultant/src/services/   @shard-c6
+/flora-genius-consultant/data/  @rahulcodes-java
+
+# ─── Backend ──────────────────────────────────────────────────────
+/backend/                       @ankita01209 @shard-c6
+/backend/src/config/supabase.js @ankita01209 @rahulcodes-java
+/backend/src/middleware/        @ankita01209 @shard-c6
+
+# ─── Frontend ─────────────────────────────────────────────────────
+/frontend/                      @Mukta01 @ankita01209
+/frontend/src/components/map/   @Mukta01 @ankita01209
+/frontend/src/middleware.ts     @Mukta01
+
+# ─── Infra, CI/CD, deploys ────────────────────────────────────────
+/.github/workflows/             @Mukta01 @shard-c6
+/.github/CODEOWNERS             @shard-c6
+**/Dockerfile                   @Mukta01
+
+# ─── Docs & governance ────────────────────────────────────────────
+/docs/                          @shard-c6
+/README.md                      @shard-c6
+/SECURITY.md                    @shard-c6

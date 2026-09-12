@@ -1,60 +1,32 @@
-## 📝 Description
+## What & why
 
-Please provide a clear summary of the changes made, the files touched, and the architectural justification.
+<!-- What changes, and what problem it solves. Link the issue: Closes #123 -->
 
-Related Issue: Fixes # (issue number)
+Closes #
 
----
+## Area
+<!-- Check all that apply -->
+- [ ] Backend  - [ ] Frontend  - [ ] Database/migrations  - [ ] AI/ML  - [ ] DevOps/CI  - [ ] Docs
 
-## 📂 Type of Change
+## Verification
 
-Please check the options that are relevant:
-- [ ] 🐛 Bugfix (non-breaking change which fixes an issue)
-- [ ] ✨ New Feature (non-breaking change which adds functionality)
-- [ ] ⚡ Performance / Refactoring (non-breaking change improving code speed, cleanliness, or structure)
-- [ ] 📜 Documentation (updating guides, logs, or README)
-- [ ] 💥 Breaking Change (fix or feature that would cause existing functionality to not work as expected)
+<!-- How did you confirm this works? "It builds" is not verification. -->
 
----
+- [ ] Ran locally and exercised the changed path
+- [ ] `npm run lint` passes
+- [ ] Tests added or updated (or: why not)
 
-## 🎨 UI/UX Visual Verification (For Frontend Changes)
+## Migration safety
+<!-- Delete if no database changes -->
+- [ ] Migration is idempotent — every `CREATE POLICY` has a `DROP POLICY IF EXISTS` above it
+- [ ] `supabase db reset` replays cleanly from empty, twice in a row
+- [ ] `docs/MIGRATIONS.md` updated
 
-> [!IMPORTANT]
-> GreenGuard is a premium environmental platform built on state-of-the-art visual standards (Glassmorphism 2.0, Framer Motion, customized dark atmospheres). If your PR affects any visual component:
-> 1. **Attach screenshots** of the UI under different screen sizes (mobile-first responsiveness).
-> 2. **Attach a short screen recording (GIF/Video)** demonstrating hover effects, micro-animations, or active transitions.
+## Safety check
 
-*Insert your media/links here:*
-- Before:
-- After:
+- [ ] No code path returns fabricated AI output outside an explicit, labelled `DEMO_MODE`
+- [ ] No credentials, API keys, or secret literals added
+- [ ] Failure modes fail **closed**, not open
 
----
-
-## 🧪 Testing and Verification Plan
-
-Please outline how you verified these changes. Include the exact commands run, environment configurations, and manual checks.
-
-### 1. Automated Tests
-- Command to run: `npm test` or custom testing scripts
-- Verification logs:
-```text
-// Paste test results or terminal outputs
-```
-
-### 2. Manual User Journey Checks
-Following the [Adopter Dashboard Testing Guide](TESTING_GUIDE.md), check the boxes of flows you manually ran and verified:
-- [ ] **Account Setup**: Registered a new Adopter and verified dashboard empty state.
-- [ ] **Plant Discovery**: Verified cards loading with available badges and Leaflet Map coordinates in Pune/IST region.
-- [ ] **Adoption Application**: Submitted a plant adoption form and verified dashboard pending status.
-- [ ] **Community Engagement**: Liked a post in the community feed and verified the counter increments.
-
----
-
-## 🔍 Pre-PR Submission Checklist
-
-Before submitting this PR, please check all boxes that apply:
-- [ ] **Signed Commits**: My commits are cryptographically signed using GPG or SSH keys as outlined in the [Security Key Setup Guide](docs/SECURITY_KEY_SETUP.md).
-- [ ] **Technical Log Updated**: I have documented my changes in the daily progress tracker: [DAILY_LOG.md](DAILY_LOG.md).
-- [ ] **Code Quality**: My code follows the repository's vanilla CSS design patterns, Next.js App Router conventions, and contains no debuggers/console logs.
-- [ ] **Documentation**: I have updated the relevant project documents (`README.md`, guides, or diagrams) to reflect my changes.
-- [ ] **Branch Match**: My branch name follows the naming convention (`feature/`, `bugfix/`, `docs/`, `refactor/`).
+## Screenshots
+<!-- UI changes only -->

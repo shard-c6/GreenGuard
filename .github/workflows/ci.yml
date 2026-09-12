@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_call:   # allows deploy-hf.yml to gate on this
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend — lint
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: backend } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      # Tests land in #212. Once they exist, remove continue-on-error.
+      - run: npm test --if-present
+        continue-on-error: true
+
+  consultant:
+    name: AI service — syntax check
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: flora-genius-consultant } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: flora-genius-consultant/package-lock.json
+      - run: npm ci
+      - name: Syntax check all sources
+        run: find src scripts -name '*.js' -print0 | xargs -0 -n1 node --check
+
+  frontend:
+    name: Frontend — lint & build
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: frontend } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm run lint
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_API_BASE_URL: http://localhost:5000/api
+
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Block known credential literals
+        run: |
+          if git grep -nE 'gg_secret_[a-z_]+|SUPABASE_SERVICE_ROLE_KEY\s*=\s*ey' -- \
+               ':!*.md' ':!.github/workflows/*'; then
+            echo "::error::Credential literal found in source. Move it to an environment variable."
+            exit 1
+          fi
+          echo "No credential literals found."

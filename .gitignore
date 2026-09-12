@@ -45,3 +45,17 @@ next-env.d.ts
 #vs code warnign supress
 frontend/final_lint_check.txt
 frontend/fresh_lint_output.txt
+
+# Build / tooling output (never commit)
+frontend/lint_output.txt
+frontend/eslint_output.txt
+frontend/tsc_output.txt
+frontend/build_output.txt
+frontend/lint.json
+**/__pycache__/
+*.pyc
+
+# Supabase local stack
+.branches
+.temp
+supabase/.temp
