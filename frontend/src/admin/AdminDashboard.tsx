@@ -5,6 +5,7 @@ import { adminApi } from '@/services/api';
 import type { AdminDashboard, User, NgoProfile, UserReport } from '@/types';
 import Badge from '@/components/ui/Badge';
 import Skeleton from '@/components/ui/Skeleton';
+import { toast } from 'sonner';
 
 export default function AdminDashboard() {
   const [dashboard, setDashboard] = useState<AdminDashboard | null>(null);
@@ -41,12 +42,16 @@ export default function AdminDashboard() {
     try {
       if (currentStatus) {
         await adminApi.unbanUser(userId);
+        toast.success('User unbanned successfully');
       } else {
         const reason = window.prompt('Enter ban reason (optional):');
         await adminApi.banUser(userId, reason || undefined);
+        toast.success('User banned successfully');
       }
       setUsers(prev => prev.map(u => u.id === userId ? { ...u, is_banned: !currentStatus } : u));
-    } catch { /* ignore */ }
+    } catch {
+      toast.error(currentStatus ? 'Failed to unban user' : 'Failed to ban user');
+    }
   };
 
   const handleApproveNgo = async (ngoId: string) => {
@@ -54,7 +59,10 @@ export default function AdminDashboard() {
       await adminApi.approveNgo(ngoId);
       setNgos(prev => prev.filter(n => n.id !== ngoId));
       if (dashboard) setDashboard({ ...dashboard, total_pending_ngos: dashboard.total_pending_ngos - 1 });
-    } catch { alert('Failed to approve NGO'); }
+      toast.success('NGO approved successfully');
+    } catch {
+      toast.error('Failed to approve NGO');
+    }
   };
 
   const handleRejectNgo = async (ngoId: string) => {
@@ -63,7 +71,10 @@ export default function AdminDashboard() {
       await adminApi.rejectNgo(ngoId, reason || undefined);
       setNgos(prev => prev.filter(n => n.id !== ngoId));
       if (dashboard) setDashboard({ ...dashboard, total_pending_ngos: dashboard.total_pending_ngos - 1 });
-    } catch { alert('Failed to reject NGO'); }
+      toast.success('NGO application rejected');
+    } catch {
+      toast.error('Failed to reject NGO');
+    }
   };
 
   const handleResolveReport = async (reportId: string, status: 'resolved' | 'dismissed') => {
@@ -72,7 +83,10 @@ export default function AdminDashboard() {
       await adminApi.resolveReport(reportId, status, admin_notes || undefined);
       setReports(prev => prev.filter(r => r.id !== reportId));
       if (dashboard) setDashboard({ ...dashboard, total_pending_reports: dashboard.total_pending_reports - 1 });
-    } catch { alert('Failed to update report'); }
+      toast.success(`Report status updated to ${status}`);
+    } catch {
+      toast.error('Failed to update report');
+    }
   };
 
   if (loading) {

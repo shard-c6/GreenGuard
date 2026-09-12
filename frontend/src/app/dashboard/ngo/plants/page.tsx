@@ -2,7 +2,6 @@
 import { Sprout } from "lucide-react";
 import Image from 'next/image';
 
-
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -11,6 +10,7 @@ import { plantsApi } from '@/services/api';
 import type { Plant } from '@/types';
 import Badge from '@/components/ui/Badge';
 import Skeleton from '@/components/ui/Skeleton';
+import { toast } from 'sonner';
 
 export default function MyPlantsPage() {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
@@ -43,9 +43,10 @@ export default function MyPlantsPage() {
     try {
       await plantsApi.deletePlant(id);
       setPlants(plants.filter(p => p.id !== id));
+      toast.success('Plant listing deleted successfully');
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to delete plant';
-      alert(errorMessage);
+      toast.error(errorMessage);
     }
   };
 
@@ -107,10 +108,9 @@ export default function MyPlantsPage() {
                   <Link href={`/plants/${plant.id}`} className="btn btn-ghost btn-sm" style={{ flex: 1 }}>
                     View
                   </Link>
-                  <button 
+                   <button 
                     onClick={() => handleDelete(plant.id)} 
                     className="btn btn-ghost btn-sm text-destructive"
-                    style={{ color: 'var(--chart-1)' }}
                   >
                     Delete
                   </button>

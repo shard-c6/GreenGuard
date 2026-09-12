@@ -7,6 +7,7 @@ import Badge from '@/components/ui/Badge';
 import Skeleton from '@/components/ui/Skeleton';
 import { AlertCircle, CheckCircle, XCircle, Eye, ShieldAlert, Users, TreePine, FileText, LayoutDashboard } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'sonner';
 
 export default function AdminDashboardPage() {
   const [dashboard, setDashboard] = useState<AdminDashboard | null>(null);
@@ -30,11 +31,15 @@ export default function AdminDashboardPage() {
     try {
       if (currentStatus) {
         await adminApi.unbanUser(userId);
+        toast.success('User unbanned successfully');
       } else {
         await adminApi.banUser(userId);
+        toast.success('User banned successfully');
       }
       setUsers(prev => prev.map(u => u.id === userId ? { ...u, is_banned: !currentStatus } : u));
-    } catch { /* ignore */ }
+    } catch {
+      toast.error(currentStatus ? 'Failed to unban user' : 'Failed to ban user');
+    }
   };
 
   const handleApprove = async (ngoId: string) => {
@@ -43,8 +48,9 @@ export default function AdminDashboardPage() {
       await adminApi.approveNgo(ngoId);
       setPendingNgos(prev => prev.filter(n => n.id !== ngoId));
       setSelectedNgo(null);
+      toast.success('NGO approved successfully');
     } catch (err) {
-      alert('Failed to approve NGO');
+      toast.error('Failed to approve NGO');
     } finally {
       setActionLoading(null);
     }
@@ -59,8 +65,9 @@ export default function AdminDashboardPage() {
       await adminApi.rejectNgo(ngoId, reason);
       setPendingNgos(prev => prev.filter(n => n.id !== ngoId));
       setSelectedNgo(null);
+      toast.success('NGO application rejected');
     } catch (err) {
-      alert('Failed to reject NGO');
+      toast.error('Failed to reject NGO');
     } finally {
       setActionLoading(null);
     }

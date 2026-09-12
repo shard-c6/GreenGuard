@@ -7,22 +7,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { authApi } from '@/services/api';
 import AtmosphericBackground from '@/components/landing/AtmosphericBackground';
+import { toast } from 'sonner';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
     try {
       await authApi.forgotPassword(email);
       setSent(true);
     } catch {
-      setError('Failed to send reset email. Please check your email address.');
+      toast.error('Failed to send reset email. Please check your email address.');
     } finally {
       setLoading(false);
     }
@@ -37,7 +36,6 @@ export default function ForgotPasswordPage() {
         </div>
         <h1 className="auth-title">Reset Password</h1>
         <p className="auth-subtitle">We&apos;ll send you a link to reset your password</p>
-        {error && <div className="auth-error">{error}</div>}
         {sent ? (
           <div style={{ textAlign: 'center' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}><Mail className="inline-block w-12 h-12 mb-4 mx-auto text-emerald-500" /></div>

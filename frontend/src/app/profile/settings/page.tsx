@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from 'react';
 import { useAuth } from '@/lib/auth';
+import { toast } from 'sonner';
 
 export default function SettingsPage() {
   const { user, updateUser } = useAuth();
@@ -11,20 +12,16 @@ export default function SettingsPage() {
     phone: user?.phone || '',
     address: user?.address || '',
   });
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
-    setSuccess(false);
     setLoading(true);
     try {
       await updateUser(form);
-      setSuccess(true);
+      toast.success('Profile updated successfully!');
     } catch {
-      setError('Failed to update profile');
+      toast.error('Failed to update profile');
     } finally {
       setLoading(false);
     }
@@ -34,9 +31,6 @@ export default function SettingsPage() {
     <div className="page-container" style={{ maxWidth: '600px' }}>
       <h1 className="page-title">⚙️ Profile Settings</h1>
       <p className="page-subtitle" style={{ marginBottom: '2rem' }}>Update your personal information</p>
-
-      {success && <div style={{ padding: '0.75rem 1rem', borderRadius: 'var(--radius)', background: '#dcfce7', color: '#166534', fontSize: '0.8rem', marginBottom: '1rem' }}>Profile updated successfully!</div>}
-      {error && <div className="auth-error">{error}</div>}
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">

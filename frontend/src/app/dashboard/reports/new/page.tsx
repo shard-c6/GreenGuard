@@ -4,17 +4,16 @@ import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { reportsApi } from '@/services/api';
 import ImageUpload from '@/components/ui/ImageUpload';
+import { toast } from 'sonner';
 
 export default function NewReportPage() {
   const router = useRouter();
   const [form, setForm] = useState({ plant_id: '', health_status: 'healthy', height_cm: '', notes: '' });
   const [files, setFiles] = useState<File[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
     try {
       const fd = new FormData();
@@ -24,9 +23,10 @@ export default function NewReportPage() {
       if (form.notes) fd.append('notes', form.notes);
       files.forEach(f => fd.append('photos', f));
       await reportsApi.createReport(fd);
+      toast.success('Report submitted successfully');
       router.push('/dashboard/reports');
     } catch (err: unknown) {
-      setError((err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Failed to submit report');
+      toast.error((err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Failed to submit report');
     } finally {
       setLoading(false);
     }
@@ -37,8 +37,6 @@ export default function NewReportPage() {
       <button className="btn btn-ghost btn-sm" onClick={() => router.back()} style={{ marginBottom: '1rem' }}>← Back</button>
       <h1 className="page-title">📊 New Growth Report</h1>
       <p className="page-subtitle" style={{ marginBottom: '2rem' }}>Document your plant&apos;s growth progress</p>
-
-      {error && <div className="auth-error">{error}</div>}
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">

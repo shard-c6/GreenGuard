@@ -2,27 +2,31 @@
 
 import { useState } from 'react';
 import { authApi } from '@/services/api';
+import { toast } from 'sonner';
 
 export default function SocialButtons() {
   const [loadingProvider, setLoadingProvider] = useState<string | null>(null);
-  const [error, setError] = useState('');
 
   const handleProviderLogin = async (provider: string) => {
+    let hasError = false;
     try {
       setLoadingProvider(provider);
-      setError('');
       const res = await authApi.getAuthorizeUrl(provider);
       if (res.data?.data?.url) {
         window.location.href = res.data.data.url;
       } else {
-        setError('Failed to get authorization URL.');
+        hasError = true;
+        toast.error('Failed to get authorization URL.');
       }
     } catch (err: unknown) {
+      hasError = true;
       const msg = (err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Failed to initialize social login.';
-      setError(msg);
+      toast.error(msg);
     } finally {
       // Don't clear loading state if successful, since we are navigating away
-      setLoadingProvider((prev) => (prev === provider && !error ? prev : null));
+      if (hasError) {
+        setLoadingProvider(null);
+      }
     }
   };
 

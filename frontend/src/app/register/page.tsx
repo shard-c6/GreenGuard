@@ -9,6 +9,7 @@ import SocialButtons from '@/components/auth/SocialButtons';
 import AtmosphericBackground from '@/components/landing/AtmosphericBackground';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Sprout, Globe, CheckCircle2 } from "lucide-react";
+import { toast } from 'sonner';
 
 const NGO_QUESTIONS = [
   { id: 'mission', label: 'Primary Mission *', placeholder: 'Core purpose of your NGO...', type: 'textarea' },
@@ -30,15 +31,14 @@ export default function RegisterPage() {
     impact: '',
     regions: '',
   });
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
 
     if (form.password !== form.confirmPassword) {
-      return setError('Passwords do not match');
+      toast.error('Passwords do not match');
+      return;
     }
 
     // If NGO and on step 1, move to step 2
@@ -69,7 +69,7 @@ export default function RegisterPage() {
       }
     } catch (err: unknown) {
       const msg = (err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Registration failed. Please try again.';
-      setError(msg);
+      toast.error(msg);
       if (step === 2) setStep(1); // Go back to start on error
     } finally {
       setLoading(false);
@@ -95,8 +95,6 @@ export default function RegisterPage() {
         <p className="auth-subtitle">
           {step === 1 ? 'Start your journey as a guardian today' : 'Provide your official credentials for approval'}
         </p>
-
-        {error && <div className="auth-error mb-6">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <AnimatePresence mode="wait">

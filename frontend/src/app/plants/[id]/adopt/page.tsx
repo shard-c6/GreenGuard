@@ -1,10 +1,10 @@
 'use client';
 import { Sprout } from "lucide-react";
 
-
 import { useState, FormEvent } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { adoptionsApi } from '@/services/api';
+import { toast } from 'sonner';
 
 const QUESTIONS = [
   { key: 'experience', label: 'What is your experience with plant care?', placeholder: 'Describe your gardening experience...' },
@@ -17,19 +17,19 @@ export default function AdoptFormPage() {
   const { id: plantId } = useParams<{ id: string }>();
   const router = useRouter();
   const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
     try {
       await adoptionsApi.apply(plantId, answers);
+      toast.success('Adoption application submitted successfully!');
       setSubmitted(true);
     } catch (err: unknown) {
-      setError((err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Failed to submit application');
+      const errorMessage = (err as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error?.message || 'Failed to submit application';
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -61,8 +61,6 @@ export default function AdoptFormPage() {
       <h1 className="page-title">📋 Adoption Application</h1>
       <p className="page-subtitle" style={{ marginBottom: '2rem' }}>Answer the questions below to apply for plant adoption.</p>
 
-      {error && <div className="auth-error">{error}</div>}
-
       <form onSubmit={handleSubmit}>
         {QUESTIONS.map(q => (
           <div key={q.key} className="form-group">
@@ -78,7 +76,12 @@ export default function AdoptFormPage() {
           </div>
         ))}
         <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }} disabled={loading}>
-          {loading ? 'Submitting...' : '<Sprout className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Submit Application'}
+          {loading ? 'Submitting...' : (
+            <span className="flex items-center justify-center gap-2">
+              <Sprout size={20} />
+              Submit Application
+            </span>
+          )}
         </button>
       </form>
     </div>

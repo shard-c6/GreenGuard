@@ -6,6 +6,7 @@ import { feedApi } from '@/services/api';
 import { useAuth } from '@/lib/auth';
 import ImageUpload from '@/components/ui/ImageUpload';
 import { Navigation, Info, ChevronLeft, Send, TreePine } from 'lucide-react';
+import { toast } from 'sonner';
 
 export default function NewPostPage() {
   const router = useRouter();
@@ -13,7 +14,6 @@ export default function NewPostPage() {
   const [content, setContent] = useState('');
   const [files, setFiles] = useState<File[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
   
   // Location fields for NGOs
   const [isPlantation, setIsPlantation] = useState(false);
@@ -23,15 +23,16 @@ export default function NewPostPage() {
   const isNgo = user?.role === 'ngo';
 
   const handleGetLocation = () => {
-    if (!navigator.geolocation) return alert('Geolocation not supported');
+    if (!navigator.geolocation) return toast.error('Geolocation is not supported by your browser');
     setLocating(true);
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setLocation(prev => ({ ...prev, lat: pos.coords.latitude.toString(), lng: pos.coords.longitude.toString() }));
         setLocating(false);
+        toast.success('Location fetched successfully!');
       },
       () => {
-        alert('Could not get location. Please enter manually.');
+        toast.warning('Could not retrieve location. Please fill coordinates manually.');
         setLocating(false);
       }
     );
@@ -39,13 +40,16 @@ export default function NewPostPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!content.trim() && files.length === 0) return setError('Please add some content or an image.');
+    if (!content.trim() && files.length === 0) {
+      toast.error('Please add some content or an image.');
+      return;
+    }
     
     if (isPlantation && (!location.lat || !location.lng)) {
-      return setError('Please provide a location for the plantation update.');
+      toast.error('Please provide a location for the plantation update.');
+      return;
     }
 
-    setError('');
     setLoading(true);
     try {
       const fd = new FormData();
@@ -60,10 +64,11 @@ export default function NewPostPage() {
       }
 
       await feedApi.createPost(fd);
+      toast.success('Post published successfully!');
       router.push('/feed');
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to create post';
-      setError(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -92,13 +97,6 @@ export default function NewPostPage() {
           </header>
 
           <form onSubmit={handleSubmit} className="p-8 space-y-8">
-            {error && (
-              <div className="p-4 bg-red-50 border border-red-100 text-red-600 rounded-2xl flex items-center gap-3 animate-in fade-in zoom-in-95">
-                <Info size={20} />
-                <span className="font-medium text-sm">{error}</span>
-              </div>
-            )}
-
             <div className="space-y-2">
               <label className="text-sm font-black text-gray-400 uppercase tracking-widest ml-1">The Story</label>
               <textarea

@@ -22,6 +22,7 @@ import { useAuth } from '@/lib/auth';
 import { useRouter } from 'next/navigation';
 import EmptyState from '@/components/ui/EmptyState';
 import { savePlantOffline, getAllPlantsOffline, deletePlantOffline } from '@/lib/indexeddb';
+import { toast } from 'sonner';
 
 export default function MyGardenPage() {
   const { isAuthenticated, loading: authLoading } = useAuth();
@@ -73,7 +74,7 @@ export default function MyGardenPage() {
 
   const handleDelete = async (id: string) => {
     if (isOfflineMode) {
-      alert('You are offline. Removing plants is disabled in offline mode.');
+      toast.warning('You are offline. Removing plants is disabled in offline mode.');
       return;
     }
     if (!window.confirm('Are you sure you want to remove this plant from your garden?')) return;
@@ -81,15 +82,16 @@ export default function MyGardenPage() {
       await savedPlantsApi.deleteSavedPlant(id);
       await deletePlantOffline(id); // Delete from offline store too
       setSavedPlants(prev => prev.filter(p => p.id !== id));
+      toast.success('Plant removed from garden successfully');
     } catch (err) {
       console.error('Delete error:', err);
-      alert('Failed to remove plant.');
+      toast.error('Failed to remove plant.');
     }
   };
 
   const handleStartEdit = (plant: SavedPlant) => {
     if (isOfflineMode) {
-      alert('You are offline. Editing notes is disabled in offline mode.');
+      toast.warning('You are offline. Editing notes is disabled in offline mode.');
       return;
     }
     setEditingId(plant.id);
@@ -98,7 +100,7 @@ export default function MyGardenPage() {
 
   const handleSaveNotes = async (id: string) => {
     if (isOfflineMode) {
-      alert('You are offline. Saving notes is disabled in offline mode.');
+      toast.warning('You are offline. Saving notes is disabled in offline mode.');
       return;
     }
     try {
@@ -110,9 +112,10 @@ export default function MyGardenPage() {
       }
       setSavedPlants(prev => prev.map(p => p.id === id ? { ...p, notes: editNotes } : p));
       setEditingId(null);
+      toast.success('Notes updated successfully');
     } catch (err) {
       console.error('Update error:', err);
-      alert('Failed to update notes.');
+      toast.error('Failed to update notes.');
     }
   };
 
