@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const API_BASE = 'http://localhost:5002/api';
-const VALID_API_KEY = 'gg_secret_consultant_key_2026';
+const VALID_API_KEY = process.env.FLORA_CONSULTANT_API_KEY;  // never hardcode
 
 async function runTests() {
   console.log('🧪 Starting Automated Security Verification Tests...\n');
