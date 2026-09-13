@@ -7,6 +7,12 @@ import { useRouter } from 'next/navigation';
 import { plantsApi } from '@/services/api';
 import ImageUpload from '@/components/ui/ImageUpload';
 import { toast } from 'sonner';
+import dynamic from 'next/dynamic';
+
+const DraggableLocationPicker = dynamic(() => import('@/components/map/DraggableLocationPicker'), { 
+  ssr: false,
+  loading: () => <div className="w-full h-[300px] bg-gray-100 animate-pulse rounded-2xl" />
+});
 
 export default function NewPlantPage() {
   const router = useRouter();
@@ -117,8 +123,8 @@ export default function NewPlantPage() {
             placeholder="Describe the plant, its history, and why it's special..." />
         </div>
         <div className="form-group">
-          <label className="form-label" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            Location Coordinates
+          <label className="form-label" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+            Location Coordinates *
             <button
               type="button"
               onClick={handleGetCurrentLocation}
@@ -134,18 +140,18 @@ export default function NewPlantPage() {
               {geoLoading ? 'Getting location...' : 'Use My Current Location'}
             </button>
           </label>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-            <div className="form-group mb-0">
-              <label className="form-label" style={{ fontSize: '0.75rem', color: 'var(--muted-foreground)' }}>Latitude *</label>
-              <input type="number" step="any" className="form-input" value={form.latitude}
-                onChange={e => setForm({ ...form, latitude: e.target.value })} placeholder="e.g. 19.0760" required />
-            </div>
-            <div className="form-group mb-0">
-              <label className="form-label" style={{ fontSize: '0.75rem', color: 'var(--muted-foreground)' }}>Longitude *</label>
-              <input type="number" step="any" className="form-input" value={form.longitude}
-                onChange={e => setForm({ ...form, longitude: e.target.value })} placeholder="e.g. 72.8777" required />
-            </div>
-          </div>
+          <DraggableLocationPicker 
+            latitude={form.latitude ? parseFloat(form.latitude) : null}
+            longitude={form.longitude ? parseFloat(form.longitude) : null}
+            onChange={(lat, lng) => setForm(prev => ({ ...prev, latitude: lat.toString(), longitude: lng.toString() }))}
+            onAddressResolved={(addr) => {
+              // Only overwrite address if it's currently empty, to avoid annoying the user if they manually typed it
+              if (!form.address) setForm(prev => ({ ...prev, address: addr }));
+            }}
+          />
+          {!form.latitude && (
+            <p className="text-xs text-amber-600 mt-2 font-bold">Please drag the pin to set the plant's location.</p>
+          )}
         </div>
 
         <h3 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.75rem', marginTop: '0.5rem' }}><Leaf className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Care Information</h3>
