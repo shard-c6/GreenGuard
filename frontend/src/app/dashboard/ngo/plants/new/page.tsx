@@ -170,7 +170,7 @@ export default function NewPlantPage() {
         <ImageUpload onFilesSelected={setFiles} maxFiles={5} label="Plant Photos" />
 
         <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%', marginTop: '1.5rem' }} disabled={loading}>
-          {loading ? 'Creating...' : '<Leaf className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Add Plant'}
+          {loading ? 'Creating...' : <><Leaf className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Add Plant</>}
         </button>
       </form>
     </div>
