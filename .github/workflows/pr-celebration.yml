@@ -1,0 +1,143 @@
+name: PR Merge Celebration
+
+# Posts a celebratory comment when a PR is merged.
+#
+# Uses pull_request_target so the comment also works for PRs from forks
+# (the GITHUB_TOKEN is read-only on `pull_request` for forks). This is safe
+# here because the job NEVER checks out or executes PR code — it only reads
+# the event payload and calls the API. Do not add actions/checkout below.
+
+on:
+  pull_request_target:
+    types: [closed]
+
+permissions:
+  pull-requests: write
+  issues: write
+  contents: read
+
+jobs:
+  celebrate:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post celebration
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const author = pr.user.login;
+            const { owner, repo } = context.repo;
+
+            // ── Verified GIF pool (each URL and its content checked) ──────
+            const gifs = [
+              { url: 'https://media.giphy.com/media/3oz8xAFtqoOUUrsh7W/giphy.gif', alt: 'Flower flex' },
+              { url: 'https://media.giphy.com/media/l4pTfx2qLszoacZRS/giphy.gif', alt: 'Gnome jumping for joy' },
+              { url: 'https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif', alt: 'Party hard' },
+              { url: 'https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif', alt: 'Number one celebration' },
+              { url: 'https://media.giphy.com/media/l3q2XhfQ8oCkm1Ts4/giphy.gif', alt: 'Standing ovation' },
+              { url: 'https://media.giphy.com/media/xT0GqH01ZyKwd3aT3G/giphy.gif', alt: 'Delighted' },
+              { url: 'https://media.giphy.com/media/26tOZ42Mg6pbTUPHW/giphy.gif', alt: 'Confetti' },
+              { url: 'https://media.giphy.com/media/g9582DNuQppxC/giphy.gif', alt: 'Cheers' },
+              { url: 'https://media.giphy.com/media/111ebonMs90YLu/giphy.gif', alt: 'Thumbs up' },
+            ];
+            const gif = gifs[Math.floor(Math.random() * gifs.length)];
+
+            // ── How many PRs has this person merged? ──────────────────────
+            let mergedCount = 1;
+            try {
+              const res = await github.rest.search.issuesAndPullRequests({
+                q: `repo:${owner}/${repo} type:pr is:merged author:${author}`,
+                per_page: 1,
+              });
+              mergedCount = res.data.total_count || 1;
+            } catch (e) {
+              core.info(`Could not count merged PRs: ${e.message}`);
+            }
+
+            const ordinal = (n) => {
+              const s = ['th', 'st', 'nd', 'rd'];
+              const v = n % 100;
+              return n + (s[(v - 20) % 10] || s[v] || s[0]);
+            };
+
+            // ── Which issues did this close? ──────────────────────────────
+            const body = pr.body || '';
+            const closed = [...new Set(
+              [...body.matchAll(/\b(?:close[sd]?|fixe?[sd]?|resolve[sd]?)\s+#(\d+)/gi)]
+                .map(m => m[1])
+            )];
+
+            // ── Milestone context ─────────────────────────────────────────
+            let phaseLine = '';
+            if (closed.length) {
+              try {
+                const milestones = new Set();
+                for (const num of closed) {
+                  const iss = await github.rest.issues.get({
+                    owner, repo, issue_number: Number(num),
+                  });
+                  if (iss.data.milestone) milestones.add(iss.data.milestone.title);
+                }
+                if (milestones.size) {
+                  phaseLine = ` \u2014 moving **${[...milestones].join('**, **')}** forward`;
+                }
+              } catch (e) {
+                core.info(`Milestone lookup failed: ${e.message}`);
+              }
+            }
+
+            // ── Warmth, scaled to the moment ──────────────────────────────
+            const isFirst = mergedCount === 1;
+            const headline = isFirst
+              ? `## First one in. Welcome aboard, @${author} 🌱`
+              : `## Merged. Nice one, @${author} 🌿`;
+
+            const openers = [
+              `That is your **${ordinal(mergedCount)}** merged pull request on GreenGuard.`,
+              `**${ordinal(mergedCount)}** merge, and counting.`,
+              `Number **${mergedCount}** on the board.`,
+            ];
+            const opener = isFirst
+              ? `Everyone on this project has a first merge. This one is yours, and it is now part of the thing permanently.`
+              : openers[Math.floor(Math.random() * openers.length)];
+
+            const closingNotes = [
+              `Somewhere in Hyderabad or Mumbai there is a sapling that needs a person to notice it. This is how that person finds it.`,
+              `Every fix here shortens the distance between a tree that was planted and someone who will actually water it.`,
+              `This project exists because planting a tree is the easy half. Keeping it alive is the half we are building.`,
+              `A small change, merged, beats a brilliant one that never lands. Thanks for landing it.`,
+              `Trees do not survive because of the planting drive. They survive because someone nearby cared. You just made that easier.`,
+            ];
+            const note = closingNotes[Math.floor(Math.random() * closingNotes.length)];
+
+            const closedLine = closed.length
+              ? `**Closed:** ${closed.map(n => '#' + n).join(', ')}${phaseLine}\n`
+              : '';
+
+            const comment = [
+              headline,
+              '',
+              `![${gif.alt}](${gif.url})`,
+              '',
+              opener,
+              '',
+              '| | |',
+              '| :--- | :--- |',
+              `| **Changed** | \`+${pr.additions}\` / \`-${pr.deletions}\` across ${pr.changed_files} file${pr.changed_files === 1 ? '' : 's'} |`,
+              `| **Commits** | ${pr.commits} |`,
+              `| **Into** | \`${pr.base.ref}\` |`,
+              '',
+              closedLine,
+              `> ${note}`,
+              '',
+              '<sub>🌱 Automated by <code>pr-celebration.yml</code> — because merged work deserves more than a grey "Merged" badge.</sub>',
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner, repo,
+              issue_number: pr.number,
+              body: comment,
+            });
+
+            core.info(`Celebrated PR #${pr.number} by ${author} (merge #${mergedCount})`);
