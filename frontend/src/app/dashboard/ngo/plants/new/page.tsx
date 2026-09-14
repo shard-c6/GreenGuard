@@ -62,8 +62,18 @@ export default function NewPlantPage() {
     );
   };
 
+  const hasCoordinates = Boolean(form.latitude && form.longitude);
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    // The map pin renders at the India centroid before it is placed, which makes
+    // it look set when it is not. Without this guard the coordinates are silently
+    // omitted below and the plant is created with a null location — it would never
+    // appear on the map. The old number inputs enforced this via `required`.
+    if (!hasCoordinates) {
+      toast.error('Please place the pin on the map to set the plant location.');
+      return;
+    }
     setLoading(true);
     try {
       const fd = new FormData();
@@ -71,10 +81,8 @@ export default function NewPlantPage() {
       if (form.species) fd.append('species', form.species);
       if (form.description) fd.append('description', form.description);
       if (form.address) fd.append('address', form.address);
-      if (form.latitude && form.longitude) {
-        fd.append('latitude', form.latitude);
-        fd.append('longitude', form.longitude);
-      }
+      fd.append('latitude', form.latitude);
+      fd.append('longitude', form.longitude);
       // Care info as JSON
       const careInfo: Record<string, string> = {};
       if (form.watering) careInfo.watering = form.watering;
@@ -149,7 +157,7 @@ export default function NewPlantPage() {
               if (!form.address) setForm(prev => ({ ...prev, address: addr }));
             }}
           />
-          {!form.latitude && (
+          {!hasCoordinates && (
             <p className="text-xs text-amber-600 mt-2 font-bold">Please drag the pin to set the plant's location.</p>
           )}
         </div>
@@ -175,7 +183,7 @@ export default function NewPlantPage() {
 
         <ImageUpload onFilesSelected={setFiles} maxFiles={5} label="Plant Photos" />
 
-        <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%', marginTop: '1.5rem' }} disabled={loading}>
+        <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%', marginTop: '1.5rem' }} disabled={loading || !hasCoordinates}>
           {loading ? 'Creating...' : <><Leaf className="inline-block w-5 h-5 mr-1 align-text-bottom" /> Add Plant</>}
         </button>
       </form>
