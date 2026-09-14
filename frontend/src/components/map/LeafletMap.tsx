@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
 import type { MapPlant, Post } from '@/types';
 import { TreePine, MapPin, Building2, Calendar, ExternalLink, User } from 'lucide-react';
@@ -142,6 +143,24 @@ export default function LeafletMap({ plants, plantations, centerLat, centerLng }
         .leaflet-container {
           font-family: inherit;
         }
+        .cluster-icon {
+          background: rgba(16, 185, 129, 0.2);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(16, 185, 129, 0.3);
+          box-shadow: 0 8px 32px rgba(16, 185, 129, 0.2);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #065f46;
+          font-weight: 900;
+          font-size: 14px;
+          transition: all 0.3s ease;
+        }
+        .cluster-icon:hover {
+          background: rgba(16, 185, 129, 0.4);
+          transform: scale(1.1);
+        }
       `}</style>
       
       <MapContainer
@@ -156,8 +175,18 @@ export default function LeafletMap({ plants, plantations, centerLat, centerLng }
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {/* Plant Markers */}
-        {plants.map((plant, idx) => {
+        <MarkerClusterGroup
+          chunkedLoading
+          iconCreateFunction={(cluster: any) => {
+            return L.divIcon({
+              html: `<span>${cluster.getChildCount()}</span>`,
+              className: 'cluster-icon',
+              iconSize: L.point(40, 40, true),
+            });
+          }}
+        >
+          {/* Plant Markers */}
+          {plants.map((plant, idx) => {
           const lat = plant.latitude;
           const lng = plant.longitude;
           const coords = (lat && lng) ? [lat, lng] as [number, number] : parseLngLat(plant.location);
@@ -244,6 +273,7 @@ export default function LeafletMap({ plants, plantations, centerLat, centerLng }
             </Marker>
           );
         })}
+        </MarkerClusterGroup>
       </MapContainer>
     </>
   );
