@@ -1,0 +1,40 @@
+name: Feature request
+description: Propose new capability
+labels: ["type/feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Work is organised into phases. Check the
+        [roadmap](../blob/main/docs/AUDIT_AND_ROADMAP.md) — your idea may already be scoped.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What cannot be done today? Who is blocked — an adopter, an NGO, an admin?
+    validations: {required: true}
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations: {required: true}
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Which phase does this belong to?
+      options:
+        - "Phase 0 — Revive & Stabilise"
+        - "Phase 1 — Geospatial Core"
+        - "Phase 2 — Production Hardening"
+        - "Phase 3 — Local Plant Identification"
+        - "Phase 4 — Disease & Remedy Intelligence"
+        - "Phase 5 — Production & NGO Website"
+        - "Phase 6 — Handover"
+        - "Unsure"
+    validations: {required: true}
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How do we know it is done?
+    validations: {required: true}

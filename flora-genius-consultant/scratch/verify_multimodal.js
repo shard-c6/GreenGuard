@@ -2,7 +2,7 @@ const axios = require('axios');
 const FormData = require('form-data');
 
 const API_BASE = 'http://localhost:5002/api';
-const API_KEY = 'gg_secret_consultant_key_2026';
+const API_KEY = process.env.FLORA_CONSULTANT_API_KEY;  // never hardcode
 
 // A valid, base64-encoded 1x1 minimal JPEG pixel image to use as an automated test attachment
 const MOCK_JPEG_BASE64 = '/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=';

@@ -1,0 +1,44 @@
+# ─── GreenGuard CODEOWNERS ────────────────────────────────────────
+# Routes review requests by area of ownership.
+#
+# NOTE ON PRECEDENCE: the LAST matching pattern wins, and only that rule's
+# owners are requested. A path rule therefore OVERRIDES the `*` default
+# rather than adding to it — which is why the team lead is listed explicitly
+# on every rule, not just the default. Without that, the lead cannot satisfy
+# a CODEOWNERS review on paths they do not appear in.
+#
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default — team lead owns anything not otherwise claimed
+*                               @shard-c6
+
+# ─── Database, migrations, RLS ────────────────────────────────────
+/backend/supabase/              @rahulcodes-java @shard-c6
+/supabase/                      @rahulcodes-java @shard-c6
+/scripts/migrations/            @rahulcodes-java @shard-c6
+/backend/src/admin/             @rahulcodes-java @shard-c6
+
+# ─── AI / ML ──────────────────────────────────────────────────────
+/flora-genius-consultant/       @shard-c6 @rahulcodes-java
+/flora-genius-consultant/data/  @rahulcodes-java @shard-c6
+
+# ─── Backend ──────────────────────────────────────────────────────
+/backend/                       @ankita01209 @shard-c6
+/backend/src/config/            @ankita01209 @rahulcodes-java @shard-c6
+/backend/src/middleware/        @ankita01209 @shard-c6
+
+# ─── Frontend ─────────────────────────────────────────────────────
+/frontend/                      @Mukta01 @ankita01209 @shard-c6
+/frontend/src/components/map/   @Mukta01 @ankita01209 @shard-c6
+/frontend/src/middleware.ts     @Mukta01 @shard-c6
+
+# ─── Infra, CI/CD, deploys ────────────────────────────────────────
+/.github/                       @Mukta01 @shard-c6
+/.github/workflows/             @Mukta01 @shard-c6
+/.github/CODEOWNERS             @shard-c6
+**/Dockerfile                   @Mukta01 @shard-c6
+
+# ─── Docs & governance ────────────────────────────────────────────
+/docs/                          @shard-c6
+/README.md                      @shard-c6
+/SECURITY.md                    @shard-c6

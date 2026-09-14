@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const CONSULTANT_BACKEND_URL = process.env.CONSULTANT_API_URL || 'http://localhost:5002/api';
-const CONSULTANT_API_KEY = process.env.CONSULTANT_API_KEY || 'gg_secret_consultant_key_2026';
+const CONSULTANT_API_KEY = process.env.CONSULTANT_API_KEY;
+if (!CONSULTANT_API_KEY) {
+  // Fail loudly. This previously fell back to a hardcoded literal that is
+  // present in public git history. Boot-time validation lands in #194.
+  console.error('CONSULTANT_API_KEY is not set — consultant proxy will reject requests.');
+}
 
 async function handleProxy(req: NextRequest, context: { params: Promise<{ path?: string[] }> }) {
   // Await params per Next.js 15 routing standards if required
@@ -18,7 +23,7 @@ async function handleProxy(req: NextRequest, context: { params: Promise<{ path?:
   });
   
   // Inject the secure API key on the server-side
-  headers.set('x-api-key', CONSULTANT_API_KEY);
+  if (CONSULTANT_API_KEY) headers.set('x-api-key', CONSULTANT_API_KEY);
 
   try {
     // Read request body to ArrayBuffer if not a GET/HEAD request to avoid stream proxy issues on Vercel/serverless environments

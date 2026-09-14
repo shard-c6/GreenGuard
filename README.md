@@ -1,127 +1,135 @@
-# GreenGuard
+<div align="center">
 
-| RELEASE | **v1.0.0** | BOTANICAL DATA | **300+ SPECIES** | UI STYLES | **50+ COMPONENTS** | STACK | **NEXT.js 16** | LICENSE | **MIT** |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+# 🌱 GreenGuard
 
-[![API](https://img.shields.io/badge/API-v1.0.0-emerald?style=flat-square&logo=node.js)](https://huggingface.co/spaces/shard-c6/green-guard-api)
-[![Vercel](https://img.shields.io/badge/Live_Demo-Vercel-black?style=flat-square&logo=vercel)](https://greeguardfe.vercel.app/)
-[![AI_Service](https://img.shields.io/badge/AI_Service-Hugging_Face-blue?style=flat-square&logo=huggingface)](https://huggingface.co/spaces/shard-c6/flora-genius-service)
-[![GitHub stars](https://img.shields.io/github/stars/shard-c6/greeguard_complete?style=flat-square&logo=github)](https://github.com/shard-c6/greeguard_complete/stargazers)
+**A plant adoption and community platform for environmental NGOs.**
 
-**A premium botanical identification and adoption ecosystem powered by AI and RAG-based intelligence.**
+Built so that trees planted in a drive do not become trees nobody waters afterwards —
+by connecting each plant to a person who lives near it.
 
-![GreenGuard Banner](./docs/assets/banner.png)
+[![CI](https://github.com/shard-c6/GreenGuard/actions/workflows/ci.yml/badge.svg)](https://github.com/shard-c6/GreenGuard/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+[![Roadmap](https://img.shields.io/badge/roadmap-Phase_0-blue)](./docs/AUDIT_AND_ROADMAP.md)
 
-## ✨ Core Ecosystem Highlights
-
-| 🤖 AI Botanical Consultant | 🗺️ Geospatial Plantation Mapping | 🤝 Community Social Feed |
-| :--- | :--- | :--- |
-| ![AI Consultant](./docs/assets/feature_ai.png) | ![Geospatial Mapping](./docs/assets/feature_map.png) | ![Community Feed](./docs/assets/feature_feed.png) |
-| **Real-time Identification**: Powered by Gemini 1.5 Flash and PlantNet, providing instant botanical diagnostics. | **Interactive Impact**: Live reforestation tracking with precise geospatial coordinates and carbon metrics. | **Sustainable Social**: Share growth milestones, adopt trees, and connect with verified environmental NGOs. |
+</div>
 
 ---
 
-## 📖 Overview
-
-GreenGuard is a state-of-the-art environmental platform designed to bridge the gap between Non-Governmental Organizations (NGOs) and nature enthusiasts. By combining high-fidelity UI/UX with advanced Retrieval-Augmented Generation (RAG), we transform environmental conservation into an immersive, social, and AI-enhanced journey.
-
----
-
-## ✨ Key Features
-
-- **🧠 Flora Genius Consultant (RAG AI)**: Standalone microservice utilizing Google Gemini for reasoning and Supabase `pgvector` for grounded botanical advice. Now featuring **Stateful Conversational Memory** using the `startChat` interface for multi-turn dialogues.
-- **🎨 Premium Visual Engine**: Next.js 16 + React 19 + Tailwind CSS 4 implementation featuring **Glassmorphism 2.0**, **Framer Motion 12**, and immersive **Atmospheric Backgrounds**.
-- **🗺️ Geospatial Discovery**: Integrated PostGIS to enable radius-based searches and live interactive plantation mapping.
-- **🛡️ NGO Verification**: Multi-step onboarding with Darpan ID validation and administrative impact questionnaires.
-- [📸 Growth Timeline](./docs/FEATURES.md#growth-timeline): Track plant health from sapling to tree with health metrics and community sharing.
+> [!WARNING]
+> **The hosted platform is currently down.** The Supabase project is paused, so the API and
+> AI services return errors. Restoration is tracked in
+> [Phase 0](https://github.com/shard-c6/GreenGuard/milestone/1) — start at #188.
+>
+> Known defects are catalogued with file references in
+> [`docs/AUDIT_AND_ROADMAP.md`](./docs/AUDIT_AND_ROADMAP.md). Read it before building on this.
 
 ---
 
-## 🛡️ System Integrity & Reliability
+## Why this exists
 
-GreenGuard is built for long-term sustainability. We employ automated systems to ensure the repository remains healthy, active, and documented.
+A professor's colleagues run tree plantation drives in Hyderabad and Mumbai. Planting is the easy
+part — survival is the hard part. Their idea was that every planted tree should be **adopted by
+someone who lives close enough to actually care for it**, and that those adopters should be able
+to find each other, share progress, and get real horticultural help.
 
-- **🤖 Automated Daily Heartbeat**: A scheduled GitHub Action that validates repository connectivity and ensures daily progress tracking.
-- **📜 Live Technical Log**: All system updates and automated health checks are recorded in our [DAILY_LOG.md](./DAILY_LOG.md).
-- **🚀 CI/CD Rulesets**: Protected `main` branch with automated deployment to Hugging Face via GitHub Actions.
-- **✅ Continuous Monitoring**: Real-time status tracking of our AI microservices and database integrity.
+GreenGuard is the platform for that: NGOs register plants with a location, nearby people adopt
+them, and adopters post growth updates to a shared feed. An AI consultant answers plant-care
+questions grounded in a curated botanical corpus.
 
----
+Originally built as a semester-four social service internship project at VIT Mumbai. It is now
+being taken toward production use by the NGO.
 
-## 🛠️ Technology Stack
+## Status
 
-| Layer | Technologies |
+| | |
 | :--- | :--- |
-| **Frontend** | Next.js 16, React 19, Tailwind CSS 4, Framer Motion, Axios, Leaflet |
-| **Backend** | Node.js, Express.js, Supabase, PostGIS, JWT |
-| **AI/ML** | Google Gemini 1.5 Flash, Supabase `pgvector` (RAG) |
-| **DevOps** | Hugging Face Spaces, Vercel (Frontend), Supabase (DB/Auth) |
+| **Platform** | 🔴 Down — Supabase paused, see Phase 0 |
+| **Botanical corpus** | **588 knowledge entries across 458 unique species** |
+| **Test coverage** | None yet — tracked in #212 |
+| **Production readiness** | Pre-alpha. Do not point real users at this yet. |
 
----
+## Architecture
 
-## 🚀 Getting Started
+Three deployable services plus a managed database.
 
-### 1. Clone & Setup
+| Service | Stack | Responsibility |
+| :--- | :--- | :--- |
+| [`frontend/`](./frontend) | Next.js 16, React 19, Tailwind 4, Leaflet | User-facing app; also proxies AI calls server-side so the AI key never reaches the browser |
+| [`backend/`](./backend) | Express 5, Supabase JS | REST API — auth, plants, adoptions, feed, NGO onboarding, admin, moderation |
+| [`flora-genius-consultant/`](./flora-genius-consultant) | Express 5, Gemini, PlantNet, Redis | AI microservice — plant identification and RAG-grounded consultation |
+| Supabase | Postgres 17 + PostGIS + pgvector | Single source of truth: data, auth, storage, RLS |
+
+**Data model:** `profiles` → `ngo_profiles` → `plants` → `adoptions` → `growth_reports`, with a
+social layer (`posts`, `likes`, `bookmarks`, `comments`, `follows`) and moderation
+(`user_reports`). Access is enforced by Postgres row-level security.
+
+**Retrieval:** the consultant combines pgvector semantic search with Postgres full-text search,
+fused by Reciprocal Rank Fusion, over a curated corpus of Indian plants.
+
+## Getting started
+
+> [!NOTE]
+> The setup guide is being rewritten and verified against a clean machine as part of Phase 0
+> (#201). Until that lands, expect gaps.
 
 ```bash
-git clone https://github.com/shard-c6/greeguard_complete.git
-cd greeguard_complete
+git clone https://github.com/shard-c6/GreenGuard.git
+cd GreenGuard
 ```
 
-### 2. Environment Configuration
-
-Configure `.env` files in `backend/`, `frontend/`, and `flora-genius-consultant/` using the provided templates.
-
-### 3. Run Services
+Copy `.env.example` in each service directory and fill it in, then:
 
 ```bash
-# Terminal 1: Backend
-cd backend && npm run dev
-
-# Terminal 2: Frontend
-cd frontend && npm run dev
-
-# Terminal 3: AI Consultant
-cd flora-genius-consultant && npm run dev
+cd backend && npm install && npm run dev                  # :5000
+cd frontend && npm install && npm run dev                 # :3000
+cd flora-genius-consultant && npm install && npm run dev   # :5002
 ```
 
----
+Full instructions: [`docs/GETTING_STARTED.md`](./docs/GETTING_STARTED.md)
 
-## 🤝 Join the Mission
+## Documentation
 
-We welcome contributions from environmentalists and developers of all skill levels. Whether you're fixing a bug, adding botanical data, or suggesting a feature, your impact matters.
+| Document | What it covers |
+| :--- | :--- |
+| [AUDIT_AND_ROADMAP.md](./docs/AUDIT_AND_ROADMAP.md) | **Start here.** Honest defect audit with file references, plus the six-phase plan |
+| [PHASE0_PLAN.md](./docs/PHASE0_PLAN.md) | Step-by-step revival plan currently in progress |
+| [DATABASE_AND_RAG.md](./docs/DATABASE_AND_RAG.md) | Schema and retrieval design |
+| [API_SPECIFICATION.md](./docs/API_SPECIFICATION.md) | AI consultant API |
+| [SECURITY.md](./SECURITY.md) | Vulnerability disclosure |
 
-### 🗺️ Project Roadmap
+## Team
 
-- [ ] **Mobile Transition**: Expanding the UI to a native mobile experience via Capacitor & Offline PWAs.
-- [x] **Advanced RAG**: Integrated hybrid search and stateful conversational memory for precision diagnostics.
-- [x] **Global Species Expansion**: Successfully reached 500+ validated botanical entries.
-- [ ] **Scalability Engine**: Implementing Redis caching, Edge middleware, and API rate limiting.
-- [ ] **UI/UX Polish**: Smooth page transitions and micro-interactions using Framer Motion.
+| Person | GitHub | Owns |
+| :--- | :--- | :--- |
+| Shardul Chogale | [@shard-c6](https://github.com/shard-c6) | Team lead · AI/ML · NGO and faculty liaison |
+| Rahul | [@rahulcodes-java](https://github.com/rahulcodes-java) | ML · Supabase · database and migrations |
+| Mukta | [@Mukta01](https://github.com/Mukta01) | Cloud · DevOps · frontend |
+| Ankita | [@ankita01209](https://github.com/ankita01209) | Full-stack · backend API |
 
-### 🚀 How to Contribute
+Review routing is defined in [`.github/CODEOWNERS`](./.github/CODEOWNERS).
 
-1. **Explore**: Check out [DAILY_LOG.md](./DAILY_LOG.md) to see what's currently in progress.
-2. **Setup**: Follow the [Getting Started](#-getting-started) guide to run the project locally.
-3. **Standards**: Ensure all PRs include relevant updates to the technical log and documentation.
-4. **Submit**: Create a pull request against the `main` branch with a clear description of your changes.
+## Roadmap
 
-**Need inspiration?** Look for `good first issue` tags in our issues or propose a new feature in the discussions!
+Work is organised into [seven milestones](https://github.com/shard-c6/GreenGuard/milestones):
 
----
+| Phase | Focus |
+| :--- | :--- |
+| **0** | Revive & stabilise — restore the database, version every migration, stop the AI fabricating answers |
+| **1** | Geospatial core — fix the map properly; it is the feature closest to the NGO's mission |
+| **2** | Production hardening — tests, CI gates, observability, backups, RLS correctness |
+| **3** | Local plant identification — a model tuned to the species this NGO actually plants |
+| **4** | Disease & remedy intelligence — sourced treatment knowledge, then field image diagnosis |
+| **5** | Production hosting, domain, and the NGO's public website |
+| **6** | Handover — runbooks, architecture docs, named owners |
 
-## 📄 Documentation
+## Contributing
 
-- [**Getting Started Guide**](./docs/GETTING_STARTED.md) — Complete local development and onboarding guide.
-- [**API Specification**](./docs/API_SPECIFICATION.md) — Flora Genius AI Consultant endpoint details.
-- [**Database & RAG Logic**](./docs/DATABASE_AND_RAG.md) — Supabase schema, PostGIS spatial queries, and pgvector RAG mechanics.
-- [**Contributing Guidelines**](./CONTRIBUTING.md) — Branch naming standards, GPG/SSH signature requirements, and workflows.
-- [**Project Report**](./docs/PROJECT_REPORT.md) — Full ecosystem walkthrough.
-- [**Technical Handover**](./docs/TECHNICAL_HANDOVER.md) — Architectural details and schema logic.
-- [**Deployment Guide**](./docs/DEPLOYMENT_AND_TESTING.md) — Production setup and seeding.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
 
----
+Pull requests need a passing CI run and a CODEOWNERS review. If you are reporting a security
+issue, use [private advisories](https://github.com/shard-c6/GreenGuard/security/advisories/new)
+rather than a public issue.
 
-## 🛡️ License
+## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+[MIT](./LICENSE)
