@@ -7,6 +7,7 @@ import { plantsApi, feedApi } from '@/services/api';
 import type { MapPlant, Post } from '@/types';
 import dynamic from 'next/dynamic';
 import { Map as MapIcon, Info, TreePine } from 'lucide-react';
+import 'leaflet/dist/leaflet.css';
 
 // Dynamic import for Leaflet (not SSR-compatible)
 const LeafletMap = dynamic(() => import('@/components/map/LeafletMap'), { 
@@ -50,16 +51,7 @@ function MapContent() {
       .finally(() => setLoading(false));
   }, [isAuthenticated, authLoading, router]);
 
-  // Load leaflet CSS 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (document.getElementById('leaflet-css')) return;
-    const link = document.createElement('link');
-    link.id = 'leaflet-css';
-    link.rel = 'stylesheet';
-    link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-    document.head.appendChild(link);
-  }, []);
+  // Leaflet CSS is now bundled via import above
 
   if (authLoading || loading) {
     return (

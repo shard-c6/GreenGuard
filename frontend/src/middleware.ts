@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+import { geolocation } from '@vercel/functions';
+
 /**
  * Next.js Edge Middleware
  * Intercepts requests to the /map page, extracts Vercel Edge Geolocation metadata,
@@ -13,22 +15,20 @@ export function middleware(request: NextRequest) {
   if (pathname === '/map') {
     // If the coordinates are already explicitly specified in the query parameters, skip rewrite
     if (!searchParams.has('lat') || !searchParams.has('lng')) {
-      const geo = (request as any).geo || {};
+      const geo = geolocation(request) || {};
       
-      // Default to New Delhi, India coordinates during local dev or if geo is unavailable
-      const lat = geo.latitude || '28.6139';
-      const lng = geo.longitude || '77.2090';
-      const city = geo.city || 'New Delhi';
-      const country = geo.country || 'IN';
-
-      const url = request.nextUrl.clone();
-      url.searchParams.set('lat', lat);
-      url.searchParams.set('lng', lng);
-      url.searchParams.set('city', city);
-      url.searchParams.set('country', country);
-      url.searchParams.set('geo_source', geo.latitude ? 'edge' : 'fallback');
-
-      return NextResponse.rewrite(url);
+      if (geo.latitude && geo.longitude) {
+        const url = request.nextUrl.clone();
+        url.searchParams.set('lat', geo.latitude);
+        url.searchParams.set('lng', geo.longitude);
+        url.searchParams.set('city', geo.city || '');
+        url.searchParams.set('country', geo.country || '');
+        url.searchParams.set('geo_source', 'edge');
+        return NextResponse.rewrite(url);
+      }
+      
+      // No valid edge geolocation, let the client handle fallback.
+      return NextResponse.next();
     }
   }
 
