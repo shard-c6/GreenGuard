@@ -1,0 +1,32 @@
+[
+  {
+    "id": "avatars",
+    "name": "avatars",
+    "public": true,
+    "created_at": "2026-03-14T19:56:10.309Z"
+  },
+  {
+    "id": "flora-scans",
+    "name": "flora-scans",
+    "public": true,
+    "created_at": "2026-04-10T18:39:27.069Z"
+  },
+  {
+    "id": "plant-images",
+    "name": "plant-images",
+    "public": true,
+    "created_at": "2026-03-14T19:55:17.798Z"
+  },
+  {
+    "id": "post-images",
+    "name": "post-images",
+    "public": true,
+    "created_at": "2026-03-14T19:55:36.106Z"
+  },
+  {
+    "id": "report-images",
+    "name": "report-images",
+    "public": true,
+    "created_at": "2026-03-14T19:55:50.786Z"
+  }
+]
