@@ -47,6 +47,7 @@ export default function DraggableLocationPicker({
         }
       },
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onChange]
   );
 

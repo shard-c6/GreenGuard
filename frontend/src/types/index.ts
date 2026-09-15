@@ -328,7 +328,7 @@ export interface SavedPlant {
   confidence: number | null;
   image_url: string | null;
   ai_consultation: string | null;
-  plant_net_data: any;
+  plant_net_data: Record<string, unknown>;
   notes: string | null;
   created_at: string;
   updated_at: string;

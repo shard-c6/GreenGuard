@@ -68,6 +68,7 @@ export default function ImageUpload({
         <div className="image-upload-previews">
           {previews.map((src, i) => (
             <div key={i} className="upload-preview-item">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={src} alt={`Preview ${i + 1}`} />
             </div>
           ))}

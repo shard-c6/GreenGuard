@@ -22,7 +22,7 @@ export default function BookmarksPage() {
   return (
     <div className="page-container" style={{ maxWidth: '680px' }}>
       <h1 className="page-title">🔖 Bookmarked Posts</h1>
-      <p className="page-subtitle" style={{ marginBottom: '2rem' }}>Posts you've saved for later</p>
+      <p className="page-subtitle" style={{ marginBottom: '2rem' }}>Posts you&apos;ve saved for later</p>
 
       {posts.length === 0 ? (
         <EmptyState

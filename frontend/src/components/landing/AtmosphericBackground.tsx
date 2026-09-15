@@ -30,6 +30,7 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
       duration: Math.random() * 15 + 15,
       delay: Math.random() * 10
     }));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setParticles(generated);
   }, []);
 
@@ -40,6 +41,9 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
     [0, 0.5, 1],
     active ? ['#011e17', '#064e3b', '#011e17'] : ['#021812', '#053e2f', '#021812']
   );
+
+  const opacityTransform = useTransform(smoothProgress, [0, 0.5, 1], [0.2, 0.4, 0.2]);
+  const rotateTransform = useTransform(smoothProgress, [0, 1], [35, 45]);
 
   return (
     <motion.div
@@ -118,8 +122,8 @@ export default function AtmosphericBackground({ active = false }: { active?: boo
       {/* Scroll-Reactive Light Beams - Enhanced for static pages */}
       <motion.div
         style={{
-          opacity: active ? 0.35 : useTransform(smoothProgress, [0, 0.5, 1], [0.2, 0.4, 0.2]),
-          rotate: useTransform(smoothProgress, [0, 1], [35, 45]),
+          opacity: active ? 0.35 : opacityTransform,
+          rotate: rotateTransform,
           willChange: 'transform, opacity'
         }}
         className="absolute top-[-40%] left-[-10%] w-[150%] h-[120%] bg-gradient-to-b from-emerald-900/40 to-transparent pointer-events-none blur-3xl"
