@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 
 // Load environment variables from backend/.env
 const envPath = path.join(__dirname, '..', 'backend', '.env');
@@ -33,7 +33,7 @@ if (!fs.existsSync(outputDir)) {
 // Helper to execute SQL query via Supabase CLI linked db query or Supabase client
 function executeSqlQuery(sql) {
   try {
-    const rawOutput = execSync(`supabase db query --linked "${sql.replace(/"/g, '\\"')}" --output-format json`, {
+    const rawOutput = execFileSync('supabase', ['db', 'query', '--linked', sql, '--output-format', 'json'], {
       encoding: 'utf8',
       cwd: path.join(__dirname, '..'),
       maxBuffer: 10 * 1024 * 1024
