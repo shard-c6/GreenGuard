@@ -63,10 +63,7 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
       - run: npm ci
       - run: npx tsc --noEmit
-        continue-on-error: true
-      # Pre-existing lint debt — report-only until #236 clears it.
       - run: npm run lint
-        continue-on-error: true
       - run: npm run build
         env:
           NEXT_PUBLIC_API_BASE_URL: http://localhost:5000/api

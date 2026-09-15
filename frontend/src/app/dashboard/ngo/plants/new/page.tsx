@@ -158,7 +158,7 @@ export default function NewPlantPage() {
             }}
           />
           {!hasCoordinates && (
-            <p className="text-xs text-amber-600 mt-2 font-bold">Please drag the pin to set the plant's location.</p>
+            <p className="text-xs text-amber-600 mt-2 font-bold">Please drag the pin to set the plant&apos;s location.</p>
           )}
         </div>
 
