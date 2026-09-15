@@ -1,0 +1,82 @@
+[
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "adoptions"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "bookmarks"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "comments"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "follows"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "growth_reports"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "likes"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "ngo_profiles"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "notifications"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "plant_knowledge"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "plants"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "posts"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "profiles"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "saved_plants"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "spatial_ref_sys"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "user_plants"
+  },
+  {
+    "row_count": 0,
+    "schemaname": "public",
+    "tablename": "user_reports"
+  }
+]

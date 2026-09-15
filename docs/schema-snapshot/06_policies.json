@@ -1,0 +1,389 @@
+[
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "adoptions_insert_adopter",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "adoptions"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "adoptions_select_involved",
+    "qual": "((auth.uid() = adopter_id) OR (auth.uid() = ngo_id))",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "adoptions"
+  },
+  {
+    "cmd": "UPDATE",
+    "permissive": "PERMISSIVE",
+    "policyname": "adoptions_update_ngo",
+    "qual": "(auth.uid() = ngo_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "adoptions"
+  },
+  {
+    "cmd": "DELETE",
+    "permissive": "PERMISSIVE",
+    "policyname": "bookmarks_delete_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "bookmarks"
+  },
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "bookmarks_insert_own",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "bookmarks"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "bookmarks_select_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "bookmarks"
+  },
+  {
+    "cmd": "DELETE",
+    "permissive": "PERMISSIVE",
+    "policyname": "comments_delete_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "comments"
+  },
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "comments_insert_auth",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "comments"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "comments_select_all",
+    "qual": "true",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "comments"
+  },
+  {
+    "cmd": "DELETE",
+    "permissive": "PERMISSIVE",
+    "policyname": "follows_delete_own",
+    "qual": "(auth.uid() = follower_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "follows"
+  },
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "follows_insert_own",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "follows"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "follows_select_all",
+    "qual": "true",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "follows"
+  },
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "reports_insert_adopter",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "growth_reports"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "reports_select_all",
+    "qual": "true",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "growth_reports"
+  },
+  {
+    "cmd": "DELETE",
+    "permissive": "PERMISSIVE",
+    "policyname": "likes_delete_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "likes"
+  },
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "likes_insert_own",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "likes"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "likes_select_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "likes"
+  },
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "ngo_profiles_insert_own",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "ngo_profiles"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "ngo_profiles_select_all",
+    "qual": "true",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "ngo_profiles"
+  },
+  {
+    "cmd": "UPDATE",
+    "permissive": "PERMISSIVE",
+    "policyname": "ngo_profiles_update_own",
+    "qual": "(auth.uid() = id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "ngo_profiles"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "notifications_select_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "notifications"
+  },
+  {
+    "cmd": "UPDATE",
+    "permissive": "PERMISSIVE",
+    "policyname": "notifications_update_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "notifications"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "Enable read access for authenticated users",
+    "qual": "true",
+    "roles": "{authenticated}",
+    "schemaname": "public",
+    "tablename": "plant_knowledge"
+  },
+  {
+    "cmd": "DELETE",
+    "permissive": "PERMISSIVE",
+    "policyname": "plants_delete_ngo",
+    "qual": "(auth.uid() = ngo_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "plants"
+  },
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "plants_insert_ngo",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "plants"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "plants_select_all",
+    "qual": "true",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "plants"
+  },
+  {
+    "cmd": "UPDATE",
+    "permissive": "PERMISSIVE",
+    "policyname": "plants_update_ngo",
+    "qual": "(auth.uid() = ngo_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "plants"
+  },
+  {
+    "cmd": "DELETE",
+    "permissive": "PERMISSIVE",
+    "policyname": "posts_delete_author",
+    "qual": "(auth.uid() = author_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "posts"
+  },
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "posts_insert_author",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "posts"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "posts_select_all",
+    "qual": "true",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "posts"
+  },
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "profiles_insert_own",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "profiles"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "profiles_select_all",
+    "qual": "true",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "profiles"
+  },
+  {
+    "cmd": "UPDATE",
+    "permissive": "PERMISSIVE",
+    "policyname": "profiles_update_own",
+    "qual": "(auth.uid() = id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "profiles"
+  },
+  {
+    "cmd": "DELETE",
+    "permissive": "PERMISSIVE",
+    "policyname": "saved_plants_delete_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "saved_plants"
+  },
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "saved_plants_insert_own",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "saved_plants"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "saved_plants_select_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "saved_plants"
+  },
+  {
+    "cmd": "UPDATE",
+    "permissive": "PERMISSIVE",
+    "policyname": "saved_plants_update_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "saved_plants"
+  },
+  {
+    "cmd": "DELETE",
+    "permissive": "PERMISSIVE",
+    "policyname": "user_plants_delete_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "user_plants"
+  },
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "user_plants_insert_own",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "user_plants"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "user_plants_select_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "user_plants"
+  },
+  {
+    "cmd": "UPDATE",
+    "permissive": "PERMISSIVE",
+    "policyname": "user_plants_update_own",
+    "qual": "(auth.uid() = user_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "user_plants"
+  },
+  {
+    "cmd": "INSERT",
+    "permissive": "PERMISSIVE",
+    "policyname": "user_reports_insert_own",
+    "qual": null,
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "user_reports"
+  },
+  {
+    "cmd": "SELECT",
+    "permissive": "PERMISSIVE",
+    "policyname": "user_reports_select_own",
+    "qual": "(auth.uid() = reporter_id)",
+    "roles": "{public}",
+    "schemaname": "public",
+    "tablename": "user_reports"
+  }
+]
