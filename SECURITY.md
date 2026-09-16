@@ -6,14 +6,18 @@ We take the security of GreenGuard, our AI botanical models, and our users' geos
 
 ## 📞 Supported Versions
 
-We currently actively maintain and support the following versions of GreenGuard:
+> [!IMPORTANT]
+> GreenGuard is **pre-alpha and not yet in production use**. There is no deployment
+> serving real users, and no version currently carries a security-support commitment.
+> Do not deploy this for real NGOs or adopters until Phase 2 (Production Hardening)
+> is complete — see [AUDIT_AND_ROADMAP.md](./docs/AUDIT_AND_ROADMAP.md).
 
-| Version | Supported          | Release Date |
+| Branch | Status | Security fixes |
 | :--- | :--- | :--- |
-| v1.x    | ✅ Active Support   | May 2026     |
-| v0.x    | ❌ End of Life     | Beta Testing |
+| `main` | Active development | Yes, on a best-effort basis |
+| Tagged releases | None yet | — |
 
-If you are running an older beta version, please upgrade to the latest production release (`v1.x`) to ensure you have the latest security patches.
+We will publish a supported-version policy when the platform reaches production.
 
 ---
 
@@ -36,6 +40,52 @@ If you discover a vulnerability, please report it privately:
 - **Investigation**: We will investigate and verify the report, keeping you updated on our progress.
 - **Remediation**: Once verified, we will work on a patch or configuration fix.
 - **Disclosure**: We will coordinate with you to release a security advisory alongside a patched release, giving you full credit for the discovery (unless you prefer to remain anonymous).
+
+---
+
+## 🤖 Automated Security Testing
+
+We run automated security tooling against our own systems. This section records **what we run, against what, and under what authority**, so the scope is unambiguous to contributors and to anyone reviewing our practices.
+
+### Authorization basis
+
+Every target listed below is **owned and operated by the GreenGuard team**: this repository, the Vercel frontend deployment, both Hugging Face Spaces, and the Supabase project. We hold the accounts and we authorize the testing. We do **not** test third-party systems, and we do not test any host we do not control.
+
+Contributors must not point any security tool at infrastructure they do not own. This applies especially to the dynamic tools below, which actively attempt exploitation rather than merely reading code.
+
+### What we run
+
+| Tool | Type | Target | Trigger |
+| :--- | :--- | :--- | :--- |
+| **CodeQL** | Static analysis | Repository source | Every push and pull request |
+| **Secret scan** (`ci.yml`) | Credential literals | Repository source | Every push and pull request — **blocking** |
+| **Dependabot** | Dependency CVEs | Manifests and lockfiles | Continuous |
+| **[Strix](https://github.com/usestrix/strix)** | Autonomous AI pentesting | Codebase only, for now | Manual dispatch; weekly once enabled |
+
+### Strix scope and limits
+
+Strix runs AI agents that **dynamically execute against a target and validate findings with working proofs-of-concept**. That makes scope discipline essential.
+
+**In scope today — codebase analysis only.** `.github/workflows/security-scan.yml` runs `strix --target ./` against our own source. It writes no data and generates no live traffic.
+
+**Not in scope yet — black-box testing of the deployed application.** Pointing Strix at a running GreenGuard instance is gated on three things, because it will genuinely try to exploit what it finds:
+
+1. Secret rotation, since a leaked key makes the exercise pointless
+2. The AI service failing closed on a missing API key, since an autonomous agent will otherwise drive paid Gemini and PlantNet calls against our billing
+3. A documented rate-limit baseline
+
+When we do run it against a live instance, we will use a disposable environment with synthetic data, never one holding real NGO or adopter records.
+
+**Operational rules**
+
+- The Strix version is **pinned** in CI. Upstream's `curl | bash` installer executes whatever the URL serves at run time, which we do not accept in an automated pipeline.
+- The workflow is **never a required status check**. Security findings need human triage; an agent should not gate merges.
+- LLM credentials live in repository secrets and are never committed. The workflow fails fast if they are absent.
+- Findings are triaged into issues. We record any finding we consciously accept, with the reason, rather than leaving it silently open.
+
+### Reporting versus scanning
+
+Automated tooling complements but does not replace responsible disclosure. If you find something, please still report it privately using the process above.
 
 ---
 
