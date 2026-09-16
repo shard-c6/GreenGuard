@@ -46,6 +46,7 @@ export default function Navbar() {
 
   // Close profile dropdown on outside click
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     const handler = (e: MouseEvent) => {
       if (profileRef.current && !profileRef.current.contains(e.target as Node)) {

@@ -59,3 +59,6 @@ frontend/lint.json
 .branches
 .temp
 supabase/.temp
+
+# Accidental nested checkout — never commit (see PR #248 review)
+Green_guard_frontend/

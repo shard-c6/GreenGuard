@@ -136,7 +136,7 @@ export default function MyAdoptionsPage() {
                     {a.review_notes && (
                       <div className="mt-4 p-4 bg-emerald-50/50 rounded-2xl border border-white text-sm text-emerald-900/70 italic leading-relaxed">
                         <span className="font-bold text-emerald-600 not-italic block mb-1">NGO Note:</span>
-                        "{a.review_notes}"
+                        &quot;{a.review_notes}&quot;
                       </div>
                     )}
                   </div>
