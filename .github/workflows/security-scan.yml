@@ -1,0 +1,90 @@
+name: Security Scan (Strix)
+
+# Autonomous AI penetration testing via Strix — https://github.com/usestrix/strix
+#
+# DISABLED BY DEFAULT. The schedule below is commented out. Enable it only after:
+#   1. #196  — secrets rotated. The service-role key is currently retrievable from
+#              public git history (see #55), so scanning before rotation just
+#              rediscovers a leak we already know about.
+#   2. #194  — AI service fails closed on a missing API key. Until then an
+#              autonomous agent that finds the consultant endpoint will drive
+#              Gemini and PlantNet calls that bill to us.
+#   3. LLM_API_KEY and STRIX_LLM added to repository secrets.
+#
+# Scope: codebase only (--target ./). Live black-box scanning of the deployed app
+# is Stage 2 in #250 and is deliberately NOT wired up here.
+#
+# Authorization: we own this repository and all deployment targets. See SECURITY.md.
+
+on:
+  # Weekly on Monday 04:00 UTC. Uncomment to enable once the gates above are met.
+  # schedule:
+  #   - cron: '0 4 * * 1'
+  workflow_dispatch:
+    inputs:
+      scan_mode:
+        description: 'Scan depth'
+        type: choice
+        options: [quick, full]
+        default: quick
+      target:
+        description: 'Path to scan (codebase only — do not point at live URLs here)'
+        type: string
+        default: './'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: strix-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  strix:
+    name: Strix codebase scan
+    runs-on: ubuntu-latest
+    # Never let a security agent block merges — findings need human triage.
+    # This workflow is intentionally absent from the branch ruleset's required checks.
+    continue-on-error: true
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'   # strix-agent requires >=3.12
+
+      # Pinned deliberately. Upstream suggests `curl -sSL https://strix.ai/install | bash`,
+      # which executes whatever that URL serves at run time — not acceptable in CI.
+      # Bump this version consciously, not implicitly.
+      - name: Install Strix (pinned)
+        run: pip install "strix-agent==1.6.2"
+
+      - name: Verify secrets are configured
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: |
+          if [ -z "$LLM_API_KEY" ]; then
+            echo "::error::LLM_API_KEY is not set. Add it to repository secrets before enabling this workflow."
+            exit 1
+          fi
+
+      - name: Run Strix
+        env:
+          STRIX_LLM: ${{ secrets.STRIX_LLM }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: |
+          strix -n \
+            --target "${{ inputs.target || './' }}" \
+            --scan-mode "${{ inputs.scan_mode || 'quick' }}"
+
+      - name: Upload findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: strix-findings-${{ github.run_id }}
+          path: |
+            ~/.strix/runs/
+            strix-report*
+          retention-days: 30
+          if-no-files-found: warn
