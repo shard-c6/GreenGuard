@@ -207,7 +207,76 @@ Tracked in #196 (rotation) and #194 (fail-closed).
 
 ---
 
-## 5. Renaming Flora Genius
+## 5. Transactional email and OTP
+
+**Decision: email OTP. SMS is deferred.**
+
+### What is broken today
+
+`backend/src/controllers/auth.controller.js:243` calls `supabase.auth.resetPasswordForEmail()`, which uses Supabase's **default SMTP service**. Verified against Supabase's documentation ✅, that service:
+
+- caps at **2 messages per hour**
+- **"will refuse to deliver messages to addresses that are not part of the project's team"** — everyone else gets `Email address not authorized`
+- carries **no SLA**, and is explicitly not intended for production
+
+This is not a scaling concern. **Password reset works for the four of us and silently fails for every other user.** The frontend compounds it: `forgot-password/page.tsx` renders a success state regardless of the outcome, so a locked-out user is told to check their inbox and waits indefinitely.
+
+Separately, email verification is **disabled** — `auth.controller.js:28` sets `email_confirm: true`, so anyone can register with an address they do not control.
+
+### Do we need to buy anything? Almost nothing
+
+| Item | Cost |
+| :--- | ---: |
+| Transactional email sending | **₹0** — free tiers cover our volume |
+| Sending domain | Already budgeted in section 2 |
+| SPF / DKIM / DMARC records | ₹0 |
+| **Email OTP** | **₹0** — Supabase Auth supports it natively |
+| SMS OTP *(deferred)* | ~₹0.12–0.25 per message |
+
+**Provider: Resend** — 3,000 emails/month, 100/day, 3 domains on the free tier ✅. Alternatives if we outgrow it: Amazon SES (~$0.10 per 1,000, cheapest at scale but needs sandbox-exit approval) or Brevo (300/day).
+
+100 emails/day covers password resets and login OTP for a community platform of this size many times over.
+
+### Why email OTP rather than SMS
+
+| | Email OTP | SMS OTP |
+| :--- | :--- | :--- |
+| Cost | **Free** | ~₹0.12–0.25 per message |
+| Infrastructure | Supabase `signInWithOtp()`, native | New provider integration |
+| Regulatory | None | **DLT registration with TRAI** — header and template approval via the operator |
+| Time to ship | Days | Weeks, gated on paperwork |
+
+Indian users often *expect* SMS OTP, so this is a genuine product decision rather than a purely technical one. We are choosing email because it is free, ships immediately, and carries no regulatory dependency — and because the NGO should not be signing up for TRAI paperwork to launch.
+
+**Revisit if** adoption data shows users dropping out at the OTP step, or if the NGO specifically requests SMS. There is no OTP code in the repository today, so building it behind an interface keeps the SMS door open cheaply.
+
+### The real work is DNS, not spending
+
+Deliverability is the whole game. Without correct records, reset and OTP mail lands in spam — indistinguishable, from the user's side, from it not working at all.
+
+```
+TXT   @                  v=spf1 include:<provider> ~all
+TXT   resend._domainkey  <DKIM key>
+TXT   _dmarc             v=DMARC1; p=none; rua=mailto:dmarc@<domain>
+```
+
+Start DMARC at `p=none` to observe, then tighten to `quarantine` once SPF and DKIM are confirmed aligned. Gmail and Yahoo now effectively require DMARC for bulk senders.
+
+Test against Gmail, Outlook and an Indian ISP before launch.
+
+### One naming note
+
+`no-reply@` is conventional but is an anti-pattern for both deliverability and users — replies vanish into nothing, and some filters score it down. Send from a no-reply identity if you like, but set a monitored `hello@` or `support@` as the reply-to.
+
+### Dependency
+
+Blocked on the domain purchase in section 2 — a sending domain must exist before it can be verified. **That makes the domain a prerequisite for a working auth flow, not just for branding**, which is a good reason to register it earlier than the rest of the production work.
+
+Tracked in #260.
+
+---
+
+## 6. Renaming Flora Genius
 
 You want an older Marathi name. Some candidates, with meanings:
 
@@ -233,6 +302,8 @@ You want an older Marathi name. Some candidates, with meanings:
 | Hosting (≈$59/mo) | ≈ ₹62,000 |
 | ML training experiments (one-off) | ≈ ₹9,000–26,000 |
 | Gemini/Vertex usage (low volume, with caching) | ≈ ₹5,000–15,000 |
+| **Transactional email + email OTP** | **₹0** (Resend free tier) |
+| SMS OTP | Deferred — not in year-one budget |
 | **Year one total** | **≈ ₹80,000–105,000** |
 
 Apply for nonprofit credits first — that could cut it substantially.
