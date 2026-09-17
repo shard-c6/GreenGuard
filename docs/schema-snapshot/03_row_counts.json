@@ -1,82 +1,102 @@
 [
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "adoptions"
+    "tablename": "adoptions",
+    "row_count": 3
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "bookmarks"
+    "tablename": "bookmarks",
+    "row_count": 0
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "comments"
+    "tablename": "comments",
+    "row_count": 2
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "follows"
+    "tablename": "follows",
+    "row_count": 3
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "growth_reports"
+    "tablename": "geography_columns",
+    "row_count": 2
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "likes"
+    "tablename": "geometry_columns",
+    "row_count": 0
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "ngo_profiles"
+    "tablename": "growth_reports",
+    "row_count": 0
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "notifications"
+    "tablename": "likes",
+    "row_count": 0
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "plant_knowledge"
+    "tablename": "ngo_profiles",
+    "row_count": 11
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "plants"
+    "tablename": "notifications",
+    "row_count": 6
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "posts"
+    "tablename": "plant_knowledge",
+    "row_count": 1652
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "profiles"
+    "tablename": "plants",
+    "row_count": 3
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "saved_plants"
+    "tablename": "posts",
+    "row_count": 8
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "spatial_ref_sys"
+    "tablename": "profiles",
+    "row_count": 29
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "user_plants"
+    "tablename": "saved_plants",
+    "row_count": 1
   },
   {
-    "row_count": 0,
     "schemaname": "public",
-    "tablename": "user_reports"
+    "tablename": "spatial_ref_sys",
+    "row_count": 8500
+  },
+  {
+    "schemaname": "public",
+    "tablename": "user_plants",
+    "row_count": 3
+  },
+  {
+    "schemaname": "public",
+    "tablename": "user_reports",
+    "row_count": 0
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "users",
+    "row_count": 29
+  },
+  {
+    "schemaname": "storage",
+    "tablename": "objects",
+    "row_count": 4
   }
 ]

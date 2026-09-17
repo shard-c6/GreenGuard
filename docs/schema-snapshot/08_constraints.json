@@ -1,0 +1,415 @@
+[
+  {
+    "constraint_definition": "CHECK (status = ANY (ARRAY['pending'::text, 'approved'::text, 'rejected'::text]))",
+    "constraint_name": "adoptions_status_check",
+    "constraint_type": "CHECK",
+    "referenced_table": null,
+    "table_name": "adoptions"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (adopter_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "adoptions_adopter_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "adoptions"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (ngo_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "adoptions_ngo_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "adoptions"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (plant_id) REFERENCES plants(id) ON DELETE CASCADE",
+    "constraint_name": "adoptions_plant_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "plants",
+    "table_name": "adoptions"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (id)",
+    "constraint_name": "adoptions_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "adoptions"
+  },
+  {
+    "constraint_definition": "UNIQUE (plant_id, adopter_id)",
+    "constraint_name": "adoptions_plant_id_adopter_id_key",
+    "constraint_type": "UNIQUE",
+    "referenced_table": null,
+    "table_name": "adoptions"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE",
+    "constraint_name": "bookmarks_post_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "posts",
+    "table_name": "bookmarks"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (user_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "bookmarks_user_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "bookmarks"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (user_id, post_id)",
+    "constraint_name": "bookmarks_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "bookmarks"
+  },
+  {
+    "constraint_definition": "CHECK (char_length(content) > 0 AND char_length(content) <= 1000)",
+    "constraint_name": "comments_content_check",
+    "constraint_type": "CHECK",
+    "referenced_table": null,
+    "table_name": "comments"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE",
+    "constraint_name": "comments_post_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "posts",
+    "table_name": "comments"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (user_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "comments_user_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "comments"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (id)",
+    "constraint_name": "comments_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "comments"
+  },
+  {
+    "constraint_definition": "CHECK (follower_id <> following_id)",
+    "constraint_name": "follows_check",
+    "constraint_type": "CHECK",
+    "referenced_table": null,
+    "table_name": "follows"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (follower_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "follows_follower_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "follows"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (following_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "follows_following_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "follows"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (follower_id, following_id)",
+    "constraint_name": "follows_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "follows"
+  },
+  {
+    "constraint_definition": "CHECK (health_status = ANY (ARRAY['healthy'::text, 'needs_attention'::text, 'critical'::text, 'dead'::text]))",
+    "constraint_name": "growth_reports_health_status_check",
+    "constraint_type": "CHECK",
+    "referenced_table": null,
+    "table_name": "growth_reports"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (adopter_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "growth_reports_adopter_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "growth_reports"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (plant_id) REFERENCES plants(id) ON DELETE CASCADE",
+    "constraint_name": "growth_reports_plant_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "plants",
+    "table_name": "growth_reports"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (id)",
+    "constraint_name": "growth_reports_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "growth_reports"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE",
+    "constraint_name": "likes_post_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "posts",
+    "table_name": "likes"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (user_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "likes_user_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "likes"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (user_id, post_id)",
+    "constraint_name": "likes_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "likes"
+  },
+  {
+    "constraint_definition": "CHECK (status = ANY (ARRAY['pending'::text, 'approved'::text, 'rejected'::text, 'suspended'::text]))",
+    "constraint_name": "ngo_profiles_status_check",
+    "constraint_type": "CHECK",
+    "referenced_table": null,
+    "table_name": "ngo_profiles"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (approved_by) REFERENCES profiles(id)",
+    "constraint_name": "ngo_profiles_approved_by_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "ngo_profiles_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (id)",
+    "constraint_name": "ngo_profiles_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "ngo_profiles"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (user_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "notifications_user_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "notifications"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (id)",
+    "constraint_name": "notifications_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "notifications"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (id)",
+    "constraint_name": "plant_knowledge_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "plant_knowledge"
+  },
+  {
+    "constraint_definition": "CHECK (adoption_status = ANY (ARRAY['available'::text, 'pending'::text, 'adopted'::text]))",
+    "constraint_name": "plants_adoption_status_check",
+    "constraint_type": "CHECK",
+    "referenced_table": null,
+    "table_name": "plants"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (adopted_by) REFERENCES profiles(id)",
+    "constraint_name": "plants_adopted_by_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "plants"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (ngo_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "plants_ngo_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "plants"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (id)",
+    "constraint_name": "plants_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "plants"
+  },
+  {
+    "constraint_definition": "CHECK (post_type = ANY (ARRAY['normal'::text, 'plantation'::text]))",
+    "constraint_name": "posts_post_type_check",
+    "constraint_type": "CHECK",
+    "referenced_table": null,
+    "table_name": "posts"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (author_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "posts_author_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "posts"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (plant_id) REFERENCES plants(id)",
+    "constraint_name": "posts_plant_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "plants",
+    "table_name": "posts"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (id)",
+    "constraint_name": "posts_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "posts"
+  },
+  {
+    "constraint_definition": "CHECK (role = ANY (ARRAY['admin'::text, 'ngo'::text, 'adopter'::text]))",
+    "constraint_name": "profiles_role_check",
+    "constraint_type": "CHECK",
+    "referenced_table": null,
+    "table_name": "profiles"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE",
+    "constraint_name": "profiles_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "users",
+    "table_name": "profiles"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (id)",
+    "constraint_name": "profiles_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "profiles"
+  },
+  {
+    "constraint_definition": "UNIQUE (email)",
+    "constraint_name": "profiles_email_key",
+    "constraint_type": "UNIQUE",
+    "referenced_table": null,
+    "table_name": "profiles"
+  },
+  {
+    "constraint_definition": "UNIQUE (username)",
+    "constraint_name": "profiles_username_key",
+    "constraint_type": "UNIQUE",
+    "referenced_table": null,
+    "table_name": "profiles"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE",
+    "constraint_name": "saved_plants_user_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "users",
+    "table_name": "saved_plants"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (id)",
+    "constraint_name": "saved_plants_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "saved_plants"
+  },
+  {
+    "constraint_definition": "CHECK (srid > 0 AND srid <= 998999)",
+    "constraint_name": "spatial_ref_sys_srid_check",
+    "constraint_type": "CHECK",
+    "referenced_table": null,
+    "table_name": "spatial_ref_sys"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (srid)",
+    "constraint_name": "spatial_ref_sys_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "spatial_ref_sys"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (plant_id) REFERENCES plants(id) ON DELETE CASCADE",
+    "constraint_name": "user_plants_plant_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "plants",
+    "table_name": "user_plants"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (user_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "user_plants_user_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "user_plants"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (id)",
+    "constraint_name": "user_plants_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "user_plants"
+  },
+  {
+    "constraint_definition": "UNIQUE (user_id, plant_id)",
+    "constraint_name": "user_plants_user_id_plant_id_key",
+    "constraint_type": "UNIQUE",
+    "referenced_table": null,
+    "table_name": "user_plants"
+  },
+  {
+    "constraint_definition": "CHECK (reporter_id <> reported_user_id)",
+    "constraint_name": "user_reports_check",
+    "constraint_type": "CHECK",
+    "referenced_table": null,
+    "table_name": "user_reports"
+  },
+  {
+    "constraint_definition": "CHECK (reason = ANY (ARRAY['spam'::text, 'harassment'::text, 'fake_ngo'::text, 'misinformation'::text, 'inappropriate_content'::text, 'other'::text]))",
+    "constraint_name": "user_reports_reason_check",
+    "constraint_type": "CHECK",
+    "referenced_table": null,
+    "table_name": "user_reports"
+  },
+  {
+    "constraint_definition": "CHECK (status = ANY (ARRAY['pending'::text, 'resolved'::text, 'dismissed'::text]))",
+    "constraint_name": "user_reports_status_check",
+    "constraint_type": "CHECK",
+    "referenced_table": null,
+    "table_name": "user_reports"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (reported_user_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "user_reports_reported_user_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "user_reports"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (reporter_id) REFERENCES profiles(id) ON DELETE CASCADE",
+    "constraint_name": "user_reports_reporter_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "user_reports"
+  },
+  {
+    "constraint_definition": "FOREIGN KEY (resolved_by) REFERENCES profiles(id)",
+    "constraint_name": "user_reports_resolved_by_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "referenced_table": "profiles",
+    "table_name": "user_reports"
+  },
+  {
+    "constraint_definition": "PRIMARY KEY (id)",
+    "constraint_name": "user_reports_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "referenced_table": null,
+    "table_name": "user_reports"
+  }
+]
