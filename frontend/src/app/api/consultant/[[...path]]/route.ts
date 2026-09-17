@@ -2,15 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const CONSULTANT_BACKEND_URL = process.env.CONSULTANT_API_URL || 'http://localhost:5002/api';
 
-const CONSULTANT_API_KEY: string = (() => {
+function getConsultantApiKey(): string {
   const key = process.env.CONSULTANT_API_KEY;
   if (!key) {
     throw new Error('FATAL: CONSULTANT_API_KEY is not configured');
   }
   return key;
-})();
+}
 
 async function handleProxy(req: NextRequest, context: { params: Promise<{ path?: string[] }> }) {
+  const CONSULTANT_API_KEY = getConsultantApiKey();
+
   const params = await context.params;
   const subpath = params.path ? params.path.join('/') : '';
   const targetUrl = `${CONSULTANT_BACKEND_URL}/consultant/${subpath}`;
