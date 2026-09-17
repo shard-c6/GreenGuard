@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Green Guard v2 — REST API backend for plant adoption platform",
   "main": "server.js",
+  "engines": {
+    "node": "26.4.0"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
