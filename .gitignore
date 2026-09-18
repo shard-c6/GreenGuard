@@ -62,3 +62,6 @@ supabase/.temp
 
 # Accidental nested checkout — never commit (see PR #248 review)
 Green_guard_frontend/
+
+# Impeccable session scratch (decision-page logs are per-session noise)
+.impeccable/questions/
