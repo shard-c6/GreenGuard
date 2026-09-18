@@ -1,6 +1,10 @@
 const Redis = require('ioredis');
 
 const redisUrl = process.env.REDIS_URL || 'redis://127.0.0.1:6379';
+// The null initialiser is the defensive default for the catch path below: if
+// `new Redis()` throws, callers must see null rather than undefined. The rule
+// only sees the reassignment, not the throw path.
+// eslint-disable-next-line no-useless-assignment
 let redisClient = null;
 let redisAvailable = false;
 
