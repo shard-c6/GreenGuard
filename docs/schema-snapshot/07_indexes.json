@@ -1,0 +1,207 @@
+[
+  {
+    "indexdef": "CREATE UNIQUE INDEX adoptions_pkey ON public.adoptions USING btree (id)",
+    "indexname": "adoptions_pkey",
+    "tablename": "adoptions"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX adoptions_plant_id_adopter_id_key ON public.adoptions USING btree (plant_id, adopter_id)",
+    "indexname": "adoptions_plant_id_adopter_id_key",
+    "tablename": "adoptions"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_adoptions_adopter_id ON public.adoptions USING btree (adopter_id)",
+    "indexname": "idx_adoptions_adopter_id",
+    "tablename": "adoptions"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_adoptions_ngo_id ON public.adoptions USING btree (ngo_id)",
+    "indexname": "idx_adoptions_ngo_id",
+    "tablename": "adoptions"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_adoptions_status ON public.adoptions USING btree (status)",
+    "indexname": "idx_adoptions_status",
+    "tablename": "adoptions"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX bookmarks_pkey ON public.bookmarks USING btree (user_id, post_id)",
+    "indexname": "bookmarks_pkey",
+    "tablename": "bookmarks"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX comments_pkey ON public.comments USING btree (id)",
+    "indexname": "comments_pkey",
+    "tablename": "comments"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_comments_post_id ON public.comments USING btree (post_id)",
+    "indexname": "idx_comments_post_id",
+    "tablename": "comments"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_comments_user_id ON public.comments USING btree (user_id)",
+    "indexname": "idx_comments_user_id",
+    "tablename": "comments"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX follows_pkey ON public.follows USING btree (follower_id, following_id)",
+    "indexname": "follows_pkey",
+    "tablename": "follows"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX growth_reports_pkey ON public.growth_reports USING btree (id)",
+    "indexname": "growth_reports_pkey",
+    "tablename": "growth_reports"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_growth_reports_plant_id ON public.growth_reports USING btree (plant_id)",
+    "indexname": "idx_growth_reports_plant_id",
+    "tablename": "growth_reports"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX likes_pkey ON public.likes USING btree (user_id, post_id)",
+    "indexname": "likes_pkey",
+    "tablename": "likes"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX ngo_profiles_pkey ON public.ngo_profiles USING btree (id)",
+    "indexname": "ngo_profiles_pkey",
+    "tablename": "ngo_profiles"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_notifications_is_read ON public.notifications USING btree (user_id, is_read)",
+    "indexname": "idx_notifications_is_read",
+    "tablename": "notifications"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_notifications_user_id ON public.notifications USING btree (user_id)",
+    "indexname": "idx_notifications_user_id",
+    "tablename": "notifications"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX notifications_pkey ON public.notifications USING btree (id)",
+    "indexname": "notifications_pkey",
+    "tablename": "notifications"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_plant_knowledge_fts ON public.plant_knowledge USING gin (fts)",
+    "indexname": "idx_plant_knowledge_fts",
+    "tablename": "plant_knowledge"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX plant_knowledge_pkey ON public.plant_knowledge USING btree (id)",
+    "indexname": "plant_knowledge_pkey",
+    "tablename": "plant_knowledge"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_plants_adoption_status ON public.plants USING btree (adoption_status)",
+    "indexname": "idx_plants_adoption_status",
+    "tablename": "plants"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_plants_location ON public.plants USING gist (location)",
+    "indexname": "idx_plants_location",
+    "tablename": "plants"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_plants_ngo_id ON public.plants USING btree (ngo_id)",
+    "indexname": "idx_plants_ngo_id",
+    "tablename": "plants"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX plants_pkey ON public.plants USING btree (id)",
+    "indexname": "plants_pkey",
+    "tablename": "plants"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_posts_author_id ON public.posts USING btree (author_id)",
+    "indexname": "idx_posts_author_id",
+    "tablename": "posts"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_posts_location ON public.posts USING gist (location)",
+    "indexname": "idx_posts_location",
+    "tablename": "posts"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_posts_post_type ON public.posts USING btree (post_type)",
+    "indexname": "idx_posts_post_type",
+    "tablename": "posts"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX posts_pkey ON public.posts USING btree (id)",
+    "indexname": "posts_pkey",
+    "tablename": "posts"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX profiles_email_key ON public.profiles USING btree (email)",
+    "indexname": "profiles_email_key",
+    "tablename": "profiles"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX profiles_pkey ON public.profiles USING btree (id)",
+    "indexname": "profiles_pkey",
+    "tablename": "profiles"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX profiles_username_key ON public.profiles USING btree (username)",
+    "indexname": "profiles_username_key",
+    "tablename": "profiles"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_saved_plants_user_id ON public.saved_plants USING btree (user_id)",
+    "indexname": "idx_saved_plants_user_id",
+    "tablename": "saved_plants"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX saved_plants_pkey ON public.saved_plants USING btree (id)",
+    "indexname": "saved_plants_pkey",
+    "tablename": "saved_plants"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX spatial_ref_sys_pkey ON public.spatial_ref_sys USING btree (srid)",
+    "indexname": "spatial_ref_sys_pkey",
+    "tablename": "spatial_ref_sys"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_user_plants_plant_id ON public.user_plants USING btree (plant_id)",
+    "indexname": "idx_user_plants_plant_id",
+    "tablename": "user_plants"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_user_plants_user_id ON public.user_plants USING btree (user_id)",
+    "indexname": "idx_user_plants_user_id",
+    "tablename": "user_plants"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX user_plants_pkey ON public.user_plants USING btree (id)",
+    "indexname": "user_plants_pkey",
+    "tablename": "user_plants"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX user_plants_user_id_plant_id_key ON public.user_plants USING btree (user_id, plant_id)",
+    "indexname": "user_plants_user_id_plant_id_key",
+    "tablename": "user_plants"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_user_reports_reported ON public.user_reports USING btree (reported_user_id)",
+    "indexname": "idx_user_reports_reported",
+    "tablename": "user_reports"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_user_reports_reporter ON public.user_reports USING btree (reporter_id)",
+    "indexname": "idx_user_reports_reporter",
+    "tablename": "user_reports"
+  },
+  {
+    "indexdef": "CREATE INDEX idx_user_reports_status ON public.user_reports USING btree (status)",
+    "indexname": "idx_user_reports_status",
+    "tablename": "user_reports"
+  },
+  {
+    "indexdef": "CREATE UNIQUE INDEX user_reports_pkey ON public.user_reports USING btree (id)",
+    "indexname": "user_reports_pkey",
+    "tablename": "user_reports"
+  }
+]

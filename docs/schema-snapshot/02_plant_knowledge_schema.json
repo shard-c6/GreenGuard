@@ -1,0 +1,44 @@
+[
+  {
+    "column_default": "gen_random_uuid()",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO"
+  },
+  {
+    "column_default": null,
+    "column_name": "plant_name",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "column_default": null,
+    "column_name": "scientific_name",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "column_default": null,
+    "column_name": "content",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "column_default": null,
+    "column_name": "embedding",
+    "data_type": "USER-DEFINED",
+    "is_nullable": "YES"
+  },
+  {
+    "column_default": null,
+    "column_name": "metadata",
+    "data_type": "jsonb",
+    "is_nullable": "YES"
+  },
+  {
+    "column_default": null,
+    "column_name": "fts",
+    "data_type": "tsvector",
+    "is_nullable": "YES"
+  }
+]

@@ -1,0 +1,5426 @@
+[
+  {
+    "full_definition": null,
+    "function_name": "_postgis_deprecate",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_postgis_index_extent",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_postgis_join_selectivity",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_postgis_pgsql_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_postgis_scripts_pgsql_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_postgis_selectivity",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_postgis_stats",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_3ddfullywithin",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_3ddwithin",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_3dintersects",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_asgml",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_asx3d",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_bestsrid",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_bestsrid",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_contains",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_containsproperly",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_coveredby",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_coveredby",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_covers",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_covers",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_crosses",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_dfullywithin",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_distancetree",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_distancetree",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_distanceuncached",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_distanceuncached",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_distanceuncached",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_dwithin",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_dwithin",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_dwithinuncached",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_dwithinuncached",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_equals",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_expand",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_geomfromgml",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_intersects",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_linecrossingdirection",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_longestline",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_maxdistance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_orderingequals",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_overlaps",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_pointoutside",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_sortablehash",
+    "return_type": "bigint",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_touches",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_voronoi",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "_st_within",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "addauth",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "addgeometrycolumn",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "addgeometrycolumn",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "addgeometrycolumn",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "array_to_halfvec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "array_to_halfvec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "array_to_halfvec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "array_to_halfvec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "array_to_sparsevec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "array_to_sparsevec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "array_to_sparsevec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "array_to_sparsevec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "array_to_vector",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "array_to_vector",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "array_to_vector",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "array_to_vector",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "avg",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "avg",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "binary_quantize",
+    "return_type": "bit",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "binary_quantize",
+    "return_type": "bit",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box",
+    "return_type": "box",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box",
+    "return_type": "box",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box2d",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box2d",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box2d_in",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box2d_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box2df_in",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box2df_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box3d",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box3d",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box3d_in",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box3d_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "box3dtobox",
+    "return_type": "box",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "bytea",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "bytea",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "checkauth",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "checkauth",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "checkauthtrigger",
+    "return_type": "trigger",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "contains_2d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "contains_2d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "contains_2d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "cosine_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "cosine_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "cosine_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": "\nBEGIN\n  UPDATE posts SET bookmarks_count = GREATEST(0, bookmarks_count - 1) WHERE id = p_post_id;\nEND;\n",
+    "function_name": "decrement_bookmarks",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": "\nBEGIN\n  UPDATE posts SET comments_count = GREATEST(0, comments_count - 1) WHERE id = p_post_id;\nEND;\n",
+    "function_name": "decrement_comments",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": "\nBEGIN\n  UPDATE posts SET likes_count = GREATEST(0, likes_count - 1) WHERE id = p_post_id;\nEND;\n",
+    "function_name": "decrement_likes",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "disablelongtransactions",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "dropgeometrycolumn",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "dropgeometrycolumn",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "dropgeometrycolumn",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "dropgeometrytable",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "dropgeometrytable",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "dropgeometrytable",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "enablelongtransactions",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "equals",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "find_srid",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geog_brin_inclusion_add_value",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_analyze",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_cmp",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_distance_knn",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_eq",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_ge",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_gist_compress",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_gist_consistent",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_gist_decompress",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_gist_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_gist_penalty",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_gist_picksplit",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_gist_same",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_gist_union",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_gt",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_in",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_le",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_lt",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_overlaps",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_recv",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_send",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_spgist_choose_nd",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_spgist_compress_nd",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_spgist_config_nd",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_spgist_inner_consistent_nd",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_spgist_leaf_consistent_nd",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_spgist_picksplit_nd",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_typmod_in",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geography_typmod_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geom2d_brin_inclusion_add_value",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geom3d_brin_inclusion_add_value",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geom4d_brin_inclusion_add_value",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_above",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_analyze",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_below",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_cmp",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_contained_3d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_contains",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_contains_3d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_contains_nd",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_distance_box",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_distance_centroid",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_distance_centroid_nd",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_distance_cpa",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_eq",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_ge",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_compress_2d",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_compress_nd",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_consistent_2d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_consistent_nd",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_decompress_2d",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_decompress_nd",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_distance_2d",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_distance_nd",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_penalty_2d",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_penalty_nd",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_picksplit_2d",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_picksplit_nd",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_same_2d",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_same_nd",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_sortsupport_2d",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_union_2d",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gist_union_nd",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_gt",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_hash",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_in",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_le",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_left",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_lt",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_overabove",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_overbelow",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_overlaps",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_overlaps_3d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_overlaps_nd",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_overleft",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_overright",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_recv",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_right",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_same",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_same_3d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_same_nd",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_send",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_sortsupport",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_choose_2d",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_choose_3d",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_choose_nd",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_compress_2d",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_compress_3d",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_compress_nd",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_config_2d",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_config_3d",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_config_nd",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_inner_consistent_2d",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_inner_consistent_3d",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_inner_consistent_nd",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_leaf_consistent_2d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_leaf_consistent_3d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_leaf_consistent_nd",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_picksplit_2d",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_picksplit_3d",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_spgist_picksplit_nd",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_typmod_in",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_typmod_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_within",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometry_within_nd",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometrytype",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geometrytype",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geomfromewkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "geomfromewkt",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "get_proj4_from_srid",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gettransactionid",
+    "return_type": "xid",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gidx_in",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gidx_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gin_extract_query_trgm",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gin_extract_value_trgm",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gin_trgm_consistent",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gin_trgm_triconsistent",
+    "return_type": "\"char\"",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gserialized_gist_joinsel_2d",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gserialized_gist_joinsel_nd",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gserialized_gist_sel_2d",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gserialized_gist_sel_nd",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gtrgm_compress",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gtrgm_consistent",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gtrgm_decompress",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gtrgm_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gtrgm_in",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gtrgm_options",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gtrgm_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gtrgm_penalty",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gtrgm_picksplit",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gtrgm_same",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "gtrgm_union",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_accum",
+    "return_type": "ARRAY",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_add",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_avg",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_cmp",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_combine",
+    "return_type": "ARRAY",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_concat",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_eq",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_ge",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_gt",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_in",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_l2_squared_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_le",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_lt",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_mul",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_ne",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_negative_inner_product",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_recv",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_send",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_spherical_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_sub",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_to_float4",
+    "return_type": "ARRAY",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_to_sparsevec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_to_vector",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "halfvec_typmod_in",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "hamming_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": "\ndeclare\n  base_username text;\n  final_username text;\nbegin\n  -- Skip if this is a standard email registration (handled by backend)\n  -- Social providers will have 'google', 'apple', or 'facebook' in the raw_app_meta_data->>'provider'\n  if (new.raw_app_meta_data->>'provider' is null or new.raw_app_meta_data->>'provider' = 'email') then\n    return new;\n  end if;\n\n  -- Generate a base username from the email if not provided\n  base_username := coalesce(\n    new.raw_user_meta_data->>'user_name',\n    split_part(new.email, '@', 1)\n  );\n  \n  -- Fallback if username is somehow empty\n  if base_username is null or base_username = '' then\n    base_username := 'user_' || substr(new.id::text, 1, 8);\n  end if;\n\n  -- Ensure unique username\n  final_username := base_username;\n  while exists(select 1 from public.profiles where username = final_username) loop\n    final_username := base_username || '_' || floor(random() * 10000)::int;\n  end loop;\n\n  insert into public.profiles (\n    id,\n    email,\n    username,\n    display_name,\n    role,\n    avatar_url\n  ) values (\n    new.id,\n    new.email,\n    final_username,\n    coalesce(new.raw_user_meta_data->>'full_name', final_username),\n    'adopter', -- Default role for OAuth users\n    new.raw_user_meta_data->>'avatar_url'\n  );\n\n  return new;\nend;\n",
+    "function_name": "handle_new_user",
+    "return_type": "trigger",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "hnsw_bit_support",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "hnsw_halfvec_support",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "hnsw_sparsevec_support",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "hnswhandler",
+    "return_type": "index_am_handler",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": "\nBEGIN\n  RETURN QUERY\n  WITH semantic_search AS (\n    SELECT \n      pk.id, \n      pk.content, \n      pk.scientific_name,\n      1 - (pk.embedding <=> query_embedding) AS score,\n      ROW_NUMBER() OVER (ORDER BY pk.embedding <=> query_embedding) as rank\n    FROM public.plant_knowledge pk\n    WHERE 1 - (pk.embedding <=> query_embedding) > match_threshold\n    LIMIT match_count * 2\n  ),\n  keyword_search AS (\n    SELECT \n      pk.id, \n      pk.content, \n      pk.scientific_name,\n      ts_rank_cd(pk.fts, websearch_to_tsquery('english', query_text)) AS score,\n      ROW_NUMBER() OVER (ORDER BY ts_rank_cd(pk.fts, websearch_to_tsquery('english', query_text)) DESC) as rank\n    FROM public.plant_knowledge pk\n    WHERE pk.fts @@ websearch_to_tsquery('english', query_text)\n    LIMIT match_count * 2\n  )\n  SELECT \n    COALESCE(s.id, k.id) as id,\n    COALESCE(s.content, k.content) as content,\n    COALESCE(s.scientific_name, k.scientific_name) as scientific_name,\n    (\n      COALESCE(1.0::FLOAT8 / (60 + s.rank)::FLOAT8, 0.0::FLOAT8) + \n      COALESCE(1.0::FLOAT8 / (60 + k.rank)::FLOAT8, 0.0::FLOAT8)\n    )::FLOAT8 AS similarity\n  FROM semantic_search s\n  FULL OUTER JOIN keyword_search k ON s.id = k.id\n  ORDER BY similarity DESC\n  LIMIT match_count;\nEND;\n",
+    "function_name": "hybrid_plant_search",
+    "return_type": "record",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": "\nBEGIN\n  UPDATE posts SET bookmarks_count = bookmarks_count + 1 WHERE id = p_post_id;\nEND;\n",
+    "function_name": "increment_bookmarks",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": "\nBEGIN\n  UPDATE posts SET comments_count = comments_count + 1 WHERE id = p_post_id;\nEND;\n",
+    "function_name": "increment_comments",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": "\nBEGIN\n  UPDATE posts SET likes_count = likes_count + 1 WHERE id = p_post_id;\nEND;\n",
+    "function_name": "increment_likes",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "inner_product",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "inner_product",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "inner_product",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "is_contained_2d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "is_contained_2d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "is_contained_2d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "ivfflat_bit_support",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "ivfflat_halfvec_support",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "ivfflathandler",
+    "return_type": "index_am_handler",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "jaccard_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "json",
+    "return_type": "json",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "jsonb",
+    "return_type": "jsonb",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "l1_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "l1_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "l1_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "l2_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "l2_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "l2_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "l2_norm",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "l2_norm",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "l2_normalize",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "l2_normalize",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "l2_normalize",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "lockrow",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "lockrow",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "lockrow",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "lockrow",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "longtransactionsenabled",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": "\nbegin\n  return query\n  select\n    pk.content,\n    1 - (pk.embedding <=> query_embedding) as similarity\n  from plant_knowledge pk\n  where 1 - (pk.embedding <=> query_embedding) > match_threshold\n  order by similarity desc\n  limit match_count;\nend;\n",
+    "function_name": "match_plant_knowledge",
+    "return_type": "record",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": "\nBEGIN\n  RETURN QUERY\n  SELECT\n    p.id,\n    p.ngo_id,\n    p.plant_name,\n    p.species,\n    p.image_urls,\n    p.adoption_status,\n    p.adopted_by,\n    p.address,\n    ST_Distance(p.location, ST_SetSRID(ST_MakePoint(user_lng, user_lat), 4326)::geography) AS distance_meters,\n    ST_Y(p.location::geometry) AS latitude,\n    ST_X(p.location::geometry) AS longitude\n  FROM plants p\n  WHERE ST_DWithin(\n    p.location,\n    ST_SetSRID(ST_MakePoint(user_lng, user_lat), 4326)::geography,\n    radius_meters\n  )\n  ORDER BY distance_meters;\nEND;\n",
+    "function_name": "nearby_plants",
+    "return_type": "record",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": "\nBEGIN\n  RETURN QUERY\n  SELECT\n    p.id,\n    p.ngo_id,\n    p.plant_name,\n    p.species,\n    p.image_urls,\n    p.adoption_status,\n    p.adopted_by,\n    p.address,\n    ST_Distance(p.location, ST_SetSRID(ST_MakePoint(user_lng, user_lat), 4326)::geography) AS distance_meters,\n    ST_Y(p.location::geometry) AS latitude,\n    ST_X(p.location::geometry) AS longitude\n  FROM plants p\n  WHERE ST_DWithin(\n    p.location,\n    ST_SetSRID(ST_MakePoint(user_lng, user_lat), 4326)::geography,\n    radius_meters\n  )\n  ORDER BY distance_meters;\nEND;\n",
+    "function_name": "nearby_plants",
+    "return_type": "record",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "overlaps_2d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "overlaps_2d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "overlaps_2d",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "overlaps_geog",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "overlaps_geog",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "overlaps_geog",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "overlaps_nd",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "overlaps_nd",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "overlaps_nd",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "path",
+    "return_type": "path",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asflatgeobuf_finalfn",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asflatgeobuf_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asflatgeobuf_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asflatgeobuf_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asgeobuf_finalfn",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asgeobuf_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asgeobuf_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asmvt_combinefn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asmvt_deserialfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asmvt_finalfn",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asmvt_serialfn",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asmvt_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asmvt_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asmvt_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asmvt_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_asmvt_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_accum_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_accum_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_accum_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_clusterintersecting_finalfn",
+    "return_type": "ARRAY",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_clusterwithin_finalfn",
+    "return_type": "ARRAY",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_collect_finalfn",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_makeline_finalfn",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_polygonize_finalfn",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_union_parallel_combinefn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_union_parallel_deserialfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_union_parallel_finalfn",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_union_parallel_serialfn",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_union_parallel_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "pgis_geometry_union_parallel_transfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "point",
+    "return_type": "point",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "polygon",
+    "return_type": "polygon",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "populate_geometry_columns",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "populate_geometry_columns",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_addbbox",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_cache_bbox",
+    "return_type": "trigger",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_constraint_dims",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_constraint_srid",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_constraint_type",
+    "return_type": "character varying",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_dropbbox",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_extensions_upgrade",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_full_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_geos_noop",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_geos_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_getbbox",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_hasbbox",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_index_supportfn",
+    "return_type": "internal",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_lib_build_date",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_lib_revision",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_lib_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_libjson_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_liblwgeom_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_libprotobuf_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_libxml_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_noop",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_proj_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_scripts_build_date",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_scripts_installed",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_scripts_released",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_svn_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_transform_geometry",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_type_name",
+    "return_type": "character varying",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_typmod_dims",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_typmod_srid",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_typmod_type",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "postgis_wagyu_version",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "set_limit",
+    "return_type": "real",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "show_limit",
+    "return_type": "real",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "show_trgm",
+    "return_type": "ARRAY",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "similarity",
+    "return_type": "real",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "similarity_dist",
+    "return_type": "real",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "similarity_op",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_cmp",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_eq",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_ge",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_gt",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_in",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_l2_squared_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_le",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_lt",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_ne",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_negative_inner_product",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_recv",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_send",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_to_halfvec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_to_vector",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sparsevec_typmod_in",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "spheroid_in",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "spheroid_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3dclosestpoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3ddfullywithin",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3ddistance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3ddwithin",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3dextent",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3dintersects",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3dlength",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3dlineinterpolatepoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3dlongestline",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3dmakebox",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3dmaxdistance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3dperimeter",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_3dshortestline",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_addmeasure",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_addpoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_addpoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_affine",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_affine",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_angle",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_angle",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_area",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_area",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_area",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_area2d",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asbinary",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asbinary",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asbinary",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asbinary",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asencodedpolyline",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asewkb",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asewkb",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asewkt",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asewkt",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asewkt",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asewkt",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asewkt",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asflatgeobuf",
+    "return_type": "bytea",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asflatgeobuf",
+    "return_type": "bytea",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asflatgeobuf",
+    "return_type": "bytea",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asgeobuf",
+    "return_type": "bytea",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asgeobuf",
+    "return_type": "bytea",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asgeojson",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asgeojson",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asgeojson",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asgeojson",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asgml",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asgml",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asgml",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asgml",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asgml",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_ashexewkb",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_ashexewkb",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_askml",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_askml",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_askml",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_aslatlontext",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asmarc21",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asmvt",
+    "return_type": "bytea",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asmvt",
+    "return_type": "bytea",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asmvt",
+    "return_type": "bytea",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asmvt",
+    "return_type": "bytea",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asmvt",
+    "return_type": "bytea",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asmvtgeom",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_assvg",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_assvg",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_assvg",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_astext",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_astext",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_astext",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_astext",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_astext",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_astwkb",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_astwkb",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_asx3d",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_azimuth",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_azimuth",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_bdmpolyfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_bdpolyfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_boundary",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_boundingdiagonal",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_box2dfromgeohash",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_buffer",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_buffer",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_buffer",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_buffer",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_buffer",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_buffer",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_buffer",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_buffer",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_buildarea",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_centroid",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_centroid",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_centroid",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_chaikinsmoothing",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_cleangeometry",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_clipbybox2d",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_closestpoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_closestpointofapproach",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_clusterdbscan",
+    "return_type": "integer",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_clusterintersecting",
+    "return_type": "ARRAY",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_clusterintersecting",
+    "return_type": "ARRAY",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_clusterkmeans",
+    "return_type": "integer",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_clusterwithin",
+    "return_type": "ARRAY",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_clusterwithin",
+    "return_type": "ARRAY",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_collect",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_collect",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_collect",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_collectionextract",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_collectionextract",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_collectionhomogenize",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_combinebbox",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_combinebbox",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_combinebbox",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_concavehull",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_contains",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_containsproperly",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_convexhull",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_coorddim",
+    "return_type": "smallint",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_coveredby",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_coveredby",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_coveredby",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_covers",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_covers",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_covers",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_cpawithin",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_crosses",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_curvetoline",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_delaunaytriangles",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_dfullywithin",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_difference",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_dimension",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_disjoint",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_distancecpa",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_distancesphere",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_distancesphere",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_distancespheroid",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_distancespheroid",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_dump",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_dumppoints",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_dumprings",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_dumpsegments",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_dwithin",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_dwithin",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_dwithin",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_endpoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_envelope",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_equals",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_estimatedextent",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_estimatedextent",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_estimatedextent",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_expand",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_expand",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_expand",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_expand",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_expand",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_expand",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_extent",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_exteriorring",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_filterbym",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_findextent",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_findextent",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_flipcoordinates",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_force2d",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_force3d",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_force3dm",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_force3dz",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_force4d",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_forcecollection",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_forcecurve",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_forcepolygonccw",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_forcepolygoncw",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_forcerhr",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_forcesfs",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_forcesfs",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_frechetdistance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_fromflatgeobuf",
+    "return_type": "anyelement",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_fromflatgeobuftotable",
+    "return_type": "void",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_generatepoints",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_generatepoints",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geogfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geogfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geographyfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geohash",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geohash",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomcollfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomcollfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomcollfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomcollfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geometricmedian",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geometryfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geometryfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geometryn",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geometrytype",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromewkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromewkt",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromgeohash",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromgeojson",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromgeojson",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromgeojson",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromgml",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromgml",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromkml",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfrommarc21",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromtwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_geomfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_gmltosql",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_gmltosql",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_hasarc",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_hausdorffdistance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_hausdorffdistance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_hexagon",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_hexagongrid",
+    "return_type": "record",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_interiorringn",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_interpolatepoint",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_intersection",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_intersection",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_intersection",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_intersects",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_intersects",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_intersects",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_isclosed",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_iscollection",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_isempty",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_ispolygonccw",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_ispolygoncw",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_isring",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_issimple",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_isvalid",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_isvalid",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_isvaliddetail",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_isvalidreason",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_isvalidreason",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_isvalidtrajectory",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_length",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_length",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_length",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_length2d",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_length2dspheroid",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_lengthspheroid",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_letters",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linecrossingdirection",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linefromencodedpolyline",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linefrommultipoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linefromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linefromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linefromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linefromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_lineinterpolatepoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_lineinterpolatepoints",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linelocatepoint",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linemerge",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linemerge",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linestringfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linestringfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linesubstring",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_linetocurve",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_locatealong",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_locatebetween",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_locatebetweenelevations",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_longestline",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_m",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makebox2d",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makeenvelope",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makeline",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makeline",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makeline",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makepoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makepoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makepoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makepointm",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makepolygon",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makepolygon",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makevalid",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_makevalid",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_maxdistance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_maximuminscribedcircle",
+    "return_type": "record",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_memcollect",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_memsize",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_memunion",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_minimumboundingcircle",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_minimumboundingradius",
+    "return_type": "record",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_minimumclearance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_minimumclearanceline",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_mlinefromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_mlinefromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_mlinefromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_mlinefromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_mpointfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_mpointfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_mpointfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_mpointfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_mpolyfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_mpolyfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_mpolyfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_mpolyfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_multi",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_multilinefromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_multilinestringfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_multilinestringfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_multipointfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_multipointfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_multipointfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_multipolyfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_multipolyfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_multipolygonfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_multipolygonfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_ndims",
+    "return_type": "smallint",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_node",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_normalize",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_npoints",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_nrings",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_numgeometries",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_numinteriorring",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_numinteriorrings",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_numpatches",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_numpoints",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_offsetcurve",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_orderingequals",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_orientedenvelope",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_overlaps",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_patchn",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_perimeter",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_perimeter",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_perimeter2d",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_point",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_point",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_pointfromgeohash",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_pointfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_pointfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_pointfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_pointfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_pointinsidecircle",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_pointm",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_pointn",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_pointonsurface",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_points",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_pointz",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_pointzm",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_polyfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_polyfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_polyfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_polyfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_polygon",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_polygonfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_polygonfromtext",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_polygonfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_polygonfromwkb",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_polygonize",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_polygonize",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_project",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_quantizecoordinates",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_reduceprecision",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_relate",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_relate",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_relate",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_relatematch",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_removepoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_removerepeatedpoints",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_reverse",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_rotate",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_rotate",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_rotate",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_rotatex",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_rotatey",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_rotatez",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_scale",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_scale",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_scale",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_scale",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_scroll",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_segmentize",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_segmentize",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_seteffectivearea",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_setpoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_setsrid",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_setsrid",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_sharedpaths",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_shiftlongitude",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_shortestline",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_simplify",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_simplify",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_simplifypolygonhull",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_simplifypreservetopology",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_simplifyvw",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_snap",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_snaptogrid",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_snaptogrid",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_snaptogrid",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_snaptogrid",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_split",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_square",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_squaregrid",
+    "return_type": "record",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_srid",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_srid",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_startpoint",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_subdivide",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_summary",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_summary",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_swapordinates",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_symdifference",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_symmetricdifference",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_tileenvelope",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_touches",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_transform",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_transform",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_transform",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_transform",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_translate",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_translate",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_transscale",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_triangulatepolygon",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_unaryunion",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_union",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_union",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_union",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_union",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_union",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_voronoilines",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_voronoipolygons",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_within",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_wkbtosql",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_wkttosql",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_wrapx",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_x",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_xmax",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_xmin",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_y",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_ymax",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_ymin",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_z",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_zmax",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_zmflag",
+    "return_type": "smallint",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "st_zmin",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "strict_word_similarity",
+    "return_type": "real",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "strict_word_similarity_commutator_op",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "strict_word_similarity_dist_commutator_op",
+    "return_type": "real",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "strict_word_similarity_dist_op",
+    "return_type": "real",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "strict_word_similarity_op",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "subvector",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "subvector",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "sum",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "sum",
+    "return_type": "USER-DEFINED",
+    "routine_type": null
+  },
+  {
+    "full_definition": null,
+    "function_name": "text",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "unlockrows",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "updategeometrysrid",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "updategeometrysrid",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "updategeometrysrid",
+    "return_type": "text",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_accum",
+    "return_type": "ARRAY",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_add",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_avg",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_cmp",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_combine",
+    "return_type": "ARRAY",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_concat",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_dims",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_dims",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_eq",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_ge",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_gt",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_in",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_l2_squared_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_le",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_lt",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_mul",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_ne",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_negative_inner_product",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_norm",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_out",
+    "return_type": "cstring",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_recv",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_send",
+    "return_type": "bytea",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_spherical_distance",
+    "return_type": "double precision",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_sub",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_to_float4",
+    "return_type": "ARRAY",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_to_halfvec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_to_sparsevec",
+    "return_type": "USER-DEFINED",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "vector_typmod_in",
+    "return_type": "integer",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "word_similarity",
+    "return_type": "real",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "word_similarity_commutator_op",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "word_similarity_dist_commutator_op",
+    "return_type": "real",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "word_similarity_dist_op",
+    "return_type": "real",
+    "routine_type": "FUNCTION"
+  },
+  {
+    "full_definition": null,
+    "function_name": "word_similarity_op",
+    "return_type": "boolean",
+    "routine_type": "FUNCTION"
+  }
+]
