@@ -1,5 +1,6 @@
-# Use Node.js 20 LTS as base
-FROM node:20-slim
+# Node 24 LTS. Capped by Vercel, which rejects Node 26 on its build
+# platform; kept identical here so every service runs one runtime.
+FROM node:24-slim
 
 # Set working directory
 WORKDIR /app
