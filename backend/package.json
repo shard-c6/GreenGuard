@@ -1,10 +1,10 @@
 {
   "name": "green-guard-backend",
   "version": "1.0.0",
-  "description": "Green Guard v2 — REST API backend for plant adoption platform",
+  "description": "Green Guard v2 \u2014 REST API backend for plant adoption platform",
   "main": "server.js",
   "engines": {
-    "node": "26.4.0"
+    "node": "24.x"
   },
   "scripts": {
     "start": "node server.js",

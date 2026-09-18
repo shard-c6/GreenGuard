@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "26.4.0"
+    "node": "24.x"
   },
   "scripts": {
     "start": "node src/server.js",
