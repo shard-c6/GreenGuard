@@ -27,11 +27,12 @@ jobs:
           cache: npm
           cache-dependency-path: backend/package-lock.json
       - run: npm ci
-      # Pre-existing lint debt — report-only until #236 clears it, then remove
-      # continue-on-error and make this blocking.
+      # Backend lint debt is cleared, so this now actually gates. A required
+      # status check that cannot fail protects nothing.
       - run: npm run lint
-        continue-on-error: true
-      # Tests land in #212. Once they exist, remove continue-on-error.
+      # Backend declares a "test" script but has no test files, so --if-present
+      # runs jest and jest exits non-zero on an empty suite. Stays advisory
+      # until #212 adds real tests, then this becomes blocking too.
       - run: npm test --if-present
         continue-on-error: true
 
