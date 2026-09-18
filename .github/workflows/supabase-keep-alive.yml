@@ -27,31 +27,46 @@ jobs:
             -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
             -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
 
+      # Alerting runs through github-script rather than the gh CLI: the CLI step
+      # failed silently in CI for four consecutive days, so the workflow detected
+      # the outage and told nobody. An alerting path that can itself fail is worse
+      # than no alerting, because it looks like everything is fine.
       - name: Open an issue if the ping failed
         if: failure()
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          # Avoid piling up duplicates — reuse the open alert if one exists.
-          existing=$(gh issue list --label "incident" --state open \
-                       --search "Supabase unreachable in:title" \
-                       --json number --jq '.[0].number')
-          body="The daily Supabase keep-alive ping failed.
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = "Supabase unreachable — keep-alive ping failed";
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              "The daily Supabase keep-alive ping failed.",
+              "",
+              "**Check in this order:**",
+              "1. `SUPABASE_URL` and `SUPABASE_ANON_KEY` repository secrets — an HTTP 401 means the key is wrong or stale, not that the project is paused.",
+              "2. Whether the project has paused. A paused project rejects the ping, so this keeps failing until someone restores it from the dashboard.",
+              "",
+              "Runbook: `docs/PHASE0_PLAN.md` step S1.",
+              "",
+              `Run: ${run}`
+            ].join("\n");
 
-          **Most likely cause:** the project has paused. A paused project rejects
-          the ping, so this will keep failing until someone restores it from the
-          dashboard.
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: "open", labels: "incident", per_page: 50
+            });
+            const existing = open.find(i => i.title === title);
 
-          Runbook: \`docs/PHASE0_PLAN.md\` step S1.
-
-          Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-
-          if [ -n "$existing" ]; then
-            gh issue comment "$existing" --body "$body"
-          else
-            gh issue create \
-              --title "Supabase unreachable — keep-alive ping failed" \
-              --label "incident,priority/P0,area/database" \
-              --assignee "rahulcodes-java" \
-              --body "$body"
-          fi
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: existing.number, body
+              });
+              core.notice(`Commented on existing incident #${existing.number}`);
+            } else {
+              const { data: made } = await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: ["incident", "priority/P0", "area/database"],
+                assignees: ["rahulcodes-java"]
+              });
+              core.notice(`Opened incident #${made.number}`);
+            }
