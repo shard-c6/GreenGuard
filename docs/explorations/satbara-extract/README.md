@@ -33,19 +33,17 @@ the handover.
 ## What came out of it that we ARE using
 
 The UX findings below are **independent of any visual direction** and apply to the
-existing UI exactly as much as they did to this one. They are filed as issues
+existing UI exactly as much as they did to this one. Each is filed as an issue
 against the shipped app:
 
-- The NGO plant form asks a volunteer to type raw decimal latitude and longitude
-  into two required number inputs. Nobody standing in a field does that correctly.
-- Distance is not the primary sort on discovery, though proximity is the entire
-  product mechanism — an adopter 40 km away waters nothing.
-- Adopters and NGO staff share one dashboard that serves neither well.
-- Plant health is carried by colour alone, which fails in direct sun and for
-  colourblind users. It should be named, ordered words first.
-- A plant with no growth reports has no empty state.
-- Touch targets, focus management, and screen-reader announcements need a pass
-  for one-handed outdoor use.
+| Finding | Issue |
+| :--- | :--- |
+| The NGO plant form asks a volunteer to type raw decimal lat/lng into two required number inputs | #269 |
+| Distance is not the primary sort on discovery, though proximity is the whole mechanism | #270 |
+| Plant condition is carried by colour alone — fails in sun, fails colourblind users | #271 |
+| Adopters and NGO staff share one dashboard that serves neither | #272 |
+| A plant with no growth reports has no empty state, and that is the retention surface | #273 |
+| Touch targets, focus, and announcements need a pass for one-handed outdoor use | #274 |
 
 `PRODUCT.md` also came out of this work and remains current — product truth does
 not depend on how the interface looks.
