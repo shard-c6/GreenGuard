@@ -1,8 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-backend/node_modules
-flora-genius-consultant/node_modules
+**/node_modules/
 
 /.pnp
 .pnp.js
@@ -11,11 +10,13 @@ flora-genius-consultant/node_modules
 /coverage
 
 # next.js
-/.next/
+**/.next/
 /out/
 
 # production
-/build
+**/build/
+**/dist/
+
 
 # misc
 .DS_Store
