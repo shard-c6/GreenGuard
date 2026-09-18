@@ -38,12 +38,17 @@ against the shipped app:
 
 | Finding | Issue |
 | :--- | :--- |
-| The NGO plant form asks a volunteer to type raw decimal lat/lng into two required number inputs | #269 |
+| ~~The NGO plant form asks for raw decimal lat/lng~~ — **already fixed by #240 before this was filed** | ~~#269~~ |
 | Distance is not the primary sort on discovery, though proximity is the whole mechanism | #270 |
-| Plant condition is carried by colour alone — fails in sun, fails colourblind users | #271 |
+| Map markers encode adoption status by colour alone — three identical circles, different fill | #271 |
 | Adopters and NGO staff share one dashboard that serves neither | #272 |
 | A plant with no growth reports has no empty state, and that is the retention surface | #273 |
 | Touch targets, focus, and announcements need a pass for one-handed outdoor use | #274 |
+
+Documenting the shipped system afterwards surfaced one more, unrelated to this
+exploration but more serious than any of the above: the landing page publishes
+four fabricated statistics, including a 98% survival rate the platform has never
+measured. Filed as #275.
 
 `PRODUCT.md` also came out of this work and remains current — product truth does
 not depend on how the interface looks.

@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-18T00:00:00Z",
+  "title": "Design System: GreenGuard",
+  "extensions": {
+    "colorMeta": {
+      "gg-green": {
+        "role": "primary",
+        "displayName": "Guard Green",
+        "canonical": "#16a34a",
+        "tonalRamp": ["#052e16", "#14532d", "#166534", "#15803d", "#16a34a", "#22c55e", "#86efac", "#dcfce7"]
+      },
+      "gg-emerald": {
+        "role": "primary",
+        "displayName": "Deep Emerald",
+        "canonical": "#059669",
+        "tonalRamp": ["#022c22", "#064e3b", "#065f46", "#047857", "#059669", "#10b981", "#6ee7b7", "#ecfdf5"]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Mint Wash",
+        "canonical": "#ecfdf5",
+        "tonalRamp": ["#022c22", "#064e3b", "#065f46", "#059669", "#34d399", "#a7f3d0", "#d1fae5", "#ecfdf5"]
+      },
+      "accent-foreground": {
+        "role": "secondary",
+        "displayName": "Mint Ink",
+        "canonical": "#065f46",
+        "tonalRamp": ["#011d16", "#022c22", "#064e3b", "#065f46", "#047857", "#10b981", "#6ee7b7", "#d1fae5"]
+      },
+      "night-ground": {
+        "role": "tertiary",
+        "displayName": "Night Ground",
+        "canonical": "#011d16",
+        "tonalRamp": ["#00140e", "#011d16", "#022c22", "#064e3b", "#065f46", "#10b981", "#6ee7b7", "#ecfdf5"]
+      },
+      "night-primary": {
+        "role": "tertiary",
+        "displayName": "Signal Emerald",
+        "canonical": "#10b981",
+        "tonalRamp": ["#022c22", "#064e3b", "#047857", "#059669", "#10b981", "#34d399", "#6ee7b7", "#d1fae5"]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#fafbfc",
+        "tonalRamp": ["#0f172a", "#1e293b", "#334155", "#64748b", "#cbd5e1", "#e2e8f0", "#f1f5f9", "#fafbfc"]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Slate Ink",
+        "canonical": "#0f172a",
+        "tonalRamp": ["#020617", "#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1"]
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Slate Mute",
+        "canonical": "#64748b",
+        "tonalRamp": ["#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1", "#f1f5f9"]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#e2e8f0",
+        "tonalRamp": ["#0f172a", "#334155", "#475569", "#94a3b8", "#cbd5e1", "#e2e8f0", "#f1f5f9", "#fafbfc"]
+      },
+      "destructive": {
+        "role": "neutral",
+        "displayName": "Alarm Red",
+        "canonical": "#ef4444",
+        "tonalRamp": ["#450a0a", "#7f1d1d", "#991b1b", "#dc2626", "#ef4444", "#f87171", "#fecaca", "#fee2e2"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (Outfit 900)", "purpose": "Landing and auth headlines in the nocturnal register only." },
+      "headline": { "displayName": "Headline (Outfit 800)", "purpose": "Page titles and stat values; drops to 1.375rem below 768px." },
+      "title": { "displayName": "Title (Outfit 650)", "purpose": "Card titles. The 650 weight is deliberate." },
+      "body": { "displayName": "Body (DM Sans 400)", "purpose": "All running text, inputs, table cells. Keep near 65ch." },
+      "label": { "displayName": "Label (DM Sans 600 uppercase)", "purpose": "Data labels, table headers, status chips. Never an editorial line above a heading." }
+    },
+    "shadows": [
+      { "name": "navbar-rest", "value": "0 4px 30px rgba(0, 0, 0, 0.03)", "purpose": "Barely-there separation under the sticky navbar." },
+      { "name": "card-hover", "value": "0 12px 40px rgba(0, 0, 0, 0.08), 0 0 20px rgba(16, 185, 129, 0.05)", "purpose": "The signature card lift; paired with translateY(-4px)." },
+      { "name": "button-primary-rest", "value": "0 2px 8px rgba(22, 163, 74, 0.3)", "purpose": "Green glow that keeps the primary action findable in sun." },
+      { "name": "button-primary-hover", "value": "0 4px 16px rgba(22, 163, 74, 0.4)", "purpose": "Deepened glow on hover, with translateY(-1px)." },
+      { "name": "dropdown", "value": "0 10px 40px rgba(0, 0, 0, 0.12)", "purpose": "Profile menus and popovers." },
+      { "name": "focus-ring-input", "value": "0 0 0 3px rgba(22, 163, 74, 0.12)", "purpose": "Input focus halo in the light register." },
+      { "name": "focus-ring-auth", "value": "0 0 0 4px rgba(52, 211, 153, 0.2)", "purpose": "Input focus halo inside the auth card." },
+      { "name": "auth-card", "value": "0 40px 100px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.05)", "purpose": "The nocturnal register's single deep drop with an inner light edge." },
+      { "name": "tab-active", "value": "0 1px 3px rgba(0, 0, 0, 0.08)", "purpose": "Lifts the selected tab off its wash track." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Card and glass transitions at 0.3s." },
+      { "name": "duration-interactive", "value": "0.2s ease", "purpose": "Buttons, nav links, inputs, upload zone." },
+      { "name": "duration-micro", "value": "0.15s", "purpose": "Dropdown items, post actions, menu fade-in." },
+      { "name": "shimmer", "value": "shimmer 1.5s ease-in-out infinite", "purpose": "Skeleton loading sweep across a 200% gradient." },
+      { "name": "spin", "value": "spin 0.8s linear infinite", "purpose": "The 40px green-headed loading spinner." },
+      { "name": "ambient-drift", "value": "18s-30s linear infinite", "purpose": "Framer Motion loops on the background leaf and sprout glyphs." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "768px" },
+      { "name": "container", "value": "1280px" },
+      { "name": "card-min", "value": "300px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one affirmative action on a surface; gradient green with a glow that survives sunlight.",
+      "html": "<button class=\"ds-btn-primary\">Add Plant</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.625rem 1.25rem; border-radius: var(--radius, 0.75rem); font-family: var(--font-dm-sans, 'DM Sans', sans-serif); font-size: 0.875rem; font-weight: 600; line-height: 1.4; border: none; cursor: pointer; color: #fff; background: linear-gradient(135deg, #16a34a, #059669); box-shadow: 0 2px 8px rgba(22,163,74,0.3); transition: all 0.2s ease; } .ds-btn-primary:hover { box-shadow: 0 4px 16px rgba(22,163,74,0.4); transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(22,163,74,0.35); } .ds-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Neutral companion action; wash fill, no glow, no lift.",
+      "html": "<button class=\"ds-btn-secondary\">Cancel</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.25rem; border-radius: var(--radius, 0.75rem); font-family: var(--font-dm-sans, 'DM Sans', sans-serif); font-size: 0.875rem; font-weight: 600; border: none; cursor: pointer; background: #f1f5f9; color: #0f172a; transition: all 0.2s ease; } .ds-btn-secondary:hover { background: #e2e8f0; } .ds-btn-secondary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(22,163,74,0.25); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Bordered tertiary action where the stroke is the control.",
+      "html": "<button class=\"ds-btn-outline\">View on map</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.25rem; border-radius: var(--radius, 0.75rem); font-family: var(--font-dm-sans, 'DM Sans', sans-serif); font-size: 0.875rem; font-weight: 600; cursor: pointer; background: transparent; border: 1.5px solid #e2e8f0; color: #0f172a; transition: all 0.2s ease; } .ds-btn-outline:hover { background: #f1f5f9; } .ds-btn-outline:focus-visible { outline: none; border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,0.12); }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Standard field with label; focus turns the stroke green and adds a soft halo.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-species\">Species</label><input class=\"ds-field-input\" id=\"ds-species\" type=\"text\" placeholder=\"Ficus religiosa\" /></div>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 0.375rem; margin-bottom: 1rem; font-family: var(--font-dm-sans, 'DM Sans', sans-serif); } .ds-field-label { font-size: 0.8rem; font-weight: 600; color: #0f172a; } .ds-field-input { padding: 0.6875rem 0.875rem; border-radius: var(--radius, 0.75rem); border: 1.5px solid #e2e8f0; background: #fff; font-size: 0.875rem; color: #0f172a; width: 100%; outline: none; transition: all 0.2s; } .ds-field-input::placeholder { color: #94a3b8; } .ds-field-input:focus { border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,0.12); }"
+    },
+    {
+      "name": "Status Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Domain status as a pill. Always renders its word; never a bare coloured dot.",
+      "html": "<span class=\"ds-badge ds-badge-success\">Healthy</span> <span class=\"ds-badge ds-badge-warning\">Needs Attention</span> <span class=\"ds-badge ds-badge-danger\">Critical</span>",
+      "css": ".ds-badge { display: inline-flex; padding: 0.2rem 0.6rem; border-radius: 999px; font-family: var(--font-dm-sans, 'DM Sans', sans-serif); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.4; } .ds-badge-success { background: #dcfce7; color: #166534; } .ds-badge-warning { background: #fef9c3; color: #854d0e; } .ds-badge-danger { background: #fee2e2; color: #991b1b; } .ds-badge-info { background: #dbeafe; color: #1e40af; } .ds-badge-neutral { background: #f1f5f9; color: #475569; } .ds-badge-primary { background: #ecfdf5; color: #065f46; }"
+    },
+    {
+      "name": "Plant Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The core content surface: flat white at rest, lifts with a green-tinged shadow on hover.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-image\"></div><div class=\"ds-card-body\"><h3 class=\"ds-card-title\">Peepal near Sector 12</h3><p class=\"ds-card-subtitle\">Ficus religiosa &middot; 400 m away</p><p class=\"ds-card-text\">Planted during the Kharghar monsoon drive. Available for adoption.</p></div></article>",
+      "css": ".ds-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 1.05rem; overflow: hidden; font-family: var(--font-dm-sans, 'DM Sans', sans-serif); transition: all 0.3s cubic-bezier(0.4,0,0.2,1); max-width: 320px; } .ds-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08), 0 0 20px rgba(16,185,129,0.05); transform: translateY(-4px); border-color: #16a34a; } .ds-card-image { width: 100%; height: 200px; background: linear-gradient(135deg, #dcfce7, #f1f5f9); } .ds-card-body { padding: 1.25rem; } .ds-card-title { font-family: var(--font-outfit, 'Outfit', sans-serif); font-size: 1.05rem; font-weight: 650; margin: 0 0 0.375rem; color: #0f172a; } .ds-card-subtitle { font-size: 0.8rem; color: #64748b; margin: 0 0 0.625rem; } .ds-card-text { font-size: 0.875rem; color: #0f172a; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Navbar",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Sticky 64px frosted bar; active link is mint fill with green text.",
+      "html": "<nav class=\"ds-nav\"><div class=\"ds-nav-inner\"><a class=\"ds-nav-logo\" href=\"#\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#16a34a\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 20h10\"/><path d=\"M10 20c5.5-2.5.8-6.4 3-10\"/><path d=\"M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z\"/><path d=\"M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z\"/></svg><span class=\"ds-nav-word\">GreenGuard</span></a><div class=\"ds-nav-links\"><a class=\"ds-nav-link ds-nav-link-active\" href=\"#\">Plants</a><a class=\"ds-nav-link\" href=\"#\">Map</a><a class=\"ds-nav-link\" href=\"#\">Feed</a></div></div></nav>",
+      "css": ".ds-nav { background: #fff; backdrop-filter: blur(24px) saturate(160%); border-bottom: 1px solid #e2e8f0; box-shadow: 0 4px 30px rgba(0,0,0,0.03); font-family: var(--font-dm-sans, 'DM Sans', sans-serif); } .ds-nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; } .ds-nav-logo { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-outfit, 'Outfit', sans-serif); font-weight: 700; font-size: 1.25rem; color: #0f172a; text-decoration: none; } .ds-nav-word { letter-spacing: -0.02em; } .ds-nav-links { display: flex; gap: 0.25rem; } .ds-nav-link { padding: 0.5rem 0.875rem; border-radius: 0.75rem; font-size: 0.875rem; font-weight: 500; color: #64748b; text-decoration: none; transition: all 0.2s ease; } .ds-nav-link:hover { color: #0f172a; background: #f1f5f9; } .ds-nav-link-active { color: #16a34a; background: #ecfdf5; } .ds-nav-link:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(22,163,74,0.25); }"
+    },
+    {
+      "name": "Stat Card",
+      "kind": "card",
+      "refersTo": "stat-card",
+      "description": "Dashboard metric: uppercase label over a heavy Outfit number.",
+      "html": "<div class=\"ds-stat\"><p class=\"ds-stat-label\">Plants Adopted</p><p class=\"ds-stat-value\">24</p></div>",
+      "css": ".ds-stat { padding: 1.25rem; border-radius: 1.05rem; background: #fff; border: 1px solid #e2e8f0; font-family: var(--font-dm-sans, 'DM Sans', sans-serif); max-width: 220px; } .ds-stat-label { font-size: 0.75rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.375rem; } .ds-stat-value { font-family: var(--font-outfit, 'Outfit', sans-serif); font-size: 1.75rem; font-weight: 800; color: #0f172a; letter-spacing: -0.03em; margin: 0; }"
+    },
+    {
+      "name": "Empty State",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Centred fallback for any list with nothing in it.",
+      "html": "<div class=\"ds-empty\"><div class=\"ds-empty-icon\"><svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#64748b\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 20h10\"/><path d=\"M10 20c5.5-2.5.8-6.4 3-10\"/><path d=\"M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z\"/></svg></div><h3 class=\"ds-empty-title\">No growth reports yet</h3><p class=\"ds-empty-desc\">Post the first update for this plant so its timeline can start.</p><button class=\"ds-btn-primary\">Add growth report</button></div>",
+      "css": ".ds-empty { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 3rem 2rem; font-family: var(--font-dm-sans, 'DM Sans', sans-serif); } .ds-empty-icon { margin-bottom: 1rem; opacity: 0.6; } .ds-empty-title { font-family: var(--font-outfit, 'Outfit', sans-serif); font-size: 1.125rem; font-weight: 700; color: #0f172a; margin: 0 0 0.375rem; } .ds-empty-desc { font-size: 0.875rem; color: #64748b; max-width: 360px; margin: 0 0 1.25rem; }"
+    },
+    {
+      "name": "Nocturnal CTA",
+      "kind": "button",
+      "refersTo": "night-cta",
+      "description": "The landing and auth register's pill call to action. Public surfaces only; never inside the app.",
+      "html": "<div class=\"ds-night-stage\"><a class=\"ds-night-cta\" href=\"#\">Adopt a tree</a></div>",
+      "css": ".ds-night-stage { background: #011d16; padding: 2.5rem; border-radius: 40px; display: flex; justify-content: center; } .ds-night-cta { display: inline-block; background: #10b981; color: #011d16; padding: 1.25rem 3rem; border-radius: 999px; font-family: var(--font-outfit, 'Outfit', sans-serif); font-weight: 900; font-size: 1.25rem; text-decoration: none; box-shadow: 0 0 40px rgba(16,185,129,0.4); transition: all 0.2s ease; } .ds-night-cta:hover { background: #34d399; box-shadow: 0 0 60px rgba(16,185,129,0.6); transform: scale(1.05); } .ds-night-cta:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(52,211,153,0.4); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Living Plot",
+    "overview": "GreenGuard looks like a field record that happens to be beautiful. Its base state is a bright, almost paper-white working surface (#fafbfc) carrying white cards, hairline slate borders and a single green family that does all the signalling. That register exists for the defining scene in PRODUCT.md: someone standing outdoors next to a tree, one hand on the phone, in direct sun. High ground luminance, dark slate text, and generously rounded white cards survive glare better than any tinted or low-contrast alternative, and that is why the palette is what it is.\n\nThe build carries a second, deliberate register: the public and unauthenticated surfaces — the landing story, the auth cards, the role selector — run nocturnal. Deep forest grounds (#011d16, #022c22, #00140e), 40-60px radii, emerald glows and heavy display weights. This is not drift; it is reused consistently across app/page.tsx, components/landing/AnimatedStory.tsx and the .auth-page / .auth-card rules, and it is the register a visitor meets before they have an account. The app itself never uses it. Dark mode (next-themes, class strategy) brings the app surfaces toward the same forest family, so the two registers share a hue and differ in luminance and scale, not in identity.\n\nDensity is moderate and mobile-first: a 1280px max container, a card grid that reflows at 300px minimum, and a hard collapse to single column at 768px. Layouts are built to absorb longer strings — Marathi and Hindi labels run longer than English — so nothing is sized to an English word count and truncation is used only where a value is genuinely disposable (the navbar profile name).",
+    "keyCharacteristics": [
+      "Bright working ground, white cards, one green accent family",
+      "Glass and blur used as atmosphere, never as the only thing separating two things",
+      "Generous corner radius scaled from a single --radius of 0.75rem",
+      "Two registers: bright app, nocturnal public surfaces",
+      "Motion is ambient and slow, not informative"
+    ],
+    "rules": [
+      { "name": "The One Green Rule", "body": "Affirmative meaning is carried by the green family and nothing else. Blue, amber, violet and pink exist only inside the chart scale and inside status semantics that already carry a text label. Do not introduce a second brand accent.", "section": "colors" },
+      { "name": "The Accent-Equals-Focus Rule", "body": "--ring and --primary are the same value by design. A focus ring is therefore always recognisably the product's own green; never override a focus ring to a neutral.", "section": "colors" },
+      { "name": "The Never-Colour-Only Rule", "body": "Plant health, adoption status and role are semantic, and every semantic colour must ship with a word or a shape beside it. The Badge component honours this (it renders the status text). Surfaces that fail it are listed in Do's and Don'ts and are defects, not licence.", "section": "colors" },
+      { "name": "The Two-Face Rule", "body": "Outfit sets headings, DM Sans sets everything else. There is no third face and no system-UI display fallback in normal operation.", "section": "typography" },
+      { "name": "The Uppercase-Is-A-Label Rule", "body": "Letterspaced uppercase marks a data label, a table column or a status chip. It is never used for standalone editorial lines above a heading.", "section": "typography" },
+      { "name": "The Flat-At-Rest Rule", "body": "Every app surface is flat until touched. If a component needs a shadow to be found in its default state, it needs a border or a background instead.", "section": "elevation" },
+      { "name": "The Glass-Needs-An-Edge Rule", "body": "Any blurred surface carries a 1px border. Blur alone is not a boundary, and in bright outdoor light it is no boundary at all.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do build on the green tokens in globals.css (--gg-green #16a34a, --gg-emerald #059669) and the paper/slate neutrals. They are the shipped truth.",
+      "Do derive every corner from --radius (0.75rem) via the radius-sm…4xl scale rather than typing a literal px radius on an app surface.",
+      "Do pair every status colour with its word — the Badge component already does this; reuse it instead of hand-rolling a coloured dot or a tinted row.",
+      "Do keep surfaces flat at rest and spend shadow on hover, focus and elevation only.",
+      "Do give any blurred/glass surface a 1px border so it holds an edge in bright sun.",
+      "Do size text and controls for one-handed outdoor use, and let labels wrap: Marathi and Hindi strings run longer than the English they replace.",
+      "Do collapse multi-column grids at 768px, the system's single real breakpoint.",
+      "Do capture geography with the draggable map pin pattern used in dashboard/ngo/plants/new — it sets latitude and longitude from a pin or from device geolocation, and the submit button stays disabled until coordinates exist."
+    ],
+    "donts": [
+      "Don't reinstate the MASTER.md palette or type pairing. Sky blue #0EA5E9, orange, Satoshi and General Sans are not this product's system and never were.",
+      "Don't introduce a second brand accent. Blue, amber, violet and pink are status and chart values only.",
+      "Don't carry plant health, adoption status or any other semantic state by colour alone.",
+      "Don't put a letterspaced uppercase editorial line above a heading as decoration. Uppercase marks a data label or a status chip; the landing page's existing instances are a defect, not a pattern.",
+      "Don't use emoji or unicode glyphs as interface icons. Lucide SVG is the icon system (25 modules use it); a few date and calendar emoji survive in the plant detail page and should be replaced, not copied.",
+      "Don't ship fabricated numbers on public surfaces. PRODUCT.md is explicit that the platform has never served a real user; the landing stats band currently violates this.",
+      "Don't let the nocturnal register's 40-60px radii, font-black display weights or pill CTAs leak into authenticated app surfaces, or the app register's white cards leak into the landing story.",
+      "Don't add !important overrides in the dark-mode block to patch a component that should have used tokens in the first place; that block is already carrying more repair work than it should."
+    ]
+  }
+}
