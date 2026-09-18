@@ -52,8 +52,8 @@ export default function AIIdentifyPage() {
         plant_net_data: result
       });
       toast.success('Saved to My Garden! 🌿');
-    } catch (err: any) {
-      if (err.response?.data?.error?.code === 'DUPLICATE_ENTRY') {
+    } catch (err: unknown) {
+      if ((err as { response?: { data?: { error?: { code?: string } } } })?.response?.data?.error?.code === 'DUPLICATE_ENTRY') {
         toast.info('Already in your garden');
       } else {
         toast.error('Failed to save. Try again.');

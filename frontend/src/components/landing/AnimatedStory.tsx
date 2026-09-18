@@ -9,6 +9,7 @@ export default function AnimatedStory() {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
   }, []);
 
@@ -93,7 +94,7 @@ export default function AnimatedStory() {
               </h2>
               <p className="text-white text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto opacity-90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 In the heart of the urban concrete, a silent transformation is waiting to unfold. 
-                Our green spaces aren't just disappearing—they're waiting for you.
+                Our green spaces aren&apos;t just disappearing—they&apos;re waiting for you.
               </p>
             </div>
           </motion.div>
@@ -124,7 +125,7 @@ export default function AnimatedStory() {
                 A legacy that <span className="text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]">lives on.</span>
               </h2>
               <p className="text-white text-lg md:text-xl font-medium leading-relaxed mb-8 max-w-2xl mx-auto opacity-90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                Join thousands of guardians who are restoring the world's canopy. 
+                Join thousands of guardians who are restoring the world&apos;s canopy. 
                 Your plant is waiting for its journey to begin.
               </p>
               <motion.button 

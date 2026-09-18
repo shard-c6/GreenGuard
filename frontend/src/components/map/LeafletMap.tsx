@@ -1,12 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
 import type { MapPlant, Post } from '@/types';
-import { TreePine, MapPin, Building2, Calendar, ExternalLink, User } from 'lucide-react';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { MapPin, Building2, Calendar, ExternalLink } from 'lucide-react';
 
 // ─── Location Parser ──────────────────────────────────────────
 
@@ -82,10 +81,7 @@ const MapController = ({ centerLat, centerLng }: MapControllerProps) => {
 // ─── Component ───────────────────────────────────────────────
 
 export default function LeafletMap({ plants, plantations, centerLat, centerLng }: LeafletMapProps) {
-  const iconsRef = useRef<Record<string, L.DivIcon>>({});
-
-  // Initialize icons
-  if (Object.keys(iconsRef.current).length === 0) {
+  const icons = useMemo(() => {
     const createCircleIcon = (color: string) => L.divIcon({
       className: '',
       html: `<div class="marker-pulse" style="background:${color}44"></div>
@@ -94,7 +90,6 @@ export default function LeafletMap({ plants, plantations, centerLat, centerLng }
       iconAnchor: [12, 12],
     });
 
-    // NGO Plantation Icon
     const plantationIcon = L.divIcon({
       className: '',
       html: `<div style="background:#4f46e5; width:36px; height:36px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:white; border:3px solid white; box-shadow:0 8px 20px rgba(79,70,229,0.3); transform:rotate(-10deg);">
@@ -104,13 +99,13 @@ export default function LeafletMap({ plants, plantations, centerLat, centerLng }
       iconAnchor: [18, 18],
     });
 
-    iconsRef.current = {
+    return {
       available: createCircleIcon('#10b981'),
       pending: createCircleIcon('#f59e0b'),
       adopted: createCircleIcon('#3b82f6'),
       plantation: plantationIcon,
     };
-  }
+  }, []);
 
   return (
     <>
@@ -177,7 +172,7 @@ export default function LeafletMap({ plants, plantations, centerLat, centerLng }
 
         <MarkerClusterGroup
           chunkedLoading
-          iconCreateFunction={(cluster: any) => {
+          iconCreateFunction={(cluster: { getChildCount: () => number }) => {
             return L.divIcon({
               html: `<span>${cluster.getChildCount()}</span>`,
               className: 'cluster-icon',
@@ -196,11 +191,12 @@ export default function LeafletMap({ plants, plantations, centerLat, centerLng }
             <Marker
               key={`plant-${plant.id}`}
               position={coords}
-              icon={iconsRef.current[plant.adoption_status] || iconsRef.current.available}
+              icon={icons[plant.adoption_status as keyof typeof icons] || icons.available}
             >
               <Popup>
                 <div className="flex flex-col">
                   {plant.image_urls?.[0] && (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img src={plant.image_urls[0]} alt="" className="w-full h-32 object-cover" />
                   )}
                   <div className="p-4">
@@ -240,11 +236,12 @@ export default function LeafletMap({ plants, plantations, centerLat, centerLng }
             <Marker
               key={`post-${post.id}`}
               position={coords}
-              icon={iconsRef.current.plantation}
+              icon={icons.plantation}
             >
               <Popup>
                 <div className="flex flex-col">
                   {post.image_urls?.[0] && (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img src={post.image_urls[0]} alt="" className="w-full h-32 object-cover" />
                   )}
                   <div className="p-4 bg-indigo-50/50">

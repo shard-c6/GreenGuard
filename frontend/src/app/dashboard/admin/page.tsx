@@ -137,7 +137,7 @@ export default function AdminDashboardPage() {
         ].map((t) => (
           <button
             key={t.id}
-            onClick={() => setTab(t.id as any)}
+            onClick={() => setTab(t.id as "overview" | "users" | "verification")}
             className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all ${
               tab === t.id ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-200' : 'text-gray-500 hover:text-emerald-600 hover:bg-emerald-50'
             }`}
@@ -264,7 +264,7 @@ export default function AdminDashboardPage() {
                         </div>
                       </td>
                       <td className="px-8 py-6">
-                        <Badge status={u.role as any} />
+                        <Badge status={u.role as "admin" | "ngo" | "user"} />
                       </td>
                       <td className="px-8 py-6">
                         {u.is_banned ? (
@@ -335,7 +335,7 @@ export default function AdminDashboardPage() {
                     <div className="space-y-4 mb-8">
                       <div className="bg-emerald-50/50 p-4 rounded-2xl border border-white">
                          <p className="text-xs font-bold text-emerald-800/40 uppercase mb-1">Mission Preview</p>
-                         <p className="text-sm text-emerald-900 font-medium line-clamp-2 italic">"{ngo.mission || 'No mission statement provided'}"</p>
+                         <p className="text-sm text-emerald-900 font-medium line-clamp-2 italic">&quot;{ngo.mission || 'No mission statement provided'}&quot;</p>
                       </div>
                       <div className="flex gap-4">
                         <div className="flex-1">
@@ -434,8 +434,8 @@ export default function AdminDashboardPage() {
   );
 }
 
-function StatCard({ icon: Icon, label, value, color }: { icon: any, label: string, value: number, color: string }) {
-  const colors: any = {
+function StatCard({ icon: Icon, label, value, color }: { icon: React.ElementType, label: string, value: number, color: string }) {
+  const colors: Record<string, string> = {
     blue: 'bg-blue-50 text-blue-600 border-blue-100 shadow-blue-50',
     emerald: 'bg-emerald-50 text-emerald-600 border-emerald-100 shadow-emerald-50',
     purple: 'bg-purple-50 text-purple-600 border-purple-100 shadow-purple-50',
@@ -471,12 +471,12 @@ function BreakdownRow({ label, value, total, color }: { label: string, value: nu
   );
 }
 
-function DetailItem({ label, value, link }: { label: string, value: any, link?: boolean }) {
+function DetailItem({ label, value, link }: { label: string, value: React.ReactNode, link?: boolean }) {
   return (
     <div>
        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{label}</p>
        {link && value ? (
-         <a href={value} target="_blank" className="text-sm font-bold text-emerald-600 hover:underline break-all">{value}</a>
+         <a href={value as string} target="_blank" className="text-sm font-bold text-emerald-600 hover:underline break-all">{value}</a>
        ) : (
          <p className="text-sm font-bold text-gray-900">{value || 'N/A'}</p>
        )}
