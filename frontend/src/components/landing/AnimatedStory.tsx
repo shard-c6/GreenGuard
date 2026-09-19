@@ -125,7 +125,7 @@ export default function AnimatedStory() {
                 A legacy that <span className="text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]">lives on.</span>
               </h2>
               <p className="text-white text-lg md:text-xl font-medium leading-relaxed mb-8 max-w-2xl mx-auto opacity-90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                Join thousands of guardians who are restoring the world&apos;s canopy. 
+                Become a guardian for a tree planted near you and follow it as it grows. 
                 Your plant is waiting for its journey to begin.
               </p>
               <motion.button 
