@@ -1,0 +1,1066 @@
+[
+  {
+    "column_default": "gen_random_uuid()",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "adoptions"
+  },
+  {
+    "column_default": null,
+    "column_name": "plant_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "adoptions"
+  },
+  {
+    "column_default": null,
+    "column_name": "adopter_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "adoptions"
+  },
+  {
+    "column_default": null,
+    "column_name": "ngo_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "adoptions"
+  },
+  {
+    "column_default": "'pending'::text",
+    "column_name": "status",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "adoptions"
+  },
+  {
+    "column_default": null,
+    "column_name": "answers",
+    "data_type": "jsonb",
+    "is_nullable": "YES",
+    "table_name": "adoptions"
+  },
+  {
+    "column_default": null,
+    "column_name": "review_notes",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "adoptions"
+  },
+  {
+    "column_default": null,
+    "column_name": "reviewed_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "adoptions"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "adoptions"
+  },
+  {
+    "column_default": null,
+    "column_name": "user_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "bookmarks"
+  },
+  {
+    "column_default": null,
+    "column_name": "post_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "bookmarks"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "bookmarks"
+  },
+  {
+    "column_default": "gen_random_uuid()",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "comments"
+  },
+  {
+    "column_default": null,
+    "column_name": "post_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "comments"
+  },
+  {
+    "column_default": null,
+    "column_name": "user_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "comments"
+  },
+  {
+    "column_default": null,
+    "column_name": "content",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "comments"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "comments"
+  },
+  {
+    "column_default": null,
+    "column_name": "follower_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "follows"
+  },
+  {
+    "column_default": null,
+    "column_name": "following_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "follows"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "follows"
+  },
+  {
+    "column_default": null,
+    "column_name": "f_table_catalog",
+    "data_type": "name",
+    "is_nullable": "YES",
+    "table_name": "geography_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "f_table_schema",
+    "data_type": "name",
+    "is_nullable": "YES",
+    "table_name": "geography_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "f_table_name",
+    "data_type": "name",
+    "is_nullable": "YES",
+    "table_name": "geography_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "f_geography_column",
+    "data_type": "name",
+    "is_nullable": "YES",
+    "table_name": "geography_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "coord_dimension",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "table_name": "geography_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "srid",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "table_name": "geography_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "type",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "geography_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "f_table_catalog",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "table_name": "geometry_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "f_table_schema",
+    "data_type": "name",
+    "is_nullable": "YES",
+    "table_name": "geometry_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "f_table_name",
+    "data_type": "name",
+    "is_nullable": "YES",
+    "table_name": "geometry_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "f_geometry_column",
+    "data_type": "name",
+    "is_nullable": "YES",
+    "table_name": "geometry_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "coord_dimension",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "table_name": "geometry_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "srid",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "table_name": "geometry_columns"
+  },
+  {
+    "column_default": null,
+    "column_name": "type",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "table_name": "geometry_columns"
+  },
+  {
+    "column_default": "gen_random_uuid()",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "growth_reports"
+  },
+  {
+    "column_default": null,
+    "column_name": "plant_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "growth_reports"
+  },
+  {
+    "column_default": null,
+    "column_name": "adopter_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "growth_reports"
+  },
+  {
+    "column_default": "'healthy'::text",
+    "column_name": "health_status",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "growth_reports"
+  },
+  {
+    "column_default": null,
+    "column_name": "height_cm",
+    "data_type": "numeric",
+    "is_nullable": "YES",
+    "table_name": "growth_reports"
+  },
+  {
+    "column_default": null,
+    "column_name": "notes",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "growth_reports"
+  },
+  {
+    "column_default": "'{}'::text[]",
+    "column_name": "photo_urls",
+    "data_type": "ARRAY",
+    "is_nullable": "YES",
+    "table_name": "growth_reports"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "growth_reports"
+  },
+  {
+    "column_default": null,
+    "column_name": "user_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "likes"
+  },
+  {
+    "column_default": null,
+    "column_name": "post_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "likes"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "likes"
+  },
+  {
+    "column_default": null,
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "org_name",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "registration_number",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "website",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "mission",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "address",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "onboarding_answers",
+    "data_type": "jsonb",
+    "is_nullable": "YES",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "column_default": "'pending'::text",
+    "column_name": "status",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "approved_by",
+    "data_type": "uuid",
+    "is_nullable": "YES",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "approved_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "darpan_id",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "ngo_profiles"
+  },
+  {
+    "column_default": "gen_random_uuid()",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "notifications"
+  },
+  {
+    "column_default": null,
+    "column_name": "user_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "notifications"
+  },
+  {
+    "column_default": null,
+    "column_name": "type",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "notifications"
+  },
+  {
+    "column_default": null,
+    "column_name": "title",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "notifications"
+  },
+  {
+    "column_default": null,
+    "column_name": "body",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "notifications"
+  },
+  {
+    "column_default": null,
+    "column_name": "data",
+    "data_type": "jsonb",
+    "is_nullable": "YES",
+    "table_name": "notifications"
+  },
+  {
+    "column_default": "false",
+    "column_name": "is_read",
+    "data_type": "boolean",
+    "is_nullable": "YES",
+    "table_name": "notifications"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "notifications"
+  },
+  {
+    "column_default": "gen_random_uuid()",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "plant_knowledge"
+  },
+  {
+    "column_default": null,
+    "column_name": "plant_name",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "plant_knowledge"
+  },
+  {
+    "column_default": null,
+    "column_name": "scientific_name",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "plant_knowledge"
+  },
+  {
+    "column_default": null,
+    "column_name": "content",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "plant_knowledge"
+  },
+  {
+    "column_default": null,
+    "column_name": "embedding",
+    "data_type": "USER-DEFINED",
+    "is_nullable": "YES",
+    "table_name": "plant_knowledge"
+  },
+  {
+    "column_default": null,
+    "column_name": "metadata",
+    "data_type": "jsonb",
+    "is_nullable": "YES",
+    "table_name": "plant_knowledge"
+  },
+  {
+    "column_default": null,
+    "column_name": "fts",
+    "data_type": "tsvector",
+    "is_nullable": "YES",
+    "table_name": "plant_knowledge"
+  },
+  {
+    "column_default": "gen_random_uuid()",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "ngo_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "plant_name",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "species",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "description",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": "'{}'::text[]",
+    "column_name": "image_urls",
+    "data_type": "ARRAY",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "location",
+    "data_type": "USER-DEFINED",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "address",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": "CURRENT_DATE",
+    "column_name": "planted_date",
+    "data_type": "date",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "care_info",
+    "data_type": "jsonb",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "ai_profile",
+    "data_type": "jsonb",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": "'available'::text",
+    "column_name": "adoption_status",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "adopted_by",
+    "data_type": "uuid",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "adopted_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "latitude",
+    "data_type": "double precision",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "longitude",
+    "data_type": "double precision",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "watering_interval_days",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "fertilization_interval_days",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "table_name": "plants"
+  },
+  {
+    "column_default": "gen_random_uuid()",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "posts"
+  },
+  {
+    "column_default": null,
+    "column_name": "author_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "posts"
+  },
+  {
+    "column_default": null,
+    "column_name": "content",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "posts"
+  },
+  {
+    "column_default": "'{}'::text[]",
+    "column_name": "image_urls",
+    "data_type": "ARRAY",
+    "is_nullable": "YES",
+    "table_name": "posts"
+  },
+  {
+    "column_default": null,
+    "column_name": "plant_id",
+    "data_type": "uuid",
+    "is_nullable": "YES",
+    "table_name": "posts"
+  },
+  {
+    "column_default": "0",
+    "column_name": "likes_count",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "table_name": "posts"
+  },
+  {
+    "column_default": "0",
+    "column_name": "bookmarks_count",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "table_name": "posts"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "posts"
+  },
+  {
+    "column_default": "0",
+    "column_name": "comments_count",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "table_name": "posts"
+  },
+  {
+    "column_default": null,
+    "column_name": "latitude",
+    "data_type": "double precision",
+    "is_nullable": "YES",
+    "table_name": "posts"
+  },
+  {
+    "column_default": null,
+    "column_name": "longitude",
+    "data_type": "double precision",
+    "is_nullable": "YES",
+    "table_name": "posts"
+  },
+  {
+    "column_default": null,
+    "column_name": "address",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "posts"
+  },
+  {
+    "column_default": null,
+    "column_name": "location",
+    "data_type": "USER-DEFINED",
+    "is_nullable": "YES",
+    "table_name": "posts"
+  },
+  {
+    "column_default": "'normal'::text",
+    "column_name": "post_type",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "posts"
+  },
+  {
+    "column_default": null,
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": "'adopter'::text",
+    "column_name": "role",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "username",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "display_name",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "email",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "phone",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "avatar_url",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "bio",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "address",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": "false",
+    "column_name": "is_banned",
+    "data_type": "boolean",
+    "is_nullable": "YES",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": null,
+    "column_name": "banned_reason",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "profiles"
+  },
+  {
+    "column_default": "gen_random_uuid()",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "saved_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "user_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "saved_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "common_name",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "saved_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "scientific_name",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "saved_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "confidence",
+    "data_type": "numeric",
+    "is_nullable": "YES",
+    "table_name": "saved_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "image_url",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "saved_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "ai_consultation",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "saved_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "plant_net_data",
+    "data_type": "jsonb",
+    "is_nullable": "YES",
+    "table_name": "saved_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "notes",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "saved_plants"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "saved_plants"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "saved_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "srid",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "table_name": "spatial_ref_sys"
+  },
+  {
+    "column_default": null,
+    "column_name": "auth_name",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "table_name": "spatial_ref_sys"
+  },
+  {
+    "column_default": null,
+    "column_name": "auth_srid",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "table_name": "spatial_ref_sys"
+  },
+  {
+    "column_default": null,
+    "column_name": "srtext",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "table_name": "spatial_ref_sys"
+  },
+  {
+    "column_default": null,
+    "column_name": "proj4text",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "table_name": "spatial_ref_sys"
+  },
+  {
+    "column_default": "gen_random_uuid()",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "user_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "user_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "user_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "plant_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "user_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "last_watered_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "user_plants"
+  },
+  {
+    "column_default": null,
+    "column_name": "last_fertilized_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "user_plants"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "user_plants"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "user_plants"
+  },
+  {
+    "column_default": "gen_random_uuid()",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "user_reports"
+  },
+  {
+    "column_default": null,
+    "column_name": "reporter_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "user_reports"
+  },
+  {
+    "column_default": null,
+    "column_name": "reported_user_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "table_name": "user_reports"
+  },
+  {
+    "column_default": null,
+    "column_name": "reason",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "user_reports"
+  },
+  {
+    "column_default": null,
+    "column_name": "description",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "user_reports"
+  },
+  {
+    "column_default": "'pending'::text",
+    "column_name": "status",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "table_name": "user_reports"
+  },
+  {
+    "column_default": null,
+    "column_name": "admin_notes",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "table_name": "user_reports"
+  },
+  {
+    "column_default": null,
+    "column_name": "resolved_by",
+    "data_type": "uuid",
+    "is_nullable": "YES",
+    "table_name": "user_reports"
+  },
+  {
+    "column_default": null,
+    "column_name": "resolved_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "user_reports"
+  },
+  {
+    "column_default": "now()",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "table_name": "user_reports"
+  }
+]
