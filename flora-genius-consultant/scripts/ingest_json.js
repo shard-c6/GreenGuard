@@ -53,7 +53,7 @@ async function ingest() {
         });
         const result = await model.embedContent({
           content: { parts: [{ text: content }] },
-          outputDimensionality: 3072
+          outputDimensionality: 1536
         });
         embedding = result.embedding.values;
       } catch (embedErr) {

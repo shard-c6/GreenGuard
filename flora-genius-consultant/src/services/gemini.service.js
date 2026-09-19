@@ -13,7 +13,7 @@ async function getEmbedding(text) {
     });
     const result = await model.embedContent({
       content: { parts: [{ text: text }] },
-      outputDimensionality: 3072
+      outputDimensionality: 1536
     });
     return result.embedding.values;
   } catch (error) {
