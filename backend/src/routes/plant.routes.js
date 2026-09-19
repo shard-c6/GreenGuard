@@ -7,6 +7,9 @@ const validate = require('../middleware/validate');
 const upload = require('../middleware/upload');
 const { createPlantValidator, updatePlantValidator, nearbyQueryValidator } = require('../validators/plant.validator');
 
+// Public geo route for plant clustering (no JWT required)
+router.get('/clusters', plant.clusterPlants);
+
 // All plant routes require auth
 router.use(authMiddleware);
 

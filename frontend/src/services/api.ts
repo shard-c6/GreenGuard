@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type {
   ApiResponse, LoginResponse, RegisterResponse, AuthUser,
-  Plant, NearbyPlant, MapPlant, Adoption, Post, Comment,
+  Plant, NearbyPlant, MapPlant, PlantCluster, Adoption, Post, Comment,
   GrowthReport, Notification, CareAlert, PlatformStats, AdminDashboard, UserReport, NgoDashboard,
   NgoStatsResponse, NgoProfile, User, AiIdentifyResponse, AiStatusResponse, SavedPlant
 } from '@/types';
@@ -97,6 +97,9 @@ export const plantsApi = {
 
   getMapPlants: () =>
     api.get<ApiResponse<MapPlant[]>>('/plants/map'),
+
+  getClusters: (params?: { zoom?: number; minLng?: number; minLat?: number; maxLng?: number; maxLat?: number }) =>
+    api.get<ApiResponse<PlantCluster[]>>('/plants/clusters', { params }),
 };
 
 // ─── Adoptions ───────────────────────────────────────────────

@@ -216,4 +216,44 @@ async function mapPlants(req, res) {
   }
 }
 
-module.exports = { createPlant, listPlants, getPlant, updatePlant, deletePlant, nearbyPlants, mapPlants };
+/**
+ * GET /api/plants/clusters — server-side marker clustering by zoom level
+ * Query: ?zoom=10&minLng=-180&minLat=-90&maxLng=180&maxLat=90
+ */
+async function clusterPlants(req, res) {
+  try {
+    const zoom = req.query.zoom !== undefined ? parseInt(req.query.zoom, 10) : 10;
+    const minLng = req.query.minLng !== undefined ? parseFloat(req.query.minLng) : -180;
+    const minLat = req.query.minLat !== undefined ? parseFloat(req.query.minLat) : -90;
+    const maxLng = req.query.maxLng !== undefined ? parseFloat(req.query.maxLng) : 180;
+    const maxLat = req.query.maxLat !== undefined ? parseFloat(req.query.maxLat) : 90;
+
+    if (
+      isNaN(zoom) || isNaN(minLng) || isNaN(minLat) || isNaN(maxLng) || isNaN(maxLat) ||
+      minLng < -180 || maxLng > 180 || minLat < -90 || maxLat > 90 ||
+      minLng > maxLng || minLat > maxLat
+    ) {
+      return error(res, 'Invalid zoom level or bounding box parameters', 400);
+    }
+
+    const { data, error: dbError } = await supabaseAdmin.rpc('cluster_plants', {
+      zoom_level: zoom,
+      bbox_min_lng: minLng,
+      bbox_min_lat: minLat,
+      bbox_max_lng: maxLng,
+      bbox_max_lat: maxLat,
+    });
+
+    if (dbError) {
+      console.error('clusterPlants RPC error:', dbError);
+      return error(res, dbError.message, 400);
+    }
+
+    return success(res, data || []);
+  } catch (err) {
+    console.error('clusterPlants error:', err);
+    return serverError(res);
+  }
+}
+
+module.exports = { createPlant, listPlants, getPlant, updatePlant, deletePlant, nearbyPlants, mapPlants, clusterPlants };

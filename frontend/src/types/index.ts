@@ -161,6 +161,14 @@ export interface MapPlant {
   profiles?: { display_name: string | null };
 }
 
+export interface PlantCluster {
+  cluster_id: string;
+  centroid_lng: number;
+  centroid_lat: number;
+  plant_count: number;
+  plant_ids: string[];
+}
+
 // ─── Adoption ───────────────────────────────────────────────
 
 export interface Adoption {
