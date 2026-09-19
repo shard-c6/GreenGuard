@@ -100,12 +100,14 @@ export default function Home() {
         </div>
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+            {/* How the platform works, not how big it is. Do not put figures here
+                unless they are read live from the database (#275, PRODUCT.md). */}
             {[
-              { value: '500+', label: 'Active Adoptions' },
-              { value: '150+', label: 'Verified NGOs' },
-              { value: '12K+', label: 'Trees Planted' },
-              { value: '98%', label: 'Survival Rate' },
+              { value: '1:1', label: 'One guardian per tree' },
+              { value: 'GPS', label: 'Every plant pinned on the map' },
+              { value: 'Logged', label: 'Growth reported by its guardian' },
+              { value: 'Survival', label: 'The number that counts' },
             ].map((s, i) => (
               <motion.div 
                 key={i}
@@ -114,7 +116,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
               >
-                <div className="text-6xl font-black text-white mb-3 drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]">{s.value}</div>
+                <div className="text-4xl lg:text-5xl font-black text-white mb-3 drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]">{s.value}</div>
                 <div className="text-emerald-500 font-bold uppercase tracking-[0.2em] text-sm drop-shadow-sm">{s.label}</div>
               </motion.div>
             ))}
@@ -138,7 +140,7 @@ export default function Home() {
             Become a Guardian.
           </h2>
           <p className="text-emerald-100/70 text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-sm">
-            Join thousands of others making a real, measurable impact on our planet&apos;s future. 
+            Adopt a sapling planted near you, report how it grows, and help it survive.
             Start your legacy today.
           </p>
           <Link href="/register" className="bg-emerald-500 text-emerald-950 px-12 py-5 rounded-full font-black text-xl hover:bg-emerald-400 transition-all shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:shadow-[0_0_60px_rgba(16,185,129,0.6)] hover:scale-105 inline-block">
