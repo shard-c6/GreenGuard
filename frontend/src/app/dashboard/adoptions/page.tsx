@@ -154,7 +154,7 @@ export default function MyAdoptionsPage() {
                       href={`/dashboard/adoptions/${a.id}/reports`} 
                       className="flex-1 md:flex-none text-center px-6 py-3 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-200"
                     >
-                      Growth Reports
+                      Report growth
                     </Link>
                   )}
                 </div>

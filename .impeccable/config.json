@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gray-on-color",
+        "value": "*",
+        "files": [
+          "frontend/src/app/dashboard/adoptions/[id]/reports/page.tsx"
+        ],
+        "createdAt": "2026-09-19T16:34:02.680Z",
+        "reason": "Claude triage: L329 is the disabled submit state, slate-600 (#475569) on slate-200 (#e2e8f0), about 6:1 contrast; neutral on neutral, not gray on a hue"
+      }
+    ]
+  }
+}
