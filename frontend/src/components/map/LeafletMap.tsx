@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState, useMemo } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
-import type { MapPlant, Post } from '@/types';
+import type { MapPlant, PlantCluster, Post } from '@/types';
+import { plantsApi } from '@/services/api';
 import { MapPin, Building2, Calendar, ExternalLink } from 'lucide-react';
 
 // ─── Location Parser ──────────────────────────────────────────
@@ -78,9 +79,95 @@ const MapController = ({ centerLat, centerLng }: MapControllerProps) => {
   );
 };
 
+// ─── Cluster Map Events ──────────────────────────────────────
+
+const CLUSTER_ZOOM_THRESHOLD = 14;
+
+interface ClusterMapEventsProps {
+  onViewChange: (zoom: number, bounds: L.LatLngBounds) => void;
+}
+
+const ClusterMapEvents = ({ onViewChange }: ClusterMapEventsProps) => {
+  const map = useMapEvents({
+    moveend: () => {
+      onViewChange(map.getZoom(), map.getBounds());
+    },
+    zoomend: () => {
+      onViewChange(map.getZoom(), map.getBounds());
+    },
+  });
+
+  // Fire initial view on mount
+  useEffect(() => {
+    onViewChange(map.getZoom(), map.getBounds());
+  }, []);  // eslint-disable-line react-hooks/exhaustive-deps
+
+  return null;
+};
+
+// ─── Cluster Icon Creator ────────────────────────────────────
+
+const createClusterCountIcon = (count: number) => {
+  const size = Math.min(60, Math.max(32, 28 + Math.log2(count) * 6));
+  return L.divIcon({
+    className: '',
+    html: `<div style="
+      width:${size}px;height:${size}px;
+      border-radius:50%;
+      background:rgba(16,185,129,0.85);
+      border:3px solid rgba(255,255,255,0.9);
+      box-shadow:0 4px 16px rgba(16,185,129,0.4), 0 0 0 4px rgba(16,185,129,0.15);
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;font-weight:900;font-size:${Math.max(11, 14 - Math.floor(count / 100))}px;
+      cursor:pointer;transition:transform 0.2s ease;
+    "
+    onmouseover="this.style.transform='scale(1.15)'"
+    onmouseout="this.style.transform='scale(1)'"
+    >${count}</div>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
+  });
+};
+
 // ─── Component ───────────────────────────────────────────────
 
 export default function LeafletMap({ plants, plantations, centerLat, centerLng }: LeafletMapProps) {
+  const [clusters, setClusters] = useState<PlantCluster[]>([]);
+  const [currentZoom, setCurrentZoom] = useState(
+    centerLat !== undefined && centerLng !== undefined ? 11 : 5
+  );
+  const fetchTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mapRef = useRef<L.Map | null>(null);
+
+  const showClusters = currentZoom < CLUSTER_ZOOM_THRESHOLD;
+
+  // Debounced fetch of clusters on view change
+  const handleViewChange = useCallback((zoom: number, bounds: L.LatLngBounds) => {
+    setCurrentZoom(zoom);
+
+    if (zoom >= CLUSTER_ZOOM_THRESHOLD) {
+      // At high zoom, use individual markers — clear clusters
+      setClusters([]);
+      return;
+    }
+
+    // Debounce cluster fetches to avoid hammering the API during pan/zoom
+    if (fetchTimerRef.current) clearTimeout(fetchTimerRef.current);
+    fetchTimerRef.current = setTimeout(() => {
+      const sw = bounds.getSouthWest();
+      const ne = bounds.getNorthEast();
+      plantsApi.getClusters({
+        zoom,
+        minLng: sw.lng,
+        minLat: sw.lat,
+        maxLng: ne.lng,
+        maxLat: ne.lat,
+      })
+        .then((res) => setClusters(res.data.data || []))
+        .catch((err) => console.error('Cluster fetch error:', err));
+    }, 300);
+  }, []);
+
   const icons = useMemo(() => {
     const createCircleIcon = (color: string) => L.divIcon({
       className: '',
@@ -163,115 +250,147 @@ export default function LeafletMap({ plants, plantations, centerLat, centerLng }
         zoom={centerLat !== undefined && centerLng !== undefined ? 11 : 5}
         style={{ width: '100%', height: '100%' }}
         scrollWheelZoom
+        ref={mapRef}
       >
         <MapController centerLat={centerLat} centerLng={centerLng} />
+        <ClusterMapEvents onViewChange={handleViewChange} />
         <TileLayer
           attribution='&copy; OpenStreetMap'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <MarkerClusterGroup
-          chunkedLoading
-          iconCreateFunction={(cluster: { getChildCount: () => number }) => {
-            return L.divIcon({
-              html: `<span>${cluster.getChildCount()}</span>`,
-              className: 'cluster-icon',
-              iconSize: L.point(40, 40, true),
-            });
-          }}
-        >
-          {/* Plant Markers */}
-          {plants.map((plant, idx) => {
-          const lat = plant.latitude;
-          const lng = plant.longitude;
-          const coords = (lat && lng) ? [lat, lng] as [number, number] : parseLngLat(plant.location);
-          if (!coords) return null;
+        {/* ── Server-side Cluster Markers (zoom < 14) ── */}
+        {showClusters && clusters.map((cluster) => (
+          <Marker
+            key={`cluster-${cluster.cluster_id}`}
+            position={[cluster.centroid_lat, cluster.centroid_lng]}
+            icon={createClusterCountIcon(cluster.plant_count)}
+            eventHandlers={{
+              click: () => {
+                mapRef.current?.flyTo(
+                  [cluster.centroid_lat, cluster.centroid_lng],
+                  Math.min(currentZoom + 3, CLUSTER_ZOOM_THRESHOLD),
+                  { duration: 1 }
+                );
+              },
+            }}
+          >
+            <Popup>
+              <div className="p-4">
+                <p className="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-1">Plant Cluster</p>
+                <h4 className="text-lg font-black text-gray-900">{cluster.plant_count} plants</h4>
+                <p className="text-xs text-gray-500 mt-1">Click to zoom in and explore</p>
+              </div>
+            </Popup>
+          </Marker>
+        ))}
 
-          return (
-            <Marker
-              key={`plant-${plant.id}`}
-              position={coords}
-              icon={icons[plant.adoption_status as keyof typeof icons] || icons.available}
-            >
-              <Popup>
-                <div className="flex flex-col">
-                  {plant.image_urls?.[0] && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={plant.image_urls[0]} alt="" className="w-full h-32 object-cover" />
-                  )}
-                  <div className="p-4">
-                    <div className="flex justify-between items-start mb-1">
-                      <p className="text-[10px] font-black uppercase tracking-widest text-emerald-600">Adoptable Plant</p>
-                      <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded-full border ${
-                        plant.adoption_status === 'available' ? 'bg-emerald-50 text-emerald-600 border-emerald-200' :
-                        plant.adoption_status === 'pending' ? 'bg-amber-50 text-amber-600 border-amber-200' :
-                        'bg-blue-50 text-blue-600 border-blue-200'
-                      }`}>
-                        {plant.adoption_status}
-                      </span>
+        {/* ── Individual Markers (zoom >= 14) ── */}
+        {!showClusters && (
+          <MarkerClusterGroup
+            chunkedLoading
+            iconCreateFunction={(cluster: { getChildCount: () => number }) => {
+              return L.divIcon({
+                html: `<span>${cluster.getChildCount()}</span>`,
+                className: 'cluster-icon',
+                iconSize: L.point(40, 40, true),
+              });
+            }}
+          >
+            {/* Plant Markers */}
+            {plants.map((plant) => {
+            const lat = plant.latitude;
+            const lng = plant.longitude;
+            const coords = (lat && lng) ? [lat, lng] as [number, number] : parseLngLat(plant.location);
+            if (!coords) return null;
+
+            return (
+              <Marker
+                key={`plant-${plant.id}`}
+                position={coords}
+                icon={icons[plant.adoption_status as keyof typeof icons] || icons.available}
+              >
+                <Popup>
+                  <div className="flex flex-col">
+                    {plant.image_urls?.[0] && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={plant.image_urls[0]} alt="" className="w-full h-32 object-cover" />
+                    )}
+                    <div className="p-4">
+                      <div className="flex justify-between items-start mb-1">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-emerald-600">Adoptable Plant</p>
+                        <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded-full border ${
+                          plant.adoption_status === 'available' ? 'bg-emerald-50 text-emerald-600 border-emerald-200' :
+                          plant.adoption_status === 'pending' ? 'bg-amber-50 text-amber-600 border-amber-200' :
+                          'bg-blue-50 text-blue-600 border-blue-200'
+                        }`}>
+                          {plant.adoption_status}
+                        </span>
+                      </div>
+                      <h4 className="text-lg font-black text-gray-900 leading-tight mb-1">{plant.plant_name}</h4>
+                      <div className="flex items-center gap-1 text-xs text-gray-500 mb-4">
+                         <MapPin size={12} />
+                         {plant.profiles?.display_name || 'NGO Member'}
+                      </div>
+                      <a href={`/plants/${plant.id}`} className="block w-full py-2 bg-emerald-600 text-white text-center rounded-xl text-xs font-bold hover:bg-emerald-700 transition-all">
+                        View Profile
+                      </a>
                     </div>
-                    <h4 className="text-lg font-black text-gray-900 leading-tight mb-1">{plant.plant_name}</h4>
-                    <div className="flex items-center gap-1 text-xs text-gray-500 mb-4">
-                       <MapPin size={12} />
-                       {plant.profiles?.display_name || 'NGO Member'}
-                    </div>
-                    <a href={`/plants/${plant.id}`} className="block w-full py-2 bg-emerald-600 text-white text-center rounded-xl text-xs font-bold hover:bg-emerald-700 transition-all">
-                      View Profile
-                    </a>
                   </div>
-                </div>
-              </Popup>
-            </Marker>
-          );
-        })}
+                </Popup>
+              </Marker>
+            );
+          })}
 
-        {/* Plantation Update Markers */}
-        {plantations.map((post) => {
-          const lat = post.latitude;
-          const lng = post.longitude;
-          const coords = (lat && lng) ? [lat, lng] as [number, number] : parseLngLat(post.location);
-          if (!coords) return null;
+          {/* Plantation Update Markers */}
+          {plantations.map((post) => {
+            const lat = post.latitude;
+            const lng = post.longitude;
+            const coords = (lat && lng) ? [lat, lng] as [number, number] : parseLngLat(post.location);
+            if (!coords) return null;
 
-          return (
-            <Marker
-              key={`post-${post.id}`}
-              position={coords}
-              icon={icons.plantation}
-            >
-              <Popup>
-                <div className="flex flex-col">
-                  {post.image_urls?.[0] && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={post.image_urls[0]} alt="" className="w-full h-32 object-cover" />
-                  )}
-                  <div className="p-4 bg-indigo-50/50">
-                    <p className="text-[10px] font-black uppercase tracking-widest text-indigo-600 mb-1">NGO Plantation</p>
-                    <h4 className="text-sm font-bold text-gray-900 leading-tight mb-2 line-clamp-2">
-                      {post.content || 'Recent Plantation Activity'}
-                    </h4>
-                    
-                    <div className="space-y-2 mb-4">
-                       <div className="flex items-center gap-2 text-[10px] text-gray-600">
-                          <Building2 size={12} className="text-indigo-400" />
-                          <span className="font-bold">{post.profiles?.display_name}</span>
-                       </div>
-                       <div className="flex items-center gap-2 text-[10px] text-gray-600">
-                          <Calendar size={12} className="text-indigo-400" />
-                          <span>{new Date(post.created_at).toLocaleDateString()}</span>
-                       </div>
+            return (
+              <Marker
+                key={`post-${post.id}`}
+                position={coords}
+                icon={icons.plantation}
+              >
+                <Popup>
+                  <div className="flex flex-col">
+                    {post.image_urls?.[0] && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={post.image_urls[0]} alt="" className="w-full h-32 object-cover" />
+                    )}
+                    <div className="p-4 bg-indigo-50/50">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-indigo-600 mb-1">NGO Plantation</p>
+                      <h4 className="text-sm font-bold text-gray-900 leading-tight mb-2 line-clamp-2">
+                        {post.content || 'Recent Plantation Activity'}
+                      </h4>
+                      
+                      <div className="space-y-2 mb-4">
+                         <div className="flex items-center gap-2 text-[10px] text-gray-600">
+                            <Building2 size={12} className="text-indigo-400" />
+                            <span className="font-bold">{post.profiles?.display_name}</span>
+                         </div>
+                         <div className="flex items-center gap-2 text-[10px] text-gray-600">
+                            <Calendar size={12} className="text-indigo-400" />
+                            <span>{new Date(post.created_at).toLocaleDateString()}</span>
+                         </div>
+                      </div>
+
+                      <a href={`/feed?post=${post.id}`} className="flex items-center justify-center gap-1 text-[10px] font-black text-indigo-600 uppercase tracking-tighter hover:underline">
+                        See Journey <ExternalLink size={10} />
+                      </a>
                     </div>
-
-                    <a href={`/feed?post=${post.id}`} className="flex items-center justify-center gap-1 text-[10px] font-black text-indigo-600 uppercase tracking-tighter hover:underline">
-                      See Journey <ExternalLink size={10} />
-                    </a>
                   </div>
-                </div>
-              </Popup>
-            </Marker>
-          );
-        })}
-        </MarkerClusterGroup>
+                </Popup>
+              </Marker>
+            );
+          })}
+          </MarkerClusterGroup>
+        )}
       </MapContainer>
     </>
   );
 }
+
